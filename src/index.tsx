@@ -1,5 +1,16 @@
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { App } from './App'
-import './index.scss'
+import './styles/index.scss'
+import { BrowserRouter } from 'react-router-dom'
+import { ThemeProvider } from './theme/ThemeProvider'
 
-render(<App />, document.getElementById('root'))
+const container = document.getElementById('root')
+const root = createRoot(container)
+
+root.render(
+  <BrowserRouter>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </BrowserRouter>
+)

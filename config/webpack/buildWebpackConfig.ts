@@ -3,6 +3,7 @@ import { buildLoaders } from './buildLoaders'
 import { buildPlugins } from './buildPlagins'
 import { buildResolvers } from './buildResolvers'
 import { BuildOptions } from './types/config'
+import * as webpackDevServer from 'webpack-dev-server'
 
 export const buildWebpackConfig = ({ mode, paths }: BuildOptions): webpack.Configuration => {
   const { build, entry, html } = paths
@@ -21,6 +22,10 @@ export const buildWebpackConfig = ({ mode, paths }: BuildOptions): webpack.Confi
     },
     resolve: buildResolvers(),
     devtool: mode === 'development' ? 'inline-source-map' : undefined,
+    devServer: {
+      historyApiFallback: true,
+      open: true,
+    },
     // optimization: {
     //   runtimeChunk: 'single',
     // },
