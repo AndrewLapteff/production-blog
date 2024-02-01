@@ -1,0 +1,1 @@
+export { Routes, routerConfig, routes } from "./routeConfig/routeConfig"

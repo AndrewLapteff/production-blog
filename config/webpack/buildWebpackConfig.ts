@@ -6,7 +6,7 @@ import { BuildOptions } from './types/config'
 import * as webpackDevServer from 'webpack-dev-server'
 
 export const buildWebpackConfig = ({ mode, paths }: BuildOptions): webpack.Configuration => {
-  const { build, entry, html } = paths
+  const { build, entry, html, src } = paths
 
   return {
     mode: mode,
@@ -20,12 +20,13 @@ export const buildWebpackConfig = ({ mode, paths }: BuildOptions): webpack.Confi
     module: {
       rules: buildLoaders(mode)
     },
-    resolve: buildResolvers(),
+    resolve: buildResolvers(src),
     devtool: mode === 'development' ? 'inline-source-map' : undefined,
     devServer: {
       historyApiFallback: true,
       open: true,
     },
+
     // optimization: {
     //   runtimeChunk: 'single',
     // },

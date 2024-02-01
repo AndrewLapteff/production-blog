@@ -1,6 +1,7 @@
 export type Mode = 'production' | 'development'
 
 interface Paths {
+  src: string
   entry: string
   build: string
   html: string
