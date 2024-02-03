@@ -13,5 +13,4 @@ export const buildPlugins = (html: string): webpack.WebpackPluginInstance[] => {
       chunkFilename: 'css/[name].[contenthash:8].css'
     })
   ]
-
 }

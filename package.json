@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.11.10",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
@@ -20,7 +21,9 @@
     "@types/webpack-dev-server": "^4.7.2",
     "css-loader": "^6.9.1",
     "html-webpack-plugin": "^5.6.0",
+    "i18next": "^23.8.2",
     "mini-css-extract-plugin": "^2.7.7",
+    "react-i18next": "^14.0.1",
     "sass": "^1.70.0",
     "sass-loader": "^14.0.0",
     "style-loader": "^3.3.4",

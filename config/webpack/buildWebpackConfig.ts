@@ -24,9 +24,11 @@ export const buildWebpackConfig = ({ mode, paths }: BuildOptions): webpack.Confi
     devtool: mode === 'development' ? 'inline-source-map' : undefined,
     devServer: {
       historyApiFallback: true,
-      open: true,
+      // open: true,
     },
-
+    cache: {
+      type: 'filesystem'
+    }
     // optimization: {
     //   runtimeChunk: 'single',
     // },

@@ -1,6 +1,6 @@
 type ObjectClass = Record<string, boolean>
 
-export const classNames = (cls: string, object: ObjectClass, additional: string[]): string => {
+export const classNames = (cls: string, object: ObjectClass = {}, additional: string[] = []): string => {
   const entries = Object.entries(object)
   let result = cls
   entries.forEach((selector, idx) => {
@@ -9,9 +9,10 @@ export const classNames = (cls: string, object: ObjectClass, additional: string[
     if (selector[ 1 ])
       result += space + selector[ 0 ]
   })
-  additional.forEach((selector) => {
-    result += ' ' + selector
-  })
+  if (additional) // might be an undefined value
+    additional.forEach((selector) => {
+      result += ' ' + selector
+    })
   return result
 }
 

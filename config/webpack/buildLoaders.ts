@@ -10,6 +10,17 @@ export const buildLoaders = (mode: Mode): webpack.RuleSetRule[] => {
     exclude: /node_modules/,
   }
 
+  const pngLoader = {
+    test: /\.(png|jpg|gif)$/i,
+    type: "asset/resource"
+  }
+
+  const svgLoader = {
+    test: /\.svg$/i,
+    issuer: /\.[jt]sx?$/,
+    use: [ '@svgr/webpack' ],
+  }
+
   const scssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
@@ -30,5 +41,7 @@ export const buildLoaders = (mode: Mode): webpack.RuleSetRule[] => {
   return [
     typescriptLoader,
     scssLoader,
+    svgLoader,
+    pngLoader
   ]
 }
