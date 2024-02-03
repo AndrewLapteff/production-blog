@@ -9,3 +9,5 @@ declare module "*.svg" {
 }
 
 declare module "*.png"
+
+declare const IS_DEV: boolean

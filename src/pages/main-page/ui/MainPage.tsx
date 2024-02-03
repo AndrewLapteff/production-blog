@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next'
 
 const MainPage = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('main')
 
-  return <div>{t('Welcome to React')}</div>
+  return <div>{t('Hello')}</div>
 }
 
 export default MainPage

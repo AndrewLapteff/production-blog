@@ -1,1 +1,1 @@
-export { Routes, routerConfig, routes } from "./routeConfig/routeConfig"
+export { Routes, routerConfig, routes } from "./routes/route.config"

@@ -1,22 +1,18 @@
 import { ReactNode } from 'react'
 import { Button } from '../button/Button'
-import { classNames } from 'shared/lib/classNames'
 import { useTranslation } from 'react-i18next'
+import LanguageIcon from '../../assets/language.svg'
 
-interface TranslateButton {
-  children?: ReactNode
-}
-
-export const TranslateButton = ({ children }: TranslateButton) => {
-  const { i18n } = useTranslation()
+export const TranslateButton = () => {
+  const { i18n } = useTranslation('main')
 
   const changeLanguageHandler = () => {
-    i18n.changeLanguage(i18n.language == 'en' ? 'ru' : 'en')
+    i18n.changeLanguage(i18n.language == 'en' ? 'uk' : 'en')
   }
 
   return (
-    <Button onClick={changeLanguageHandler} variant="primary">
-      {children}
+    <Button onClick={changeLanguageHandler} variant="icon">
+      <LanguageIcon width={23} height={23} />
     </Button>
   )
 }

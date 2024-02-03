@@ -13,7 +13,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcher) => {
   const { theme, changeTheme } = useTheme()
 
   return (
-    <Button variant="clear" className={s['theme-switcher']} style={className} onClick={changeTheme}>
+    <Button variant="icon" className={s['theme-switcher']} style={className} onClick={changeTheme}>
       {theme === 'light' ? <Moon width={20} height={20} /> : <Sun width={25} height={25} />}
     </Button>
   )

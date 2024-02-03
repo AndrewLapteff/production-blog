@@ -1,12 +1,14 @@
 import webpack from 'webpack'
 import { buildLoaders } from './buildLoaders'
-import { buildPlugins } from './buildPlagins'
+import { buildPlugins } from './buildPlugins'
 import { buildResolvers } from './buildResolvers'
 import { BuildOptions } from './types/config'
 import * as webpackDevServer from 'webpack-dev-server'
 
 export const buildWebpackConfig = ({ mode, paths }: BuildOptions): webpack.Configuration => {
   const { build, entry, html, src } = paths
+
+  const isDev = mode === 'development' ? true : false
 
   return {
     mode: mode,
@@ -16,7 +18,7 @@ export const buildWebpackConfig = ({ mode, paths }: BuildOptions): webpack.Confi
       path: build,
       clean: true
     },
-    plugins: buildPlugins(html),
+    plugins: buildPlugins({ html, isDev }),
     module: {
       rules: buildLoaders(mode)
     },
@@ -25,6 +27,7 @@ export const buildWebpackConfig = ({ mode, paths }: BuildOptions): webpack.Confi
     devServer: {
       historyApiFallback: true,
       // open: true,
+      hot: true
     },
     cache: {
       type: 'filesystem'

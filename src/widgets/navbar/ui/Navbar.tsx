@@ -15,7 +15,7 @@ export const Navbar = () => {
           About
         </AppLink>
         <ThemeSwitcher />
-        <TranslateButton>Translate</TranslateButton>
+        <TranslateButton />
       </div>
     </nav>
   )

@@ -1,7 +1,10 @@
+import { useTranslation } from 'react-i18next'
 import { classNames } from '../../../shared/lib/classNames'
 
 const AboutPage = () => {
-  return <div className={classNames('a', {}, ['d'])}>about</div>
+  const { t } = useTranslation('about')
+
+  return <div>{t('title')}</div>
 }
 
 export default AboutPage
