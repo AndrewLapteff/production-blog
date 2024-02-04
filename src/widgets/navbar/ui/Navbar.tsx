@@ -1,4 +1,3 @@
-import { useTheme } from 'app/providers/ThemeProvider'
 import s from './Navbar.module.scss'
 import { classNames } from 'shared/lib/classNames'
 import { AppLink, ThemeSwitcher } from 'shared/ui'

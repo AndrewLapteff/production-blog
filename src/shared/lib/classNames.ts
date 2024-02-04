@@ -4,15 +4,15 @@ export const classNames = (cls: string, object: ObjectClass = {}, additional: st
   const entries = Object.entries(object)
   let result = cls
   entries.forEach((selector, idx) => {
-    const isFirst = idx === 0 && cls === '' ? true : false
+    const isFirst = idx === 0 && cls === ''
     const space = isFirst ? '' : ' '
-    if (selector[ 1 ])
+    if (selector[ 1 ]) {
       result += space + selector[ 0 ]
+    }
   })
-  if (additional) // might be an undefined value
-    additional.forEach((selector) => {
-      result += ' ' + selector
-    })
+  additional.forEach((selector) => {
+    result += ' ' + selector
+  })
   return result
 }
 

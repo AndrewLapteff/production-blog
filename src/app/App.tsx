@@ -7,9 +7,9 @@ import { Sidebar } from 'widgets/sidebar/ui/Sidebar'
 
 export const App = () => {
   const { theme } = useTheme()
-
+  console.log(theme)
   return (
-    <div className={classNames('.app', {}, [theme])}>
+    <div className={classNames('.app.dark', {}, [theme])}>
       <Navbar />
       <div className="main-area">
         <Sidebar />

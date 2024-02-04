@@ -14,6 +14,8 @@
 
 .main-area {
   display: flex;
+  background-color: var(--bg-color);
+  color: var(--secondary-color);
 }
 
 .content-area {

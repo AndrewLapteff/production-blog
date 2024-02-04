@@ -3,7 +3,7 @@ import { buildWebpackConfig } from './config/webpack/buildWebpackConfig'
 import { BuildEnv } from './config/webpack/types/config'
 
 export default (env: BuildEnv) => {
-  let { mode } = env
+  const { mode } = env
 
   return buildWebpackConfig({
     mode,
@@ -15,4 +15,3 @@ export default (env: BuildEnv) => {
     }
   })
 }
-

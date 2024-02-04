@@ -1,10 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import s from './Sidebar.module.scss'
 import { classNames } from 'shared/lib/classNames'
 import ArrowIcon from 'shared/assets/arrow.svg'
 
 export const Sidebar = () => {
-  const [isFolded, setIsFolded] = useState(false)
+  const [isFolded, setIsFolded] = useState(true)
+
+  useEffect(() => {
+    setIsFolded((prev) => !prev)
+  }, [])
 
   const foldHandler = () => {
     setIsFolded((prev) => !prev)

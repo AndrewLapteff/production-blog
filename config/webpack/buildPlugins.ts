@@ -1,17 +1,19 @@
-import HtmlWebpackPlugin from "html-webpack-plugin"
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import webpack from "webpack"
-import { Mode } from "./types/config"
+import webpack from 'webpack'
 
 interface BuildPluginsProps {
   html: string
   isDev: boolean
 }
 
-export const buildPlugins = ({ html, isDev }: BuildPluginsProps): webpack.WebpackPluginInstance[] => {
+export const buildPlugins = ({
+  html,
+  isDev
+}: BuildPluginsProps): webpack.WebpackPluginInstance[] => {
   return [
     new HtmlWebpackPlugin({
-      template: html,
+      template: html
     }),
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({

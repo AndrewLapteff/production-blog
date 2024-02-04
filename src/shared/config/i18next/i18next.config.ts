@@ -12,7 +12,10 @@ i18n
     //   escapeValue: false,
     // },
     backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json'
     },
-    ns: [ 'main', 'about' ],
+    ns: ['main', 'about']
+  })
+  .catch((error) => {
+    console.error(error)
   })

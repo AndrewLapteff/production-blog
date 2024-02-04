@@ -4,21 +4,21 @@ import { RouteProps } from 'react-router-dom'
 
 export enum Routes {
   MAIN = 'main',
-  ABOUT = 'about',
+  ABOUT = 'about'
 }
 
 export const routes: Record<Routes, string> = {
   main: '/',
-  about: '/about',
+  about: '/about'
 }
 
 export const routerConfig: Record<Routes, RouteProps> = {
   main: {
     path: routes.main,
-    element: <MainPage />,
+    element: <MainPage />
   },
   about: {
     path: routes.about,
-    element: <AboutPage />,
-  },
+    element: <AboutPage />
+  }
 }

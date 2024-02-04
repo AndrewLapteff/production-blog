@@ -2,10 +2,10 @@ import webpack from 'webpack'
 
 export const buildResolvers = (path: string): webpack.ResolveOptions => {
   return {
-    extensions: [ '.tsx', '.ts', '.js' ], // import component from './file' no need for extension
+    extensions: ['.tsx', '.ts', '.js'], // import component from './file' no need for extension
     preferAbsolute: true,
-    modules: [ path, 'node_modules' ],
-    mainFiles: [ 'index' ],
-    alias: {},
+    modules: [path, 'node_modules'],
+    mainFiles: ['index'],
+    alias: {}
   }
 }

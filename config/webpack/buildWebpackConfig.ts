@@ -3,16 +3,19 @@ import { buildLoaders } from './buildLoaders'
 import { buildPlugins } from './buildPlugins'
 import { buildResolvers } from './buildResolvers'
 import { BuildOptions } from './types/config'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as webpackDevServer from 'webpack-dev-server'
 
-export const buildWebpackConfig = ({ mode, paths }: BuildOptions): webpack.Configuration => {
+export const buildWebpackConfig = ({
+  mode,
+  paths
+}: BuildOptions): webpack.Configuration => {
   const { build, entry, html, src } = paths
 
-  const isDev = mode === 'development' ? true : false
-
+  const isDev = mode === 'development'
   return {
-    mode: mode,
-    entry: entry,
+    mode,
+    entry,
     output: {
       filename: '[name].[contenthash].js',
       path: build,
