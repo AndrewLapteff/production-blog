@@ -6,7 +6,8 @@
   "extends": [
     "plugin:react/recommended",
     "standard-with-typescript",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/recommended",
+    "plugin:i18next/recommended"
     // "plugin:prettier/recommend"
   ],
   "overrides": [],
@@ -14,7 +15,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "jsx-a11y" ],
+  "plugins": ["react", "jsx-a11y", "i18next"],
   "rules": {
     // "prettier/prettier": ["error"],
     "react/react-in-jsx-scope": "off",
