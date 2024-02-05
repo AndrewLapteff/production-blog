@@ -1,0 +1,9 @@
+.page-error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  height: calc(100vh - var(--navbar-height));
+  gap: 10px;
+}

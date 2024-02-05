@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import { routerConfig } from 'shared/config'
+import { PageLoader } from 'widgets/page-loader'
 
 export const AppRouter = () => {
   return (
@@ -12,7 +13,7 @@ export const AppRouter = () => {
             key={path}
             path={path}
             element={
-              <Suspense fallback="Loading">
+              <Suspense fallback={<PageLoader />}>
                 <div className="content-area">{element}</div>
               </Suspense>
             }

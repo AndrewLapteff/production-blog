@@ -28,9 +28,8 @@ export const buildWebpackConfig = ({
     resolve: buildResolvers(src),
     devtool: mode === 'development' ? 'inline-source-map' : undefined,
     devServer: {
-      historyApiFallback: true,
+      historyApiFallback: true
       // open: true,
-      hot: true
     },
     cache: {
       type: 'filesystem'

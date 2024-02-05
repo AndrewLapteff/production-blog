@@ -18,7 +18,11 @@ export const Sidebar = () => {
     <aside className={classNames(s.sidebar, { [s.folded]: isFolded })}>
       <section className={classNames(s['link-bar'])}></section>
       <section className={classNames(s['action-bar'])}>
-        <button onClick={foldHandler} className={classNames(s.button)}>
+        <button
+          type="button"
+          onClick={foldHandler}
+          className={classNames(s.button)}
+        >
           <ArrowIcon
             className={classNames(s.svg, { [s.twisted]: isFolded })}
             width={27}

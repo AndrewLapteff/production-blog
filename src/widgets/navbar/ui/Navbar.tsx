@@ -11,10 +11,10 @@ export const Navbar = () => {
     <nav className={classNames(s.navbar)}>
       <div className={classNames(s.links)}>
         <AppLink theme="primary" to="/">
-          a
+          {t('main', { ns: 'main' })}
         </AppLink>
         <AppLink theme="primary" to="/about">
-          {t('about')}
+          {t('about', { ns: 'about' })}
         </AppLink>
         <ThemeSwitcher />
         <TranslateButton />
