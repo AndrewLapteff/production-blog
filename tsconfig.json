@@ -15,6 +15,7 @@
     }
   },
   "ts-node": {
+    "include": ["./config/jest/setupTests.ts"],
     "compilerOptions": {
       "module": "CommonJS"
     }

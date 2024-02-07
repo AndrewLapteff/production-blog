@@ -4,11 +4,12 @@
  */
 
 import type { Config } from 'jest'
+import path from 'path'
 
 const config: Config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
-
+  moduleDirectories: ['node_modules', './src'],
   // Stop running tests after `n` failures
   // bail: 0,
 
@@ -22,7 +23,29 @@ const config: Config = {
   collectCoverage: false,
 
   // The test environment that will be used for testing
-  testEnvironment: 'jsdom'
+  testEnvironment: 'jsdom',
+  // preset: 'ts-jest',
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
+
+  coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
+
+  moduleFileExtensions: [
+    'js',
+    'mjs',
+    'cjs',
+    'jsx',
+    'ts',
+    'tsx',
+    'json',
+    'node'
+  ],
+
+  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
+
+  moduleNameMapper: {
+    '^.+\\.(css|less|scss)$': 'identity-obj-proxy',
+    '\\.svg': path.resolve(__dirname, 'svgComponent.tsx')
+  },
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
@@ -31,9 +54,6 @@ const config: Config = {
   // coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "\\\\node_modules\\\\"
-  // ],
 
   // Indicates which provider should be used to instrument code for coverage
   // coverageProvider: "babel",
@@ -76,21 +96,8 @@ const config: Config = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  // moduleDirectories: [
-  //   "node_modules"
-  // ],
 
   // An array of file extensions your modules use
-  // moduleFileExtensions: [
-  //   "js",
-  //   "mjs",
-  //   "cjs",
-  //   "jsx",
-  //   "ts",
-  //   "tsx",
-  //   "json",
-  //   "node"
-  // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
@@ -126,7 +133,7 @@ const config: Config = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  // rootDir: undefined,
+  rootDir: '../../'
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -140,7 +147,6 @@ const config: Config = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -155,10 +161,6 @@ const config: Config = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  // testMatch: [
-  //   "**/__tests__/**/*.[jt]s?(x)",
-  //   "**/?(*.)+(spec|test).[tj]s?(x)"
-  // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [

@@ -6,10 +6,10 @@ import { BuildOptions } from './types/config'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as webpackDevServer from 'webpack-dev-server'
 
-export const buildWebpackConfig = ({
-  mode,
-  paths
-}: BuildOptions): webpack.Configuration => {
+export const buildWebpackConfig = (
+  props: BuildOptions
+): webpack.Configuration => {
+  const { paths, mode, analyze } = props
   const { build, entry, html, src } = paths
 
   const isDev = mode === 'development'
@@ -21,7 +21,7 @@ export const buildWebpackConfig = ({
       path: build,
       clean: true
     },
-    plugins: buildPlugins({ html, isDev }),
+    plugins: buildPlugins({ html, isDev, analyze }),
     module: {
       rules: buildLoaders(mode)
     },

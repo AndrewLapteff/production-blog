@@ -7,5 +7,5 @@ interface ThemeContextProps {
   setTheme: (theme: THEME) => void
 }
 
-// @ts-ignore
+// @ts-expect-error
 export const ThemeContext = createContext<ThemeContextProps>({})

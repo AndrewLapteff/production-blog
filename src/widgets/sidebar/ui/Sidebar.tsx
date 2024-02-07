@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import s from './Sidebar.module.scss'
-import { classNames } from 'shared/lib/classNames'
+import { classNames } from 'shared/lib'
 import ArrowIcon from 'shared/assets/arrow.svg'
+import { useTranslation } from 'react-i18next'
 
 export const Sidebar = () => {
   const [isFolded, setIsFolded] = useState(true)
+  const { t } = useTranslation('translation')
 
   useEffect(() => {
     setIsFolded((prev) => !prev)
@@ -15,11 +17,15 @@ export const Sidebar = () => {
   }
 
   return (
-    <aside className={classNames(s.sidebar, { [s.folded]: isFolded })}>
-      <section className={classNames(s['link-bar'])}></section>
+    <aside
+      data-testid="sidebar"
+      className={classNames(s.sidebar, { [s.folded]: isFolded })}
+    >
+      <section className={classNames(s['link-bar'])}>{t('sidebar')}</section>
       <section className={classNames(s['action-bar'])}>
         <button
           type="button"
+          data-testid="button"
           onClick={foldHandler}
           className={classNames(s.button)}
         >

@@ -7,11 +7,11 @@ interface Paths {
   html: string
 }
 
-export interface BuildOptions {
-  mode: Mode
-  paths: Paths
-}
-
 export interface BuildEnv {
   mode: Mode
+  analyze: 'server' | 'disabled'
+}
+
+export interface BuildOptions extends BuildEnv {
+  paths: Paths
 }

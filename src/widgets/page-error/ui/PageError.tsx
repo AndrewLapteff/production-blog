@@ -1,6 +1,6 @@
 import { Button } from 'shared/ui/button/Button'
 import s from './PageError.module.scss'
-import { classNames } from 'shared/lib/classNames'
+import { classNames } from 'shared/lib'
 import { useTranslation } from 'react-i18next'
 
 export const PageError = () => {

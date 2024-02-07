@@ -1,5 +1,5 @@
 import s from './Loader.module.scss'
-import { classNames } from 'shared/lib/classNames'
+import { classNames } from 'shared/lib'
 
 export const Loader = () => {
   return (

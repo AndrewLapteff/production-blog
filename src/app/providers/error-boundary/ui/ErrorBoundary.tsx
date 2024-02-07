@@ -5,23 +5,24 @@ interface ErrorBoundaryState {
   hasError: boolean
 }
 export class ErrorBoundary extends React.Component<
-  PropsWithChildren,
-  ErrorBoundaryState
+PropsWithChildren,
+ErrorBoundaryState
 > {
-  constructor(props: PropsWithChildren) {
+  constructor (props: PropsWithChildren) {
     super(props)
     this.state = { hasError: false }
   }
 
-  static getDerivedStateFromError(error: Error) {
+  // eslint-disable-next-line n/handle-callback-err
+  static getDerivedStateFromError (error: Error) {
     return { hasError: true }
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  componentDidCatch (error: Error, errorInfo: ErrorInfo) {
     console.error(error, errorInfo)
   }
 
-  render() {
+  render () {
     if (this.state.hasError) {
       return <PageError />
     }

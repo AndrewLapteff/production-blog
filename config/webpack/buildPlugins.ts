@@ -1,15 +1,18 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import webpack from 'webpack'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import { BuildEnv } from './types/config'
 
-interface BuildPluginsProps {
+interface BuildPluginsProps extends Pick<BuildEnv, 'analyze'> {
   html: string
   isDev: boolean
 }
 
 export const buildPlugins = ({
   html,
-  isDev
+  isDev,
+  analyze
 }: BuildPluginsProps): webpack.WebpackPluginInstance[] => {
   return [
     new HtmlWebpackPlugin({
@@ -23,6 +26,7 @@ export const buildPlugins = ({
     new webpack.DefinePlugin({
       IS_DEV: JSON.stringify(isDev)
     }),
-    new webpack.HotModuleReplacementPlugin({})
+    new webpack.HotModuleReplacementPlugin({}),
+    new BundleAnalyzerPlugin({ analyzerMode: analyze })
   ]
 }

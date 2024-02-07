@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import s from './Navbar.module.scss'
-import { classNames } from 'shared/lib/classNames'
+import { classNames } from 'shared/lib'
 import { AppLink, ThemeSwitcher } from 'shared/ui'
 import { TranslateButton } from 'shared/ui/translate-button/TranslateButton'
 
