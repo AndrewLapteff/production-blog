@@ -54,7 +54,8 @@
     "react/button-has-type": "warn",
     "indent": "off",
     "@typescript-eslint/indent": "warn",
-    "@typescript-eslint/space-before-function-paren": "warn"
+    "@typescript-eslint/space-before-function-paren": "warn",
+    "react/display-name": "off"
     // "react/jsx-fragments": "warn"
   }
 }

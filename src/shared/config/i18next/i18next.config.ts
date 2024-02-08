@@ -14,7 +14,7 @@ i18n
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json'
     },
-    ns: ['main', 'about']
+    ns: ['main', 'about', 'translation']
   })
   .catch((error) => {
     console.error(error)

@@ -2,6 +2,10 @@
   cursor: pointer;
 }
 
+.primary {
+  outline: none;
+}
+
 .clear {
   background: none;
   outline: none;
@@ -18,4 +22,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.outline {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 5px;
 }

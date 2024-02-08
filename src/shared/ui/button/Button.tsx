@@ -2,7 +2,7 @@ import { HtmlHTMLAttributes } from 'react'
 import s from './Button.module.scss'
 import { classNames } from 'shared/lib'
 
-type ButtonVariants = 'clear' | 'primary' | 'icon'
+type ButtonVariants = 'clear' | 'primary' | 'icon' | 'outline'
 
 interface ButtonProps extends HtmlHTMLAttributes<HTMLButtonElement> {
   variant: ButtonVariants
