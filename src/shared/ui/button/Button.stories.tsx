@@ -13,6 +13,7 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
+    size: 'm',
     variant: 'primary',
     children: 'Hello World'
   }
@@ -20,6 +21,7 @@ export const Primary: Story = {
 
 export const Outline: Story = {
   args: {
+    size: 'm',
     variant: 'outline',
     children: 'Hello World'
   }
@@ -27,27 +29,40 @@ export const Outline: Story = {
 
 export const Icon: Story = {
   args: {
+    size: 'm',
     variant: 'icon',
     children: <MoonIcon width={25} height={25} />
   }
 }
-// Outline.decorators = []
-// export const Secondary: Story = {
-//   args: {
-//     label: 'Button'
-//   }
-// }
 
-// export const Large: Story = {
-//   args: {
-//     size: 'large',
-//     label: 'Button'
-//   }
-// }
+export const Background: Story = {
+  args: {
+    size: 'm',
+    variant: 'background',
+    children: <MoonIcon width={25} height={25} />
+  }
+}
 
-// export const Small: Story = {
-//   args: {
-//     size: 'small',
-//     label: 'Button'
-//   }
-// }
+export const Large: Story = {
+  args: {
+    size: 'l',
+    variant: 'primary',
+    children: 'Hello World'
+  }
+}
+
+export const Medium: Story = {
+  args: {
+    size: 'm',
+    variant: 'primary',
+    children: 'Hello World'
+  }
+}
+
+export const Small: Story = {
+  args: {
+    size: 's',
+    variant: 'primary',
+    children: 'Hello World'
+  }
+}

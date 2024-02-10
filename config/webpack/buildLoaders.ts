@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { Mode } from './types/config'
+import { Mode } from './types'
 
 export const buildLoaders = (mode: Mode): webpack.RuleSetRule[] => {
   const typescriptLoader = {

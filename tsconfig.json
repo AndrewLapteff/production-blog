@@ -10,6 +10,7 @@
     "allowJs": true,
     "moduleResolution": "Node",
     "baseUrl": ".",
+    "resolveJsonModule": true,
     "paths": {
       "*": ["./src/*"]
     }

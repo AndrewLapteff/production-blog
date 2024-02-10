@@ -14,6 +14,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
 
   return (
     <Button
+      size="m"
       variant="icon"
       className={s['theme-switcher']}
       style={className}
@@ -22,7 +23,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
       {theme === 'light' ? (
         <Moon width={20} height={20} />
       ) : (
-        <Sun width={25} height={25} />
+        <Sun width={25} color="white" height={25} />
       )}
     </Button>
   )

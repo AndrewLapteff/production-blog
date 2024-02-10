@@ -1,4 +1,8 @@
-import { StoryObj } from '@storybook/react'
+import { Story } from '@storybook/react'
 import 'app/styles/index.scss'
 
-export default (story: () => StoryObj) => story()
+export default (Story: Story) => (
+  <div style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
+    <Story />
+  </div>
+)

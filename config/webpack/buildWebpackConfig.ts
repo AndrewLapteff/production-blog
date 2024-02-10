@@ -2,7 +2,7 @@ import webpack from 'webpack'
 import { buildLoaders } from './buildLoaders'
 import { buildPlugins } from './buildPlugins'
 import { buildResolvers } from './buildResolvers'
-import { BuildOptions } from './types/config'
+import { BuildOptions } from './types'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as webpackDevServer from 'webpack-dev-server'
 

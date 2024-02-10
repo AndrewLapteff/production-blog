@@ -1,10 +1,15 @@
 .light {
   --bg-color: white;
-  --primary-color: black;
-  --secondary-color: rgb(20, 20, 20);
+  --text-color: #000;
+  --primary-color: #0B60B0;
+  --secondary-color: #40A2D8;
 
   --links-primary-color: rgb(37, 37, 37);
   --links-secondary-color: rgb(50, 50, 50);
 
   --inverted-secondary-color: rgb(20, 20, 20);
+
+  --high-emphasis: #000;
+  --medium-emphasis: #000000c0;
+  --low-emphasis: #0000006a;
 }

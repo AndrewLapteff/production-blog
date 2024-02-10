@@ -12,7 +12,7 @@ export const TranslateButton = () => {
   }
 
   return (
-    <Button onClick={changeLanguageHandler} variant="icon">
+    <Button size="m" onClick={changeLanguageHandler} variant="icon">
       <LanguageIcon width={23} height={23} />
     </Button>
   )

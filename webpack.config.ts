@@ -1,6 +1,6 @@
 import path from 'path'
 import { buildWebpackConfig } from './config/webpack/buildWebpackConfig'
-import { BuildEnv } from './config/webpack/types/config'
+import { BuildEnv } from './config/webpack/types'
 
 export default (env: BuildEnv) => {
   const { mode, analyze } = env

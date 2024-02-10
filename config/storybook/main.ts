@@ -1,5 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-webpack5'
 import path from 'path'
+import { RuleSetRule } from 'webpack'
 
 const config: StorybookConfig = {
   stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -18,12 +19,29 @@ const config: StorybookConfig = {
       }
     }
   },
-  webpackFinal: async (config) => {
+  webpackFinal: async (config, { configType }) => {
     config.resolve.modules = [
       ...(config.resolve.modules || []),
       path.resolve(__dirname, '../src')
     ]
+    config.resolve.modules.push(path.resolve(__dirname, '..', '..', 'src'))
+    config.resolve.extensions.push('.tsx', '.ts', '.js')
 
+    const svgLoader = {
+      test: /\.svg$/i,
+      // issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack']
+    }
+
+    config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+      // @ts-expect-error
+      if (/svg/.test(rule.test)) {
+        return { ...rule, exclude: /\.svg$/i }
+      }
+      return rule
+    })
+
+    config.module.rules.push(svgLoader)
     return config
   },
   staticDirs: ['../.././src'],

@@ -13,7 +13,7 @@ export const PageError = () => {
   return (
     <div className={classNames(s['page-error'])}>
       <h1>{t('something-went-wrong')}</h1>
-      <Button onClick={reloadHandler} variant="primary">
+      <Button size="m" onClick={reloadHandler} variant="primary">
         {t('reload')}
       </Button>
     </div>

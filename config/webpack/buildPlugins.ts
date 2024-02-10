@@ -2,7 +2,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import webpack from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import { BuildEnv } from './types/config'
+import { BuildEnv } from './types'
 
 interface BuildPluginsProps extends Pick<BuildEnv, 'analyze'> {
   html: string

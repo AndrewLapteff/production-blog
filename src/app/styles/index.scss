@@ -4,21 +4,22 @@
 @import "themes/dark";
 
 .app {
-  font-family: var(--font-m);
   background-color: var(--bg-color);
-  color: var(--secondary-color);
+  color: var(--text-color);
   min-height: 100vh;
 }
 
 .main-area {
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   background-color: var(--bg-color);
-  color: var(--secondary-color);
+  color: var(--high-emphasis);
   margin-top: 0;
-
+  transition: color 0.5s ease;
 }
 
 .content-area {
+  font-family: Arial, Helvetica, sans-serif;
   flex-grow: 1;
   padding: 20px;
 }

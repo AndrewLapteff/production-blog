@@ -1,8 +1,14 @@
 .button {
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: .5rem;
   cursor: pointer;
 }
 
 .primary {
+  color: var(--bg-color);
+  background-color: var(--primary-color);
   outline: none;
 }
 
@@ -10,11 +16,12 @@
   background: none;
   outline: none;
   border: 0;
-  padding: 0;
 }
 
 .icon {
   background: none;
+  color: var(--high-emphasis);
+  fill: var(--high-emphasis);
   outline: none;
   border: 0;
   padding: 0;
@@ -29,4 +36,20 @@
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
   padding: 5px;
+}
+
+// .background {
+
+// }
+
+.s {
+  font-size: 12px;
+}
+
+.m {
+  font-size: 16px;
+}
+
+.l {
+  font-size: 24px;
 }
