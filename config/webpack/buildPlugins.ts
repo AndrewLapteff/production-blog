@@ -14,7 +14,7 @@ export const buildPlugins = ({
   isDev,
   analyze
 }: BuildPluginsProps): webpack.WebpackPluginInstance[] => {
-  return [
+  const plugins = [
     new HtmlWebpackPlugin({
       template: html
     }),
@@ -25,8 +25,13 @@ export const buildPlugins = ({
     }),
     new webpack.DefinePlugin({
       IS_DEV: JSON.stringify(isDev)
-    }),
-    new webpack.HotModuleReplacementPlugin({}),
-    new BundleAnalyzerPlugin({ analyzerMode: analyze })
+    })
   ]
+
+  if (isDev) {
+    plugins.push(new webpack.HotModuleReplacementPlugin({}))
+    plugins.push(new BundleAnalyzerPlugin({ analyzerMode: analyze }))
+  }
+
+  return plugins
 }

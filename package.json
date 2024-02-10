@@ -8,15 +8,17 @@
     "build:prod": "npx webpack --env mode=production analyze=disabled",
     "build:analyze": "npx webpack --env mode=production analyze=server",
     "build:dev": "npx webpack --env mode=development analyze=disabled",
-    "lint": "eslint \"**/*.{ts,tsx}\" --color",
-    "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\" --color",
+    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
+    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "prepare": "husky",
     "test": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "npx loki --config ./config/storybook/",
     "test:ui:ok": "npx loki approve",
+    "test:ui:ci": "npm run storybook:build && npx loki --requireReference --reactUri file:./storybook-static",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
-    "build-storybook": "storybook build -c ./config/storybook"
+    "storybook:build": "storybook build -c ./config/storybook"
   },
   "husky": {
     "hooks": {

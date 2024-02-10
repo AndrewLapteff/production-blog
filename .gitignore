@@ -3,4 +3,4 @@ build
 info
 node_modules
 .git
-.loki
+storybook-static
