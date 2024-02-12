@@ -46,6 +46,14 @@ const config: Config = {
     '^.+\\.(css|less|scss)$': 'identity-obj-proxy',
     '\\.svg': path.resolve(__dirname, 'svgComponent.tsx')
   },
+  modulePathIgnorePatterns: [
+    'build',
+    'storybook-static',
+    '.loki',
+    '.husky',
+    'info',
+    'public'
+  ],
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,

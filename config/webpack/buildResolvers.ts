@@ -1,5 +1,4 @@
 import webpack from 'webpack'
-import p from 'path'
 
 export const buildResolvers = (path: string): webpack.ResolveOptions => {
   return {

@@ -9,12 +9,10 @@
     "standard-with-typescript",
     "plugin:jsx-a11y/recommended",
     "plugin:i18next/recommended"
-    // "plugin:prettier/recommend"
   ],
   "overrides": [
-    // overrides ruts
     {
-      "files": ["**/src/**/*.test.{ts,tsx}"],
+      "files": ["**/src/**/*.{test,stories}.{ts,tsx}"],
       "rules": {
         "i18next/no-literal-string": "off"
       },
@@ -32,9 +30,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "jsx-a11y", "i18next"],
+  "plugins": ["react", "jsx-a11y", "i18next", "react-hooks"],
   "rules": {
-    // "prettier/prettier": ["error"],
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "off",
     "computed-property-spacing": "off",
@@ -55,7 +52,8 @@
     "indent": "off",
     "@typescript-eslint/indent": "warn",
     "@typescript-eslint/space-before-function-paren": "warn",
-    "react/display-name": "off"
-    // "react/jsx-fragments": "warn"
+    "react/display-name": "off",
+    "react-hooks/rules-of-hooks": "warn",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

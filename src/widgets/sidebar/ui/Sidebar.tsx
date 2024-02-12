@@ -31,8 +31,8 @@ export const Sidebar = () => {
         >
           <ArrowIcon
             className={classNames(s.svg, { [s.twisted]: isFolded })}
-            width={27}
-            height={27}
+            width={26}
+            height={26}
           />
         </button>
       </section>

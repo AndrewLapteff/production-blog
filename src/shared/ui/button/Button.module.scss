@@ -4,11 +4,13 @@
   text-decoration: none;
   border-radius: .5rem;
   cursor: pointer;
+  outline: none;
+  border: solid var(--high-emphasis) 1px;
 }
 
 .primary {
   color: var(--bg-color);
-  background-color: var(--primary-color);
+  background-color: var(--primary-color-button);
   outline: none;
 }
 

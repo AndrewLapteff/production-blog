@@ -19,11 +19,19 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install modules
         run: npm ci
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with: 
+          path: ~/.npm
+          key: node_modules_${{ hashFiles('**/package-lock.json') }}
       - name: Build project
         run: npm run build:prod
+        if: always()
       - name: Test typescript
         run: npm run test:ts
+        if: always()
       - name: Lint typescript
         run: npm run lint:ts
+        if: always()
       - name: Lint SCSS
         run: npm run lint:scss

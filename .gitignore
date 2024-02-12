@@ -4,3 +4,5 @@ info
 node_modules
 .git
 storybook-static
+.loki/report.html
+.loki/report.json

@@ -3,5 +3,6 @@
   "not-found-message": "Sorry, the page you are looking for could not be found",
   "something-went-wrong": "Something went wrong",
   "reload": "Reload",
-  "sidebar": "Sidebar"
+  "sidebar": "Sidebar",
+  "login": "Login"
 }
