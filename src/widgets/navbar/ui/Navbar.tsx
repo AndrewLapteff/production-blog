@@ -6,6 +6,8 @@ import { TranslateButton } from 'shared/ui/translate-button/TranslateButton'
 import { Button } from 'shared/ui/button/Button'
 import { Modal } from 'widgets/modal'
 import { useState } from 'react'
+import { Input } from 'shared/ui/input'
+import { AuthModal } from 'widgets/auth-modal'
 
 export const Navbar = () => {
   const { t } = useTranslation()
@@ -28,22 +30,7 @@ export const Navbar = () => {
         <Button size="m" variant="background" onClick={click}>
           {t('login')}
         </Button>
-        {/* <Modal
-          setOpen={setOpen}
-          isOpen={isOpen}
-          header={'Header'}
-          main={'saldjaldjkalsdl'}
-          footer={
-            <>
-              <Button size="m" variant="primary">
-                Yes
-              </Button>
-              <Button size="m" variant="primary">
-                Yes
-              </Button>
-            </>
-          }
-        ></Modal> */}
+        <AuthModal width={25} isOpen={isOpen} setOpen={setOpen} />
       </div>
     </nav>
   )

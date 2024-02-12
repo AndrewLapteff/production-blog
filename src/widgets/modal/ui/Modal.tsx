@@ -9,22 +9,26 @@ import {
 } from 'react'
 import s from './Modal.module.scss'
 import { classNames } from 'shared/lib'
-import { Portal } from 'widgets/portal'
 
-interface ModalProps {
+export interface ModalProps {
   isOpen: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
   header: string | ReactNode
   main: string | ReactNode
   footer: string | ReactNode
+  width?: number
 }
 
 export const Modal = (props: ModalProps) => {
-  const { header, main, footer, isOpen, setOpen } = props
+  const { header, main, footer, isOpen, setOpen, width = 45 } = props
 
   const mode: Record<string, boolean> = {
     [s.open]: isOpen
   }
+
+  // const actualWidth = width !== undefined ? width : 45
+  // const windowsWidth = window.innerWidth
+  // const calucatedWidth = windowsWidth * (actualWidth / 100)
 
   const onClose = useCallback(() => {
     setOpen(false)
@@ -56,7 +60,12 @@ export const Modal = (props: ModalProps) => {
     <div onClick={onClose} className={classNames(s.wrapper, mode)}>
       <div onClick={stopPropagation} className={classNames(s.content)}>
         <h1 className={classNames(s.header)}>{header}</h1>
-        <div className={classNames(s.main)}>{main}</div>
+        <div
+          style={{ width: window.innerWidth * (width / 100) }}
+          className={classNames(s.main)}
+        >
+          {main}
+        </div>
         <div className={classNames(s.footer)}>{footer}</div>
       </div>
     </div>

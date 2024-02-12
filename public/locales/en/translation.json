@@ -4,5 +4,6 @@
   "something-went-wrong": "Something went wrong",
   "reload": "Reload",
   "sidebar": "Sidebar",
-  "login": "Login"
+  "login": "Login",
+  "register": "Register"
 }
