@@ -26,10 +26,6 @@ export const Modal = (props: ModalProps) => {
     [s.open]: isOpen
   }
 
-  // const actualWidth = width !== undefined ? width : 45
-  // const windowsWidth = window.innerWidth
-  // const calucatedWidth = windowsWidth * (actualWidth / 100)
-
   const onClose = useCallback(() => {
     setOpen(false)
   }, [setOpen])

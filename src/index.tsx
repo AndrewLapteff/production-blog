@@ -5,7 +5,6 @@ import './app/styles/index.scss'
 import { ThemeProvider } from 'app/providers/ThemeProvider'
 import { App } from 'app/App'
 import { Suspense } from 'react'
-import { Provider } from 'react-redux'
 import { StoreProvider } from 'app/providers/store-provider'
 
 const container = document.getElementById('root')

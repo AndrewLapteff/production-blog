@@ -3,7 +3,6 @@ import s from './Sidebar.module.scss'
 import { classNames } from 'shared/lib'
 import ArrowIcon from 'shared/assets/arrow.svg'
 import { useTranslation } from 'react-i18next'
-import { Input } from 'shared/ui/input'
 
 export const Sidebar = () => {
   const [isFolded, setIsFolded] = useState(true)

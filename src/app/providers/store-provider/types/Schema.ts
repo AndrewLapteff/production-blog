@@ -1,7 +1,10 @@
-interface CounterReducer {
+import { UserSchema } from 'entities/User'
+
+interface CounterShema {
   value: number
 }
 
 export interface StoreProps {
-  counter: CounterReducer
+  counter: CounterShema
+  userReducer: UserSchema
 }

@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
-import { RouterDecorator } from 'shared/config/storybook/decorators/RouterDecorator'
-import { Button } from 'shared/ui/button/Button'
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 import { AuthModal } from './AuthModal'
 
@@ -10,8 +8,7 @@ const meta: Meta<typeof AuthModal> = {
   component: AuthModal,
   parameters: {
     layout: 'fullscreen'
-  },
-  decorators: [RouterDecorator]
+  }
 }
 
 export default meta
