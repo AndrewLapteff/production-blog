@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
+import { ThemeDecorator, RouterDecorator, StoreDecorator } from 'shared/config'
 import { Navbar } from './Navbar'
-import { RouterDecorator } from 'shared/config/storybook/decorators/RouterDecorator'
 
 const meta: Meta<typeof Navbar> = {
   title: 'widgets/Navbar',
@@ -10,7 +9,7 @@ const meta: Meta<typeof Navbar> = {
   parameters: {
     layout: 'fullscreen'
   },
-  decorators: RouterDecorator
+  decorators: [RouterDecorator, StoreDecorator]
 }
 
 export default meta

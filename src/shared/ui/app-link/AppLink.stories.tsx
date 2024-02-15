@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
-import { RouterDecorator } from 'shared/config/storybook/decorators/RouterDecorator'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
+import { RouterDecorator, ThemeDecorator } from 'shared/config'
 import { AppLink } from './AppLink'
 
 const meta: Meta<typeof AppLink> = {
-  title: 'widgets/AppLink',
+  title: 'shared/AppLink',
   component: AppLink,
   parameters: {
     layout: 'fullscreen'

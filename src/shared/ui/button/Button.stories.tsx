@@ -66,3 +66,12 @@ export const Small: Story = {
     children: 'Hello World'
   }
 }
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    size: 'm',
+    variant: 'primary',
+    children: 'Hello World'
+  }
+}

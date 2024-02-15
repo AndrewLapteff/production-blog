@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
-import { RouterDecorator } from 'shared/config/storybook/decorators/RouterDecorator'
+import { RouterDecorator, ThemeDecorator } from 'shared/config'
 import { Modal } from './Modal'
 import { Button } from 'shared/ui/button/Button'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 
 const meta: Meta<typeof Modal> = {
   title: 'widgets/Modal',

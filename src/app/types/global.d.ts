@@ -3,11 +3,11 @@ declare module '*.scss' {
   export default content
 }
 
-declare module "*.svg" {
+declare module '*.svg' {
   const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>
   export default content
 }
 
-declare module "*.png"
+declare module '*.png'
 
 declare const IS_DEV: boolean

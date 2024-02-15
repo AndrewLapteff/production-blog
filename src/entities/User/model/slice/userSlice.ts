@@ -3,19 +3,24 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { UserSchema } from '../types/user'
 
 const initialState: UserSchema = {
-  user: { id: 0, username: 'Jonh Doe' }
+  accessToken: '',
+  user: undefined
 }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    increment: (state) => {},
-    decrement: (state) => {},
-    incrementByAmount: (state, action: PayloadAction<number>) => {}
+    setUser: (state, payload: PayloadAction<UserSchema>) => {
+      state.user = payload.payload.user
+      state.accessToken = payload.payload.accessToken
+    },
+    logout: (state) => {
+      state.user = undefined
+    }
   }
 })
 
-export const { increment, decrement, incrementByAmount } = userSlice.actions
+export const { setUser, logout } = userSlice.actions
 
 export const userReducer = userSlice.reducer

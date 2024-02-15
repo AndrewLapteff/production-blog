@@ -9,13 +9,21 @@ type ButtonSize = 's' | 'm' | 'l'
 interface ButtonProps extends HtmlHTMLAttributes<HTMLButtonElement> {
   variant: ButtonVariants
   size: ButtonSize
+  disabled?: boolean
 }
 
-export const Button = ({ children, variant, size, ...rest }: ButtonProps) => {
+export const Button = (props: ButtonProps) => {
+  const { children, variant, size, disabled = false, ...rest } = props
+
+  const modes = {
+    [s.disabled]: disabled
+  }
+
   return (
     <button
+      disabled={disabled}
       type="button"
-      className={classNames(s.button, {}, [s[variant], s[size]])}
+      className={classNames(s.button, modes, [s[variant], s[size]])}
       {...rest}
     >
       {children}

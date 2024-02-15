@@ -1,18 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterSlice from 'app/state/counterSlice'
 import { StoreProps } from '../types/Schema'
 import { userReducer } from 'entities/User'
+import { loginReducer } from 'features/auth-by-username'
+import { TypedUseSelectorHook, useSelector } from 'react-redux'
 
 export const createStore = (initialState: StoreProps) => {
   return configureStore<StoreProps>({
     reducer: {
-      counter: counterSlice,
-      userReducer
+      userReducer,
+      loginReducer
     },
-    devTools: IS_DEV,
+    devTools: false,
     preloadedState: initialState
   })
 }
+
+export const useAppSelector: TypedUseSelectorHook<StoreProps> = useSelector
 
 // export type RootState = ReturnType<typeof store.getState>
 

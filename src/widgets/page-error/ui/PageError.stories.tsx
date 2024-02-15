@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
-import { RouterDecorator } from 'shared/config/storybook/decorators/RouterDecorator'
+import { RouterDecorator, StoreDecorator, ThemeDecorator } from 'shared/config'
 import { PageError } from './PageError'
 import { Sidebar } from 'widgets/sidebar/ui/Sidebar'
 import { Navbar } from 'widgets/navbar'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
 
 const meta: Meta<typeof PageError> = {
   title: 'widgets/PageError',
@@ -12,7 +11,7 @@ const meta: Meta<typeof PageError> = {
   parameters: {
     layout: 'fullscreen'
   },
-  decorators: [RouterDecorator]
+  decorators: [RouterDecorator, StoreDecorator]
 }
 
 export default meta

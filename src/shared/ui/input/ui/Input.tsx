@@ -1,10 +1,15 @@
-import { PropsWithChildren } from 'react'
+import { ChangeEvent, HtmlHTMLAttributes } from 'react'
 import './Input.scss'
 
-export const Input = ({ children }: PropsWithChildren) => {
+interface InputProps extends HtmlHTMLAttributes<HTMLInputElement> {
+  value: number | string
+  onChange: (value: ChangeEvent<HTMLInputElement>) => void
+}
+
+export const Input = ({ children, value, onChange }: InputProps) => {
   return (
     <label className="custom-field two">
-      <input type="text" placeholder=" " />
+      <input onChange={onChange} value={value} type="text" placeholder=" " />
       <span className="placeholder">{children}</span>
     </label>
   )

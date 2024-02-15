@@ -1,0 +1,25 @@
+.text-wrapper p {
+  margin-top: 10px;
+
+
+}
+
+.title {
+  color: var(high-emphasis);
+}
+
+.text {
+  font-size: var(--font-m);
+  color: var(medium-emphasis);
+}
+
+// error > title | text
+.error {
+  .title {
+    color: rgba(255, 0, 0, 0.8);
+  }
+
+  .text {
+    color: rgba(255, 0, 0, 0.674);
+  }
+}

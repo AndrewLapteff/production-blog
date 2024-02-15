@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator'
+import { ThemeDecorator, StoreDecorator } from 'shared/config'
 import { AuthModal } from './AuthModal'
 
 const meta: Meta<typeof AuthModal> = {
@@ -8,20 +8,21 @@ const meta: Meta<typeof AuthModal> = {
   component: AuthModal,
   parameters: {
     layout: 'fullscreen'
-  }
+  },
+  decorators: [StoreDecorator]
 }
 
 export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const ModalLight: Story = {
+export const AuthModalLight: Story = {
   render: (arg) => {
     return <AuthModal width={30} isOpen={true} setOpen={() => {}} />
   }
 }
 
-export const ModalDark: Story = {
+export const AuthModalDark: Story = {
   render: (arg) => {
     return <AuthModal width={30} isOpen={true} setOpen={() => {}} />
   },

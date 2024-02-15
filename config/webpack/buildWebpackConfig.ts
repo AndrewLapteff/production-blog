@@ -30,9 +30,6 @@ export const buildWebpackConfig = (
     devServer: {
       historyApiFallback: true
       // open: true,
-    },
-    cache: {
-      type: 'filesystem'
     }
     // optimization: {
     //   runtimeChunk: 'single',

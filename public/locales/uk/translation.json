@@ -4,5 +4,6 @@
   "reload": "Перезавантажити",
   "something-went-wrong": "Щось пішло не так",
   "sidebar": "Бічна панель",
-  "login": "Логін"
+  "login": "Ввійти",
+  "logout": "Вийти"
 }

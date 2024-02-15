@@ -1,10 +1,7 @@
 import { UserSchema } from 'entities/User'
-
-interface CounterShema {
-  value: number
-}
+import { LoginSchema } from 'features/auth-by-username'
 
 export interface StoreProps {
-  counter: CounterShema
+  loginReducer: LoginSchema
   userReducer: UserSchema
 }
