@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { ThemeDecorator, StoreDecorator } from 'shared/config'
-import { AuthModal } from './AuthModal'
+import AuthModal from './AuthModal'
 
 const meta: Meta<typeof AuthModal> = {
   title: 'widgets/AuthModal',

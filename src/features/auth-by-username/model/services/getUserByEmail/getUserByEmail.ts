@@ -6,7 +6,10 @@ import { LOCAL_STORAGE_USER_KEY } from 'shared/config'
 
 interface PostDataType extends Pick<LoginSchema, 'email' | 'password'> {}
 
-export const loginByEmailAndPassword = createAsyncThunk<User, PostDataType>( // <return, post data>
+export const loginByEmailAndPassword = createAsyncThunk<
+UserSchema, // same 1
+PostDataType
+>( // <return, post data>
   'login/loginByUsername',
   async (credentials, { rejectWithValue, dispatch }) => {
     try {
@@ -19,7 +22,7 @@ export const loginByEmailAndPassword = createAsyncThunk<User, PostDataType>( // 
       }
       dispatch(setUser(data as UserSchema)) // fix
       localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(data))
-      return data.user
+      return data
     } catch (error) {
       if (error instanceof AxiosError) return rejectWithValue(error)
       return rejectWithValue(error)

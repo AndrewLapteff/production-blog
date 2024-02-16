@@ -4,10 +4,12 @@ import { classNames } from 'shared/lib'
 import { AppLink, ThemeSwitcher } from 'shared/ui'
 import { TranslateButton } from 'shared/ui/translate-button/TranslateButton'
 import { Button } from 'shared/ui/button/Button'
-import { useCallback, useState } from 'react'
-import { AuthModal } from 'features/auth-by-username/ui/auth-modal'
+import { Suspense, useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser, logout } from 'entities/User'
+import { AuthModalAsync } from 'features/auth-by-username/ui/auth-modal/ui/AuthModal.async'
+import { DynamicSliceLoader } from 'shared/lib/components/dymanic-loader/DynamicSliceLoader'
+import { loginReducer } from 'features/auth-by-username'
 
 export const Navbar = () => {
   const { t } = useTranslation()
@@ -34,7 +36,7 @@ export const Navbar = () => {
         </AppLink>
         <ThemeSwitcher />
         <TranslateButton />
-        {userInfo === undefined ? (
+        {userInfo.email === '' ? (
           <Button size="m" variant="background" onClick={openHandler}>
             {t('login')}
           </Button>
@@ -43,7 +45,17 @@ export const Navbar = () => {
             {t('logout')}
           </Button>
         )}
-        <AuthModal width={25} isOpen={isOpen} setOpen={setOpen} />
+        <Suspense>
+          {isOpen && (
+            <DynamicSliceLoader
+              name="loginReducer"
+              reducer={loginReducer}
+              removeAfterUnmount
+            >
+              <AuthModalAsync width={25} isOpen={isOpen} setOpen={setOpen} />
+            </DynamicSliceLoader>
+          )}
+        </Suspense>
       </div>
     </nav>
   )

@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { LoginSchema } from '../types/loginSchema'
 import { loginByEmailAndPassword } from '../services/getUserByEmail/getUserByEmail'
 import { AxiosError } from 'axios'
+import { setUser } from 'entities/User'
 
 const initialState: LoginSchema = {
   email: '',
@@ -32,6 +33,7 @@ export const loginSlice = createSlice({
     })
     builder.addCase(loginByEmailAndPassword.fulfilled, (state, action) => {
       state.isLoading = false
+      setUser(action.payload) // same 1
     })
     builder.addCase(loginByEmailAndPassword.rejected, (state, action) => {
       state.isLoading = false

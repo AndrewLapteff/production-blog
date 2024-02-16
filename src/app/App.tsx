@@ -1,5 +1,5 @@
 import 'shared/config/i18next/i18next.config'
-import { useTheme } from './providers/ThemeProvider'
+import { useTheme } from './providers/theme-provider'
 import { classNames } from 'shared/lib'
 import { AppRouter } from './providers/router'
 import { Navbar } from 'widgets/navbar'

@@ -19,6 +19,7 @@
 }
 
 .custom-field .placeholder {
+  user-select: none;
   position: absolute;
   left: var(--field-padding);
   width: calc(100% - (var(--field-padding) * 2));
@@ -33,6 +34,7 @@
     top 0.3s ease,
     color 0.3s ease,
     font-size 0.3s ease;
+  cursor: text;
 }
 
 .custom-field input.dirty+.placeholder,
@@ -40,7 +42,7 @@
 .custom-field input:not(:placeholder-shown)+.placeholder {
   top: -10px;
   font-size: 10px;
-  color: #222;
+  color: var(--low-emphasis);
 }
 
 .custom-field .error-message {
@@ -63,9 +65,9 @@
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   background:
-    linear-gradient(90deg, #222, #222) center bottom/0 0.15em no-repeat,
+    linear-gradient(90deg, var(--input-underline-color), var(--input-underline-color)) center bottom/0 0.15em no-repeat,
     linear-gradient(90deg, #ccc, #ccc) left bottom/100% 0.15em no-repeat,
-    linear-gradient(90deg, #fafafa, #fafafa) left bottom/100% no-repeat;
+    linear-gradient(90deg, var(--bg-color), var(--bg-color)) left bottom/100% no-repeat;
   transition: background-size 0.3s ease;
 }
 

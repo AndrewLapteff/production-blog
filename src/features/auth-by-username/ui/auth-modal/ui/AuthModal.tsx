@@ -9,21 +9,29 @@ import {
   setUsername,
   setEmail
 } from '../../../model/slice/loginSlice'
-import { useAppSelector } from 'app/providers/store-provider/confg/store'
 import { useDispatchCallback } from '../hooks/useDispatchCallback'
-import { getLoginStore } from '../../../model/selectors/getLoginStore'
 import { useCallback } from 'react'
 import { useThunkDispatch } from '../hooks/useThunkDispatch'
 import { loginByEmailAndPassword } from 'features/auth-by-username/model/services/getUserByEmail/getUserByEmail'
 import { Text } from 'shared/ui/text/Text'
+import { useSelector } from 'react-redux'
+import { getUsername } from '../../../model/selectors/getUsername/getUsername'
+import { getEmail } from '../../../model/selectors/getEmail/getEmail'
+import { getError } from '../../../model/selectors/getError/getError'
+import { getIsLoading } from '../../../model/selectors/getIsLoading/getIsLoading'
+import { getPassword } from '../../../model/selectors/getPassword/getPassword'
+import { AxiosError, AxiosResponse } from 'axios'
 
 type AuthModalProps = Pick<ModalProps, 'setOpen' | 'isOpen' | 'width'>
 
-export const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
+const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
   const { t } = useTranslation('modal')
 
-  const { username, email, isLoading, password, error } =
-    useAppSelector(getLoginStore)
+  const username = useSelector(getUsername)
+  const password = useSelector(getPassword)
+  const email = useSelector(getEmail)
+  const error = useSelector(getError)
+  const isLoading = useSelector(getIsLoading)
 
   const text = error?.response?.data
   const isErrorCorrert = error !== undefined && typeof text === 'string'
@@ -34,12 +42,13 @@ export const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
   const thunkDispatch = useThunkDispatch()
 
   const postUserDataHandler = useCallback(() => {
-    thunkDispatch(loginByEmailAndPassword({ password, email })).catch(
-      (error) => {
-        console.error(error) // fix
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    thunkDispatch(loginByEmailAndPassword({ password, email })).then((a) => {
+      if (!(a.payload instanceof AxiosError)) {
+        setOpen(false)
       }
-    )
-  }, [thunkDispatch, password, email])
+    })
+  }, [thunkDispatch, password, email, setOpen])
 
   return (
     <>
@@ -53,7 +62,11 @@ export const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
         main={
           <div className={s['main-section']}>
             <section className={s.credentials}>
-              <Input onChange={setEmailCallback} value={email}>
+              <Input
+                data-testid="email"
+                onChange={setEmailCallback}
+                value={email}
+              >
                 {t('email')}
               </Input>
               <Input onChange={setUserNameCallback} value={username}>
@@ -80,3 +93,5 @@ export const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
     </>
   )
 }
+
+export default AuthModal

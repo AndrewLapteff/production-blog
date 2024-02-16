@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx webpack serve --config ./webpack.config.ts --port=3000 --env mode=development analyze=disabled",
+    "dev": "npx webpack serve --config ./webpack.config.ts --port=3000 --env mode=development",
     "dev:server": "npx json-server-auth ./json-server/db.json -r ./json-server/routes.json -p=4000 -w",
     "build:prod": "npx webpack --env mode=production analyze=disabled",
     "build:analyze": "npx webpack --env mode=production analyze=server",
@@ -15,7 +15,7 @@
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "prepare": "husky",
     "test:ts": "jest --config ./config/jest/jest.config.ts",
-    "test:ui": "npm run storybook:build && npx loki --requireReference --reactUri file:./storybook-static && rimraf storybook-static",
+    "test:ui": "npm run storybook:build && npx loki --requireReference --reactUri file:./storybook-static && npx rimraf storybook-static",
     "test:ui:ok": "npx loki approve",
     "test:ui:json": "node scripts/generate-report.js",
     "test:ui:html": "npx reg-cli --from .loki/report.json --report .loki/report.html",

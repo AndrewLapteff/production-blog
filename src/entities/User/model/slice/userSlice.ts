@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { UserSchema } from '../types/user'
+import { LOCAL_STORAGE_USER_KEY } from 'shared/config'
 
 const initialState: UserSchema = {
   accessToken: '',
-  user: undefined
+  user: { email: '', id: 0, username: '' }
 }
 
 export const userSlice = createSlice({
@@ -16,7 +17,9 @@ export const userSlice = createSlice({
       state.accessToken = payload.payload.accessToken
     },
     logout: (state) => {
-      state.user = undefined
+      state.user = { email: '', id: 0, username: '' }
+      state.accessToken = ''
+      localStorage.removeItem(LOCAL_STORAGE_USER_KEY)
     }
   }
 })

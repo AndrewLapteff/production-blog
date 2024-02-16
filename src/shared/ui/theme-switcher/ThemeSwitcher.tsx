@@ -1,4 +1,4 @@
-import { useTheme } from 'app/providers/ThemeProvider'
+import { useTheme } from 'app/providers/theme-provider'
 import s from './ThemeSwitcher.module.scss'
 import Sun from '../../assets/sun.svg'
 import Moon from '../../assets/moon.svg'
