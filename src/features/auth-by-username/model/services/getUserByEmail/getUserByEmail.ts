@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { User, UserSchema, setUser } from 'entities/User'
-import { LoginSchema } from '../../types/loginSchema'
+import { UserSchema, setUser } from 'entities/User'
+import { LoginSchema } from '../../types/login'
 import axios, { AxiosError } from 'axios'
 import { LOCAL_STORAGE_USER_KEY } from 'shared/config'
 

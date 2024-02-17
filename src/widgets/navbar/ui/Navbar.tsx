@@ -1,18 +1,22 @@
-import { useTranslation } from 'react-i18next'
-import s from './Navbar.module.scss'
-import { classNames } from 'shared/lib'
-import { AppLink, ThemeSwitcher } from 'shared/ui'
-import { TranslateButton } from 'shared/ui/translate-button/TranslateButton'
-import { Button } from 'shared/ui/button/Button'
-import { Suspense, useCallback, useState } from 'react'
+import React, {
+  ReactNode,
+  Suspense,
+  useCallback,
+  useMemo,
+  useState
+} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+
+import { loginReducer, AuthModal } from 'features/auth-by-username'
+import { DynamicSliceLoader, classNames } from 'shared/lib'
+import { AppLink, ThemeSwitcher, TranslateButton, Button } from 'shared/ui'
 import { getUser, logout } from 'entities/User'
-import { AuthModalAsync } from 'features/auth-by-username/ui/auth-modal/ui/AuthModal.async'
-import { DynamicSliceLoader } from 'shared/lib/components/dymanic-loader/DynamicSliceLoader'
-import { loginReducer } from 'features/auth-by-username'
+import s from './Navbar.module.scss'
+import { routes } from 'shared/config'
 
 export const Navbar = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('translation')
   const [isOpen, setOpen] = useState(false)
   const userInfo = useSelector(getUser)
   const dispatch = useDispatch()
@@ -25,15 +29,21 @@ export const Navbar = () => {
     setOpen(true)
   }
 
+  const links = useMemo((): ReactNode => {
+    delete routes.not_found
+    return Object.entries(routes).map(([name, path]) => {
+      return (
+        <AppLink key={path} theme="primary" to={path}>
+          {t(name)}
+        </AppLink>
+      )
+    })
+  }, [t])
+
   return (
     <nav className={classNames(s.navbar)}>
       <div className={classNames(s.links)}>
-        <AppLink theme="primary" to="/">
-          {t('main', { ns: 'main' })}
-        </AppLink>
-        <AppLink theme="primary" to="/about">
-          {t('about', { ns: 'about' })}
-        </AppLink>
+        {links}
         <ThemeSwitcher />
         <TranslateButton />
         {userInfo.email === '' ? (
@@ -52,7 +62,7 @@ export const Navbar = () => {
               reducer={loginReducer}
               removeAfterUnmount
             >
-              <AuthModalAsync width={25} isOpen={isOpen} setOpen={setOpen} />
+              <AuthModal width={25} isOpen={isOpen} setOpen={setOpen} />
             </DynamicSliceLoader>
           )}
         </Suspense>

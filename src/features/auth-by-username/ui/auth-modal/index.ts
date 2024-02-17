@@ -1,1 +1,1 @@
-export { AuthModalAsync as AboutPageAsync } from './ui/AuthModal.async'
+export { AuthModalAsync as AuthModal } from './ui/AuthModal.async'

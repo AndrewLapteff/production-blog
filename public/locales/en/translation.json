@@ -6,5 +6,8 @@
   "sidebar": "Sidebar",
   "login": "Login",
   "register": "Register",
-  "logout": "Logout"
+  "logout": "Logout",
+  "profile": "Profile",
+  "main": "Main",
+  "about": "About"
 }

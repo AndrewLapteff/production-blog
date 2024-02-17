@@ -24,7 +24,11 @@
     }
   ],
   "profile": {
-    "name": "typicode"
+    "username": "Amigo",
+    "avatar": "",
+    "country": "Ukraine",
+    "age": 18,
+    "bio": "Hello world, that's it"
   },
   "users": [
     {

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { LoginSchema } from '../types/loginSchema'
+import { LoginSchema } from '../types/login'
 import { loginByEmailAndPassword } from '../services/getUserByEmail/getUserByEmail'
 import { AxiosError } from 'axios'
 import { setUser } from 'entities/User'
@@ -14,7 +14,7 @@ const initialState: LoginSchema = {
 }
 
 export const loginSlice = createSlice({
-  name: 'user',
+  name: 'login',
   initialState,
   reducers: {
     setEmail: (state, action: PayloadAction<string>) => {

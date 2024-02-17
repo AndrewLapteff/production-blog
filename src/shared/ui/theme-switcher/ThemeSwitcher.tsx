@@ -2,14 +2,14 @@ import { useTheme } from 'app/providers/theme-provider'
 import s from './ThemeSwitcher.module.scss'
 import Sun from '../../assets/sun.svg'
 import Moon from '../../assets/moon.svg'
-import { CSSProperties } from 'react'
+import { CSSProperties, memo } from 'react'
 import { Button } from '../button/Button'
 
 interface ThemeSwitcherProps {
   className?: CSSProperties
 }
 
-export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
   const { theme, changeTheme } = useTheme()
 
   return (
@@ -27,4 +27,4 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
       )}
     </Button>
   )
-}
+})

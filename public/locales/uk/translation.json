@@ -5,5 +5,8 @@
   "something-went-wrong": "Щось пішло не так",
   "sidebar": "Бічна панель",
   "login": "Ввійти",
-  "logout": "Вийти"
+  "logout": "Вийти",
+  "main": "Головна",
+  "about": "Про",
+  "profile": "Профіль"
 }

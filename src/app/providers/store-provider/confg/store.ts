@@ -24,6 +24,4 @@ export const createStore = (initialState: StoreProps) => {
 
 export const useAppSelector: TypedUseSelectorHook<StoreProps> = useSelector
 
-// export type RootState = ReturnType<typeof store.getState>
-
-// export type AppDispatch = typeof store.dispatch
+export type DispatchStoreTypes = ReturnType<typeof createStore>['dispatch']

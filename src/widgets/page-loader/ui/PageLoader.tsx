@@ -1,4 +1,4 @@
-import { Loader } from 'shared/ui/loader/Loader'
+import { Loader } from 'shared/ui'
 import s from './PageLoader.module.scss'
 import { classNames } from 'shared/lib'
 

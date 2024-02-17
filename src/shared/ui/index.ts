@@ -1,2 +1,7 @@
 export { AppLink } from './app-link/AppLink'
 export { ThemeSwitcher } from './theme-switcher/ThemeSwitcher'
+export { TranslateButton } from './translate-button/TranslateButton'
+export { Button } from './button/Button'
+export { Text } from './text/Text'
+export { Input } from './input/Input'
+export { Loader } from './loader/Loader'

@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import s from './Sidebar.module.scss'
 import { classNames } from 'shared/lib'
 import ArrowIcon from 'shared/assets/arrow.svg'
 import { useTranslation } from 'react-i18next'
 
-export const Sidebar = () => {
+export const Sidebar = memo(() => {
   const [isFolded, setIsFolded] = useState(true)
   const { t } = useTranslation('translation')
 
@@ -38,4 +38,4 @@ export const Sidebar = () => {
       </section>
     </aside>
   )
-}
+})

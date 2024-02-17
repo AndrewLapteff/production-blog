@@ -1,26 +1,26 @@
-import { Modal } from 'widgets/modal'
-import s from './AuthModal.module.scss'
-import { Button } from 'shared/ui/button/Button'
+import { useCallback } from 'react'
+import { AxiosError } from 'axios'
+import { useSelector } from 'react-redux'
+import { Modal, ModalProps } from 'widgets/modal'
 import { useTranslation } from 'react-i18next'
-import { Input } from 'shared/ui/input'
-import { ModalProps } from 'widgets/modal/ui/Modal'
+
+import { Button, Text, Input } from 'shared/ui/'
+import s from './AuthModal.module.scss'
+import { useDispatchCallback } from '../hooks/useDispatchCallback'
+import { useThunkDispatch } from '../hooks/useThunkDispatch'
 import {
   setPassword,
   setUsername,
   setEmail
 } from '../../../model/slice/loginSlice'
-import { useDispatchCallback } from '../hooks/useDispatchCallback'
-import { useCallback } from 'react'
-import { useThunkDispatch } from '../hooks/useThunkDispatch'
-import { loginByEmailAndPassword } from 'features/auth-by-username/model/services/getUserByEmail/getUserByEmail'
-import { Text } from 'shared/ui/text/Text'
-import { useSelector } from 'react-redux'
-import { getUsername } from '../../../model/selectors/getUsername/getUsername'
-import { getEmail } from '../../../model/selectors/getEmail/getEmail'
-import { getError } from '../../../model/selectors/getError/getError'
-import { getIsLoading } from '../../../model/selectors/getIsLoading/getIsLoading'
-import { getPassword } from '../../../model/selectors/getPassword/getPassword'
-import { AxiosError, AxiosResponse } from 'axios'
+import {
+  getUsername,
+  getPassword,
+  getEmail,
+  getError,
+  getIsLoading
+} from '../../../model/selectors'
+import { loginByEmailAndPassword } from '../../../model/services/getUserByEmail/getUserByEmail'
 
 type AuthModalProps = Pick<ModalProps, 'setOpen' | 'isOpen' | 'width'>
 
@@ -42,12 +42,15 @@ const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
   const thunkDispatch = useThunkDispatch()
 
   const postUserDataHandler = useCallback(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    thunkDispatch(loginByEmailAndPassword({ password, email })).then((a) => {
-      if (!(a.payload instanceof AxiosError)) {
-        setOpen(false)
-      }
-    })
+    thunkDispatch(loginByEmailAndPassword({ password, email }))
+      .then((a) => {
+        if (!(a.payload instanceof AxiosError)) {
+          setOpen(false)
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [thunkDispatch, password, email, setOpen])
 
   return (

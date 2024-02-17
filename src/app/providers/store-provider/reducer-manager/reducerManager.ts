@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-dynamic-delete */
 import {
-  AnyAction,
+  Action,
   Reducer,
   ReducersMapObject,
   combineReducers
@@ -21,7 +21,7 @@ export function createReducerManager (
 
     // reducer of reducers basically
     // @ts-expect-error
-    reduce: (state: StoreProps, action: AnyAction) => {
+    reduce: (state: StoreProps, action: Action) => {
       // If any reducers have been removed, clean up their state first
       if (keysToRemove.length > 0) {
         state = { ...state }

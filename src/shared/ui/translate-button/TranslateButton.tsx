@@ -1,8 +1,9 @@
 import { Button } from '../button/Button'
 import { useTranslation } from 'react-i18next'
 import LanguageIcon from '../../assets/language.svg'
+import { memo } from 'react'
 
-export const TranslateButton = () => {
+export const TranslateButton = memo(() => {
   const { i18n } = useTranslation('main')
 
   const changeLanguageHandler = () => {
@@ -16,4 +17,4 @@ export const TranslateButton = () => {
       <LanguageIcon width={23} height={23} />
     </Button>
   )
-}
+})

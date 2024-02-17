@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import s from './Text.module.scss'
 import { classNames } from 'shared/lib'
 
@@ -10,7 +11,7 @@ interface TextProps {
   className?: string
 }
 
-export const Text = ({ title, text, theme, className }: TextProps) => {
+export const Text = memo(({ title, text, theme, className }: TextProps) => {
   return (
     <div
       className={classNames(s['text-wrapper'], { [s[theme]]: true }, [
@@ -21,4 +22,4 @@ export const Text = ({ title, text, theme, className }: TextProps) => {
       {text && <p className={classNames(s.text)}>{text}</p>}
     </div>
   )
-}
+})
