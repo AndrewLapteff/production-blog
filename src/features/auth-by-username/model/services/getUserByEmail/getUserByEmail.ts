@@ -1,22 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { UserSchema, setUser } from 'entities/User'
 import { LoginSchema } from '../../types/login'
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
 import { LOCAL_STORAGE_USER_KEY } from 'shared/config'
+import { ThunkConfig } from 'app/providers/store-provider/types/Schema'
 
 interface PostDataType extends Pick<LoginSchema, 'email' | 'password'> {}
 
 export const loginByEmailAndPassword = createAsyncThunk<
 UserSchema, // same 1
-PostDataType
+PostDataType,
+ThunkConfig
 >( // <return, post data>
   'login/loginByUsername',
-  async (credentials, { rejectWithValue, dispatch }) => {
+  async (credentials, { rejectWithValue, dispatch, extra }) => {
     try {
-      const { data } = await axios.post(
-        'http://localhost:4000/login',
-        credentials
-      )
+      const { data } = await extra.api.post('login', credentials)
       if (!data) {
         throw new Error()
       }

@@ -1,6 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-webpack5'
 import path from 'path'
-import { RuleSetRule } from 'webpack'
+import { DefinePlugin, RuleSetRule } from 'webpack'
 
 const config: StorybookConfig = {
   stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -40,6 +40,13 @@ const config: StorybookConfig = {
       }
       return rule
     })
+
+    config.plugins.push(
+      new DefinePlugin({
+        IS_DEV: JSON.stringify(false),
+        API_URL: JSON.stringify('')
+      })
+    )
 
     config.module.rules.push(svgLoader)
     return config

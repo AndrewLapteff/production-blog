@@ -11,7 +11,7 @@ const meta: Meta<typeof PageError> = {
   parameters: {
     layout: 'fullscreen'
   },
-  decorators: [RouterDecorator, StoreDecorator]
+  decorators: [StoreDecorator, RouterDecorator]
 }
 
 export default meta

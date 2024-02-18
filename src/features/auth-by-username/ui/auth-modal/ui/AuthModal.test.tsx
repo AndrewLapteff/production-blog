@@ -32,6 +32,5 @@ describe('AuthModal.ts', () => {
     })
     const component = render(<AuthModal isOpen={true} setOpen={() => {}} />)
     expect(component.getByTestId('email')).toBeInTheDocument()
-    screen.debug()
   })
 })

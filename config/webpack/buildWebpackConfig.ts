@@ -9,7 +9,7 @@ import * as webpackDevServer from 'webpack-dev-server'
 export const buildWebpackConfig = (
   props: BuildOptions
 ): webpack.Configuration => {
-  const { paths, mode, analyze } = props
+  const { paths, mode, analyze, apiUrl } = props
   const { build, entry, html, src } = paths
 
   const isDev = mode === 'development'
@@ -21,7 +21,7 @@ export const buildWebpackConfig = (
       path: build,
       clean: true
     },
-    plugins: buildPlugins({ html, isDev, analyze }),
+    plugins: buildPlugins({ html, isDev, analyze, apiUrl }),
     module: {
       rules: buildLoaders(mode)
     },

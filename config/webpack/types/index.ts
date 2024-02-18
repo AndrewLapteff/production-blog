@@ -9,6 +9,7 @@ interface Paths {
 
 export interface BuildEnv {
   mode: Mode
+  apiUrl: string
   analyze: 'server' | 'disabled'
 }
 

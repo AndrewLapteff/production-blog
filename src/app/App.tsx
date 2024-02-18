@@ -15,6 +15,7 @@ export const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log('f')
     const data = localStorage.getItem(LOCAL_STORAGE_USER_KEY)
     const user = JSON.parse(data) as UserSchema
     if (user) dispatch(setUser(user)) // fix
