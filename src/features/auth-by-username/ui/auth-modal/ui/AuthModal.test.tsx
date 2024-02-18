@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import AuthModal from './AuthModal'
 import { useSelector } from 'react-redux'
 jest.mock('react-redux')

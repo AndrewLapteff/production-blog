@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { StoreProps } from '../types/Schema'
 import { userReducer } from 'entities/User'
-import { TypedUseSelectorHook, useSelector } from 'react-redux'
 import { createReducerManager } from '../reducer-manager/reducerManager'
 import { $api } from 'shared/api/api'
 
@@ -15,6 +14,7 @@ export const createStore = (props: StoreProps) => {
     reducer: reducerManager.reduce,
     devTools: IS_DEV,
     preloadedState: reducers,
+    // @ts-expect-error tt doesn't matter
     middleware: (MiddleWare) =>
       MiddleWare({
         thunk: {
@@ -31,7 +31,5 @@ export const createStore = (props: StoreProps) => {
 
   return store
 }
-
-export const useAppSelector: TypedUseSelectorHook<StoreProps> = useSelector
 
 export type DispatchStoreTypes = ReturnType<typeof createStore>['dispatch']

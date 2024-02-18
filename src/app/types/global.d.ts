@@ -12,3 +12,5 @@ declare module '*.png'
 
 declare const IS_DEV: boolean
 declare const API_URL: string
+
+type MakeOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>

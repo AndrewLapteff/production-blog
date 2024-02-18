@@ -18,7 +18,7 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     setEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload
+      if (action.payload) state.email = action.payload
     },
     setUsername: (state, action: PayloadAction<string>) => {
       state.username = action.payload
@@ -28,7 +28,7 @@ export const loginSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(loginByEmailAndPassword.pending, (state, action) => {
+    builder.addCase(loginByEmailAndPassword.pending, (state) => {
       state.isLoading = true
     })
     builder.addCase(loginByEmailAndPassword.fulfilled, (state, action) => {

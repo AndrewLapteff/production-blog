@@ -30,6 +30,7 @@ export function createReducerManager (
         }
         keysToRemove = []
       }
+      // @ts-expect-error
       return combinedReducer(state, action) // a brand new reducer without extra reducers
     },
     add: (key: ReducersNames, reducer: Reducer) => {

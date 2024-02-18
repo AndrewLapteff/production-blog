@@ -25,7 +25,7 @@ export const DynamicSliceLoader = (props: DynamicSliceLoaderProps) => {
         store.reducerManager.remove(name)
       }
     }
-  }, [])
+  })
 
   return children
 }

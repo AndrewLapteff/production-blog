@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: var(100vh - var(--navbar-height));
+  height: 90%;
+}
+
+.card {
+  max-width: fit-content;
+}
+
+.field-wrapper {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}

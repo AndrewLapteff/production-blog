@@ -6,8 +6,6 @@ import { useTranslation } from 'react-i18next'
 
 import { Button, Text, Input } from 'shared/ui/'
 import s from './AuthModal.module.scss'
-import { useDispatchCallback } from '../hooks/useDispatchCallback'
-import { useThunkDispatch } from '../hooks/useThunkDispatch'
 import {
   setPassword,
   setUsername,
@@ -21,6 +19,7 @@ import {
   getIsLoading
 } from '../../../model/selectors'
 import { loginByEmailAndPassword } from '../../../model/services/getUserByEmail/getUserByEmail'
+import { useDispatchCallback, useThunkDispatch } from 'shared/lib'
 
 type AuthModalProps = Pick<ModalProps, 'setOpen' | 'isOpen' | 'width'>
 

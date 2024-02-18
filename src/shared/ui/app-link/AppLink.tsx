@@ -1,6 +1,6 @@
 import { Link, LinkProps } from 'react-router-dom'
 import s from './AppLink.module.scss'
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'shared/lib'
 
 type AppLinkThemes = 'primary' | 'secondary'

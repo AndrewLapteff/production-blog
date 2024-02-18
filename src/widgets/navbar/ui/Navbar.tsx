@@ -29,15 +29,20 @@ export const Navbar = () => {
     setOpen(true)
   }
 
-  const links = useMemo((): ReactNode => {
-    delete routes.not_found
-    return Object.entries(routes).map(([name, path]) => {
-      return (
-        <AppLink key={path} theme="primary" to={path}>
-          {t(name)}
-        </AppLink>
-      )
-    })
+  const links: ReactNode[] = useMemo(() => {
+    const result: ReactNode[] = []
+    ;(() => {
+      Object.entries(routes).forEach(([name, path]) => {
+        if (name !== 'not_found') {
+          result.push(
+            <AppLink key={path} theme="primary" to={path}>
+              {t(name)}
+            </AppLink>
+          )
+        }
+      })
+    })()
+    return result
   }, [t])
 
   return (

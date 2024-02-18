@@ -18,7 +18,9 @@ const config: Config = {
 
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
-
+  globals: {
+    API_URL: 'http://localhost:4000'
+  },
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: false,
 

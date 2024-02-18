@@ -1,9 +1,9 @@
-type ObjectClass = Record<string, boolean>
+type ObjectClass = Record<string, boolean | undefined>
 
 export const classNames = (
-  cls: string,
+  cls: string | undefined,
   object: ObjectClass = {},
-  additional: string[] = []
+  additional: Array<string | undefined> = []
 ): string => {
   const entries = Object.entries(object)
   let result: string = ''
