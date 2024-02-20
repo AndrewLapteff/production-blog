@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 import { ThunkConfig } from 'app/providers/store-provider/types/Schema'
-import { Profile } from '../types/profile'
+import { Profile } from '../../types/profile'
 
-function isInstanceOfProfile (obj: any): obj is Profile {
+function isInstanceOfProfile(obj: any): obj is Profile {
   return 'username' in obj && 'bio' in obj
 }
 
-export const fetchProfile = createAsyncThunk<Profile, string, ThunkConfig>(
-  'profile/getProfile',
+export const updateProfile = createAsyncThunk<Profile, string, ThunkConfig>(
+  'profile/fetchProfile',
   async (username, { rejectWithValue, extra }) => {
     try {
       const { data } = await extra.api.get('profile', { data: username })

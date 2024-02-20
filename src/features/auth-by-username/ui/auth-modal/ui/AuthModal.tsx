@@ -33,7 +33,7 @@ const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
   const isLoading = useSelector(getIsLoading)
 
   const text = error?.response?.data
-  const isErrorCorrert = error !== undefined && typeof text === 'string'
+  const isErrorCorrect = error !== undefined && typeof text === 'string'
 
   const setUserNameCallback = useDispatchCallback(setUsername)
   const setPasswordCallback = useDispatchCallback(setPassword)
@@ -78,7 +78,7 @@ const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
                 {t('password')}
               </Input>
             </section>
-            {isErrorCorrert && <Text text={text} theme="error" />}
+            {isErrorCorrect && <Text text={text} theme="error" />}
           </div>
         }
         footer={

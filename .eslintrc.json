@@ -51,9 +51,10 @@
     "react/button-has-type": "warn",
     "indent": "off",
     "@typescript-eslint/indent": "warn",
-    "@typescript-eslint/space-before-function-paren": "warn",
+    "@typescript-eslint/space-before-function-paren": "off",
     "react/display-name": "off",
     "react-hooks/rules-of-hooks": "warn",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-invalid-void-type": "off"
   }
 }

@@ -5,6 +5,12 @@
   --field-padding: 12px;
 }
 
+
+.readonly {
+  color: var(--low-emphasis) !important;
+
+}
+
 .custom-field input {
   border: none;
   appearance: none;
@@ -15,7 +21,9 @@
   outline: none;
   font-size: 14px;
   color: var(--high-emphasis);
+
 }
+
 
 .custom-field .placeholder {
   user-select: none;
@@ -74,4 +82,14 @@
 .custom-field.two input:not(:placeholder-shown),
 .custom-field.two input:focus {
   background-size: 100% 0.15em, 100% 0.1em, 100%;
+}
+
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

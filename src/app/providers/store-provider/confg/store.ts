@@ -14,9 +14,9 @@ export const createStore = (props: StoreProps) => {
     reducer: reducerManager.reduce,
     devTools: IS_DEV,
     preloadedState: reducers,
-    // @ts-expect-error tt doesn't matter
-    middleware: (MiddleWare) =>
-      MiddleWare({
+    // @ts-expect-error
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
         thunk: {
           extraArgument: {
             api: $api,

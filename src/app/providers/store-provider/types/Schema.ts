@@ -38,4 +38,5 @@ interface ThunkExtraArgs {
 
 export interface ThunkConfig extends AsyncThunkConfig {
   extra: ThunkExtraArgs // override
+  state: StoreProps
 }

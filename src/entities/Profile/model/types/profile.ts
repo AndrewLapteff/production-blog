@@ -8,6 +8,8 @@ export interface Profile {
 
 export interface ProfileSchema {
   profile?: Profile
+  backupProfile?: Profile
   isLoading: boolean
   error: unknown
+  readonly: boolean
 }

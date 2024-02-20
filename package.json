@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx webpack serve --config ./webpack.config.ts --port=3000 --env mode=development",
-    "dev:server": "npx json-server-auth ./json-server/db.json -r ./json-server/routes.json -p=4000 -w",
+    "dev:server": "npx json-server-auth ./json-server/db.json -r ./json-server/routes.json -p=4000 -d=300 -w",
     "build:prod": "npx webpack --env mode=production analyze=disabled",
     "build:analyze": "npx webpack --env mode=production analyze=server",
     "build:dev": "npx webpack --env mode=development analyze=disabled",

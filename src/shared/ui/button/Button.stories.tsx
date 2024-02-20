@@ -11,6 +11,30 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+export const Large: Story = {
+  args: {
+    size: 'l',
+    variant: 'primary',
+    children: 'Hello World'
+  }
+}
+
+export const Medium: Story = {
+  args: {
+    size: 'm',
+    variant: 'primary',
+    children: 'Hello World'
+  }
+}
+
+export const Small: Story = {
+  args: {
+    size: 's',
+    variant: 'primary',
+    children: 'Hello World'
+  }
+}
+
 export const Primary: Story = {
   args: {
     size: 'm',
@@ -43,35 +67,19 @@ export const Background: Story = {
   }
 }
 
-export const Large: Story = {
-  args: {
-    size: 'l',
-    variant: 'primary',
-    children: 'Hello World'
-  }
-}
-
-export const Medium: Story = {
-  args: {
-    size: 'm',
-    variant: 'primary',
-    children: 'Hello World'
-  }
-}
-
-export const Small: Story = {
-  args: {
-    size: 's',
-    variant: 'primary',
-    children: 'Hello World'
-  }
-}
-
 export const Disabled: Story = {
   args: {
     disabled: true,
     size: 'm',
     variant: 'primary',
+    children: 'Hello World'
+  }
+}
+
+export const Red: Story = {
+  args: {
+    size: 'm',
+    variant: 'red',
     children: 'Hello World'
   }
 }
