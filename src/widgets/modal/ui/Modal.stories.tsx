@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
 import { RouterDecorator, ThemeDecorator } from 'shared/config'
 import { Modal } from './Modal'
 import { Button } from 'shared/ui/button/Button'

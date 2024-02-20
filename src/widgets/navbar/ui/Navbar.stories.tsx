@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
 import { ThemeDecorator, RouterDecorator, StoreDecorator } from 'shared/config'
 import { Navbar } from './Navbar'
 

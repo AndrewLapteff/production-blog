@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
 import { ThemeDecorator, StoreDecorator, RouterDecorator } from 'shared/config'
 import AuthModal from './AuthModal'
 

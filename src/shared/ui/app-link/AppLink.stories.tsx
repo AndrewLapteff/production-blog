@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
 import { RouterDecorator, ThemeDecorator } from 'shared/config'
 import { AppLink } from './AppLink'
 

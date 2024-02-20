@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
 import { Text } from './Text'
 import { ThemeDecorator } from 'shared/config'
 

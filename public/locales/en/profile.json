@@ -3,7 +3,8 @@
   "cancel": "Cancel",
   "confirm": "Confirm",
   "bio": "Bio:",
-  "name": "Name:",
+  "username": "Name:",
   "age": "Age:",
+  "country": "Country:",
   "profile": "Profile"
 }

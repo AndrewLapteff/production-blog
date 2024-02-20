@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Button } from './Button'
-import 'app/styles/index.scss'
 import MoonIcon from 'shared/assets/moon.svg'
 
 const meta = {

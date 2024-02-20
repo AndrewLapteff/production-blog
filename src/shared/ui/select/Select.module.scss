@@ -1,0 +1,21 @@
+.select-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  background-color: var(--bg-color);
+  color: var(--high-emphasis);
+  margin-left: 5px;
+  padding: 5px;
+  border: solid 2px #1F1F1F;
+}
+
+
+.option {
+  padding: 2px;
+
+  &:hover {
+    background-color: var(--primary-color);
+  }
+}

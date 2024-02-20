@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
 import { RouterDecorator, StoreDecorator, ThemeDecorator } from 'shared/config'
 import { PageError } from './PageError'
 import { Sidebar } from 'widgets/sidebar/ui/Sidebar'

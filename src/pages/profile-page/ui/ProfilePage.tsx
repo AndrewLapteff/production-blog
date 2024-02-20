@@ -5,7 +5,7 @@ import {
   useAppSelector
 } from 'shared/lib'
 import { useEffect } from 'react'
-import { ProfileCard } from 'entities/Profile/ui/ProfileCard'
+import { ProfileCard } from 'features/edit-profile/ui/profile-card/ProfileCard'
 import { getUsername } from 'features/auth-by-username/model/selectors'
 
 const ProfilePage = () => {
@@ -15,7 +15,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(fetchProfile(username))
-  }, [])
+  }, [dispatch, username])
 
   return (
     <DynamicSliceLoader
