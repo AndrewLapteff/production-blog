@@ -1,7 +1,7 @@
 import { useTheme } from 'app/providers/theme-provider'
 import s from './ThemeSwitcher.module.scss'
-import Sun from '../../assets/sun.svg'
-import Moon from '../../assets/moon.svg'
+import Sun from '../../assets/icons/sun.svg'
+import Moon from '../../assets/icons/moon.svg'
 import { CSSProperties, memo } from 'react'
 import { Button } from '../button/Button'
 

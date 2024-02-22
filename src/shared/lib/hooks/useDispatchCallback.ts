@@ -9,7 +9,7 @@ export const useDispatchCallback = <T>(
 
   // Use of useCallback hook because this component reloads because of useSelector subscribtion
   return useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
+    (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       return dispatch(actionCallback(e.target.value as T))
     },
     [dispatch, actionCallback]

@@ -1,4 +1,4 @@
-import { CSSProperties, HTMLAttributes } from 'react'
+import { CSSProperties, HTMLAttributes, memo } from 'react'
 import s from './Avatar.module.scss'
 import { classNames } from 'shared/lib'
 
@@ -9,7 +9,7 @@ interface AvatarProps extends HTMLAttributes<HTMLImageElement> {
   outline?: boolean
 }
 
-export const Avatar = ({ size = 100, src, alt, outline }: AvatarProps) => {
+export const Avatar = memo(({ size = 100, src, alt, outline }: AvatarProps) => {
   const styles: CSSProperties = {
     width: size,
     height: size
@@ -23,4 +23,4 @@ export const Avatar = ({ size = 100, src, alt, outline }: AvatarProps) => {
       src={src}
     />
   )
-}
+})

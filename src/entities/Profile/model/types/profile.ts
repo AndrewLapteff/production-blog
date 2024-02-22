@@ -1,3 +1,5 @@
+import { PROFILE_VALIDATION } from './validation'
+
 export interface Profile {
   username: string
   age: number
@@ -12,4 +14,5 @@ export interface ProfileSchema {
   isLoading: boolean
   error: unknown
   readonly: boolean
+  validationErrors?: PROFILE_VALIDATION[]
 }

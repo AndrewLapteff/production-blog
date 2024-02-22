@@ -3,7 +3,7 @@ import s from './ProfileInput.module.scss'
 import { classNames } from 'shared/lib'
 import { useTranslation } from 'react-i18next'
 import { Profile } from '../../../../entities/Profile/model/types/profile'
-import { ChangeEvent, HTMLInputTypeAttribute } from 'react'
+import { ChangeEvent, HTMLInputTypeAttribute, memo } from 'react'
 
 type ProfileValues = keyof Profile
 
@@ -17,7 +17,7 @@ interface Props {
   type?: HTMLInputTypeAttribute
 }
 
-export const ProfileInput = (props: Props) => {
+export const ProfileInput = memo((props: Props) => {
   const { value, onChange, isReadonly, type, name } = props
 
   const { t } = useTranslation('profile')
@@ -33,4 +33,4 @@ export const ProfileInput = (props: Props) => {
       />
     </div>
   )
-}
+})

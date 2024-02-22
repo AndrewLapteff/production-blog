@@ -18,7 +18,11 @@ export const routes: Record<Routes, string> = {
   not_found: '*'
 }
 
-export const routerConfig: Record<Routes, RouteProps> = {
+type ExtendedRouteProps = RouteProps & {
+  authOnly?: boolean
+}
+
+export const routerConfig: Record<Routes, ExtendedRouteProps> = {
   main: {
     path: routes.main,
     element: <MainPage />
@@ -29,7 +33,8 @@ export const routerConfig: Record<Routes, RouteProps> = {
   },
   profile: {
     path: routes.profile,
-    element: <ProfilePage />
+    element: <ProfilePage />,
+    authOnly: true
   },
   not_found: {
     path: routes.not_found,

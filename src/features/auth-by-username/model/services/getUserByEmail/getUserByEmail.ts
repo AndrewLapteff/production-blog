@@ -10,7 +10,7 @@ interface PostDataType extends Pick<LoginSchema, 'email' | 'password'> {}
 export const loginByEmailAndPassword = createAsyncThunk<
 UserSchema, // same 1
 PostDataType,
-ThunkConfig
+ThunkConfig<unknown | AxiosError>
 >( // <return, post data>
   'login/loginByUsername',
   async (credentials, { rejectWithValue, dispatch, extra }) => {

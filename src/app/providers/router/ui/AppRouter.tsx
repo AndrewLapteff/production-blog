@@ -1,12 +1,21 @@
-import { Suspense } from 'react'
+import { Suspense, memo } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { routerConfig } from 'shared/config'
 import { PageLoader } from 'widgets/page-loader'
 
-export const AppRouter = () => {
+interface AppRouterProps {
+  isSigned: boolean
+}
+
+export const AppRouter = ({ isSigned }: AppRouterProps) => {
+  const routes = Object.values(routerConfig).filter(({ authOnly }) => {
+    if (authOnly && !isSigned) return false
+    return true
+  })
+
   return (
     <Routes>
-      {Object.values(routerConfig).map(({ path, element }) => {
+      {routes.map(({ path, element }) => {
         return (
           <Route
             key={path}
@@ -23,4 +32,4 @@ export const AppRouter = () => {
   )
 }
 
-export default AppRouter
+export default memo(AppRouter)

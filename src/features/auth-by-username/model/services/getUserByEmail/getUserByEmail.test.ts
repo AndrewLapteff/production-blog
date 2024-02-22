@@ -4,6 +4,7 @@ import { loginByEmailAndPassword } from './getUserByEmail'
 import { Dispatch } from '@reduxjs/toolkit'
 import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { NavigateFunction } from 'react-router-dom'
+import { UserSchema, setUser } from 'entities/User'
 jest.mock('axios')
 
 describe('getUserByEmail.test.ts', () => {
@@ -45,7 +46,7 @@ describe('getUserByEmail.test.ts', () => {
   //   expect(actionData.meta.requestStatus).toBe('fulfilled')
   // })
 
-  it('should ', async () => {
+  it('should be rejected', async () => {
     // @ts-expect-error
     axios.post.mockReturnValue(Promise.resolve({ status: 404 }))
     // createAsyncThunk call

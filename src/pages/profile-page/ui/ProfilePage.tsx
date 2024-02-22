@@ -14,7 +14,9 @@ const ProfilePage = () => {
   const username = useAppSelector(getUsername)
 
   useEffect(() => {
-    dispatch(fetchProfile(username))
+    if (PROJECT_ENV !== 'storybook') {
+      dispatch(fetchProfile(username))
+    }
   }, [dispatch, username])
 
   return (

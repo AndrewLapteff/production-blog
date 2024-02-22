@@ -27,7 +27,8 @@ export const buildPlugins = ({
     }),
     new DefinePlugin({
       IS_DEV: JSON.stringify(isDev),
-      API_URL: JSON.stringify(apiUrl)
+      API_URL: JSON.stringify(apiUrl),
+      PROJECT_ENV: JSON.stringify('frontend')
     })
   ]
 

@@ -6,13 +6,14 @@ import { Navbar } from 'widgets/navbar'
 import { Sidebar } from 'widgets/sidebar/ui/Sidebar'
 import { ErrorBoundary } from './providers/error-boundary'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { UserSchema, setUser } from 'entities/User'
+import { useDispatch, useSelector } from 'react-redux'
+import { UserSchema, getUser, setUser } from 'entities/User'
 import { LOCAL_STORAGE_USER_KEY } from 'shared/config'
 
 export const App = () => {
   const { theme } = useTheme()
   const dispatch = useDispatch()
+  const user = useSelector(getUser)
 
   useEffect(() => {
     const data = localStorage.getItem(LOCAL_STORAGE_USER_KEY)
@@ -28,7 +29,7 @@ export const App = () => {
       <div className="main-area">
         <Sidebar />
         <ErrorBoundary>
-          <AppRouter />
+          <AppRouter isSigned={!!user?.email} />
         </ErrorBoundary>
       </div>
     </div>

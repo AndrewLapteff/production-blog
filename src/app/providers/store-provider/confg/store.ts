@@ -1,13 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { StoreProps } from '../types/Schema'
-import { userReducer } from 'entities/User'
+import { UserSchema, userReducer } from 'entities/User'
 import { createReducerManager } from '../reducer-manager/reducerManager'
 import { $api } from 'shared/api/api'
+import { ProfileSchema } from 'entities/Profile'
 
-const initialReducers = { userReducer }
-
-export const createStore = (props: StoreProps) => {
-  const reducerManager = createReducerManager(initialReducers)
+export const createStore = (
+  props: StoreProps,
+  asyncReducers: ReducersMapObject<StoreProps>
+) => {
+  const reducerManager = createReducerManager(asyncReducers)
   const { navigate, ...reducers } = props
   const store = configureStore<StoreProps>({
     // @ts-expect-error

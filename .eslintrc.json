@@ -21,6 +21,11 @@
       }
     }
   ],
+  "globals": {
+    "PROJECT_ENV": true,
+    "IS_DEV": true,
+    "API_URL": true
+  },
   "settings": {
     "react": {
       "version": "detect"

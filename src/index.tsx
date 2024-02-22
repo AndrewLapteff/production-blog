@@ -5,8 +5,27 @@ import { ThemeProvider } from 'app/providers/theme-provider'
 import { App } from 'app/App'
 import { Suspense } from 'react'
 import { StoreProvider } from 'app/providers/store-provider'
+import { userReducer } from 'entities/User'
 
 const container = document.getElementById('root')
+const initialStore = {
+  loginReducer: {
+    username: '',
+    password: '',
+    email: '',
+    isLoading: false,
+    error: undefined
+  },
+  userReducer: {
+    user: {
+      id: 1,
+      username: '',
+      email: ''
+    },
+    accessToken: ''
+  }
+}
+
 if (container) {
   const root = createRoot(container)
 
@@ -14,7 +33,10 @@ if (container) {
     <BrowserRouter>
       <ThemeProvider>
         <Suspense>
-          <StoreProvider>
+          <StoreProvider
+            initialState={initialStore}
+            asyncReducers={{ userReducer }}
+          >
             <App />
           </StoreProvider>
         </Suspense>

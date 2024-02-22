@@ -36,7 +36,8 @@ interface ThunkExtraArgs {
   navigate: NavigateFunction
 }
 
-export interface ThunkConfig extends AsyncThunkConfig {
+export interface ThunkConfig<T> extends AsyncThunkConfig {
+  rejectValue: T
   extra: ThunkExtraArgs // override
   state: StoreProps
 }

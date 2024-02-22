@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react'
 import s from './Sidebar.module.scss'
 import { classNames } from 'shared/lib'
-import ArrowIcon from 'shared/assets/arrow.svg'
+import ArrowIcon from 'shared/assets/icons/arrow.svg'
 import { useTranslation } from 'react-i18next'
 
 export const Sidebar = memo(() => {

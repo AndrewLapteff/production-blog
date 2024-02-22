@@ -1,6 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator, RouterDecorator, StoreDecorator } from 'shared/config'
 import { Navbar } from './Navbar'
+import { userReducer } from 'entities/User'
+
+const store = {
+  loginReducer: {
+    username: '',
+    password: '',
+    email: '',
+    isLoading: false,
+    error: undefined
+  },
+  userReducer: {
+    user: {
+      id: 1,
+      username: '',
+      email: ''
+    },
+    accessToken: ''
+  }
+}
 
 const meta: Meta<typeof Navbar> = {
   title: 'widgets/Navbar',
@@ -8,7 +27,7 @@ const meta: Meta<typeof Navbar> = {
   parameters: {
     layout: 'fullscreen'
   },
-  decorators: [StoreDecorator, RouterDecorator]
+  decorators: [StoreDecorator(store, { userReducer }), RouterDecorator]
 }
 
 export default meta
@@ -18,3 +37,9 @@ export const NavbarLight: Story = {}
 export const NavbarDark: Story = {
   decorators: ThemeDecorator('dark')
 }
+// export const NavbarNotAuthed: Story = {
+//   decorators: StoreDecorator(
+//     { ...store, userReducer: { user: undefined } },
+//     { userReducer }
+//   )
+// }

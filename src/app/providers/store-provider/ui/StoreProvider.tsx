@@ -1,28 +1,24 @@
 import { Provider } from 'react-redux'
-import { PropsWithChildren } from 'react'
+import { ReactNode } from 'react'
 import { createStore } from '../confg/store'
 import { useNavigate } from 'react-router-dom'
+import { ReducersMapObject } from '@reduxjs/toolkit'
+import { StoreProps } from '../types/Schema'
 
-export const StoreProvider = ({ children }: PropsWithChildren) => {
+interface StoreProviderProps {
+  children?: ReactNode
+  initialState: StoreProps
+  asyncReducers: ReducersMapObject<StoreProps>
+}
+
+export const StoreProvider = ({
+  children,
+  asyncReducers,
+  initialState
+}: StoreProviderProps) => {
   const navigate = useNavigate()
-  const store = createStore({
-    loginReducer: {
-      username: '',
-      password: '',
-      email: '',
-      isLoading: false,
-      error: undefined
-    },
-    userReducer: {
-      user: {
-        id: 1,
-        username: '',
-        email: ''
-      },
-      accessToken: ''
-    },
-    navigate
-  })
+  initialState.navigate = navigate
+  const store = createStore(initialState, asyncReducers)
 
   return <Provider store={store}>{children}</Provider>
 }

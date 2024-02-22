@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Profile, ProfileSchema } from '../types/profile'
-import { updateProfile } from '../service/fetchProfile/fetchProfile'
+import { fetchProfile } from '../service/fetchProfile/fetchProfile'
 import { postProfile } from '../service/postProfile/updateProfile'
 
 const initialState: ProfileSchema = {
@@ -8,7 +8,8 @@ const initialState: ProfileSchema = {
   backupProfile: undefined,
   isLoading: false,
   error: undefined,
-  readonly: true
+  readonly: true,
+  validationErrors: undefined
 }
 
 export const profileSlice = createSlice({
@@ -22,7 +23,6 @@ export const profileSlice = createSlice({
     },
     setReadonly: (state, action: PayloadAction<boolean>) => {
       if (action.payload) {
-        console.log(state.backupProfile)
         state.readonly = action.payload
         state.profile = state.backupProfile
       }
@@ -45,31 +45,32 @@ export const profileSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(updateProfile.fulfilled, (state, action) => {
+    builder.addCase(fetchProfile.fulfilled, (state, action) => {
       state.profile = action.payload
       state.backupProfile = action.payload
       state.isLoading = false
       state.error = undefined
     })
-    builder.addCase(updateProfile.rejected, (state, action) => {
+    builder.addCase(fetchProfile.rejected, (state, action) => {
       state.isLoading = false
       state.error = action.error
     })
-    builder.addCase(updateProfile.pending, (state) => {
+    builder.addCase(fetchProfile.pending, (state) => {
       state.isLoading = true
     })
     builder.addCase(postProfile.fulfilled, (state, action) => {
       state.profile = action.payload
       state.backupProfile = action.payload
       state.isLoading = false
-      state.error = undefined
+      state.validationErrors = undefined
     })
     builder.addCase(postProfile.rejected, (state, action) => {
       state.isLoading = false
-      state.error = action.error
+      state.validationErrors = action.payload
     })
     builder.addCase(postProfile.pending, (state) => {
       state.isLoading = true
+      state.validationErrors = undefined
     })
   }
 })
