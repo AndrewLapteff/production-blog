@@ -1,5 +1,5 @@
 import { StoreProps } from 'app/providers/store-provider/types/Schema'
-import { getUser } from './getUser'
+import { getInited } from './getInited'
 
 describe('getUser.test.ts', () => {
   it('should return object with proper email value', () => {
@@ -11,7 +11,7 @@ describe('getUser.test.ts', () => {
         _inited: true
       }
     }
-    expect(getUser(store).email).toBe(email)
+    expect(getInited(store)).toBe(true)
   })
 
   it('should return object with proper email value', () => {
@@ -23,9 +23,9 @@ describe('getUser.test.ts', () => {
           id: 0,
           username: ''
         },
-        _inited: true
+        _inited: false
       }
     }
-    expect(getUser(store).email).toBe('')
+    expect(getInited(store)).toBe(false)
   })
 })

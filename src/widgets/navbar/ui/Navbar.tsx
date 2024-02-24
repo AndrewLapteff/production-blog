@@ -1,19 +1,12 @@
-import React, {
-  ReactNode,
-  Suspense,
-  useCallback,
-  useMemo,
-  useState
-} from 'react'
+import { ReactNode, Suspense, useCallback, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-
 import { loginReducer, AuthModal } from 'features/auth-by-username'
 import { DynamicSliceLoader, classNames } from 'shared/lib'
 import { AppLink, ThemeSwitcher, TranslateButton, Button } from 'shared/ui'
 import { getUser, logout } from 'entities/User'
 import s from './Navbar.module.scss'
-import { routes } from 'shared/config'
+import { routerConfig } from 'shared/config'
 
 export const Navbar = () => {
   const { t } = useTranslation('translation')
@@ -31,17 +24,19 @@ export const Navbar = () => {
 
   const links: ReactNode[] = useMemo(() => {
     const result: ReactNode[] = []
+
     ;(() => {
-      Object.entries(routes).forEach(([name, path]) => {
-        if (name !== 'not_found') {
+      Object.entries(routerConfig).forEach(([name, { path, hide }]) => {
+        if (!hide) {
           result.push(
-            <AppLink key={path} theme="primary" to={path}>
+            <AppLink key={path} theme="primary" to={path || ''}>
               {t(name)}
             </AppLink>
           )
         }
       })
     })()
+
     return result
   }, [t])
 

@@ -7,4 +7,5 @@ export interface User {
 export interface UserSchema {
   accessToken: string
   user: User
+  _inited?: boolean
 }

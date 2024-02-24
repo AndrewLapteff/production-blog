@@ -5,7 +5,8 @@ import { LOCAL_STORAGE_USER_KEY } from 'shared/config'
 
 const initialState: UserSchema = {
   accessToken: '',
-  user: { email: '', id: 0, username: '' }
+  user: { email: '', id: 0, username: '' },
+  _inited: false
 }
 
 export const userSlice = createSlice({
@@ -15,11 +16,13 @@ export const userSlice = createSlice({
     setUser: (state, payload: PayloadAction<UserSchema>) => {
       state.user = payload.payload.user
       state.accessToken = payload.payload.accessToken
+      state._inited = true
     },
     logout: (state) => {
       state.user = { email: '', id: 0, username: '' }
       state.accessToken = ''
       localStorage.removeItem(LOCAL_STORAGE_USER_KEY)
+      state._inited = false
     }
   }
 })
