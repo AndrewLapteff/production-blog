@@ -6,6 +6,7 @@ import type {
 } from '@reduxjs/toolkit'
 import type { AsyncThunkConfig } from '@reduxjs/toolkit/dist/createAsyncThunk'
 import type { AxiosInstance } from 'axios'
+import { ArticleSchema } from 'entities/Article/model/types/article'
 import type { ProfileSchema } from 'entities/Profile'
 import type { UserSchema } from 'entities/User'
 import type { LoginSchema } from 'features/auth-by-username'
@@ -15,6 +16,7 @@ export interface StoreProps {
   userReducer: UserSchema
   loginReducer?: LoginSchema
   profileReducer?: ProfileSchema
+  articleReducer?: ArticleSchema
   navigate?: NavigateFunction
 }
 

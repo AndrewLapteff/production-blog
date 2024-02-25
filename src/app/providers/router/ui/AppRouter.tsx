@@ -1,4 +1,4 @@
-import { ProtectedRoute } from 'app/providers/protected-route/ui/ProtectedRoute'
+import { ProtectedRoute } from '../../protected-route/ui/ProtectedRoute'
 import { Suspense, memo } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { routerConfig } from 'shared/config'
@@ -10,14 +10,12 @@ interface AppRouterProps {
 
 export const AppRouter = ({ isSigned }: AppRouterProps) => {
   const routes = Object.entries(routerConfig).map(
-    ([path, { element, authOnly }]) => {
-      console.log(path)
+    ([_, { element, authOnly, path }]) => {
       const el = (
         <Suspense fallback={<PageLoader />}>
           <div className="content-area">{element}</div>
         </Suspense>
       )
-
       return (
         <Route
           key={path}
@@ -35,7 +33,6 @@ export const AppRouter = ({ isSigned }: AppRouterProps) => {
       )
     }
   )
-
   return <Routes>{routes}</Routes>
 }
 

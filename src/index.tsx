@@ -6,16 +6,10 @@ import { App } from 'app/App'
 import { Suspense } from 'react'
 import { StoreProvider } from 'app/providers/store-provider'
 import { userReducer } from 'entities/User'
+import { StoreProps } from 'app/providers/store-provider/types/Schema'
 
 const container = document.getElementById('root')
-const initialStore = {
-  loginReducer: {
-    username: '',
-    password: '',
-    email: '',
-    isLoading: false,
-    error: undefined
-  },
+const initialStore: StoreProps = {
   userReducer: {
     user: {
       id: 1,

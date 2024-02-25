@@ -8,6 +8,8 @@ import modalEN from '../../../../public/locales/en/modal.json'
 import modalUK from '../../../../public/locales/uk/modal.json'
 import profileEN from '../../../../public/locales/en/profile.json'
 import profileUK from '../../../../public/locales/uk/profile.json'
+import articleEN from '../../../../public/locales/en/article.json'
+import articleUK from '../../../../public/locales/uk/article.json'
 
 export const resources = {
   en: {
@@ -15,13 +17,15 @@ export const resources = {
     main: mainEN,
     about: aboutEN,
     modal: modalEN,
-    profile: profileEN
+    profile: profileEN,
+    article: articleEN
   },
   uk: {
     translation: translationUK,
     main: mainUK,
     about: aboutUK,
     modal: modalUK,
-    profile: profileUK
+    profile: profileUK,
+    article: articleUK
   }
 }

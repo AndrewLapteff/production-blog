@@ -48,7 +48,9 @@ export const ProfileCard = memo(() => {
 
   const onConfirm = useCallback(() => {
     // here
-    dispatch(postProfile())
+    dispatch(postProfile()).catch((err) => {
+      console.log(err)
+    })
   }, [dispatch])
 
   const validationMapper = {

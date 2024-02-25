@@ -55,7 +55,7 @@
     "@typescript-eslint/prefer-ts-expect-error": "warn",
     "react/button-has-type": "warn",
     "indent": "off",
-    "@typescript-eslint/indent": "warn",
+    "@typescript-eslint/indent": "off",
     "@typescript-eslint/space-before-function-paren": "off",
     "react/display-name": "off",
     "react-hooks/rules-of-hooks": "warn",

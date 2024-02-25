@@ -10,5 +10,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const ArticleLight: Story = {
-  args: {}
+  args: {
+    id: '1'
+  }
 }

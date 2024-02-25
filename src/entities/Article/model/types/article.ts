@@ -36,3 +36,9 @@ export interface ArticleType {
   topics: string[]
   blocks: ArticleBlock[]
 }
+
+export interface ArticleSchema {
+  article?: ArticleType
+  isLoading: boolean
+  error?: string
+}
