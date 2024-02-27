@@ -1,3 +1,6 @@
 {
-  "error": "The article is not found"
+  "error": "The article is not found",
+  "mins-to-read": "mins to read",
+  "views": "Views",
+  "likes": "Likes"
 }

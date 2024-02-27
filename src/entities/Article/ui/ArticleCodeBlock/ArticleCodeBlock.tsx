@@ -1,6 +1,17 @@
+import { memo } from 'react'
+import { ArticleCodeBlock as ArticleCodeBlockProps } from '../../model/types/article'
 import s from './ArticleCodeBlock.module.scss'
-import { classNames } from 'shared/lib'
+import { Text } from 'shared/ui'
+import { Code } from 'shared/ui/code/Code'
 
-export const ArticleCodeBlock = () => {
-  return <div className={classNames(s.articlecodeblock)}></div>
-}
+export const ArticleCodeBlock = memo(
+  ({ block }: { block: ArticleCodeBlockProps }) => {
+    const { code, title } = block
+    return (
+      <div className={s.articlecodeblock}>
+        {title && <Text h="h3" title={title} />}
+        <Code code={code.join('\n')} />
+      </div>
+    )
+  }
+)

@@ -7,8 +7,7 @@ import { Sidebar } from 'widgets/sidebar/ui/Sidebar'
 import { ErrorBoundary } from './providers/error-boundary'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UserSchema, getUser, setUser } from 'entities/User'
-import { LOCAL_STORAGE_USER_KEY } from 'shared/config'
+import { getUser, init } from 'entities/User'
 import { getInited } from 'entities/User/model/selectors/getInited/getInited'
 
 export const App = () => {
@@ -18,11 +17,7 @@ export const App = () => {
   const isInited = useSelector(getInited)
 
   useEffect(() => {
-    const data = localStorage.getItem(LOCAL_STORAGE_USER_KEY)
-    if (data) {
-      const user = JSON.parse(data) as UserSchema
-      if (user) dispatch(setUser(user))
-    }
+    dispatch(init())
   }, [dispatch])
 
   return (

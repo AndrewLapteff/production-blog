@@ -1,3 +1,50 @@
 .article {
-  background: #000;
+  height: calc(100vh - var(--navbar-height) - var(--content-area-padding) * 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+  gap: 20px;
+}
+
+.article-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.author-info {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.title {
+  line-height: 110%;
+}
+
+.topics {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+
+  .topic {
+    text-decoration: none;
+    color: var(--low-emphasis);
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    font-size: smaller;
+  }
 }

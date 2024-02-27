@@ -1,6 +1,6 @@
-import { Article } from 'entities/Article'
+import { Article, articleReducer } from 'entities/Article'
 import s from './ArticlePage.module.scss'
-import { classNames } from 'shared/lib'
+import { DynamicSliceLoader, classNames } from 'shared/lib'
 import { useParams } from 'react-router-dom'
 import { Text } from 'shared/ui'
 
@@ -16,9 +16,15 @@ const ArticlePage = () => {
   }
 
   return (
-    <div className={classNames(s.articlepage)}>
-      <Article id={id} />
-    </div>
+    <DynamicSliceLoader
+      name="articleReducer"
+      reducer={articleReducer}
+      removeAfterUnmount
+    >
+      <div className={s.article}>
+        <Article id={id} />
+      </div>
+    </DynamicSliceLoader>
   )
 }
 

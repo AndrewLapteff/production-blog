@@ -1,4 +1,4 @@
-import { HtmlHTMLAttributes, memo } from 'react'
+import { HtmlHTMLAttributes, memo, useCallback } from 'react'
 import s from './Text.module.scss'
 import { classNames } from 'shared/lib'
 import { Mods } from 'shared/types/types'
@@ -6,6 +6,8 @@ import { Mods } from 'shared/types/types'
 type ThemeProps = 'normal' | 'error'
 
 type ButtonSize = 's' | 'm' | 'l'
+
+type TitleSemanticSize = 'h1' | 'h2' | 'h3'
 
 type Align = 'left' | 'right' | 'center'
 
@@ -16,6 +18,7 @@ interface TextProps extends HtmlHTMLAttributes<HTMLParagraphElement> {
   className?: string
   size?: ButtonSize
   align?: Align
+  h?: TitleSemanticSize
 }
 
 export const Text = memo(
@@ -25,7 +28,8 @@ export const Text = memo(
     className,
     theme = 'normal',
     size = 'm',
-    align = 'left'
+    align = 'left',
+    h = 'h2'
   }: TextProps) => {
     const mods: Mods = {
       [s[theme]]: true,
@@ -33,11 +37,24 @@ export const Text = memo(
       [s[align]]: true
     }
 
+    const renderTitle = useCallback((h: TitleSemanticSize, title: string) => {
+      switch (h) {
+        case 'h1':
+          return <h1 className={classNames(s.title)}>{title}</h1>
+        case 'h2':
+          return <h2 className={classNames(s.title)}>{title}</h2>
+        case 'h3':
+          return <h3 className={classNames(s.title)}>{title}</h3>
+      }
+    }, [])
+
     return (
-      <div className={classNames(s['text-wrapper'], mods, [className])}>
-        {title && <h1 className={classNames(s.title)}>{title}</h1>}
-        {text && <p className={classNames(s.text)}>{text}</p>}
-      </div>
+      <>
+        {title && renderTitle(h, title)}
+        {text && (
+          <p className={classNames(s.text, mods, [className])}>{text}</p>
+        )}
+      </>
     )
   }
 )

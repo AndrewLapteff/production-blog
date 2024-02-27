@@ -1,3 +1,9 @@
 .article {
-  background-color: rebeccapurple;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+.article::-webkit-scrollbar {
+  display: none;
 }

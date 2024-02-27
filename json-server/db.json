@@ -24,21 +24,23 @@
     }
   ],
   "profile": {
-    "username": "Amigo",
+    "username": "Amigoo",
     "avatar": "https://avatars.githubusercontent.com/u/114949478?v=4",
-    "country": "USA",
+    "country": "Ukraine",
     "age": "18",
     "bio": "Hello world, that's it!"
   },
   "articles": [
     {
       "id": "1",
-      "title": "JavaScript new",
+      "title": "New JavaScript Features from ECMAScript 2023 (ES14). New way to organize",
       "description": "New features of JS of 2024",
-      "img": "https://www.tutorialrepublic.com/lib/images/javascript-illustration.png",
+      "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "view": "1024",
       "createdAt": "01.01.2024",
       "topics": ["JavaScript", "Features"],
+      "minsToRead": "2",
+      "authorId": "1",
       "blocks": [
         {
           "id": "0",
@@ -46,7 +48,7 @@
           "title": "Complete Guide of New JavaScript Features from ECMAScript 2023",
           "alt": "Photo by Joan Gamell on Unsplash",
           "label": "Photo by Joan Gamell on Unsplash",
-          "url": "https://cdn-images-1.medium.com/max/800/0*loN7TsW7j21k-wq-"
+          "url": "https://www.tutorialrepublic.com/lib/images/javascript-illustration.png"
         },
         {
           "id": "1",

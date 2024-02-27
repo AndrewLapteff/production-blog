@@ -5,7 +5,8 @@ import { fetchArticleById } from '../services/fetchArticleById'
 const initialState: ArticleSchema = {
   article: undefined,
   isLoading: false,
-  error: undefined
+  error: undefined,
+  author: undefined
 }
 
 export const articleSlice = createSlice({
@@ -19,7 +20,9 @@ export const articleSlice = createSlice({
       state.isLoading = true
     })
     builder.addCase(fetchArticleById.fulfilled, (state, action) => {
-      state.article = action.payload
+      state.article = action.payload.article
+      state.author = action.payload.author
+
       state.isLoading = false
     })
     builder.addCase(fetchArticleById.rejected, (state, action) => {

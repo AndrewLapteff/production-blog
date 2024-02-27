@@ -1,4 +1,6 @@
-type ArticleTypes = 'code' | 'text' | 'image'
+import { Profile } from 'entities/Profile'
+
+export type ArticleTypes = 'code' | 'text' | 'image'
 
 interface ArticleBase {
   id: string
@@ -6,17 +8,17 @@ interface ArticleBase {
   title?: string
 }
 
-interface ArticleCodeBlock extends ArticleBase {
+export interface ArticleCodeBlock extends ArticleBase {
   type: 'code'
-  code: string
+  code: string[]
 }
 
-interface ArticleTextBlock extends ArticleBase {
+export interface ArticleTextBlock extends ArticleBase {
   type: 'text'
-  text: string
+  text: string[]
 }
 
-interface ArticleImageBlock extends ArticleBase {
+export interface ArticleImageBlock extends ArticleBase {
   type: 'image'
   image: string
   alt: string
@@ -24,7 +26,10 @@ interface ArticleImageBlock extends ArticleBase {
   url: string
 }
 
-type ArticleBlock = ArticleCodeBlock | ArticleTextBlock | ArticleImageBlock
+export type ArticleBlock =
+  | ArticleCodeBlock
+  | ArticleTextBlock
+  | ArticleImageBlock
 
 export interface ArticleType {
   id: string
@@ -32,6 +37,8 @@ export interface ArticleType {
   description: string
   img: string
   view: number
+  authorId: string
+  minsToRead: string
   createdAt: string
   topics: string[]
   blocks: ArticleBlock[]
@@ -39,6 +46,7 @@ export interface ArticleType {
 
 export interface ArticleSchema {
   article?: ArticleType
+  author?: Profile
   isLoading: boolean
   error?: string
 }

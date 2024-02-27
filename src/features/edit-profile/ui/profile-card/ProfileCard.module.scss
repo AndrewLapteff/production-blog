@@ -3,8 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: var(100vh - var(--navbar-height));
-  height: 90%;
+  height: calc(100vh - var(--navbar-height) - var(--content-area-padding) * 2);
 }
 
 .card {

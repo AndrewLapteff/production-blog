@@ -117,7 +117,7 @@ export const ProfileCard = memo(() => {
           style={{ marginTop: '5px' }}
           className={classNames(s['field-wrapper'])}
         >
-          <Text text={t('country')} />
+          <Text text={t('country')} size="s" />
           <Select
             onSelect={onSelectCountry}
             readonly={isReadonly}

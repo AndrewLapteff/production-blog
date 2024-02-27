@@ -2,7 +2,7 @@
 import { screen, render } from '@testing-library/react'
 import { Button } from './Button'
 
-describe('Button.text.tsx', () => {
+describe('Button.test.tsx', () => {
   it('should render proper text', () => {
     render(
       <Button size="m" variant="primary">

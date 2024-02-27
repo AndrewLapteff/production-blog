@@ -10,5 +10,6 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const ArticleTextBlockLight: Story = {
+  // @ts-expect-error
   args: {}
 }
