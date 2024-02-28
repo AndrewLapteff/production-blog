@@ -28,3 +28,27 @@ body {
   flex-grow: 1;
   padding: var(--content-area-padding);
 }
+
+.s {
+  font-size: 16px;
+}
+
+.m {
+  font-size: 20px;
+}
+
+.l {
+  font-size: 24px;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}

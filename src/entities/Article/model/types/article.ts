@@ -1,4 +1,4 @@
-import { Profile } from 'entities/Profile'
+import { Profile } from '../../../Profile'
 
 export type ArticleTypes = 'code' | 'text' | 'image'
 
@@ -10,7 +10,7 @@ interface ArticleBase {
 
 export interface ArticleCodeBlock extends ArticleBase {
   type: 'code'
-  code: string[]
+  code: string[] | string
 }
 
 export interface ArticleTextBlock extends ArticleBase {
@@ -20,7 +20,6 @@ export interface ArticleTextBlock extends ArticleBase {
 
 export interface ArticleImageBlock extends ArticleBase {
   type: 'image'
-  image: string
   alt: string
   label: string
   url: string

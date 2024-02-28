@@ -1,9 +1,115 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Article } from './Article'
+import { RouterDecorator, StoreDecorator, testStore } from 'shared/config'
+import { articleReducer } from 'entities/Article'
+import { userReducer } from 'entities/User'
 
 const meta = {
   title: 'entities/Article',
-  component: Article
+  component: Article,
+  parameters: {
+    layout: 'centered'
+  },
+  decorators: [
+    StoreDecorator(
+      {
+        ...testStore,
+        articleReducer: {
+          isLoading: false,
+          article: {
+            id: '1',
+            title:
+              'New JavaScript Features from ECMAScript 2023 (ES14). New way to organize',
+            description: 'New features of JS of 2024',
+            img: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg',
+            view: 1024,
+            createdAt: '01.01.2024',
+            topics: ['JavaScript', 'Features'],
+            minsToRead: '2',
+            authorId: '1',
+            blocks: [
+              {
+                id: '0',
+                type: 'image',
+                title:
+                  'Complete Guide of New JavaScript Features from ECMAScript 2023',
+                alt: 'Photo by Joan Gamell on Unsplash',
+                label: 'Photo by Joan Gamell on Unsplash',
+                url: 'https://www.tutorialrepublic.com/lib/images/javascript-illustration.png'
+              },
+              {
+                id: '1',
+                type: 'text',
+                title: 'Immutable Array Methods',
+                text: [
+                  'With the ES14 version, Array.prototype added 4 new methods that change by copy: toReversed, toSorted, toSpliced, and with. These are immutable array methods, which make a copy of the array with the applied modifications without affecting the original array that they were called on.',
+                  'Any array method that creates a copy, always does so shallowly. If there is an object in the array, the object reference is copied into the new array. In this case, both the original and new array refer to the same object. So when the object changes, all properties referring to the object reflect the change. Keep this in mind when using these methods if you have nested data in your array. Primitive types such as strings, numbers and booleans, are copied by value into the new array, so there is no reference to the original array.'
+                ]
+              },
+              {
+                id: '2',
+                type: 'code',
+                title: 'toReversed',
+                code: [
+                  'const items = [1, 2, 3];',
+                  'console.log(items); // [1, 2, 3]',
+                  '',
+                  'const reversedItems = items.toReversed();',
+                  'console.log(reversedItems); // [3, 2, 1]',
+                  'console.log(items); // [1, 2, 3]'
+                ]
+              },
+              {
+                id: '3',
+                type: 'text',
+                title: 'toSorted method',
+                text: [
+                  'toSorted has the same signature as sort, but it creates a new sorted array instead of sorting the array that it was called on. It returns a new array with the elements sorted in ascending order. The toSorted method takes in one optional parameter, which is a caparison function that defines the sort order. If this parameter is left out, the array elements are converted to strings and sorted according to each character’s Unicode code point value. Therefore, make sure you include a comparison function when sorting numbers. When used on sparse arrays, the toSorted method iterates empty spots as if the value isundefined.'
+                ]
+              },
+              {
+                id: '4',
+                type: 'code',
+                title: 'toSorted',
+                code: [
+                  "const letters = ['D', 'A', 'E', 'C', 'B']",
+                  'const numbers = [4, 2, 5, 1, 3]',
+                  '',
+                  '// toSorted  ',
+                  'const sortedLetters = letters.toSorted();  ',
+                  "console.log(letters) // Output: ['D', 'A', 'E', 'C', 'B']  ",
+                  "console.log(sortedLetters) // Output: ['A', 'B', 'C', 'D', 'E']",
+                  '',
+                  'const sortedNumbers = numbers.toSorted((a, b) => a - b)',
+                  'console.log(sortedNumbers) // Output: [1, 2, 3, 4, 5] ',
+                  '',
+                  '// common mistake using numbers ',
+                  'const nums2 = [0, 15, 5, 10, 20]',
+                  'const sortedNums2 = nums2.toSorted()',
+                  'console.log(sortedNums2) // Output: [0, 10, 15, 20, 5]',
+                  '',
+                  '// sort method changes array that it called on',
+                  'letters.sort()',
+                  "console.log(letters); // Output: ['A', 'B', 'C', 'D', 'E']"
+                ]
+              }
+            ]
+          },
+          author: {
+            username: 'Amigoo',
+            avatar: 'https://avatars.githubusercontent.com/u/114949478?v=4',
+            country: 'Ukraine',
+            age: 18,
+            bio: "Hello world, that's it!"
+          },
+          error: undefined
+        }
+      },
+      // @ts-expect-error
+      { userReducer, articleReducer }
+    ),
+    RouterDecorator
+  ]
 } satisfies Meta<typeof Article>
 
 export default meta

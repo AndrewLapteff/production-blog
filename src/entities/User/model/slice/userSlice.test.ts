@@ -8,7 +8,6 @@ describe('userSlice.test.ts', () => {
       user: { email: '', id: 1, username: '' }
     }
     const payload: UserSchema = {
-      _inited: true,
       accessToken: 'LDKFJlkjlkjDLKFj',
       user: { email: 'test@gmail.com', id: 1, username: 'Amigo' }
     }
@@ -21,7 +20,6 @@ describe('userSlice.test.ts', () => {
       user: { email: 'test@gmail.com', id: 1, username: 'Amigo' }
     }
     const result: UserSchema = {
-      _inited: false,
       accessToken: '',
       user: { email: '', id: 0, username: '' }
     }

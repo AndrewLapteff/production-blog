@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 import { ThunkConfig } from 'app/providers/store-provider'
 import { ArticleType } from '../types/article'
-import { Profile } from 'entities/Profile'
+import { Profile } from '../../../Profile'
 
 interface ReturnType {
   article: ArticleType

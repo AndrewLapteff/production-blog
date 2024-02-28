@@ -7,10 +7,23 @@ import { Code } from 'shared/ui/code/Code'
 export const ArticleCodeBlock = memo(
   ({ block }: { block: ArticleCodeBlockProps }) => {
     const { code, title } = block
+
+    const prepareCode = (code: string[] | string) => {
+      let stringLikeCode
+
+      if (typeof code !== 'string') {
+        stringLikeCode = code.join('\n')
+      } else {
+        stringLikeCode = code
+      }
+
+      return stringLikeCode
+    }
+
     return (
       <div className={s.articlecodeblock}>
         {title && <Text h="h3" title={title} />}
-        <Code code={code.join('\n')} />
+        <Code code={prepareCode(code)} />
       </div>
     )
   }
