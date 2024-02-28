@@ -2,5 +2,6 @@
   "error": "The article is not found",
   "mins-to-read": "mins to read",
   "views": "Views",
-  "likes": "Likes"
+  "likes": "Likes",
+  "article-is-not-found": "Article is not found"
 }

@@ -3,14 +3,16 @@ import s from './ArticlePage.module.scss'
 import { DynamicSliceLoader, classNames } from 'shared/lib'
 import { useParams } from 'react-router-dom'
 import { Text } from 'shared/ui'
+import { useTranslation } from 'react-i18next'
 
 const ArticlePage = () => {
   const { id } = useParams<{ id: string }>()
+  const { t } = useTranslation('article')
 
   if (!id) {
     return (
       <div className={classNames(s.articlepage)}>
-        <Text theme="error" text="Article is not found" />
+        <Text theme="error">{t('article-is-not-found')}</Text>
       </div>
     )
   }

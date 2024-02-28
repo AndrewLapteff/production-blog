@@ -59,26 +59,37 @@ const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
         isOpen={isOpen}
         setOpen={setOpen}
         header={
-          <Text className={s.header} text={t('registration')} theme="normal" />
+          <Text className={s.header} theme="normal">
+            {t('registration')}
+          </Text>
         }
         main={
           <div className={s['main-section']}>
             <section className={s.credentials}>
               <Input
                 data-testid="email"
+                type="email"
                 onChange={setEmailCallback}
                 value={email}
               >
                 {t('email')}
               </Input>
-              <Input onChange={setUserNameCallback} value={username}>
+              <Input
+                onChange={setUserNameCallback}
+                type="text"
+                value={username}
+              >
                 {t('username')}
               </Input>
-              <Input onChange={setPasswordCallback} value={password}>
+              <Input
+                type="password"
+                onChange={setPasswordCallback}
+                value={password}
+              >
                 {t('password')}
               </Input>
             </section>
-            {isErrorCorrect && <Text text={text} theme="error" />}
+            {isErrorCorrect && <Text theme="error">{text}</Text>}
           </div>
         }
         footer={

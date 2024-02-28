@@ -1,8 +1,7 @@
 import { memo } from 'react'
 import { ArticleCodeBlock as ArticleCodeBlockProps } from '../../model/types/article'
 import s from './ArticleCodeBlock.module.scss'
-import { Text } from 'shared/ui'
-import { Code } from 'shared/ui/code/Code'
+import { Title, Code } from 'shared/ui'
 
 export const ArticleCodeBlock = memo(
   ({ block }: { block: ArticleCodeBlockProps }) => {
@@ -22,7 +21,7 @@ export const ArticleCodeBlock = memo(
 
     return (
       <div className={s.articlecodeblock}>
-        {title && <Text h="h3" title={title} />}
+        {title && <Title h="h3">{title}</Title>}
         <Code code={prepareCode(code)} />
       </div>
     )

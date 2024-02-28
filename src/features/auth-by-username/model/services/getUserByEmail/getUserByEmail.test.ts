@@ -4,7 +4,6 @@ import { loginByEmailAndPassword } from './getUserByEmail'
 import { Dispatch } from '@reduxjs/toolkit'
 import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { NavigateFunction } from 'react-router-dom'
-import { UserSchema, setUser } from 'entities/User'
 jest.mock('axios')
 
 describe('getUserByEmail.test.ts', () => {

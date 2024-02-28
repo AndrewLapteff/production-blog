@@ -15,4 +15,6 @@
 
   --sidebar-width-folded: 50px;
   --sidebar-width-unfolded: 250px;
+
+  --height-of-main-section: calc(100vh - var(--navbar-height))
 }

@@ -5,7 +5,7 @@ I aim to align this project's structure and development processes as closely as 
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
-- [Installation](#installation)
+- [Features](#features)
 - [Testing](#testing)
 - [Storybook](#storybook)
 - [Contributing](#contributing)

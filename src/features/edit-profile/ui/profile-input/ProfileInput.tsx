@@ -24,7 +24,7 @@ export const ProfileInput = memo((props: Props) => {
 
   return (
     <div className={classNames(s['field-wrapper'])}>
-      <Text text={t(`${name}`)} size="s" />
+      <Text size="s">{t(`${name}`)}</Text>
       <Input
         type={type || 'text'}
         value={value || ''}

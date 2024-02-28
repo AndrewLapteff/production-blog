@@ -1,13 +1,12 @@
-import { FC, useState } from 'react'
+import { FC, PropsWithChildren, useState } from 'react'
 import { THEME, ThemeContext } from '../lib/ThemeContext'
 
-interface ThemeProviderProps {
-  children: React.ReactNode
-}
+interface ThemeProviderProps extends PropsWithChildren {}
 
 export const THEME_LOCAL_STORAGE_KEY = 'theme'
 
-const defaultTheme = (localStorage.getItem(THEME_LOCAL_STORAGE_KEY) as THEME) || 'light'
+const defaultTheme =
+  (localStorage.getItem(THEME_LOCAL_STORAGE_KEY) as THEME) || 'light'
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<THEME>(defaultTheme)
@@ -16,5 +15,9 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
   //   return { theme, setTheme }
   // }, [theme])
 
-  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  )
 }

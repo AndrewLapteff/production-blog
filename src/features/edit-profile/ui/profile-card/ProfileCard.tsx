@@ -76,7 +76,9 @@ export const ProfileCard = memo(() => {
   if (error) {
     return (
       <div className={classNames(s.wrapper)}>
-        <Text title="Smth went wrong" text="Try again later" align="center" />
+        <Text title="Smth went wrong" align="center">
+          {t('try-again-later')}
+        </Text>
       </div>
     )
   }
@@ -117,7 +119,7 @@ export const ProfileCard = memo(() => {
           style={{ marginTop: '5px' }}
           className={classNames(s['field-wrapper'])}
         >
-          <Text text={t('country')} size="s" />
+          <Text size="s">{t('country')}</Text>
           <Select
             onSelect={onSelectCountry}
             readonly={isReadonly}
@@ -127,11 +129,9 @@ export const ProfileCard = memo(() => {
         </div>
         {errors?.map((errorText) => {
           return (
-            <Text
-              key={errorText}
-              theme="error"
-              text={validationMapper[errorText]}
-            />
+            <Text key={errorText} theme="error">
+              {validationMapper[errorText]}
+            </Text>
           )
         })}
         <Controls

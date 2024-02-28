@@ -2,10 +2,15 @@
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
   outline: none;
   border: solid rgb(20, 20, 20) 2px;
+  transition: 0.2s opacity;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .primary {

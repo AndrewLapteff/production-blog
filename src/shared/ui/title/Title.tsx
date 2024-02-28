@@ -1,12 +1,19 @@
 import s from './Title.module.scss'
 import { classNames } from '../../lib'
-import { HtmlHTMLAttributes, memo, useCallback } from 'react'
+import {
+  HtmlHTMLAttributes,
+  PropsWithChildren,
+  ReactNode,
+  memo,
+  useCallback
+} from 'react'
 import { Align, Mods, Size, ThemeProps } from '../../types/types'
 
 type TitleSemanticSize = 'h1' | 'h2' | 'h3'
 
-interface TitleProps extends HtmlHTMLAttributes<HTMLParagraphElement> {
-  children: string
+interface TitleProps
+  extends HtmlHTMLAttributes<HTMLParagraphElement>,
+    PropsWithChildren {
   theme?: ThemeProps
   className?: string
   size?: Size
@@ -30,24 +37,29 @@ export const Title = memo((props: TitleProps) => {
   }
 
   const renderTitle = useCallback(
-    (h: TitleSemanticSize, title: string, mods: Mods, className: string) => {
+    (
+      h: TitleSemanticSize,
+      children: ReactNode,
+      mods: Mods,
+      className: string
+    ) => {
       switch (h) {
         case 'h1':
           return (
             <h1 className={classNames(s.title, mods, [s[className]])}>
-              {title}
+              {children}
             </h1>
           )
         case 'h2':
           return (
             <h2 className={classNames(s.title, mods, [s[className]])}>
-              {title}
+              {children}
             </h2>
           )
         case 'h3':
           return (
             <h3 className={classNames(s.title, mods, [s[className]])}>
-              {title}
+              {children}
             </h3>
           )
       }

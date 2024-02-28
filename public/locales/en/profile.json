@@ -15,5 +15,6 @@
   "server-error": "Server error",
   "the-value-of-age-is-too-great": "The value of age is too great",
   "bio-info-is-too-long": "Bio info is too long",
-  "username-is-too-short": "Username is too short"
+  "username-is-too-short": "Username is too short",
+  "try-again-later": "Try again later"
 }

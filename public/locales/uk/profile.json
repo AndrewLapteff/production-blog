@@ -15,5 +15,6 @@
   "server-error": "Помилка сервера",
   "the-value-of-age-is-too-great": "Значення віку занадто велике",
   "bio-info-is-too-long": "Інформація про біо занадто довга",
-  "username-is-too-short": "Ім'я користувача занадто коротке"
+  "username-is-too-short": "Ім'я користувача занадто коротке",
+  "try-again-later": "Спробуйте ще раз пізніше"
 }

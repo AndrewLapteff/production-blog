@@ -12,14 +12,14 @@ type Story = StoryObj<typeof meta>
 
 export const TextWhiteNormal: Story = {
   args: {
-    text: "It's example of text",
+    children: "It's example of text",
     theme: 'normal'
   }
 }
 
 export const TextDarkNormal: Story = {
   args: {
-    text: "It's example of text",
+    children: "It's example of text",
     theme: 'normal'
   },
   decorators: [ThemeDecorator('dark')]
@@ -27,14 +27,14 @@ export const TextDarkNormal: Story = {
 
 export const TextWhiteError: Story = {
   args: {
-    text: "It's example of text",
+    children: "It's example of text",
     theme: 'error'
   }
 }
 
 export const TextDarkError: Story = {
   args: {
-    text: "It's example of text",
+    children: "It's example of text",
     theme: 'error'
   },
   decorators: [ThemeDecorator('dark')]

@@ -21,7 +21,7 @@ export const buildLoaders = (mode: Mode): webpack.RuleSetRule[] => {
   }
 
   const scssLoader = {
-    test: /\.s[ac]ss$/i,
+    test: /\.(sa|sc|c)ss$/,
     use: [
       mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
       {

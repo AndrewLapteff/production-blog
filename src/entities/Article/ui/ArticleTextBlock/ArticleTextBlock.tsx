@@ -1,8 +1,7 @@
 import { ArticleTextBlock as ArticleTextBlockProps } from '../../../Article/model/types/article'
 import s from './ArticleTextBlock.module.scss'
 import { memo } from 'react'
-import { Text } from 'shared/ui'
-import { Title } from 'shared/ui/title/Title'
+import { Text, Title } from 'shared/ui'
 
 export const ArticleTextBlock = memo(
   ({ block }: { block: ArticleTextBlockProps }) => {
@@ -15,7 +14,11 @@ export const ArticleTextBlock = memo(
           </Title>
         )}
         {text.map((text) => {
-          return <Text className={s.text} text={text} key={text} size="m" />
+          return (
+            <Text className={s.text} key={text} size="m">
+              {text}
+            </Text>
+          )
         })}
       </div>
     )

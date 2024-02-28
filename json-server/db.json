@@ -43,14 +43,6 @@
       "authorId": "1",
       "blocks": [
         {
-          "id": "0",
-          "type": "image",
-          "title": "Complete Guide of New JavaScript Features from ECMAScript 2023",
-          "alt": "Photo by Joan Gamell on Unsplash",
-          "label": "Photo by Joan Gamell on Unsplash",
-          "url": "https://www.tutorialrepublic.com/lib/images/javascript-illustration.png"
-        },
-        {
           "id": "1",
           "type": "text",
           "title": "Immutable Array Methods",
@@ -105,6 +97,14 @@
             "letters.sort()",
             "console.log(letters); // Output: ['A', 'B', 'C', 'D', 'E']"
           ]
+        },
+        {
+          "id": "5",
+          "type": "image",
+          "title": "Complete Guide of New JavaScript Features from ECMAScript 2023",
+          "alt": "Photo by Joan Gamell on Unsplash",
+          "label": "Photo by Joan Gamell on Unsplash",
+          "url": "https://www.tutorialrepublic.com/lib/images/javascript-illustration.png"
         }
       ]
     }

@@ -15,14 +15,20 @@ export const fetchArticleById = createAsyncThunk<
   ThunkConfig<unknown | AxiosError> // returns when rejects
 >('article/fetchArticleById', async (id, { rejectWithValue, extra }) => {
   try {
-    const { data: article } = await extra.api.get<ArticleType>(`articles/${id}`)
+    const articlePromise = extra.api.get<ArticleType>(`articles/${id}`)
+    const authorPromise = extra.api.get<Profile>('profile', {
+      data: { id: 1 }
+    })
+
+    const smth = await Promise.all([articlePromise, authorPromise])
+
+    const { data: article } = smth[0]
+    const { data: author } = smth[1]
+
     if (!article) {
       throw new Error()
     }
-    const { data: author } = await extra.api.get<Profile>('profile', {
-      data: { id: 1 }
-    })
-    if (!article || !author) {
+    if (!author) {
       throw new Error()
     }
     return { article, author }

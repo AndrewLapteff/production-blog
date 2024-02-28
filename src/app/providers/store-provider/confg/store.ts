@@ -1,9 +1,7 @@
-import { Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit'
+import { ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { StoreProps } from '../types/Schema'
-import { UserSchema, userReducer } from 'entities/User'
 import { createReducerManager } from '../reducer-manager/reducerManager'
 import { $api } from 'shared/api/api'
-import { ProfileSchema } from 'entities/Profile'
 
 export const createStore = (
   props: StoreProps,
