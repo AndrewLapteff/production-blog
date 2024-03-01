@@ -10,5 +10,8 @@
   "main": "Головна",
   "about": "Про",
   "profile": "Профіль",
-  "articles": "Статті"
+  "articles": "Статті",
+  "article": {
+    "theres-no-comments": ""
+  }
 }

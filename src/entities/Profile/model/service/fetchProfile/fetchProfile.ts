@@ -7,16 +7,17 @@ function isInstanceOfProfile(obj: any): obj is Profile {
 }
 
 export const fetchProfile = createAsyncThunk<
-Profile,
-string,
-ThunkConfig<unknown>
->('profile/fetchProfile', async (username, { rejectWithValue, extra }) => {
+  Profile,
+  number,
+  ThunkConfig<unknown>
+>('profile/fetchProfile', async (id, { rejectWithValue, extra }) => {
   try {
-    const { data } = await extra.api.get('profile', { data: username })
-    if (!isInstanceOfProfile(data)) {
+    const { data } = await extra.api.get(`profiles?userId=${id}`)
+    const profile = data[0]
+    if (!isInstanceOfProfile(profile)) {
       throw new Error()
     }
-    return data
+    return profile
   } catch (error) {
     return rejectWithValue(error)
   }

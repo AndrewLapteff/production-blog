@@ -57,7 +57,7 @@ function buildStore(isLoading: boolean, error: undefined | string) {
         isLoading,
         error,
         article: {
-          id: '1',
+          id: 1,
           title:
             'New JavaScript Features from ECMAScript 2023 (ES14). New way to organize',
           description: 'New features of JS of 2024',
@@ -66,10 +66,10 @@ function buildStore(isLoading: boolean, error: undefined | string) {
           createdAt: '01.01.2024',
           topics: ['JavaScript', 'Features'],
           minsToRead: '2',
-          authorId: '1',
+          authorId: 1,
           blocks: [
             {
-              id: '0',
+              id: 0,
               type: 'image',
               title:
                 'Complete Guide of New JavaScript Features from ECMAScript 2023',
@@ -78,7 +78,7 @@ function buildStore(isLoading: boolean, error: undefined | string) {
               url: 'https://www.tutorialrepublic.com/lib/images/javascript-illustration.png'
             },
             {
-              id: '1',
+              id: 1,
               type: 'text',
               title: 'Immutable Array Methods',
               text: [
@@ -87,7 +87,7 @@ function buildStore(isLoading: boolean, error: undefined | string) {
               ]
             },
             {
-              id: '2',
+              id: 2,
               type: 'code',
               title: 'toReversed',
               code: [
@@ -100,7 +100,7 @@ function buildStore(isLoading: boolean, error: undefined | string) {
               ]
             },
             {
-              id: '3',
+              id: 3,
               type: 'text',
               title: 'toSorted method',
               text: [
@@ -108,7 +108,7 @@ function buildStore(isLoading: boolean, error: undefined | string) {
               ]
             },
             {
-              id: '4',
+              id: 4,
               type: 'code',
               title: 'toSorted',
               code: [
@@ -136,6 +136,7 @@ function buildStore(isLoading: boolean, error: undefined | string) {
           ]
         },
         author: {
+          id: 1,
           username: 'Amigoo',
           avatar: 'https://avatars.githubusercontent.com/u/114949478?v=4',
           country: 'Ukraine',

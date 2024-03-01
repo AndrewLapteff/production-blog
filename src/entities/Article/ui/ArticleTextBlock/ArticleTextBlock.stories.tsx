@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>
 export const ArticleTextBlockLight: Story = {
   args: {
     block: {
-      id: '1',
+      id: 1,
       type: 'text',
       title: 'Immutable Array Methods',
       text: [

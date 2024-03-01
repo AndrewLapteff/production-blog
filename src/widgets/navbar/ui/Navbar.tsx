@@ -8,7 +8,11 @@ import { getUser, logout } from 'entities/User'
 import s from './Navbar.module.scss'
 import { routerConfig } from 'shared/config'
 
-export const Navbar = () => {
+interface NavbarProps {
+  isSigned: boolean
+}
+
+export const Navbar = ({ isSigned }: NavbarProps) => {
   const { t } = useTranslation('translation')
   const [isOpen, setOpen] = useState(false)
   const userInfo = useSelector(getUser)
@@ -26,19 +30,21 @@ export const Navbar = () => {
     const result: ReactNode[] = []
 
     ;(() => {
-      Object.entries(routerConfig).forEach(([name, { path, hide }]) => {
-        if (!hide) {
+      Object.entries(routerConfig).forEach(
+        ([name, { path, hide = false, authOnly }]) => {
+          if (!isSigned && authOnly) return
+          if (hide) return
           result.push(
             <AppLink key={path} theme="primary" to={path || ''}>
               {t(name)}
             </AppLink>
           )
         }
-      })
+      )
     })()
 
     return result
-  }, [t])
+  }, [t, isSigned])
 
   return (
     <nav className={classNames(s.navbar)}>

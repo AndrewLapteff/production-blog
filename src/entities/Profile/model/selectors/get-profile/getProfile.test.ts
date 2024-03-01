@@ -5,6 +5,7 @@ describe('getProfile.test.ts', () => {
   it('should return object with proper profile info', () => {
     const profileReducer = {
       profile: {
+        id: 1,
         age: 18,
         avatar: '',
         bio: 'Hey',

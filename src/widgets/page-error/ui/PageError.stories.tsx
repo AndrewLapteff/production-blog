@@ -39,7 +39,7 @@ export const PageErrorLight: Story = {
   render: (arg) => {
     return (
       <div>
-        <Navbar />
+        <Navbar isSigned />
         <div style={{ display: 'flex' }}>
           <Sidebar />
           <PageError />
@@ -54,7 +54,7 @@ export const PageErrorDark: Story = {
   render: (arg) => {
     return (
       <div>
-        <Navbar />
+        <Navbar isSigned />
         <div style={{ display: 'flex' }}>
           <Sidebar />
           <PageError />

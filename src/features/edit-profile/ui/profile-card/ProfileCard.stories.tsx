@@ -24,6 +24,7 @@ const initialStore: StoreProps = {
   },
   profileReducer: {
     profile: {
+      id: 1,
       age: 18,
       avatar: Avatar,
       bio: 'Hey',

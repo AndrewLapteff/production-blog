@@ -3,7 +3,7 @@ import { Profile } from '../../../Profile'
 export type ArticleTypes = 'code' | 'text' | 'image'
 
 interface ArticleBase {
-  id: string
+  id: number
   type: ArticleTypes
   title?: string
 }
@@ -31,15 +31,16 @@ export type ArticleBlock =
   | ArticleImageBlock
 
 export interface ArticleType {
-  id: string
+  id: number
   title: string
   description: string
   img: string
   view: number
-  authorId: string
+  authorId: number
   minsToRead: string
   createdAt: string
   topics: string[]
+  profile?: Profile
   blocks: ArticleBlock[]
 }
 

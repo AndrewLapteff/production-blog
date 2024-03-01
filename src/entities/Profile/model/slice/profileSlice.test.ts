@@ -19,6 +19,7 @@ const emptyState: ProfileSchema = {
 }
 
 const profile = {
+  id: 1,
   username: '',
   avatar: '',
   country: '',
@@ -36,6 +37,7 @@ const filledState: ProfileSchema = {
 describe('userSlice.test.ts reducers', () => {
   it('should change profile value', () => {
     const payload: Profile = {
+      id: 1,
       username: 'Amigo',
       avatar: 'https://avatars.githubusercontent.com/u/114949478?v=4',
       country: 'USA',
@@ -92,13 +94,13 @@ describe('userSlice.test.ts reducers', () => {
 describe('userSlice.test.ts extra reducers', () => {
   it('should change profile value', () => {
     expect(
-      profileReducer(emptyState, fetchProfile.fulfilled(profile, '', '', ''))
+      profileReducer(emptyState, fetchProfile.fulfilled(profile, '', 1, ''))
     ).toEqual({ ...filledState, backupProfile: profile })
   })
   it('should change profile value', () => {
-    expect(
-      profileReducer(emptyState, fetchProfile.pending('', '', ''))
-    ).toEqual({ ...emptyState, isLoading: true })
+    expect(profileReducer(emptyState, fetchProfile.pending('', 1, ''))).toEqual(
+      { ...emptyState, isLoading: true }
+    )
   })
   it('should change profile value', () => {
     expect(

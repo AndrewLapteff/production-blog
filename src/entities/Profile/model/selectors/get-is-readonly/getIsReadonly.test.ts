@@ -5,6 +5,7 @@ describe('getIsReadonly.test.ts', () => {
   it('should return false', () => {
     const profileReducer = {
       profile: {
+        id: 1,
         age: 18,
         avatar: '',
         bio: 'Hey',

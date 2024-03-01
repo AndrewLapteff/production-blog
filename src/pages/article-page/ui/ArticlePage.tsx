@@ -4,6 +4,7 @@ import { DynamicSliceLoader, classNames } from 'shared/lib'
 import { useParams } from 'react-router-dom'
 import { Text } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
+import { CommentList } from 'entities/Comment'
 
 const ArticlePage = () => {
   const { id } = useParams<{ id: string }>()
@@ -23,8 +24,10 @@ const ArticlePage = () => {
       reducer={articleReducer}
       removeAfterUnmount
     >
-      <div className={s.article}>
-        <Article id={id} />
+      <div className={s.wrapper}>
+        <div className={s.article}>
+          <Article id={id} />
+        </div>
       </div>
     </DynamicSliceLoader>
   )

@@ -1,38 +1,43 @@
 {
-  "posts": [
-    {
-      "id": "1",
-      "title": "a title",
-      "views": 100
-    },
-    {
-      "id": "2",
-      "title": "another title",
-      "views": 200
-    }
-  ],
   "comments": [
     {
-      "id": "1",
+      "id": 1,
       "text": "a comment about post 1",
-      "postId": "1"
+      "articleId": 1,
+      "profileId": 1,
+      "createdAt": "01.01.2024"
     },
     {
-      "id": "2",
+      "id": 2,
       "text": "another comment about post 1",
-      "postId": "1"
+      "articleId": 1,
+      "profileId": 1,
+      "createdAt": "01.01.2024"
     }
   ],
-  "profile": {
-    "username": "Amigoo",
-    "avatar": "https://avatars.githubusercontent.com/u/114949478?v=4",
-    "country": "Ukraine",
-    "age": "18",
-    "bio": "Hello world, that's it!"
-  },
+  "profiles": [
+    {
+      "id": 1,
+      "userId": 1,
+      "username": "Amigoo",
+      "avatar": "https://avatars.githubusercontent.com/u/114949478?v=4",
+      "country": "Ukraine",
+      "age": "18",
+      "bio": "Hello world, that's it!"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "username": "Another",
+      "avatar": "https://avatars.githubusercontent.com/u/114949478?v=4",
+      "country": "USA",
+      "age": "18",
+      "bio": "Hello world, that's it!"
+    }
+  ],
   "articles": [
     {
-      "id": "1",
+      "id": 1,
       "title": "New JavaScript Features from ECMAScript 2023 (ES14). New way to organize",
       "description": "New features of JS of 2024",
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
@@ -40,10 +45,10 @@
       "createdAt": "01.01.2024",
       "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
-      "authorId": "1",
+      "profileId": 1,
       "blocks": [
         {
-          "id": "1",
+          "id": 1,
           "type": "text",
           "title": "Immutable Array Methods",
           "text": [
@@ -52,7 +57,7 @@
           ]
         },
         {
-          "id": "2",
+          "id": 2,
           "type": "code",
           "title": "toReversed",
           "code": [
@@ -65,7 +70,7 @@
           ]
         },
         {
-          "id": "3",
+          "id": 3,
           "type": "text",
           "title": "toSorted method",
           "text": [
@@ -73,7 +78,7 @@
           ]
         },
         {
-          "id": "4",
+          "id": 4,
           "type": "code",
           "title": "toSorted",
           "code": [
@@ -99,7 +104,7 @@
           ]
         },
         {
-          "id": "5",
+          "id": 5,
           "type": "image",
           "title": "Complete Guide of New JavaScript Features from ECMAScript 2023",
           "alt": "Photo by Joan Gamell on Unsplash",
@@ -111,10 +116,10 @@
   ],
   "users": [
     {
+      "id": 1,
       "email": "this.is.amigogo@gmail.com",
       "password": "$2a$10$bblrHXsaHEzGcRoIZKdYh.7cYs7W18LKgUKMbC0iWFGkzYbuy.ZxW",
-      "username": "Amigo",
-      "id": 1
+      "username": "Amigo"
     }
   ]
 }

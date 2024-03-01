@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>
 export const ArticleImageBlockLight: Story = {
   args: {
     block: {
-      id: '0',
+      id: 0,
       type: 'image',
       title: 'Complete Guide of New JavaScript Features from ECMAScript 2023',
       alt: 'Photo by Joan Gamell on Unsplash',

@@ -7,6 +7,7 @@ describe('getValidationErrors.test.ts', () => {
   it('should return array with two errors', () => {
     const profileReducer: ProfileSchema = {
       profile: {
+        id: 1,
         age: 18,
         avatar: '',
         bio: 'Hey',

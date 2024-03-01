@@ -10,28 +10,24 @@ interface ReturnType {
 }
 
 export const fetchArticleById = createAsyncThunk<
-  ReturnType, // returns when fulfilled
-  string, // arg that provides when you call this func
-  ThunkConfig<unknown | AxiosError> // returns when rejects
+  ReturnType,
+  string,
+  ThunkConfig<unknown | AxiosError>
 >('article/fetchArticleById', async (id, { rejectWithValue, extra }) => {
   try {
-    const articlePromise = extra.api.get<ArticleType>(`articles/${id}`)
-    const authorPromise = extra.api.get<Profile>('profile', {
-      data: { id: 1 }
+    const { data } = await extra.api.get<ArticleType>(`articles/${id}`, {
+      params: { _expand: 'profile' }
     })
 
-    const smth = await Promise.all([articlePromise, authorPromise])
-
-    const { data: article } = smth[0]
-    const { data: author } = smth[1]
-
-    if (!article) {
+    const profile = data.profile
+    delete data.profile
+    if (!data) {
       throw new Error()
     }
-    if (!author) {
+    if (!profile) {
       throw new Error()
     }
-    return { article, author }
+    return { article: data, author: profile }
   } catch (error) {
     if (error instanceof AxiosError) return rejectWithValue(error)
     return rejectWithValue(error)

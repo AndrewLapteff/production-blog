@@ -1,6 +1,7 @@
 import { PROFILE_VALIDATION } from './validation'
 
 export interface Profile {
+  id: number
   username: string
   age: number
   country: string

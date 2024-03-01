@@ -6,20 +6,20 @@ import {
 } from 'shared/lib'
 import { useEffect } from 'react'
 import { ProfileCard } from 'features/edit-profile/ui/profile-card/ProfileCard'
-import { getUsername } from 'features/auth-by-username/model/selectors'
+import { getUser } from 'entities/User'
 
 const ProfilePage = () => {
   const dispatch = useThunkDispatch()
 
-  const username = useAppSelector(getUsername)
+  const { id } = useAppSelector(getUser)
 
   useEffect(() => {
     if (PROJECT_ENV !== 'storybook') {
-      dispatch(fetchProfile(username)).catch((err) => {
+      dispatch(fetchProfile(id)).catch((err) => {
         console.log(err)
       })
     }
-  }, [dispatch, username])
+  }, [dispatch, id])
 
   return (
     <DynamicSliceLoader
