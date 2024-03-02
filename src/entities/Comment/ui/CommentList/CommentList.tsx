@@ -1,5 +1,5 @@
 import s from './CommentList.module.scss'
-import { classNames, useThunkDispatch } from 'shared/lib'
+import { classNames } from 'shared/lib'
 import { memo, useEffect } from 'react'
 import { Text, Title } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
@@ -11,7 +11,6 @@ interface CommentListProps {
 }
 
 export const CommentList = memo(({ comments }: CommentListProps) => {
-  const dispatch = useThunkDispatch()
   const { t } = useTranslation('article')
 
   useEffect(() => {

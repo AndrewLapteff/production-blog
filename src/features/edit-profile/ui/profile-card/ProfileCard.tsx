@@ -48,10 +48,10 @@ export const ProfileCard = memo(() => {
 
   const onConfirm = useCallback(() => {
     // here
-    dispatch(postProfile()).catch((err) => {
+    dispatch(postProfile(profile?.id || 0)).catch((err) => {
       console.log(err)
     })
-  }, [dispatch])
+  }, [dispatch, profile])
 
   const validationMapper = {
     [PROFILE_VALIDATION.NO_AGE]: t('age-is-not-specified'),

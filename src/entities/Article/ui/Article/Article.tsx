@@ -1,7 +1,7 @@
 import s from './Article.module.scss'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { classNames, useThunkDispatch } from 'shared/lib'
-import { memo, useCallback, useEffect, useMemo } from 'react'
+import { memo, useCallback, useMemo } from 'react'
 import { fetchArticleById } from './../../model/services/fetchArticleById'
 import { useSelector } from 'react-redux'
 import { getArticle } from '../../model/selectors/getArticle/getArticle'
@@ -17,7 +17,7 @@ import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { Controls } from '../Controls/Controls'
 import { Author } from 'widgets/author'
-import { Comment, CommentList } from 'entities/Comment'
+import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
 
 interface ArticleProps {
   id: string
@@ -26,6 +26,7 @@ interface ArticleProps {
 export const Article = memo(({ id }: ArticleProps) => {
   const dispatch = useThunkDispatch()
   const { t } = useTranslation('article')
+  useInitialEffect(async () => await dispatch(fetchArticleById(id)), 'storybook')
 
   const isLoading = useSelector(getIsLoading)
   const article = useSelector(getArticle)
@@ -55,14 +56,6 @@ export const Article = memo(({ id }: ArticleProps) => {
     })
   }, [article])
 
-  useEffect(() => {
-    if (PROJECT_ENV !== 'storybook') {
-      dispatch(fetchArticleById(id)).catch((err) => {
-        console.log(err)
-      })
-    }
-  }, [dispatch, id])
-
   if (error) {
     return (
       <Title align="center" h="h1">
@@ -78,23 +71,6 @@ export const Article = memo(({ id }: ArticleProps) => {
       </div>
     )
   }
-
-  const comments: Comment[] = [
-    {
-      articleId: 1,
-      createdAt: '01.01.2005',
-      id: 1,
-      profileId: 1,
-      text: 'Whoaaa'
-    },
-    {
-      articleId: 2,
-      createdAt: '01.01.2015',
-      id: 1,
-      profileId: 1,
-      text: 'LsldlkfsjdlKJl lksdj lkJlkjdsflksdjfkl lkjdslakfjl;'
-    }
-  ]
 
   return (
     <div className={s.article}>
@@ -115,7 +91,6 @@ export const Article = memo(({ id }: ArticleProps) => {
       />
       {article.blocks.map(renderBlock)}
       <div className={s.topics}>{renderTopics}</div>
-      <CommentList comments={comments} />
     </div>
   )
 })

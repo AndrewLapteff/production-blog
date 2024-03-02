@@ -10,6 +10,7 @@ import { ArticleSchema } from 'entities/Article/model/types/article'
 import type { ProfileSchema } from 'entities/Profile'
 import type { UserSchema } from 'entities/User'
 import type { LoginSchema } from 'features/auth-by-username'
+import { CommentsSchema } from 'pages/article-page'
 import { NavigateFunction } from 'react-router-dom'
 
 export interface StoreProps {
@@ -17,6 +18,7 @@ export interface StoreProps {
   loginReducer?: LoginSchema
   profileReducer?: ProfileSchema
   articleReducer?: ArticleSchema
+  commentsReducer?: CommentsSchema
   navigate?: NavigateFunction
 }
 

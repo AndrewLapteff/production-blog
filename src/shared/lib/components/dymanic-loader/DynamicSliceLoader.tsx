@@ -9,8 +9,8 @@ import {
 // TODO: array of reducers
 
 interface DynamicSliceLoaderProps extends PropsWithChildren {
-  name: keyof StoreProps
-  reducer: Reducer
+  name: keyof StoreProps | Array<keyof StoreProps>
+  reducer: Reducer | Reducer[]
   removeAfterUnmount: boolean
 }
 
@@ -19,10 +19,23 @@ export const DynamicSliceLoader = (props: DynamicSliceLoaderProps) => {
   const { name, reducer, removeAfterUnmount, children } = props
 
   useEffect(() => {
-    store.reducerManager.add(name, reducer)
+    if (!Array.isArray(reducer) && !Array.isArray(name)) {
+      store.reducerManager.add(name, reducer)
+    } else if (Array.isArray(reducer) && Array.isArray(name)) {
+      reducer.forEach((reducerItem, i) => {
+        store.reducerManager.add(name[i], reducerItem)
+      })
+    }
+
     return () => {
       if (removeAfterUnmount) {
-        store.reducerManager.remove(name)
+        if (!Array.isArray(reducer) && !Array.isArray(name)) {
+          store.reducerManager.remove(name)
+        } else if (Array.isArray(reducer) && Array.isArray(name)) {
+          name.forEach((nameItem) => {
+            store.reducerManager.remove(nameItem)
+          })
+        }
       }
     }
   })

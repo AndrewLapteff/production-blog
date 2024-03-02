@@ -1,7 +1,8 @@
 .article {
   display: flex;
-  justify-content: center;
-  overflow-y: scroll;
+  flex-direction: column;
+  align-items: center;
+  height: var(--height-of-main-section);
 }
 
 .article::-webkit-scrollbar {

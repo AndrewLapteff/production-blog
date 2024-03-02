@@ -19,7 +19,7 @@
     {
       "id": 1,
       "userId": 1,
-      "username": "Amigoo",
+      "username": "Amigooo",
       "avatar": "https://avatars.githubusercontent.com/u/114949478?v=4",
       "country": "Ukraine",
       "age": "18",
@@ -43,7 +43,10 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "view": "1024",
       "createdAt": "01.01.2024",
-      "topics": ["JavaScript", "Features"],
+      "topics": [
+        "JavaScript",
+        "Features"
+      ],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": [

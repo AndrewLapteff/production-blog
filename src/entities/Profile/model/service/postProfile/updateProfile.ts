@@ -10,10 +10,10 @@ function isInstanceOfProfile(obj: any): obj is Profile {
 }
 
 export const postProfile = createAsyncThunk<
-Profile,
-void,
-ThunkConfig<PROFILE_VALIDATION[]>
->('profile/postProfile', async (_, { rejectWithValue, extra, getState }) => {
+  Profile,
+  number,
+  ThunkConfig<PROFILE_VALIDATION[]>
+>('profile/postProfile', async (id, { rejectWithValue, extra, getState }) => {
   const profile = getProfile(getState())
 
   const errors = validateProfile(profile)
@@ -23,7 +23,7 @@ ThunkConfig<PROFILE_VALIDATION[]>
   }
 
   try {
-    const { data } = await extra.api.post('profile', profile)
+    const { data } = await extra.api.patch(`profiles/${id}`, profile)
     if (!isInstanceOfProfile(data)) {
       throw new Error('The returned value is not a profile')
     }
