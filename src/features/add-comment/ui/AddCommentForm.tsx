@@ -11,8 +11,8 @@ import { addComment } from 'pages/article-page'
 interface AddCommentFormProps
   extends Pick<Comment, 'articleId' | 'profileId'> {}
 
-export const AddCommentForm = memo(
-  ({ articleId, profileId }: AddCommentFormProps) => {
+const AddCommentForm = memo(
+  ({ articleId = 1, profileId = 1 }: AddCommentFormProps) => {
     const { t } = useTranslation('translation')
     const [text, setText] = useState<string>('')
     const dispatch = useDispatch()
@@ -42,7 +42,7 @@ export const AddCommentForm = memo(
           bio: "Hello world, that's it!"
         }
       }
-      console.log('f')
+
       dispatch(addComment(comment))
     }
 
@@ -60,3 +60,5 @@ export const AddCommentForm = memo(
     )
   }
 )
+
+export default AddCommentForm

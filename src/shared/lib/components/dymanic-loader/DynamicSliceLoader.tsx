@@ -21,6 +21,7 @@ export const DynamicSliceLoader = (props: DynamicSliceLoaderProps) => {
 
   useEffect(() => {
     if (!Array.isArray(reducer) && !Array.isArray(name)) {
+      console.log(name)
       store.reducerManager.add(name, reducer)
     } else if (Array.isArray(reducer) && Array.isArray(name)) {
       reducer.forEach((reducerItem, i) => {
@@ -40,7 +41,7 @@ export const DynamicSliceLoader = (props: DynamicSliceLoaderProps) => {
         }
       }
     }
-  })
+  }, [])
 
   return children
 }

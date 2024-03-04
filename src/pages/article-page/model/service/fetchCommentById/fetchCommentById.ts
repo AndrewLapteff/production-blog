@@ -4,7 +4,7 @@ import { Comment } from 'entities/Comment'
 
 export const fetchCommentById = createAsyncThunk<
   Comment[],
-  string | undefined,
+  number | undefined,
   ThunkConfig<string>
 >(
   'comment/fetchCommentById',
