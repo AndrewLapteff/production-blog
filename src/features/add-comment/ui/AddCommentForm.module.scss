@@ -1,0 +1,20 @@
+.addcommentform {
+  // display: block;
+  height: 100%;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 10px;
+}
+
+.text-area {
+  padding: 10px;
+  height: 100px;
+  border-radius: 5px;
+  background-color: var(--comments-text-area-color);
+  color: var(--high-emphasis);
+  width: 100%;
+  resize: none;
+}

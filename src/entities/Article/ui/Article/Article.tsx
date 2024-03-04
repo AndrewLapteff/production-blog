@@ -26,7 +26,10 @@ interface ArticleProps {
 export const Article = memo(({ id }: ArticleProps) => {
   const dispatch = useThunkDispatch()
   const { t } = useTranslation('article')
-  useInitialEffect(async () => await dispatch(fetchArticleById(id)), 'storybook')
+  useInitialEffect(
+    async () => await dispatch(fetchArticleById(id)),
+    'storybook'
+  )
 
   const isLoading = useSelector(getIsLoading)
   const article = useSelector(getArticle)
@@ -76,6 +79,7 @@ export const Article = memo(({ id }: ArticleProps) => {
     <div className={s.article}>
       <h1 className={s.title}>{article.title}</h1>
       <Author
+        id={author.id}
         avatar={author.avatar}
         time={`${article.minsToRead} ${t('mins-to-read')}`}
         username={author.username}

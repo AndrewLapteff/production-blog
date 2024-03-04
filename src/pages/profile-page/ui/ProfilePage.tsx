@@ -4,16 +4,20 @@ import {
   useThunkDispatch,
   useAppSelector
 } from 'shared/lib'
-import { useEffect } from 'react'
 import { ProfileCard } from 'features/edit-profile/ui/profile-card/ProfileCard'
 import { getUser } from 'entities/User'
 import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
+import { useParams } from 'react-router-dom'
 
 const ProfilePage = () => {
   const dispatch = useThunkDispatch()
+  const { id: profileId } = useParams<string>()
   const { id } = useAppSelector(getUser)
 
-  useInitialEffect(async () => await dispatch(fetchProfile(id)), 'storybook')
+  useInitialEffect(
+    async () => await dispatch(fetchProfile(profileId || id)),
+    'storybook'
+  )
 
   return (
     <DynamicSliceLoader

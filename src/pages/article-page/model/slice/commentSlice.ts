@@ -1,4 +1,8 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
+import {
+  PayloadAction,
+  createEntityAdapter,
+  createSlice
+} from '@reduxjs/toolkit'
 import { StoreProps } from 'app/providers/store-provider'
 import { CommentsSchema } from '../types/comments'
 import { Comment } from 'entities/Comment'
@@ -16,17 +20,22 @@ const commentsSlice = createSlice({
     ids: [],
     entities: {}
   }),
-  reducers: {},
+  reducers: {
+    addComment(state, action: PayloadAction<Comment>) {
+      commentsAdapter.addOne(state, action.payload)
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchCommentsByArticleId.fulfilled, (state, action) => {
       state.isLoading = true
-      console.log(action.payload) // данные здесь есть
       commentsAdapter.setAll(state, action.payload)
     })
   }
 })
 
 export const commentsReducer = commentsSlice.reducer
+
+export const { addComment } = commentsSlice.actions
 
 export const commentsSelector = commentsAdapter.getSelectors<StoreProps>(
   (state) => state?.commentsReducer || commentsAdapter.getInitialState()

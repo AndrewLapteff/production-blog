@@ -8,7 +8,7 @@ function isInstanceOfProfile(obj: any): obj is Profile {
 
 export const fetchProfile = createAsyncThunk<
   Profile,
-  number,
+  number | string,
   ThunkConfig<unknown>
 >('profile/fetchProfile', async (id, { rejectWithValue, extra }) => {
   try {

@@ -11,9 +11,10 @@ import { commentsReducer, commentsSelector } from '../model/slice/commentSlice'
 import { getIsLoading } from '../model/selectors/selectors'
 import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
 import { fetchCommentById } from '../model/service/fetchCommentById/fetchCommentById'
-import { useEffect } from 'react'
+import { memo } from 'react'
+import { AddCommentForm } from 'features/add-comment'
 
-const ArticlePage = () => {
+const ArticlePageInner = memo(() => {
   const { id } = useParams<{ id: string }>()
   const { t } = useTranslation('article')
   const dispatch = useThunkDispatch()
@@ -35,17 +36,28 @@ const ArticlePage = () => {
       </div>
     )
   }
+  console.log(comments)
+  return (
+    <div className={s.article}>
+      <Article id={id} />
+      {comments.length !== 0 && (
+        <>
+          <CommentList comments={comments} />
+          <AddCommentForm articleId={Number(id)} profileId={1} />
+        </>
+      )}
+    </div>
+  )
+})
 
+const ArticlePage = () => {
   return (
     <DynamicSliceLoader
       name={['articleReducer', 'commentsReducer']}
       reducer={[articleReducer, commentsReducer]}
       removeAfterUnmount
     >
-      <div className={s.article}>
-        <Article id={id} />
-        {article && <CommentList comments={comments} />}
-      </div>
+      <ArticlePageInner />
     </DynamicSliceLoader>
   )
 }

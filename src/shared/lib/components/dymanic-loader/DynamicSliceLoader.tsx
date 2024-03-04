@@ -1,6 +1,6 @@
 import { Reducer } from '@reduxjs/toolkit'
 import { PropsWithChildren, useEffect } from 'react'
-import { useStore } from 'react-redux'
+import { useDispatch, useStore } from 'react-redux'
 import {
   ExtendedStore,
   StoreProps
@@ -17,6 +17,7 @@ interface DynamicSliceLoaderProps extends PropsWithChildren {
 export const DynamicSliceLoader = (props: DynamicSliceLoaderProps) => {
   const store = useStore() as ExtendedStore
   const { name, reducer, removeAfterUnmount, children } = props
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (!Array.isArray(reducer) && !Array.isArray(name)) {
@@ -24,6 +25,7 @@ export const DynamicSliceLoader = (props: DynamicSliceLoaderProps) => {
     } else if (Array.isArray(reducer) && Array.isArray(name)) {
       reducer.forEach((reducerItem, i) => {
         store.reducerManager.add(name[i], reducerItem)
+        dispatch({ type: `@INIT ${name[i]} reducer` })
       })
     }
 

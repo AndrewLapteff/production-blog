@@ -10,6 +10,7 @@ export enum Routes {
   MAIN = 'main',
   ABOUT = 'about',
   PROFILE = 'profile',
+  PROFILES = 'profiles',
   NOT_FOUND = 'not_found',
   ARTICLE = 'article',
   ARTICLES = 'articles'
@@ -19,6 +20,7 @@ export const routes: Record<Routes, string> = {
   main: '/',
   about: '/about',
   profile: '/profile',
+  profiles: '/profiles/',
   article: '/article/',
   articles: '/articles',
   not_found: '*'
@@ -42,6 +44,11 @@ export const routerConfig: Record<Routes, ExtendedRouteProps> = {
     path: routes.profile,
     element: <ProfilePage />,
     authOnly: true
+  },
+  profiles: {
+    path: routes.profiles + ':id',
+    element: <ProfilePage />,
+    hide: true
   },
   article: {
     path: routes.article + ':id',

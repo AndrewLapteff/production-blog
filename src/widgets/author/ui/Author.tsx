@@ -4,17 +4,18 @@ import { AppLink } from 'shared/ui'
 import { Avatar } from 'shared/ui/avatar/Avatar'
 import { Profile } from 'entities/Profile'
 
-interface AuthorProps extends Partial<Pick<Profile, 'username' | 'avatar'>> {
+interface AuthorProps
+  extends Partial<Pick<Profile, 'username' | 'avatar' | 'id'>> {
   time: string
 }
 
 export const Author = memo((props: AuthorProps) => {
-  const { avatar, time, username } = props
+  const { avatar, time, username, id } = props
   return (
     <div className={s['author-info']}>
       <Avatar outline size={40} alt={`${username}'s avatar`} src={avatar} />
       <div className={s.details}>
-        <AppLink to={`profile/${username}`}>{username}</AppLink>
+        <AppLink to={`/profiles/${id}`}>{username}</AppLink>
         <div>
           <span>{time}</span>
         </div>

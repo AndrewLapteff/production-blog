@@ -32,6 +32,11 @@ body {
   overflow-y: scroll;
 }
 
+
+.content-area::-webkit-scrollbar {
+  display: none;
+}
+
 .s {
   font-size: 16px;
 }

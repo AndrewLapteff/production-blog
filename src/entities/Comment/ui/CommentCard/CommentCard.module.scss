@@ -1,3 +1,18 @@
+.comment-card {
+  position: relative;
+}
+
 .comment-text {
   margin-top: 10px;
+}
+
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
