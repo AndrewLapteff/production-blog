@@ -7,6 +7,7 @@ export interface Profile {
   country: string
   avatar: string
   bio: string
+  userId?: number
 }
 
 export interface ProfileSchema {

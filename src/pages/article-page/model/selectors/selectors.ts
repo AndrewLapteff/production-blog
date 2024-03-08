@@ -1,6 +1,7 @@
 import { StoreProps } from 'app/providers/store-provider'
 
-export const getIsLoading = (store: StoreProps) =>
+export const getIsLoadingComments = (store: StoreProps) =>
   store.commentsReducer?.isLoading || false
 
-export const getError = (store: StoreProps) => store.commentsReducer?.error
+export const getErrorComments = (store: StoreProps) =>
+  store.commentsReducer?.error

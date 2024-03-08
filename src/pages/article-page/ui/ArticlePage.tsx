@@ -1,13 +1,14 @@
 import s from './ArticlePage.module.scss'
 import { Article, articleReducer } from 'entities/Article'
-import { DynamicSliceLoader, classNames } from 'shared/lib'
+import { DynamicSliceLoader } from 'shared/lib'
 import { useParams } from 'react-router-dom'
 import { Text } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { commentsReducer } from '../model/slice/commentSlice'
 import { memo } from 'react'
-import { RenderOnViewportEntry } from 'app/providers/render-on-viewport-entry/RenderOnViewportEntry'
+import { RenderOnViewportEntry } from 'app/providers/render-on-viewport-entry'
 import { Comments } from 'widgets/comments'
+import { addCommentFormReducer } from 'features/add-comment'
 
 const ArticlePage = memo(() => {
   const { id } = useParams<{ id: string }>()
@@ -31,8 +32,8 @@ const ArticlePage = memo(() => {
         <Article id={id} />
         <RenderOnViewportEntry threshold={0}>
           <DynamicSliceLoader
-            name={'commentsReducer'}
-            reducer={commentsReducer}
+            name={['commentsReducer', 'addCommentForm']}
+            reducer={[commentsReducer, addCommentFormReducer]}
             removeAfterUnmount
           >
             <Comments articleId={Number(id)} />

@@ -8,11 +8,46 @@
       "createdAt": "01.01.2024"
     },
     {
-      "id": 2,
-      "text": "another comment about post 1",
       "articleId": 1,
       "profileId": 2,
-      "createdAt": "01.01.2024"
+      "createdAt": "05.02.2024",
+      "text": "Hello guys\n",
+      "id": 2
+    },
+    {
+      "articleId": 1,
+      "profileId": 1,
+      "createdAt": "05.02.2024",
+      "text": "Tooooo",
+      "id": 3
+    },
+    {
+      "articleId": 1,
+      "profileId": 1,
+      "createdAt": "05.02.2024",
+      "text": "fdfd",
+      "id": 4
+    },
+    {
+      "articleId": 1,
+      "profileId": 1,
+      "createdAt": "05.02.2024",
+      "text": "sdfdf",
+      "id": 5
+    },
+    {
+      "articleId": 1,
+      "profileId": 1,
+      "createdAt": "05.02.2024",
+      "text": "sdfsdf",
+      "id": 6
+    },
+    {
+      "articleId": 1,
+      "profileId": 1,
+      "createdAt": "05.02.2024",
+      "text": "dfsd",
+      "id": 7
     }
   ],
   "profiles": [

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { RouterDecorator, ThemeDecorator } from 'shared/config'
+import { ThemeDecorator } from 'shared/config'
 import { AppLink } from './AppLink'
 
 const meta: Meta<typeof AppLink> = {
@@ -8,7 +8,6 @@ const meta: Meta<typeof AppLink> = {
   parameters: {
     layout: 'fullscreen'
   },
-  decorators: [RouterDecorator],
   args: {
     children: 'Link'
   }

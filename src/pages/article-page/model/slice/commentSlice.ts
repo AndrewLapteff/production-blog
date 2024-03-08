@@ -15,8 +15,8 @@ const commentsAdapter = createEntityAdapter<Comment, number>({
 const commentsSlice = createSlice({
   name: 'comments',
   initialState: commentsAdapter.getInitialState<CommentsSchema>({
-    isLoading: true,
-    error: undefined,
+    isLoading: false,
+    error: '',
     ids: [],
     entities: {}
   }),
@@ -27,8 +27,15 @@ const commentsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCommentsByArticleId.fulfilled, (state, action) => {
-      state.isLoading = true
+      state.isLoading = false
       commentsAdapter.setAll(state, action.payload)
+    })
+    builder.addCase(fetchCommentsByArticleId.pending, (state, action) => {
+      state.isLoading = true
+    })
+    builder.addCase(fetchCommentsByArticleId.rejected, (state, action) => {
+      state.isLoading = false
+      state.error = action.payload
     })
   }
 })

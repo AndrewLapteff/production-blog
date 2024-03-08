@@ -27,11 +27,13 @@ import {
   getValidationErrors
 } from 'entities/Profile'
 import { PROFILE_VALIDATION } from 'entities/Profile/model/types/validation'
+import { getUser } from 'entities/User'
 
 export const ProfileCard = memo(() => {
   const { t } = useTranslation('profile')
   const dispatch = useThunkDispatch()
 
+  const user = useSelector(getUser)
   const profile = useSelector(getProfile)
   const error = useSelector(getError)
   const isLoading = useSelector(getIsLoading)
@@ -134,12 +136,15 @@ export const ProfileCard = memo(() => {
             </Text>
           )
         })}
-        <Controls
-          isReadonly={isReadonly}
-          onCancel={onCancel}
-          onConfirm={onConfirm}
-          onEdit={onEdit}
-        />
+
+        {user.id === profile?.userId && (
+          <Controls
+            isReadonly={isReadonly}
+            onCancel={onCancel}
+            onConfirm={onConfirm}
+            onEdit={onEdit}
+          />
+        )}
       </div>
     </div>
   )

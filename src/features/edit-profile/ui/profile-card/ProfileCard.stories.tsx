@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator, StoreDecorator, RouterDecorator } from 'shared/config'
+import { ThemeDecorator, StoreDecorator } from 'shared/config'
 import { ProfileCard } from './ProfileCard'
 import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { userReducer } from 'entities/User'
@@ -45,8 +45,7 @@ const meta: Meta<typeof ProfileCard> = {
   },
   decorators: [
     // @ts-expect-error
-    StoreDecorator(initialStore, { userReducer, profileReducer }),
-    RouterDecorator
+    StoreDecorator(initialStore, { userReducer, profileReducer })
   ]
 }
 

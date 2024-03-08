@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { RouterDecorator, StoreDecorator, ThemeDecorator } from 'shared/config'
+import { StoreDecorator, ThemeDecorator } from 'shared/config'
 import { PageError } from './PageError'
 import { Sidebar } from 'widgets/sidebar/ui/Sidebar'
 import { Navbar } from 'widgets/navbar'
@@ -29,7 +29,7 @@ const meta: Meta<typeof PageError> = {
   parameters: {
     layout: 'fullscreen'
   },
-  decorators: [StoreDecorator(store, { userReducer }), RouterDecorator]
+  decorators: [StoreDecorator(store, { userReducer })]
 }
 
 export default meta

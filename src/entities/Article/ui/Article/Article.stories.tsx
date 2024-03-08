@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Article } from './Article'
-import {
-  RouterDecorator,
-  StoreDecorator,
-  ThemeDecorator,
-  testStore
-} from 'shared/config'
+import { StoreDecorator, ThemeDecorator, testStore } from 'shared/config'
 import { articleReducer } from 'entities/Article'
 import { userReducer } from 'entities/User'
 
@@ -14,8 +9,7 @@ const meta = {
   component: Article,
   parameters: {
     layout: 'centered'
-  },
-  decorators: [RouterDecorator]
+  }
 } satisfies Meta<typeof Article>
 
 export default meta

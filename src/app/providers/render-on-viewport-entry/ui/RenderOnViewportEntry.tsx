@@ -16,7 +16,7 @@ interface RenderOnViewportEntryProps extends ObserverProps, PropsWithChildren {
 
 // TODO: solve the
 
-export const RenderOnViewportEntryInner = memo(
+const RenderOnViewportEntryInner = memo(
   ({
     root = null,
     rootMargin,

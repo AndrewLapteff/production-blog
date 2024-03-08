@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { RouterDecorator, ThemeDecorator } from 'shared/config'
+import { ThemeDecorator } from 'shared/config'
 import { Modal } from './Modal'
 import { Button } from 'shared/ui/button/Button'
 
@@ -8,8 +8,7 @@ const meta: Meta<typeof Modal> = {
   component: Modal,
   parameters: {
     layout: 'fullscreen'
-  },
-  decorators: [RouterDecorator]
+  }
 }
 
 export default meta

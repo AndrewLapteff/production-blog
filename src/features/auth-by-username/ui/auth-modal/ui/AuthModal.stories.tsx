@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator, StoreDecorator, RouterDecorator } from 'shared/config'
+import { ThemeDecorator, StoreDecorator } from 'shared/config'
 import AuthModal from './AuthModal'
 import { userReducer } from 'entities/User'
 
@@ -27,7 +27,7 @@ const meta: Meta<typeof AuthModal> = {
   parameters: {
     layout: 'fullscreen'
   },
-  decorators: [StoreDecorator(store, { userReducer }), RouterDecorator]
+  decorators: [StoreDecorator(store, { userReducer })]
 }
 
 export default meta

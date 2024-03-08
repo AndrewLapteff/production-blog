@@ -1,64 +1,46 @@
 import s from './AddCommentForm.module.scss'
-import { classNames } from 'shared/lib'
-import { ChangeEvent, MouseEvent, memo, useState } from 'react'
+import { classNames, useDispatchCallback, useThunkDispatch } from 'shared/lib'
+import { MouseEvent, memo } from 'react'
 import { Button } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { Comment } from 'entities/Comment/model/types/comment'
-import { prepareDate } from '../model/lib/prepareDate'
-import { useDispatch } from 'react-redux'
-import { addComment } from 'pages/article-page'
+import { postComment } from '../model/service/postComment'
+import { setText } from '../model/slice/commentFormSlice'
+import { useSelector } from 'react-redux'
+import { getIsLoading, getText } from '../model/selectors/selectors'
 
-interface AddCommentFormProps
-  extends Pick<Comment, 'articleId' | 'profileId'> {}
+interface AddCommentFormProps extends Pick<Comment, 'articleId'> {}
 
-const AddCommentForm = memo(
-  ({ articleId = 1, profileId = 1 }: AddCommentFormProps) => {
-    const { t } = useTranslation('translation')
-    const [text, setText] = useState<string>('')
-    const dispatch = useDispatch()
+const AddCommentForm = memo(({ articleId }: AddCommentFormProps) => {
+  const { t } = useTranslation('translation')
+  const dispatch = useThunkDispatch()
 
-    const onTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-      setText((prev) => e.target.value)
-    }
+  const onTextChangeHandler = useDispatchCallback(setText)
 
-    const onSubmit = (e: MouseEvent<HTMLButtonElement>) => {
-      const date = new Date()
-      const day = prepareDate(date.getDate())
-      const month = prepareDate(date.getMonth())
-      const year = prepareDate(date.getFullYear())
+  const text = useSelector(getText)
+  const isLoading = useSelector(getIsLoading)
 
-      const comment: Comment = {
-        articleId,
-        profileId,
-        id: 3,
-        createdAt: `${day}.${month}.${year}`,
-        text,
-        profile: {
-          id: 1,
-          username: 'Amigooo',
-          avatar: 'https://avatars.githubusercontent.com/u/114949478?v=4',
-          country: 'Ukraine',
-          age: 18,
-          bio: "Hello world, that's it!"
-        }
-      }
+  const onSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+    if (!text) return
 
-      dispatch(addComment(comment))
-    }
-
-    return (
-      <div className={classNames(s.addcommentform)}>
-        <textarea
-          placeholder={t('what-are-your-thoughts')}
-          className={s['text-area']}
-          rows={5}
-          value={text}
-          onChange={onTextChangeHandler}
-        />
-        <Button onClick={onSubmit}>{t('post')}</Button>
-      </div>
-    )
+    dispatch(postComment({ articleId, text }))
   }
-)
+
+  return (
+    <div className={classNames(s.addcommentform)}>
+      <textarea
+        placeholder={t('what-are-your-thoughts')}
+        className={s['text-area']}
+        rows={5}
+        value={text}
+        onChange={onTextChangeHandler}
+        disabled={isLoading}
+      />
+      <Button disabled={isLoading} onClick={onSubmit}>
+        {t('post')}
+      </Button>
+    </div>
+  )
+})
 
 export default AddCommentForm

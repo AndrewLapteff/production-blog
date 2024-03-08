@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator, RouterDecorator, StoreDecorator } from 'shared/config'
+import { ThemeDecorator, StoreDecorator } from 'shared/config'
 import { Navbar } from './Navbar'
 import { userReducer } from 'entities/User'
 
@@ -27,7 +27,7 @@ const meta: Meta<typeof Navbar> = {
   parameters: {
     layout: 'fullscreen'
   },
-  decorators: [StoreDecorator(store, { userReducer }), RouterDecorator]
+  decorators: [StoreDecorator(store, { userReducer })]
 }
 
 export default meta

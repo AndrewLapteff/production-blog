@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react'
-import { StyleDecorator, ThemeDecorator } from 'shared/config'
+import { RouterDecorator, StyleDecorator, ThemeDecorator } from 'shared/config'
 
 const preview: Preview = {
   parameters: {
@@ -15,6 +15,10 @@ const preview: Preview = {
 
 export default preview
 
-export const decorators = [StyleDecorator, ThemeDecorator('light')]
+export const decorators = [
+  StyleDecorator,
+  ThemeDecorator('light'),
+  RouterDecorator
+]
 
 // addDecorator(cssVarsDecorator)

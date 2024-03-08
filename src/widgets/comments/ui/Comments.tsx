@@ -1,19 +1,18 @@
 import { useThunkDispatch } from 'shared/lib'
 import { memo } from 'react'
 import { CommentList } from 'entities/Comment'
-import { getIsLoading } from 'entities/Profile'
-import { AddCommentFormAsync } from 'features/add-comment/ui/AddCommentForm.async'
 import { commentsSelector } from 'pages/article-page'
 import { fetchCommentById } from 'pages/article-page/model/service/fetchCommentById/fetchCommentById'
 import { useSelector } from 'react-redux'
 import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
-import { Loader } from 'shared/ui'
+import AddCommentForm from 'features/add-comment'
+import { getIsLoadingComments } from 'pages/article-page/model/selectors/selectors'
 
-interface commentsProps {
+interface CommentsProps {
   articleId: number
 }
 
-export const Comments = memo(({ articleId }: commentsProps) => {
+export const Comments = memo(({ articleId }: CommentsProps) => {
   const dispatch = useThunkDispatch()
 
   const comments = useSelector(commentsSelector.selectAll)
@@ -23,14 +22,12 @@ export const Comments = memo(({ articleId }: commentsProps) => {
     'storybook'
   )
 
-  const isLoading = useSelector(getIsLoading)
-
-  if (isLoading) return <Loader />
+  const isLoading = useSelector(getIsLoadingComments)
 
   return (
     <>
-      <CommentList comments={comments} />
-      <AddCommentFormAsync articleId={articleId} profileId={1} />
+      <CommentList comments={comments} isLoading={isLoading} />
+      <AddCommentForm articleId={articleId} />
     </>
   )
 })

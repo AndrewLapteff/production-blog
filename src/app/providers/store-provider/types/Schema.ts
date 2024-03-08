@@ -9,6 +9,7 @@ import type { AxiosInstance } from 'axios'
 import { ArticleSchema } from 'entities/Article/model/types/article'
 import type { ProfileSchema } from 'entities/Profile'
 import type { UserSchema } from 'entities/User'
+import { AddCommnetForm } from 'features/add-comment/model/types/commentForm'
 import type { LoginSchema } from 'features/auth-by-username'
 import { CommentsSchema } from 'pages/article-page'
 import { NavigateFunction } from 'react-router-dom'
@@ -19,6 +20,7 @@ export interface StoreProps {
   profileReducer?: ProfileSchema
   articleReducer?: ArticleSchema
   commentsReducer?: CommentsSchema
+  addCommentForm?: AddCommnetForm
   navigate?: NavigateFunction
 }
 
