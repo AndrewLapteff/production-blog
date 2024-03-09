@@ -8,9 +8,9 @@ import Save from 'shared/assets/icons/save.svg'
 import Like from 'shared/assets/icons/like.svg'
 import Comment from 'shared/assets/icons/comment.svg'
 import Calendar from 'shared/assets/icons/calendar.svg'
-import { ArticleType } from '../../../Article/model/types/article'
+import { Article } from '../../../Article/model/types/article'
 
-interface ControlsProps extends Pick<ArticleType, 'view' | 'createdAt'> {}
+interface ControlsProps extends Pick<Article, 'view' | 'createdAt'> {}
 
 export const Controls = memo((props: ControlsProps) => {
   const { createdAt, view } = props

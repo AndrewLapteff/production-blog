@@ -30,7 +30,7 @@ export type ArticleBlock =
   | ArticleTextBlock
   | ArticleImageBlock
 
-export interface ArticleType {
+export interface Article {
   id: number
   title: string
   description: string
@@ -45,8 +45,10 @@ export interface ArticleType {
 }
 
 export interface ArticleSchema {
-  article?: ArticleType
+  article?: Article
   author?: Profile
   isLoading: boolean
   error?: string
 }
+
+export type ArticleView = 'card' | 'classic'

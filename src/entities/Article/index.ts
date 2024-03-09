@@ -1,3 +1,3 @@
 export { Article } from './ui/Article/Article'
-export type { ArticleType } from './model/types/article'
+export type { Article as ArticleType, ArticleView } from './model/types/article'
 export * from './model/slice/articleSlice'

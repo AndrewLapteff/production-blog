@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { ArticleSchema, ArticleType } from '../types/article'
+import { ArticleSchema, Article } from '../types/article'
 import { fetchArticleById } from '../services/fetchArticleById'
 
 const initialState: ArticleSchema = {
@@ -13,7 +13,7 @@ export const articleSlice = createSlice({
   name: 'article',
   initialState,
   reducers: {
-    setArticle: (state, action: PayloadAction<ArticleType>) => {}
+    setArticle: (state, action: PayloadAction<Article>) => {}
   },
   extraReducers: (builder) => {
     builder.addCase(fetchArticleById.pending, (state) => {
