@@ -6,17 +6,15 @@ import {
   StoreProps
 } from 'app/providers/store-provider/types/Schema'
 
-// TODO: array of reducers
-
 interface DynamicSliceLoaderProps extends PropsWithChildren {
   name: keyof StoreProps | Array<keyof StoreProps>
   reducer: Reducer | Reducer[]
-  removeAfterUnmount: boolean
+  removeAfterUnmount?: boolean
 }
 
 export const DynamicSliceLoader = (props: DynamicSliceLoaderProps) => {
   const store = useStore() as ExtendedStore
-  const { name, reducer, removeAfterUnmount, children } = props
+  const { name, reducer, removeAfterUnmount = true, children } = props
   const dispatch = useDispatch()
 
   useEffect(() => {

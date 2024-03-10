@@ -2,8 +2,8 @@
   cursor: progress;
   position: relative;
   border-radius: 5px;
-  background: linear-gradient(90deg, #ddda 40%, #efefefaa, #ddda 60%) right / 300% 100%;
-  animation: skeleton-loading 1.5s linear infinite;
+  background: linear-gradient(90deg, #ddda 40%, #bababaaa, #ddda 60%) right / 300% 100%;
+  animation: skeleton-loading .5s linear infinite;
 }
 
 @keyframes skeleton-loading {

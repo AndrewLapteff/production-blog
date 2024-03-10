@@ -20,7 +20,7 @@ export const ArticleListItemSkeleton = ({
         <Skeleton width={700} height={53} />
 
         <div className={s['meta-info']}>
-          <Skeleton borderRadius={50} width={40} height={40} />
+          <Skeleton borderRadius={50} width={40} height={30} />
           <div style={{ width: 500 }}>
             <Skeleton width={60} height={17} />
           </div>

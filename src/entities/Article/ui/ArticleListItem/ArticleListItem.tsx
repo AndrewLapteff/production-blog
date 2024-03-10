@@ -28,6 +28,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           width={700}
           height={213}
           loading="lazy"
+          style={{ borderRadius: '.5rem' }}
           alt={article.title}
           src={article.img}
         />

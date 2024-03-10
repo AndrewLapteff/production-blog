@@ -2,9 +2,9 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { useCallback, ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
-type EventType = ChangeEvent<
-  HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
->
+// TODO: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLButtonElement
+
+type EventType = ChangeEvent<any>
 
 export const useDispatchCallback = <T>(
   actionCallback: ActionCreatorWithPayload<T, any>

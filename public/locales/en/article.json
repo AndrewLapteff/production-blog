@@ -5,5 +5,6 @@
   "likes": "Likes",
   "article-is-not-found": "Article is not found",
   "comments": "Comments",
-  "min": " min"
+  "min": " min",
+  "theres-no-comments": "There's no comments"
 }
