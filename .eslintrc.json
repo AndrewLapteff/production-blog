@@ -10,7 +10,6 @@
     "plugin:jsx-a11y/recommended",
     "plugin:i18next/recommended"
   ],
-
   "overrides": [
     {
       "files": ["**/src/**/*.{test,stories}.{ts,tsx}"],

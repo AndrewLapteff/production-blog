@@ -48,15 +48,29 @@
       "createdAt": "05.02.2024",
       "text": "dfsd",
       "id": 7
+    },
+    {
+      "articleId": 1,
+      "profileId": 1,
+      "createdAt": "09.02.2024",
+      "text": "sdfsfsdfs",
+      "id": 8
+    },
+    {
+      "articleId": 1,
+      "profileId": 1,
+      "createdAt": "09.02.2024",
+      "text": "asdfasdfsa",
+      "id": 9
     }
   ],
   "profiles": [
     {
       "id": 1,
       "userId": 1,
-      "username": "Amigooo",
+      "username": "Amigo",
       "avatar": "https://avatars.githubusercontent.com/u/114949478?v=4",
-      "country": "Ukraine",
+      "country": "Togo",
       "age": "18",
       "bio": "Hello world, that's it!"
     },
@@ -74,7 +88,7 @@
     {
       "id": 1,
       "title": "New JavaScript Features from ECMAScript 2023 (ES14). New way to organize",
-      "description": "New features of JS of 2024",
+      "description": "Welcome to the cutting-edge world of ECMAScript 2023 (ES14), where JavaScript undergoes a transformational evolution in code organization. In this latest iteration, developers are empowered with innovative tools and methodologies to streamline their coding practices and enhance project maintainability.",
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "view": "1024",
       "createdAt": "01.01.2024",

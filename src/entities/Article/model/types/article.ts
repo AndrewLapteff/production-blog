@@ -51,4 +51,4 @@ export interface ArticleSchema {
   error?: string
 }
 
-export type ArticleView = 'card' | 'classic'
+export type ArticleView = 'compact' | 'classic'

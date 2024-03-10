@@ -6,19 +6,22 @@ import { Profile } from 'entities/Profile'
 
 interface AuthorProps
   extends Partial<Pick<Profile, 'username' | 'avatar' | 'id'>> {
-  time: string
+  time?: string
+  size?: number
 }
 
 export const Author = memo((props: AuthorProps) => {
-  const { avatar, time, username, id } = props
+  const { avatar, time, username, id, size = 40 } = props
   return (
     <div className={s['author-info']}>
-      <Avatar outline size={40} alt={`${username}'s avatar`} src={avatar} />
+      <Avatar outline size={size} alt={`${username}'s avatar`} src={avatar} />
       <div className={s.details}>
         <AppLink to={`/profiles/${id}`}>{username}</AppLink>
-        <div>
-          <span>{time}</span>
-        </div>
+        {time && (
+          <div>
+            <span>{time}</span>
+          </div>
+        )}
       </div>
     </div>
   )
