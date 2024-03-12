@@ -22,6 +22,7 @@ export const CommentCard = memo(({ comment }: CommentCardProps) => {
         username={comment.profile?.username || ''}
         avatar={comment.profile?.avatar}
         time={comment.createdAt}
+        fontSize={12}
       />
       <Text size="s" className={s['comment-text']}>
         {comment.text}

@@ -8,10 +8,11 @@ interface AuthorProps
   extends Partial<Pick<Profile, 'username' | 'avatar' | 'id'>> {
   time?: string
   size?: number
+  fontSize?: number
 }
 
 export const Author = memo((props: AuthorProps) => {
-  const { avatar, time, username, id, size = 40 } = props
+  const { avatar, time, username, id, size = 40, fontSize } = props
   return (
     <div className={s['author-info']}>
       <Avatar outline size={size} alt={`${username}'s avatar`} src={avatar} />
@@ -19,7 +20,7 @@ export const Author = memo((props: AuthorProps) => {
         <AppLink to={`/profiles/${id}`}>{username}</AppLink>
         {time && (
           <div>
-            <span>{time}</span>
+            <span style={{ fontSize }}>{time}</span>
           </div>
         )}
       </div>

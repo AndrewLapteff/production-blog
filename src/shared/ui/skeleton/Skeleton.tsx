@@ -3,7 +3,7 @@ import s from './Skeleton.module.scss'
 import { classNames } from 'shared/lib'
 
 interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
-  width?: number
+  width?: number | string
   height?: number
   borderRadius?: number
 }

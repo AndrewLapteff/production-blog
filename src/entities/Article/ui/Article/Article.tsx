@@ -1,13 +1,13 @@
 import s from './Article.module.scss'
 import 'react-lazy-load-image-component/src/effects/blur.css'
-import { classNames, useThunkDispatch } from 'shared/lib'
+import { useThunkDispatch } from 'shared/lib'
 import { memo, useCallback, useMemo } from 'react'
 import { fetchArticleById } from './../../model/services/fetchArticleById'
 import { useSelector } from 'react-redux'
 import { getArticle } from '../../model/selectors/getArticle/getArticle'
 import { getError } from '../../model/selectors/getError/getError'
 import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading'
-import { AppLink, Loader, Title } from 'shared/ui'
+import { AppLink, Title } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { getAuthor } from '../../../Article/model/selectors/getAuthor/getAuthor'
@@ -18,6 +18,7 @@ import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { Controls } from '../Controls/Controls'
 import { Author } from 'widgets/author'
 import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
+import { ArticleSkeleton } from '../ArticleSkeleton/ArticleSkeleton'
 
 interface ArticleProps {
   id: string
@@ -68,11 +69,7 @@ export const Article = memo(({ id }: ArticleProps) => {
   }
 
   if (!article || !author || isLoading) {
-    return (
-      <div className={classNames(s.article, {}, [s.centered])}>
-        <Loader />
-      </div>
-    )
+    return <ArticleSkeleton />
   }
 
   return (
