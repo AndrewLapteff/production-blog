@@ -1,0 +1,20 @@
+.articlescontrols {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.views {
+  display: flex;
+  gap: 5px;
+}
+
+
+
+.view-item {
+  color: var(--low-emphasis);
+}
+
+.active {
+  color: var(--high-emphasis);
+}

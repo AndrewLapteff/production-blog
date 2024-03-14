@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef, useState } from 'react'
+import { RefObject, useEffect, useRef } from 'react'
 
 export interface ObserverProps {
   threshold: number
@@ -6,17 +6,16 @@ export interface ObserverProps {
   root?: HTMLElement | null
 }
 
-export const useFirstViewportEntry = (
+export const useInfiniteScroll = (
   ref: RefObject<HTMLDivElement>,
   observerProps: ObserverProps,
   callback?: () => void
 ) => {
-  const [entered, setEntered] = useState(false)
-
   const observer = useRef(
     new IntersectionObserver(([entry]) => {
-      setEntered(entry.isIntersecting)
-      callback?.()
+      if (entry.isIntersecting) {
+        callback?.()
+      }
     }, observerProps)
   )
 
@@ -24,18 +23,12 @@ export const useFirstViewportEntry = (
     const element = ref.current
     const ob = observer.current
 
-    if (entered) {
-      ob.disconnect()
-    }
-
-    if (element && !entered) {
+    if (element) {
       ob.observe(element)
     }
 
     return () => {
       ob.disconnect()
     }
-  }, [ref, entered])
-
-  return entered
+  }, [ref])
 }

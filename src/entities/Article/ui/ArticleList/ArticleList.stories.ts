@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ArticleList } from './ArticleList'
 import { ArticleType } from 'entities/Article'
 import { ThemeDecorator } from 'shared/config'
-
 const meta = {
   title: 'entities/ArticleList',
   component: ArticleList,

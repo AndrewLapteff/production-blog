@@ -1,0 +1,9 @@
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.skeleton-wrapper {
+  height: calc(100vh - var(--navbar-height));
+}

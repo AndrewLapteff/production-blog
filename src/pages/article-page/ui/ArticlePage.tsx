@@ -2,7 +2,7 @@ import s from './ArticlePage.module.scss'
 import { Article, articleReducer } from 'entities/Article'
 import { DynamicSliceLoader } from 'shared/lib'
 import { useParams } from 'react-router-dom'
-import { Text } from 'shared/ui'
+import { Layout, Text } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { commentsReducer } from '../model/slice/commentSlice'
 import { memo } from 'react'
@@ -23,25 +23,27 @@ const ArticlePage = memo(() => {
   }
 
   return (
-    <div className={s.article}>
-      <DynamicSliceLoader
-        name={'articleReducer'}
-        reducer={articleReducer}
-        removeAfterUnmount
-      >
-        <Article id={id} />
-        <RenderOnViewportEntry threshold={0}>
-          <DynamicSliceLoader
-            name={['commentsReducer', 'addCommentForm']}
-            reducer={[commentsReducer, addCommentFormReducer]}
-            removeAfterUnmount
-          >
-            <Comments articleId={Number(id)} />
-          </DynamicSliceLoader>
-        </RenderOnViewportEntry>
-        <div style={{ height: '100px' }}>{t('Other articles')}</div>
-      </DynamicSliceLoader>
-    </div>
+    <Layout>
+      <div className={s.article}>
+        <DynamicSliceLoader
+          name={'articleReducer'}
+          reducer={articleReducer}
+          removeAfterUnmount
+        >
+          <Article id={id} />
+          <RenderOnViewportEntry threshold={0}>
+            <DynamicSliceLoader
+              name={['commentsReducer', 'addCommentForm']}
+              reducer={[commentsReducer, addCommentFormReducer]}
+              removeAfterUnmount
+            >
+              <Comments articleId={Number(id)} />
+            </DynamicSliceLoader>
+          </RenderOnViewportEntry>
+          <div style={{ height: '100px' }}>{t('Other articles')}</div>
+        </DynamicSliceLoader>
+      </div>
+    </Layout>
   )
 })
 

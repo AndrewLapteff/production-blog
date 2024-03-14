@@ -10,11 +10,8 @@ interface AppRouterProps {
 export const AppRouter = ({ isSigned }: AppRouterProps) => {
   const routes = Object.entries(routerConfig).map(
     ([_, { element, authOnly, path }]) => {
-      const el = (
-        <Suspense>
-          <div className="content-area">{element}</div>
-        </Suspense>
-      )
+      const el = <Suspense>{element}</Suspense>
+
       return (
         <Route
           key={path}
@@ -32,6 +29,7 @@ export const AppRouter = ({ isSigned }: AppRouterProps) => {
       )
     }
   )
+
   return <Routes>{routes}</Routes>
 }
 

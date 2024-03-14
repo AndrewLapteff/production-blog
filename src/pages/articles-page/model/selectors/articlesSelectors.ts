@@ -8,3 +8,12 @@ export const getErrorArticles = (store: StoreProps) =>
 
 export const getViewArticles = (store: StoreProps) =>
   store.articlesReducer?.view || 'classic'
+
+export const getLimitArticles = (store: StoreProps) =>
+  store.articlesReducer?.limit || 5
+
+export const getPageArticles = (store: StoreProps) =>
+  store.articlesReducer?.page || 1
+
+export const getHasMoreArticles = (store: StoreProps) =>
+  store.articlesReducer?.hasMore
