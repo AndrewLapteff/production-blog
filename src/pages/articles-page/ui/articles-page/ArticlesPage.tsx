@@ -3,43 +3,46 @@ import { DynamicSliceLoader, useThunkDispatch } from 'shared/lib'
 import {
   articlesReducer,
   articlesSelector,
-  increasePageValue,
   init
 } from '../../model/slice/articlesSlice'
 import { useSelector } from 'react-redux'
 import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
-import { fetchArticles } from '../../model/services/fetchArticles'
+import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles'
 import {
-  getHasMoreArticles,
-  getIsLoadingArticles,
-  getPageArticles,
+  getIsInitArticles,
   getViewArticles
 } from '../../model/selectors/articlesSelectors'
 import { ArticlesControls } from '../articles-controls/ArticlesControls'
 import s from './ArticlesPage.module.scss'
 import { Layout } from 'shared/ui'
 import { useCallback } from 'react'
-import { fetchNextArticles } from 'pages/articles-page/model/services/fetchNextArticles/fetchNextArticles'
+import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchNextArticles'
 
 const ArticlesPage = () => {
   const dispatch = useThunkDispatch()
 
   const articles = useSelector(articlesSelector.selectAll)
   const view = useSelector(getViewArticles)
-  const hasMore = useSelector(getHasMoreArticles)
-  const page = useSelector(getPageArticles)
+  const isInited = useSelector(getIsInitArticles)
+
   useInitialEffect(async () => {
-    dispatch(init)
-    await dispatch(fetchArticles(1))
+    // to avoid extra fetches once reducer inited
+    if (isInited) {
+      dispatch(init)
+      await dispatch(fetchArticles(1))
+    }
   }, 'storybook')
 
   const addArticlesHandler = useCallback(() => {
-    console.log('f')
     dispatch(fetchNextArticles())
   }, [dispatch])
 
   return (
-    <DynamicSliceLoader name={'articlesReducer'} reducer={articlesReducer}>
+    <DynamicSliceLoader
+      name={'articlesReducer'}
+      reducer={articlesReducer}
+      removeAfterUnmount={false}
+    >
       <Layout callback={addArticlesHandler}>
         <div className={s['articles-page']}>
           <ArticlesControls view={view} />

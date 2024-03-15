@@ -18,7 +18,7 @@ interface ArticleListProps {
 export const ArticleList = memo((props: ArticleListProps) => {
   const { view, articles } = props
   const isLoading = useSelector(getIsLoadingArticles)
-  console.log(isLoading)
+
   const renderArticle = (article: Article) => {
     return <ArticleListItem key={article.id} article={article} view={view} />
   }

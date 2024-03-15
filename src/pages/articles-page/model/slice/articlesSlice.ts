@@ -6,7 +6,7 @@ import {
 import { StoreProps } from 'app/providers/store-provider'
 import { ArticlesSchema } from '../types/articles'
 import { Article, ArticleView } from 'entities/Article/model/types/article'
-import { fetchArticles } from '../services/fetchArticles'
+import { fetchArticles } from '../services/fetchArticles/fetchArticles'
 
 const articlesAdapter = createEntityAdapter<Article, number>({
   selectId: (article: Article) => article.id
@@ -19,10 +19,11 @@ const articlesSlice = createSlice({
     isLoading: true,
     error: '',
     limit: 5,
-    page: 1,
+    page: 0,
     hasMore: true,
     ids: [],
-    entities: {}
+    entities: {},
+    _inited: false
   }),
   reducers: {
     addArticle(state, action: PayloadAction<Article>) {
@@ -37,10 +38,7 @@ const articlesSlice = createSlice({
       state.page = state.page + 1
     },
     init(state) {
-      state.hasMore = true
-      state.page = 1
-      state.limit = 5
-      state.isLoading = false
+      state._inited = true
     }
   },
   extraReducers: (builder) => {

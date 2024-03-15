@@ -18,9 +18,21 @@ export const DynamicSliceLoader = (props: DynamicSliceLoaderProps) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    const mountedReducers = store.reducerManager.getReducerMap()
+    const reducers = Object.keys(mountedReducers)
+
     if (!Array.isArray(reducer) && !Array.isArray(name)) {
-      console.log(name)
-      store.reducerManager.add(name, reducer)
+      let isMounted: boolean = false
+
+      for (const mountedReducer of reducers) {
+        if (mountedReducer === name) {
+          isMounted = true
+        }
+      }
+
+      if (!isMounted) {
+        store.reducerManager.add(name, reducer)
+      }
     } else if (Array.isArray(reducer) && Array.isArray(name)) {
       reducer.forEach((reducerItem, i) => {
         store.reducerManager.add(name[i], reducerItem)
