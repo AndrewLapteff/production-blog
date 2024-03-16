@@ -34,7 +34,8 @@ const initialStore: StoreProps = {
     isLoading: false,
     readonly: true,
     error: undefined
-  }
+  },
+  scrollRestorationSliceReducer: {}
 }
 
 const meta: Meta<typeof ProfileCard> = {

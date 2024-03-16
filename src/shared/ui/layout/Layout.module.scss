@@ -5,4 +5,9 @@
   display: flex;
   align-items: center;
   justify-content: start;
+  overflow: auto;
+}
+
+.div-helper {
+  margin-bottom: 20px
 }

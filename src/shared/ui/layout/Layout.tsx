@@ -1,7 +1,12 @@
 import s from './Layout.module.scss'
 import { classNames } from 'shared/lib'
-import { memo, MutableRefObject, ReactNode, useRef } from 'react'
+import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react'
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll'
+import { useDispatch, useSelector } from 'react-redux'
+import { setScrollValue } from 'features/scroll-restoration'
+import { useLocation } from 'react-router-dom'
+import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
+import { getScrollValue } from 'features/scroll-restoration/model/selectors/scrollRestorationSelectors'
 
 interface LayoutProps {
   children?: ReactNode
@@ -11,6 +16,10 @@ interface LayoutProps {
 export const Layout = memo(({ children, callback }: LayoutProps) => {
   const wrapperRef = useRef() as MutableRefObject<HTMLElement>
   const innerRef = useRef() as MutableRefObject<HTMLDivElement>
+
+  const { pathname } = useLocation()
+  const dispatch = useDispatch()
+  const scroll = useSelector((state) => getScrollValue(state, pathname))
 
   useInfiniteScroll(
     innerRef,
@@ -22,10 +31,27 @@ export const Layout = memo(({ children, callback }: LayoutProps) => {
     callback
   )
 
+  useInitialEffect(() => {
+    wrapperRef.current.scrollTop = scroll
+  })
+
+  const onScrollHandler = (e: UIEvent<HTMLElement>) => {
+    dispatch(
+      setScrollValue({
+        value: e.currentTarget.scrollTop,
+        path: pathname
+      })
+    )
+  }
+
   return (
-    <section className={classNames(s.layout)}>
+    <section
+      ref={wrapperRef}
+      onScroll={onScrollHandler}
+      className={classNames(s.layout)}
+    >
       {children}
-      <div style={{ marginBottom: '20px' }} ref={innerRef}></div>
+      <div className={s['div-helper']} ref={innerRef}></div>
     </section>
   )
 })

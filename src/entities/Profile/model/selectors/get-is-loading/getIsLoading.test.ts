@@ -1,5 +1,5 @@
-import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { getIsLoading } from './getIsLoading'
+import { getTestStore } from 'shared/lib'
 
 describe('getIsLoading.test.ts', () => {
   it('should return false', () => {
@@ -16,17 +16,9 @@ describe('getIsLoading.test.ts', () => {
       readonly: false,
       error: undefined
     }
-    const store: Pick<StoreProps, 'profileReducer' | 'userReducer'> = {
-      userReducer: {
-        user: {
-          id: 1,
-          username: '',
-          email: ''
-        },
-        accessToken: ''
-      },
-      profileReducer
-    }
+
+    const store = getTestStore({ profileReducer })
+
     expect(getIsLoading(store)).toEqual(profileReducer.isLoading)
   })
 
@@ -37,17 +29,9 @@ describe('getIsLoading.test.ts', () => {
       readonly: true,
       error: undefined
     }
-    const store: Pick<StoreProps, 'profileReducer' | 'userReducer'> = {
-      userReducer: {
-        user: {
-          id: 1,
-          username: '',
-          email: ''
-        },
-        accessToken: ''
-      },
-      profileReducer
-    }
+
+    const store = getTestStore({ profileReducer })
+
     expect(getIsLoading(store)).toEqual(profileReducer.isLoading)
   })
 })

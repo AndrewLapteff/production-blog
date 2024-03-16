@@ -1,6 +1,7 @@
 export { renderWithTranslation } from './renderWithTranslation/renderWithTranslation'
 export { classNames } from './classNames/classNames'
 export { DynamicSliceLoader } from './components/dymanic-loader/DynamicSliceLoader'
+export { getTestStore } from './getTestStore/getTestStore'
 export { useAppDispatch } from './hooks/useAppDispatch'
 export { useDispatchCallback } from './hooks/useDispatchCallback'
 export { useThunkDispatch } from './hooks/useThunkDispatch'

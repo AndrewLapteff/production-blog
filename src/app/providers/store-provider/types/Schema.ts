@@ -14,9 +14,11 @@ import type { AddCommnetForm } from 'features/add-comment'
 import type { CommentsSchema } from 'pages/article-page'
 import type { ArticlesSchema } from 'pages/articles-page'
 import type { NavigateFunction } from 'react-router-dom'
+import { ScrollRestorationSchema } from 'features/scroll-restoration'
 
 export interface StoreProps {
   userReducer: UserSchema
+  scrollRestorationSliceReducer: ScrollRestorationSchema
   loginReducer?: LoginSchema
   profileReducer?: ProfileSchema
   articleReducer?: ArticleSchema

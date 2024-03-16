@@ -7,6 +7,7 @@ import { Suspense } from 'react'
 import { StoreProvider } from 'app/providers/store-provider'
 import { userReducer } from 'entities/User'
 import { StoreProps } from 'app/providers/store-provider/types/Schema'
+import { scrollRestorationSliceReducer } from 'features/scroll-restoration'
 
 const container = document.getElementById('root')
 const initialStore: StoreProps = {
@@ -17,7 +18,13 @@ const initialStore: StoreProps = {
       email: ''
     },
     accessToken: ''
-  }
+  },
+  scrollRestorationSliceReducer: {}
+}
+
+const asyncReducers = {
+  userReducer,
+  scrollRestorationSliceReducer
 }
 
 if (container) {
@@ -29,7 +36,7 @@ if (container) {
         <Suspense>
           <StoreProvider
             initialState={initialStore}
-            asyncReducers={{ userReducer }}
+            asyncReducers={asyncReducers}
           >
             <App />
           </StoreProvider>

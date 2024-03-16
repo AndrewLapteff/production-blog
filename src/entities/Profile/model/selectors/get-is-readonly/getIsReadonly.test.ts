@@ -1,5 +1,5 @@
-import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { getIsReadonly } from './getIsReadonly'
+import { getTestStore } from 'shared/lib'
 
 describe('getIsReadonly.test.ts', () => {
   it('should return false', () => {
@@ -16,17 +16,9 @@ describe('getIsReadonly.test.ts', () => {
       readonly: false,
       error: undefined
     }
-    const store: Pick<StoreProps, 'profileReducer' | 'userReducer'> = {
-      userReducer: {
-        user: {
-          id: 1,
-          username: '',
-          email: ''
-        },
-        accessToken: ''
-      },
-      profileReducer
-    }
+
+    const store = getTestStore({ profileReducer })
+
     expect(getIsReadonly(store)).toEqual(profileReducer.readonly)
   })
 
@@ -37,17 +29,9 @@ describe('getIsReadonly.test.ts', () => {
       readonly: true,
       error: undefined
     }
-    const store: Pick<StoreProps, 'profileReducer' | 'userReducer'> = {
-      userReducer: {
-        user: {
-          id: 1,
-          username: '',
-          email: ''
-        },
-        accessToken: ''
-      },
-      profileReducer
-    }
+
+    const store = getTestStore({ profileReducer })
+
     expect(getIsReadonly(store)).toEqual(true)
   })
 })

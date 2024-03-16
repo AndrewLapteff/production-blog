@@ -8,6 +8,7 @@ import { ProfileCard } from 'features/edit-profile/ui/profile-card/ProfileCard'
 import { getUser } from 'entities/User'
 import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
 import { useParams } from 'react-router-dom'
+import { Layout } from 'shared/ui'
 
 const ProfilePage = () => {
   const dispatch = useThunkDispatch()
@@ -25,7 +26,9 @@ const ProfilePage = () => {
       reducer={profileReducer}
       removeAfterUnmount
     >
-      <ProfileCard />
+      <Layout>
+        <ProfileCard />
+      </Layout>
     </DynamicSliceLoader>
   )
 }

@@ -38,18 +38,18 @@ const ArticlesPage = () => {
   }, [dispatch])
 
   return (
-    <DynamicSliceLoader
-      name={'articlesReducer'}
-      reducer={articlesReducer}
-      removeAfterUnmount={false}
-    >
-      <Layout callback={addArticlesHandler}>
-        <div className={s['articles-page']}>
+    <Layout callback={addArticlesHandler}>
+      <div className={s['articles-page']}>
+        <DynamicSliceLoader
+          name={'articlesReducer'}
+          reducer={articlesReducer}
+          removeAfterUnmount={false}
+        >
           <ArticlesControls view={view} />
           <ArticleList view={view} articles={articles} />
-        </div>
-      </Layout>
-    </DynamicSliceLoader>
+        </DynamicSliceLoader>
+      </div>
+    </Layout>
   )
 }
 

@@ -4,24 +4,17 @@ import { PageError } from './PageError'
 import { Sidebar } from 'widgets/sidebar/ui/Sidebar'
 import { Navbar } from 'widgets/navbar'
 import { userReducer } from 'entities/User'
+import { getTestStore } from 'shared/lib'
 
-const store = {
-  loginReducer: {
-    username: '',
-    password: '',
-    email: '',
-    isLoading: false,
-    error: undefined
-  },
-  userReducer: {
-    user: {
-      id: 1,
-      username: '',
-      email: ''
-    },
-    accessToken: ''
-  }
+const loginReducer = {
+  username: '',
+  password: '',
+  email: '',
+  isLoading: false,
+  error: undefined
 }
+
+const store = getTestStore({ loginReducer })
 
 const meta: Meta<typeof PageError> = {
   title: 'widgets/PageError',
@@ -29,7 +22,7 @@ const meta: Meta<typeof PageError> = {
   parameters: {
     layout: 'fullscreen'
   },
-  decorators: [StoreDecorator(store, { userReducer })]
+  decorators: [StoreDecorator(store)]
 }
 
 export default meta

@@ -15,7 +15,6 @@ export const fetchNextArticles = createAsyncThunk<
   const page = getPageArticles(getState())
   const hasMore = getHasMoreArticles(getState())
 
-  console.log(hasMore)
   if (hasMore) {
     dispatch(fetchArticles(page + 1))
     dispatch(increasePageValue())

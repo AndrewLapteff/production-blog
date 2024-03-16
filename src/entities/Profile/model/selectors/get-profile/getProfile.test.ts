@@ -1,5 +1,6 @@
 import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { getProfile } from './getProfile'
+import { getTestStore } from 'shared/lib'
 
 describe('getProfile.test.ts', () => {
   it('should return object with proper profile info', () => {
@@ -16,17 +17,9 @@ describe('getProfile.test.ts', () => {
       readonly: true,
       error: undefined
     }
-    const store: Pick<StoreProps, 'profileReducer' | 'userReducer'> = {
-      userReducer: {
-        user: {
-          id: 1,
-          username: '',
-          email: ''
-        },
-        accessToken: ''
-      },
-      profileReducer
-    }
+
+    const store = getTestStore({ profileReducer })
+
     expect(getProfile(store)).toEqual(profileReducer.profile)
   })
 
@@ -37,17 +30,9 @@ describe('getProfile.test.ts', () => {
       readonly: true,
       error: undefined
     }
-    const store: Pick<StoreProps, 'profileReducer' | 'userReducer'> = {
-      userReducer: {
-        user: {
-          id: 1,
-          username: '',
-          email: ''
-        },
-        accessToken: ''
-      },
-      profileReducer
-    }
+
+    const store = getTestStore({ profileReducer })
+
     expect(getProfile(store)).toEqual(undefined)
   })
 })

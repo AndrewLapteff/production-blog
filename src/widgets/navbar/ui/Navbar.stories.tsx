@@ -2,24 +2,17 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator, StoreDecorator } from 'shared/config'
 import { Navbar } from './Navbar'
 import { userReducer } from 'entities/User'
+import { getTestStore } from 'shared/lib'
 
-const store = {
-  loginReducer: {
-    username: '',
-    password: '',
-    email: '',
-    isLoading: false,
-    error: undefined
-  },
-  userReducer: {
-    user: {
-      id: 1,
-      username: '',
-      email: ''
-    },
-    accessToken: ''
-  }
+const loginReducer = {
+  username: '',
+  password: '',
+  email: '',
+  isLoading: false,
+  error: undefined
 }
+
+const store = getTestStore({ loginReducer })
 
 const meta: Meta<typeof Navbar> = {
   title: 'widgets/Navbar',
@@ -27,7 +20,7 @@ const meta: Meta<typeof Navbar> = {
   parameters: {
     layout: 'fullscreen'
   },
-  decorators: [StoreDecorator(store, { userReducer })]
+  decorators: [StoreDecorator(store)]
 }
 
 export default meta

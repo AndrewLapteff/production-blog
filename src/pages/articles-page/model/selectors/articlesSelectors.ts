@@ -1,22 +1,22 @@
 import { StoreProps } from 'app/providers/store-provider'
 
 export const getIsLoadingArticles = (store: StoreProps) =>
-  store.articlesReducer?.isLoading || false
+  store.articlesReducer?.isLoading ?? false
 
 export const getErrorArticles = (store: StoreProps) =>
-  store.articlesReducer?.error || ''
+  store.articlesReducer?.error ?? ''
 
 export const getViewArticles = (store: StoreProps) =>
   store.articlesReducer?.view || 'classic'
 
 export const getLimitArticles = (store: StoreProps) =>
-  store.articlesReducer?.limit || 5
+  store.articlesReducer?.limit ?? 5
 
 export const getPageArticles = (store: StoreProps) =>
-  store.articlesReducer?.page || 0
+  store.articlesReducer?.page ?? 0
 
 export const getHasMoreArticles = (store: StoreProps) =>
-  store.articlesReducer?.hasMore
+  store.articlesReducer?.hasMore ?? false
 
 export const getIsInitArticles = (store: StoreProps) =>
-  store.articlesReducer?._inited
+  store.articlesReducer?._inited ?? false

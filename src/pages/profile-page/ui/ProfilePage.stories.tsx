@@ -6,7 +6,7 @@ import { userReducer } from 'entities/User'
 const meta = {
   title: 'pages/ProfilePage',
   component: ProfilePage,
-  decorators: [StoreDecorator(testStore, { userReducer })]
+  decorators: [StoreDecorator(testStore)]
 } satisfies Meta<typeof ProfilePage>
 
 export default meta

@@ -8,6 +8,7 @@ export const testStore: StoreProps = {
     isLoading: false,
     error: undefined
   },
+  scrollRestorationSliceReducer: {},
   userReducer: {
     user: {
       id: 1,
