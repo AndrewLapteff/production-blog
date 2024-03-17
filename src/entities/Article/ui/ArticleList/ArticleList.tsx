@@ -3,10 +3,7 @@ import { Article, ArticleView } from '../../../Article/model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListSkeleton'
 import s from './ArticleList.module.scss'
-import {
-  getIsLoadingArticles,
-  getPageArticles
-} from 'pages/articles-page/model/selectors/articlesSelectors'
+import { getIsLoadingArticles } from 'pages/articles-page/model/selectors/articlesSelectors'
 import { useSelector } from 'react-redux'
 
 interface ArticleListProps {

@@ -11,7 +11,7 @@ export const fetchNextArticles = createAsyncThunk<
   number,
   void,
   ThunkConfig<string>
->('articles/fetchArticles', async (_, { getState, dispatch }) => {
+>('articles/fetchNextArticle', async (_, { getState, dispatch }) => {
   const page = getPageArticles(getState())
   const hasMore = getHasMoreArticles(getState())
 

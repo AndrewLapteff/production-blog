@@ -76,7 +76,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           alt={article.title}
           src={article.img}
         />
-        <AppLink to="#">
+        <AppLink to={`/article/${article.id}`}>
           <Title className={s['compact-title']} h="h3">
             {article.title}
           </Title>

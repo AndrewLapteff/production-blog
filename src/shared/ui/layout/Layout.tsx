@@ -1,5 +1,5 @@
 import s from './Layout.module.scss'
-import { classNames } from 'shared/lib'
+import { classNames, useThrottle } from 'shared/lib'
 import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react'
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll'
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,7 +16,6 @@ interface LayoutProps {
 export const Layout = memo(({ children, callback }: LayoutProps) => {
   const wrapperRef = useRef() as MutableRefObject<HTMLElement>
   const innerRef = useRef() as MutableRefObject<HTMLDivElement>
-
   const { pathname } = useLocation()
   const dispatch = useDispatch()
   const scroll = useSelector((state) => getScrollValue(state, pathname))
@@ -35,14 +34,14 @@ export const Layout = memo(({ children, callback }: LayoutProps) => {
     wrapperRef.current.scrollTop = scroll
   })
 
-  const onScrollHandler = (e: UIEvent<HTMLElement>) => {
+  const onScrollHandler = useThrottle((e: UIEvent<HTMLElement>) => {
     dispatch(
       setScrollValue({
         value: e.currentTarget.scrollTop,
         path: pathname
       })
     )
-  }
+  }, 500)
 
   return (
     <section

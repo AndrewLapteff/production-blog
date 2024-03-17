@@ -39,16 +39,14 @@ const ArticlesPage = () => {
 
   return (
     <Layout callback={addArticlesHandler}>
-      <div className={s['articles-page']}>
-        <DynamicSliceLoader
-          name={'articlesReducer'}
-          reducer={articlesReducer}
-          removeAfterUnmount={false}
-        >
-          <ArticlesControls view={view} />
-          <ArticleList view={view} articles={articles} />
-        </DynamicSliceLoader>
-      </div>
+      <DynamicSliceLoader
+        name={'articlesReducer'}
+        reducer={articlesReducer}
+        removeAfterUnmount={false}
+      >
+        <ArticlesControls view={view} />
+        <ArticleList view={view} articles={articles} />
+      </DynamicSliceLoader>
     </Layout>
   )
 }

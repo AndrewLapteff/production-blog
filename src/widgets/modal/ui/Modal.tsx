@@ -1,14 +1,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useCallback,
-  useEffect
-} from 'react'
+import { Dispatch, ReactNode, SetStateAction, useCallback } from 'react'
 import s from './Modal.module.scss'
-import { classNames } from 'shared/lib'
+import { classNames, useKeyPress } from 'shared/lib'
 
 export interface ModalProps {
   isOpen: boolean
@@ -30,22 +24,7 @@ export const Modal = (props: ModalProps) => {
     setOpen(false)
   }, [setOpen])
 
-  const onKeyDownHandler = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose()
-      }
-    },
-    [onClose]
-  )
-
-  useEffect(() => {
-    window.addEventListener('keydown', onKeyDownHandler, true)
-
-    return () => {
-      window.removeEventListener('keydown', onKeyDownHandler)
-    }
-  }, [onKeyDownHandler])
+  useKeyPress({ onKeyDown: { callback: onClose, key: 'Escape', once: true } })
 
   const stopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation()

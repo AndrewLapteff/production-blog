@@ -1,6 +1,6 @@
 .article {
   margin-top: 10px;
-  width: 700px;
+  width: var(--article-width);
   display: flex;
   flex-direction: column;
   gap: 10px;

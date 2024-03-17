@@ -10,4 +10,6 @@ export { useDispatchCallbackWithArgs } from './hooks/useDispatchCallbackWithArgs
 export { getImageSize } from './getImageData/getImageData'
 export { useFirstViewportEntry } from './hooks/useFirstViewportEntry'
 export { useHover } from './hooks/useHover'
+export { useThrottle } from './hooks/useThrottle'
+export { useKeyPress } from './hooks/useKeyPress'
 export type { ObserverProps } from './hooks/useFirstViewportEntry'
