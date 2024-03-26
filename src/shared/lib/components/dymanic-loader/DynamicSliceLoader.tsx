@@ -1,5 +1,5 @@
 import { Reducer } from '@reduxjs/toolkit'
-import { PropsWithChildren, useEffect } from 'react'
+import { memo, PropsWithChildren, useEffect } from 'react'
 import { useDispatch, useStore } from 'react-redux'
 import {
   ExtendedStore,
@@ -12,7 +12,7 @@ interface DynamicSliceLoaderProps extends PropsWithChildren {
   removeAfterUnmount?: boolean
 }
 
-export const DynamicSliceLoader = (props: DynamicSliceLoaderProps) => {
+export const DynamicSliceLoader = memo((props: DynamicSliceLoaderProps) => {
   const store = useStore() as ExtendedStore
   const { name, reducer, removeAfterUnmount = true, children } = props
   const dispatch = useDispatch()
@@ -54,4 +54,4 @@ export const DynamicSliceLoader = (props: DynamicSliceLoaderProps) => {
   }, [])
 
   return children
-}
+})

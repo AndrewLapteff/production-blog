@@ -67,7 +67,7 @@ export const ProfileCard = memo(() => {
     [PROFILE_VALIDATION.TOO_SHORT_USERNAME]: t('username-is-too-short')
   }
 
-  const options: Option[] = useMemo(
+  const options: Array<Option<string>> = useMemo(
     () =>
       countries.map((country) => {
         return { content: country.name, value: country.name }
@@ -75,7 +75,7 @@ export const ProfileCard = memo(() => {
     []
   )
 
-  if (error) {
+  if (error || !profile) {
     return (
       <div className={classNames(s.wrapper)}>
         <Text title="Smth went wrong" align="center">
@@ -126,7 +126,7 @@ export const ProfileCard = memo(() => {
             onSelect={onSelectCountry}
             readonly={isReadonly}
             options={options}
-            currentCountry={profile?.country}
+            initialValue={profile.country}
           />
         </div>
         {errors?.map((errorText) => {

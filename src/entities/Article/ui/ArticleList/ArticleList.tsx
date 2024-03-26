@@ -1,5 +1,10 @@
-import { memo } from 'react'
-import { Article, ArticleView } from '../../../Article/model/types/article'
+import { memo, useMemo } from 'react'
+import {
+  ArticleSort,
+  ArticleSortOrder,
+  ArticleType,
+  ArticleView
+} from 'entities/Article/model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListSkeleton'
 import s from './ArticleList.module.scss'
@@ -8,7 +13,7 @@ import { useSelector } from 'react-redux'
 
 interface ArticleListProps {
   isLoading?: boolean
-  articles: Article[]
+  articles: ArticleType[]
   view: ArticleView
 }
 
@@ -16,7 +21,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
   const { view, articles } = props
   const isLoading = useSelector(getIsLoadingArticles)
 
-  const renderArticle = (article: Article) => {
+  const renderArticle = (article: ArticleType) => {
     return <ArticleListItem key={article.id} article={article} view={view} />
   }
 

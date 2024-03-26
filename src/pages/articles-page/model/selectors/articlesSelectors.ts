@@ -20,3 +20,12 @@ export const getHasMoreArticles = (store: StoreProps) =>
 
 export const getIsInitArticles = (store: StoreProps) =>
   store.articlesReducer?._inited ?? false
+
+export const getSortArticles = (store: StoreProps) =>
+  store.articlesReducer?.sort || 'views'
+
+export const getSortOrderArticles = (store: StoreProps) =>
+  store.articlesReducer?.sortOrder || 'asc'
+
+export const getSearchArticles = (store: StoreProps) =>
+  store.articlesReducer?.search ?? ''

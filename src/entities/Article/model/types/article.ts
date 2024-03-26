@@ -30,7 +30,7 @@ export type ArticleBlock =
   | ArticleTextBlock
   | ArticleImageBlock
 
-export interface Article {
+export interface ArticleType {
   id: number
   title: string
   description: string
@@ -45,10 +45,14 @@ export interface Article {
 }
 
 export interface ArticleSchema {
-  article?: Article
+  article?: ArticleType
   author?: Profile
   isLoading: boolean
   error?: string
 }
 
 export type ArticleView = 'compact' | 'classic'
+
+export type ArticleSort = 'views' | 'createdAt' | 'title'
+
+export type ArticleSortOrder = 'asc' | 'desc'

@@ -47,6 +47,7 @@ I aim to align this project's structure and development processes as closely as 
 - **Data Normalization**: Introduction to data normalization concepts and practical implementation with EntityAdapter.
 - **Virtualization**: Usage of virtual lists for performance optimization when dealing with large datasets.
 - **Infrastructure Setup**: Configuration of the development environment, testing environment, and Storybook to seamlessly integrate all features and functionalities.
+- **TypeScript Generic Components**: Flexible components that can adapt to different data structures and enforce type safety throughout your codebase.
 
 ## Testing
 

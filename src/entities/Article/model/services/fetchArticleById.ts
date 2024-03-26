@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 import { ThunkConfig } from 'app/providers/store-provider'
-import { Article } from '../types/article'
+import { ArticleType } from '../types/article'
 import { Profile } from '../../../Profile'
 
 interface ReturnType {
-  article: Article
+  article: ArticleType
   author: Profile
 }
 
@@ -15,7 +15,7 @@ export const fetchArticleById = createAsyncThunk<
   ThunkConfig<unknown | AxiosError>
 >('article/fetchArticleById', async (id, { rejectWithValue, extra }) => {
   try {
-    const { data } = await extra.api.get<Article>(`articles/${id}`, {
+    const { data } = await extra.api.get<ArticleType>(`articles/${id}`, {
       params: { _expand: 'profile' }
     })
 

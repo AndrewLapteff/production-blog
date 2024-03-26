@@ -13,7 +13,7 @@ interface LayoutProps {
   callback?: () => void
 }
 
-export const Layout = memo(({ children, callback }: LayoutProps) => {
+export const Layout = ({ children, callback }: LayoutProps) => {
   const wrapperRef = useRef() as MutableRefObject<HTMLElement>
   const innerRef = useRef() as MutableRefObject<HTMLDivElement>
   const { pathname } = useLocation()
@@ -53,4 +53,4 @@ export const Layout = memo(({ children, callback }: LayoutProps) => {
       <div className={s['div-helper']} ref={innerRef}></div>
     </section>
   )
-})
+}

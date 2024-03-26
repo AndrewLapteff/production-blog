@@ -55,7 +55,7 @@ describe('getUserByEmail.test.ts', () => {
     )
 
     // createAsyncThunk call
-    const action = fetchArticles(1)
+    const action = fetchArticles({})
     // action generation call
     const actionData = await action(dispatch, getState, {
       api: mockedAxios,

@@ -7,5 +7,9 @@
   "comments": "Comments",
   "min": " min",
   "theres-no-comments": "There's no comments",
-  "view": "View"
+  "view": "View",
+  "date": "date",
+  "title": "title",
+  "sort": "Sort",
+  "sort-order": "Sort order"
 }

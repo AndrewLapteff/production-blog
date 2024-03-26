@@ -21,6 +21,7 @@ export const InputLight: Story = {
       { content: 'React', value: 'react' },
       { content: 'Redux', value: 'redux' },
       { content: 'Next', value: 'next' }
-    ]
+    ],
+    initialValue: 'React'
   }
 }

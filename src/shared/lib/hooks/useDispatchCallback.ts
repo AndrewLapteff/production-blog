@@ -6,6 +6,11 @@ import { useDispatch } from 'react-redux'
 
 type EventType = ChangeEvent<any>
 
+export type UseDispatchCallbackType<T> = (e: EventType) => {
+  payload: T
+  type: any
+}
+
 export const useDispatchCallback = <T>(
   actionCallback: ActionCreatorWithPayload<T, any>
 ) => {

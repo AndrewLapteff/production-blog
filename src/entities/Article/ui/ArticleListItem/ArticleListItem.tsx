@@ -2,7 +2,7 @@ import s from './ArticleListItem.module.scss'
 import { classNames } from 'shared/lib'
 import { useTranslation } from 'react-i18next'
 import { memo } from 'react'
-import { Article, ArticleView } from '../../../Article/model/types/article'
+import { ArticleType, ArticleView } from '../../../Article/model/types/article'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { AppLink, Button, MetaInfoItem, Text, Title } from 'shared/ui'
 import Eye from 'shared/assets/icons/eye.svg'
@@ -12,7 +12,7 @@ import { Author } from 'widgets/author'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 
 interface ArticleListItemProps {
-  article: Article
+  article: ArticleType
   view: ArticleView
 }
 
