@@ -55,19 +55,28 @@ const articlesSlice = createSlice({
     increasePageValue(state) {
       state.page = state.page + 1
     },
-    init(state) {
+    init(state, action: PayloadAction<Dictionary>) {
+      Object.entries(action.payload).forEach(([key, value]) => {
+        console.log(key, value)
+        const stateKeys = Object.keys(state)
+        if (stateKeys.includes(key)) {
+          console.log(key, value)
+          // @ts-expect-error
+          state[key] = value
+        }
+      })
       state._inited = true
     }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchArticles.fulfilled, (state, action) => {
-      state.isLoading = false
       if (action.meta.arg.replace) {
         articlesAdapter.setAll(state, action.payload)
       } else {
         articlesAdapter.addMany(state, action.payload)
       }
-      state.hasMore = action.payload.length > 0
+      state.isLoading = false
+      state.hasMore = action.payload.length >= state.limit
     })
     builder.addCase(fetchArticles.pending, (state, action) => {
       state.isLoading = true

@@ -126,7 +126,7 @@ export const ProfileCard = memo(() => {
             onSelect={onSelectCountry}
             readonly={isReadonly}
             options={options}
-            initialValue={profile.country}
+            value={profile.country}
           />
         </div>
         {errors?.map((errorText) => {

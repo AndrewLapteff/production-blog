@@ -54,15 +54,15 @@ export const SortSelect = memo((props: SortSelectProps) => {
     <div className={classNames(s.sortselect)}>
       <Select<ArticleSort>
         label={t('sort')}
+        value={sort}
         onSelect={onSelectSort}
         options={sortOptions}
-        initialValue={sort}
       />
       <Select<ArticleSortOrder>
         label={t('sort-order')}
+        value={sortOrder}
         onSelect={onSelectSortOrder}
         options={sortOrderOptions}
-        initialValue={sortOrder}
       />
     </div>
   )

@@ -1,5 +1,5 @@
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList'
-import { DynamicSliceLoader, useDebounce, useThunkDispatch } from 'shared/lib'
+import { DynamicSliceLoader, useThunkDispatch } from 'shared/lib'
 import {
   articlesReducer,
   articlesSelector,
@@ -19,9 +19,13 @@ import { ArticlesControls } from '../articles-controls/ArticlesControls'
 import { Layout } from 'shared/ui'
 import { memo, useCallback, useEffect } from 'react'
 import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchNextArticles'
+import { useSearchParams } from 'react-router-dom'
+import { URLToObject } from 'shared/lib/url/URLToObject/URLToObject'
+import { initArticles } from 'pages/articles-page/model/services/initArticles/initArticles'
 
 const ArticlesPage = memo(() => {
   const dispatch = useThunkDispatch()
+  const [searchParams] = useSearchParams()
 
   const articles = useSelector(articlesSelector.selectAll)
   const view = useSelector(getViewArticles)
@@ -36,17 +40,18 @@ const ArticlesPage = memo(() => {
 
   useInitialEffect(async () => {
     // to avoid extra fetches once reducer inited
-    if (isInited) {
-      dispatch(init)
-      await dispatch(fetchArticles({}))
-    }
+    dispatch(
+      initArticles({
+        sortOrder: searchParams.get('sortOrder'),
+        search: searchParams.get('search'),
+        sort: searchParams.get('sort')
+      })
+    )
   }, 'storybook')
 
   const addArticlesHandler = useCallback(() => {
     dispatch(fetchNextArticles())
   }, [dispatch])
-
-  console.log(navigator.userAgent)
 
   return (
     <Layout callback={addArticlesHandler}>

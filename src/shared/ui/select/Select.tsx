@@ -15,18 +15,18 @@ interface Payload {
 interface SelectProps<T extends string> {
   label?: string
   options: Array<Option<T>>
+  value?: T
   readonly?: boolean
-  initialValue: T
   onSelect: (e: ChangeEvent<HTMLSelectElement>) => Payload
 }
 
 export const Select = <T extends string>(props: SelectProps<T>) => {
-  const { label, options, readonly, initialValue, onSelect } = props
+  const { label, options, readonly, onSelect, value } = props
 
   const optionsArray = useMemo(
     () =>
       options.map((opt) => {
-        if (initialValue === opt.value) {
+        if (value === opt.value) {
           return (
             <option className={s.option} key={opt.value} value={opt.value}>
               {opt.content}
@@ -40,7 +40,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
           </option>
         )
       }),
-    [options, initialValue]
+    [options, value]
   )
 
   return (
@@ -51,7 +51,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
         </label>
       )}
       <select
-        defaultValue={initialValue}
+        value={value}
         onChange={onSelect}
         disabled={readonly}
         className={s.select}

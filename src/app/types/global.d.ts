@@ -15,3 +15,10 @@ declare const API_URL: string
 declare const PROJECT_ENV: 'frontend' | 'storybook' | 'jest'
 
 type MakeOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
+
+type PartialRecord<K extends keyof any, T> = {
+  [P in K]?: T
+}
+type List = PartialRecord<'a' | 'b' | 'c', string>
+
+type Dictionary = Record<string, string>
