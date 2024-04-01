@@ -56,7 +56,7 @@ function buildStore(isLoading: boolean, error: undefined | string) {
             'New JavaScript Features from ECMAScript 2023 (ES14). New way to organize',
           description: 'New features of JS of 2024',
           img: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg',
-          view: 1024,
+          views: 1024,
           createdAt: '01.01.2024',
           topics: ['JavaScript', 'Features'],
           minsToRead: '2',

@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next'
 import { postProfile } from '../../../../entities/Profile/model/service/postProfile/updateProfile'
 import { Avatar } from 'shared/ui/avatar/Avatar'
 import { memo, useCallback, useMemo } from 'react'
-import { countries } from 'shared/consts/countries'
+import { countries } from 'shared/consts/countries/countries'
 import { ProfileInput } from '../profile-input/ProfileInput'
 import { Controls } from '../controls/Controls'
 import {

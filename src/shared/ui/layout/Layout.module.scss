@@ -6,7 +6,8 @@
   align-items: center;
   justify-content: start;
   overflow: auto;
-  margin-top: 10px;
+  height: calc(100vh - var(--navbar-height));
+
 }
 
 .div-helper {

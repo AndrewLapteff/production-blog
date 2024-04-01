@@ -4,7 +4,7 @@ import { CommentList } from 'entities/Comment'
 import { commentsSelector } from 'pages/article-page'
 import { fetchCommentById } from 'pages/article-page/model/service/fetchCommentById/fetchCommentById'
 import { useSelector } from 'react-redux'
-import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import AddCommentForm from 'features/add-comment'
 import { getIsLoadingComments } from 'pages/article-page/model/selectors/selectors'
 

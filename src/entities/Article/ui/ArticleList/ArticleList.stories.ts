@@ -21,7 +21,7 @@ const articles: ArticleType[] = [
     description:
       'Welcome to the cutting-edge world of ECMAScript 2023 (ES14), where JavaScript undergoes a transformational evolution in code organization. In this latest iteration, developers are empowered with innovative tools and methodologies to streamline their coding practices and enhance project maintainability.',
     img: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg',
-    view: 1024,
+    views: 1024,
     createdAt: '01.01.2024',
     topics: ['JavaScript', 'Features'],
     minsToRead: '2',
@@ -109,7 +109,7 @@ const articles: ArticleType[] = [
     description:
       'Welcome to the cutting-edge world of ECMAScript 2023 (ES14), where JavaScript undergoes a transformational evolution in code organization. In this latest iteration, developers are empowered with innovative tools and methodologies to streamline their coding practices and enhance project maintainability.',
     img: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg',
-    view: 1024,
+    views: 1024,
     createdAt: '01.01.2024',
     topics: ['JavaScript', 'Features'],
     minsToRead: '2',
@@ -197,7 +197,7 @@ const articles: ArticleType[] = [
     description:
       'Welcome to the cutting-edge world of ECMAScript 2023 (ES14), where JavaScript undergoes a transformational evolution in code organization. In this latest iteration, developers are empowered with innovative tools and methodologies to streamline their coding practices and enhance project maintainability.',
     img: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg',
-    view: 1024,
+    views: 1024,
     createdAt: '01.01.2024',
     topics: ['JavaScript', 'Features'],
     minsToRead: '2',
@@ -285,7 +285,7 @@ const articles: ArticleType[] = [
     description:
       'Welcome to the cutting-edge world of ECMAScript 2023 (ES14), where JavaScript undergoes a transformational evolution in code organization. In this latest iteration, developers are empowered with innovative tools and methodologies to streamline their coding practices and enhance project maintainability.',
     img: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg',
-    view: 1024,
+    views: 1024,
     createdAt: '01.01.2024',
     topics: ['JavaScript', 'Features'],
     minsToRead: '2',

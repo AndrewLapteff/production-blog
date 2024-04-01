@@ -1,5 +1,10 @@
 import s from './ArticlesControls.module.scss'
-import { classNames, useDebounce, useDispatchCallback } from 'shared/lib'
+import {
+  classNames,
+  useDebounce,
+  useDispatchCallback,
+  useThunkDispatch
+} from 'shared/lib'
 import { ChangeEvent, memo, ReactNode, useCallback, useMemo } from 'react'
 import { Button, Input } from 'shared/ui'
 import Burger2 from 'shared/assets/icons/burger2.svg'
@@ -21,6 +26,7 @@ interface ArticlesControlsProps {
   view: ArticleView
   sort: ArticleSort
   sortOrder: ArticleSortOrder
+  search: string
 }
 
 const buttons: Array<{
@@ -33,10 +39,9 @@ const buttons: Array<{
 type EventType = ChangeEvent<any>
 
 export const ArticlesControls = memo((props: ArticlesControlsProps) => {
-  const { view, sort, sortOrder } = props
+  const { view, sort, sortOrder, search } = props
   const dispatch = useDispatch()
-
-  const search = useSelector(getSearchArticles)
+  const thunkDispatch = useThunkDispatch()
 
   const onChangeView = useCallback(
     (view: ArticleView) => () => {
@@ -45,17 +50,33 @@ export const ArticlesControls = memo((props: ArticlesControlsProps) => {
     [dispatch]
   )
 
-  const debouncedFetch = useDebounce(
-    () => fetchArticles({ replace: true }),
-    1000
-  )
+  const fetchArticlesHandler = useCallback(() => {
+    thunkDispatch(fetchArticles({ replace: true }))
+  }, [thunkDispatch])
 
-  const onSelectSort = useDispatchCallback(setSort)
-  const onSelectSortOrder = useDispatchCallback(setSortOrder)
-  const onSelectSearch = useCallback((e: EventType) => {
-    dispatch(setSearch(e.target.value as string))
-    debouncedFetch()
-  }, [])
+  const debouncedFetch = useDebounce(fetchArticlesHandler, 1000)
+
+  const onSelectSort = useCallback(
+    (e: EventType) => {
+      dispatch(setSort(e.target.value as ArticleSort))
+      fetchArticlesHandler()
+    },
+    [dispatch, fetchArticlesHandler]
+  )
+  const onSelectSortOrder = useCallback(
+    (e: EventType) => {
+      dispatch(setSortOrder(e.target.value as ArticleSortOrder))
+      fetchArticlesHandler()
+    },
+    [dispatch, fetchArticlesHandler]
+  )
+  const onSelectSearch = useCallback(
+    (e: EventType) => {
+      dispatch(setSearch(e.target.value as string))
+      debouncedFetch()
+    },
+    [dispatch, debouncedFetch]
+  )
 
   const viewButtons = useMemo(
     () =>

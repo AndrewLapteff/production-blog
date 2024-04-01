@@ -1,14 +1,13 @@
 import s from './SortSelect.module.scss'
 import { classNames } from 'shared/lib'
 import { useTranslation } from 'react-i18next'
-import { memo, useMemo } from 'react'
+import { ChangeEvent, memo, useMemo } from 'react'
 import { Option, Select } from 'shared/ui'
 import { ArticleSort, ArticleSortOrder } from 'entities/Article'
-import { UseDispatchCallbackType } from 'shared/lib/hooks/useDispatchCallback'
 
 interface SortSelectProps {
-  onSelectSort: UseDispatchCallbackType<ArticleSort>
-  onSelectSortOrder: UseDispatchCallbackType<ArticleSortOrder>
+  onSelectSort: (e: ChangeEvent<HTMLSelectElement>) => any
+  onSelectSortOrder: (e: ChangeEvent<HTMLSelectElement>) => any
   sort: ArticleSort
   sortOrder: ArticleSortOrder
 }

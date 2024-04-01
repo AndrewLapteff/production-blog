@@ -35,7 +35,7 @@ export interface ArticleType {
   title: string
   description: string
   img: string
-  view: number
+  views: number
   authorId: number
   minsToRead: string
   createdAt: string

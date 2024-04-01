@@ -1,6 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/store-provider'
-import { setSearch, setSort, setSortOrder } from '../../slice/articlesSlice'
+import {
+  init,
+  setSearch,
+  setSort,
+  setSortOrder
+} from '../../slice/articlesSlice'
 import { ArticleSort, ArticleSortOrder } from 'entities/Article'
 
 interface InitArticlesProps {
@@ -21,6 +26,7 @@ export const initArticles = createAsyncThunk<
     dispatch(setSort(sort as ArticleSort))
   }
   if (search) {
-    dispatch(setSearch(search))
+    dispatch(setSearch(search || ''))
   }
+  dispatch(init())
 })

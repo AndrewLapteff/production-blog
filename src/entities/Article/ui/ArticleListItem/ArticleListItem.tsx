@@ -42,7 +42,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             size={30}
             id={article.profile?.id}
           />
-          <MetaInfoItem Svg={Eye} value={article.view} />
+          <MetaInfoItem Svg={Eye} value={article.views} />
           <MetaInfoItem Svg={Time} value={article.minsToRead} text={t('min')} />
           <MetaInfoItem Svg={Calendar} value={article.createdAt} />
         </div>
@@ -82,7 +82,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           </Title>
         </AppLink>
         <div className={s['meta-info']}>
-          <MetaInfoItem size={16} Svg={Eye} value={article.view} />
+          <MetaInfoItem size={16} Svg={Eye} value={article.views} />
           <MetaInfoItem
             size={16}
             Svg={Time}

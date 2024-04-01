@@ -9,7 +9,7 @@ import {
 export interface ArticlesSchema extends EntityState<ArticleType, number> {
   isLoading: boolean
   error: string
-  view: ArticleView
+  views: ArticleView
   page: number
   limit: number
   hasMore: boolean

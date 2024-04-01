@@ -1,11 +1,11 @@
 import s from './Layout.module.scss'
 import { classNames, useThrottle } from 'shared/lib'
-import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react'
+import { MutableRefObject, ReactNode, UIEvent, useRef } from 'react'
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll'
 import { useDispatch, useSelector } from 'react-redux'
 import { setScrollValue } from 'features/scroll-restoration'
 import { useLocation } from 'react-router-dom'
-import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { getScrollValue } from 'features/scroll-restoration/model/selectors/scrollRestorationSelectors'
 
 interface LayoutProps {
@@ -41,7 +41,7 @@ export const Layout = ({ children, callback }: LayoutProps) => {
         path: pathname
       })
     )
-  }, 500)
+  }, 200)
 
   return (
     <section

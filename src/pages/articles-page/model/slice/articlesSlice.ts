@@ -20,11 +20,11 @@ const articlesAdapter = createEntityAdapter<ArticleType, number>({
 const articlesSlice = createSlice({
   name: 'articles',
   initialState: articlesAdapter.getInitialState<ArticlesSchema>({
-    view: 'classic',
+    views: 'classic',
     isLoading: true,
     error: '',
     limit: 5,
-    page: 1,
+    page: 0,
     hasMore: true,
     ids: [],
     entities: {},
@@ -38,7 +38,7 @@ const articlesSlice = createSlice({
       articlesAdapter.addOne(state, action.payload)
     },
     changeView(state, action: PayloadAction<ArticleView>) {
-      state.view = action.payload
+      state.views = action.payload
       if (action.payload === 'classic') state.limit = 5
       if (action.payload === 'compact') state.limit = 9
     },
@@ -55,16 +55,7 @@ const articlesSlice = createSlice({
     increasePageValue(state) {
       state.page = state.page + 1
     },
-    init(state, action: PayloadAction<Dictionary>) {
-      Object.entries(action.payload).forEach(([key, value]) => {
-        console.log(key, value)
-        const stateKeys = Object.keys(state)
-        if (stateKeys.includes(key)) {
-          console.log(key, value)
-          // @ts-expect-error
-          state[key] = value
-        }
-      })
+    init(state) {
       state._inited = true
     }
   },

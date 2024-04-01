@@ -17,7 +17,7 @@ import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { Controls } from '../Controls/Controls'
 import { Author } from 'widgets/author'
-import { useInitialEffect } from 'shared/lib/hooks/useEnviroment'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { ArticleSkeleton } from '../ArticleSkeleton/ArticleSkeleton'
 
 interface ArticleProps {
@@ -81,7 +81,7 @@ export const Article = memo(({ id }: ArticleProps) => {
         time={`${article.minsToRead} ${t('mins-to-read')}`}
         username={author.username}
       />
-      <Controls createdAt={article.createdAt} view={article.view} />
+      <Controls createdAt={article.createdAt} views={article.views} />
       <LazyLoadImage
         style={{ borderRadius: '.5rem' }}
         effect="blur"

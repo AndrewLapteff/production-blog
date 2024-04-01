@@ -6,7 +6,7 @@ const width = 680
 export const ArticleSkeleton = () => {
   return (
     <div className={s.article}>
-      <Skeleton width={width} height={70} />
+      <Skeleton width={width} height={50} />
       <div className={s.avatar}>
         <Skeleton borderRadius={50} width={45} height={43} />
         <div className={s['avatar-info']}>

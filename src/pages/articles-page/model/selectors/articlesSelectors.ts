@@ -7,7 +7,7 @@ export const getErrorArticles = (store: StoreProps) =>
   store.articlesReducer?.error ?? ''
 
 export const getViewArticles = (store: StoreProps) =>
-  store.articlesReducer?.view || 'classic'
+  store.articlesReducer?.views || 'classic'
 
 export const getLimitArticles = (store: StoreProps) =>
   store.articlesReducer?.limit ?? 5
