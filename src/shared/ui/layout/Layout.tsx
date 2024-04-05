@@ -10,10 +10,10 @@ import { getScrollValue } from 'features/scroll-restoration/model/selectors/scro
 
 interface LayoutProps {
   children?: ReactNode
-  callback?: () => void
+  infiniteScrollCallback?: () => void
 }
 
-export const Layout = ({ children, callback }: LayoutProps) => {
+export const Layout = ({ children, infiniteScrollCallback }: LayoutProps) => {
   const wrapperRef = useRef() as MutableRefObject<HTMLElement>
   const innerRef = useRef() as MutableRefObject<HTMLDivElement>
   const { pathname } = useLocation()
@@ -27,7 +27,7 @@ export const Layout = ({ children, callback }: LayoutProps) => {
       threshold: 1,
       rootMargin: '0px'
     },
-    callback
+    infiniteScrollCallback
   )
 
   useInitialEffect(() => {

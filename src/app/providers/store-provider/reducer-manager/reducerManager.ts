@@ -7,7 +7,7 @@ import {
 } from '@reduxjs/toolkit'
 import { ReducerManager, ReducersNames, StoreProps } from '../types/Schema'
 
-export function createReducerManager (
+export function createReducerManager(
   initialReducers: ReducersMapObject<StoreProps>
 ): ReducerManager {
   const reducers = { ...initialReducers }

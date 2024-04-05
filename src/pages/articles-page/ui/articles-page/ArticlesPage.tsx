@@ -50,7 +50,7 @@ const ArticlesPage = memo(() => {
   }, [thunkDispatch])
 
   return (
-    <Layout callback={addArticlesHandler}>
+    <Layout infiniteScrollCallback={addArticlesHandler}>
       <DynamicSliceLoader
         name={'articlesReducer'}
         reducer={articlesReducer}

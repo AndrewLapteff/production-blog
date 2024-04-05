@@ -1,11 +1,13 @@
 .text {
   font-size: var(--font-m);
-  color: var(medium-emphasis);
 }
 
-// error > title | text
 .error {
   color: rgba(255, 0, 0, 0.674);
+}
+
+.normal {
+  color: var(--high-emphasis);
 }
 
 .s {

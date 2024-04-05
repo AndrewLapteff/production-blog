@@ -15,6 +15,7 @@ import type { CommentsSchema } from 'pages/article-page'
 import type { ArticlesSchema } from 'pages/articles-page'
 import type { NavigateFunction } from 'react-router-dom'
 import { ScrollRestorationSchema } from 'features/scroll-restoration'
+import { RecommendationsSchema } from 'pages/article-page/model/types/recommendations'
 
 export interface StoreProps {
   userReducer: UserSchema
@@ -24,6 +25,7 @@ export interface StoreProps {
   articleReducer?: ArticleSchema
   articlesReducer?: ArticlesSchema
   commentsReducer?: CommentsSchema
+  recommendationsReducer?: RecommendationsSchema
   addCommentForm?: AddCommnetForm
   navigate?: NavigateFunction
 }

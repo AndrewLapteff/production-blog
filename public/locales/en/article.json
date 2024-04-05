@@ -11,5 +11,6 @@
   "date": "date",
   "title": "title",
   "sort": "Sort",
-  "sort-order": "Sort order"
+  "sort-order": "Sort order",
+  "recommendations": "Recommendations"
 }
