@@ -25,7 +25,7 @@ const article: ArticleType = {
   createdAt: '01.01.2024',
   topics: ['JavaScript', 'Features'],
   minsToRead: '2',
-  authorId: 1,
+  profileId: 1,
   blocks: [
     {
       id: 1,

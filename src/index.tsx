@@ -13,7 +13,7 @@ const container = document.getElementById('root')
 const initialStore: StoreProps = {
   userReducer: {
     user: {
-      id: 1,
+      id: 0,
       username: '',
       email: ''
     },

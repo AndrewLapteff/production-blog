@@ -1,8 +1,6 @@
 import s from './Article.module.scss'
 import 'react-lazy-load-image-component/src/effects/blur.css'
-import { useThunkDispatch } from 'shared/lib'
 import { memo, useCallback, useMemo } from 'react'
-import { fetchArticleById } from './../../model/services/fetchArticleById'
 import { useSelector } from 'react-redux'
 import { getArticle } from '../../model/selectors/getArticle/getArticle'
 import { getError } from '../../model/selectors/getError/getError'
@@ -17,7 +15,6 @@ import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
 import { Controls } from '../Controls/Controls'
 import { Author } from 'widgets/author'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { ArticleSkeleton } from '../ArticleSkeleton/ArticleSkeleton'
 
 interface ArticleProps {
@@ -25,12 +22,7 @@ interface ArticleProps {
 }
 
 export const Article = memo(({ id }: ArticleProps) => {
-  const dispatch = useThunkDispatch()
   const { t } = useTranslation('article')
-  useInitialEffect(
-    async () => await dispatch(fetchArticleById(id)),
-    'storybook'
-  )
 
   const isLoading = useSelector(getIsLoading)
   const article = useSelector(getArticle)

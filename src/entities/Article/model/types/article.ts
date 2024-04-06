@@ -36,7 +36,7 @@ export interface ArticleType {
   description: string
   img: string
   views: number
-  authorId: number
+  profileId: number
   minsToRead: string
   createdAt: string
   topics: string[]

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { Layout, Text } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { commentsReducer } from '../model/slice/commentSlice'
-import { memo, useEffect } from 'react'
+import { memo } from 'react'
 import { RenderOnViewportEntry } from 'app/providers/render-on-viewport-entry'
 import { Comments } from 'widgets/comments'
 import { addCommentFormReducer } from 'features/add-comment'
@@ -15,12 +15,18 @@ import { useSelector } from 'react-redux'
 import { getRecommendations } from '../model/selectors/recommendationsSelectors/selectors'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { fetchRecommendations } from '../model/service/fetchRecommendations/fetchRecommendations'
+import { ArticleHeaderBar } from './article-header-bar/ArticleHeaderBar'
+import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById'
 
 const ArticlePage = memo(() => {
   const { id } = useParams<{ id: string }>()
   const { t } = useTranslation('article')
   const recommendations = useSelector(getRecommendations)
-  const dispatch = useThunkDispatch()
+  const thunkDispatch = useThunkDispatch()
+
+  useInitialEffect(() => {
+    thunkDispatch(fetchRecommendations())
+  }, 'storybook')
 
   if (!id) {
     return (
@@ -31,7 +37,7 @@ const ArticlePage = memo(() => {
   }
 
   useInitialEffect(() => {
-    dispatch(fetchRecommendations())
+    thunkDispatch(fetchArticleById(id))
   }, 'storybook')
 
   return (
@@ -42,6 +48,7 @@ const ArticlePage = memo(() => {
           reducer={[articleReducer, recommendationsReducer]}
           removeAfterUnmount
         >
+          <ArticleHeaderBar />
           <Article id={id} />
           <Recommendations recommendations={recommendations} />
           <RenderOnViewportEntry threshold={0}>
