@@ -17,11 +17,21 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { fetchRecommendations } from '../model/service/fetchRecommendations/fetchRecommendations'
 import { ArticleHeaderBar } from './article-header-bar/ArticleHeaderBar'
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById'
+import { getArticle } from 'entities/Article/model/selectors/getArticle/getArticle'
+import { getIsLoading } from 'entities/Article/model/selectors/getIsLoading/getIsLoading'
+import { ArticleSkeleton } from 'entities/Article/ui/article-skeleton/ArticleSkeleton'
+import { getAuthor } from 'entities/Article/model/selectors/getAuthor/getAuthor'
+import { getError } from 'entities/Article/model/selectors/getError/getError'
 
 const ArticlePage = memo(() => {
   const { id } = useParams<{ id: string }>()
   const { t } = useTranslation('article')
   const recommendations = useSelector(getRecommendations)
+  const article = useSelector(getArticle)
+  const isLoading = useSelector(getIsLoading)
+  const author = useSelector(getAuthor)
+  const error = useSelector(getError)
+
   const thunkDispatch = useThunkDispatch()
 
   useInitialEffect(() => {
@@ -48,8 +58,14 @@ const ArticlePage = memo(() => {
           reducer={[articleReducer, recommendationsReducer]}
           removeAfterUnmount
         >
-          <ArticleHeaderBar />
-          <Article id={id} />
+          <ArticleHeaderBar article={article} />
+          <Article
+            error={error}
+            isLoading={isLoading}
+            article={article}
+            author={author}
+            id={id}
+          />
           <Recommendations recommendations={recommendations} />
           <RenderOnViewportEntry threshold={0}>
             <DynamicSliceLoader

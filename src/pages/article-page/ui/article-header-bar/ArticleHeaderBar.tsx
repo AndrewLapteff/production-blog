@@ -7,16 +7,18 @@ import Edit from 'shared/assets/icons/edit.svg'
 import { useNavigate } from 'react-router-dom'
 import { routes } from 'shared/config'
 import { useSelector } from 'react-redux'
-import { getArticle } from 'entities/Article/model/selectors/getArticle/getArticle'
 import { getUser } from 'entities/User'
+import { ArticleType } from 'entities/Article'
 
 interface ArticleHeaderBarProps {
   children?: ReactNode
+  article?: ArticleType
 }
 
 export const ArticleHeaderBar = memo((props: ArticleHeaderBarProps) => {
+  const { article } = props
   const navigate = useNavigate()
-  const article = useSelector(getArticle)
+
   const user = useSelector(getUser)
   const carUserEdit = article?.profileId === user.id
 
@@ -24,13 +26,18 @@ export const ArticleHeaderBar = memo((props: ArticleHeaderBarProps) => {
     navigate(routes.articles)
   }, [navigate])
 
+  const editArticle = useCallback(() => {
+    if (article === undefined) return
+    navigate(`${routes.article}${article.id}/edit/`)
+  }, [navigate, article])
+
   return (
     <div className={classNames(s.articleheaderbar)}>
       <Button onClick={goBackToArticles} size="l" variant="outline">
         <ArrowToTheLeft width={25} height={25} />
       </Button>
       {carUserEdit && (
-        <Button size="l" variant="outline">
+        <Button onClick={editArticle} size="l" variant="outline">
           <Edit width={25} height={25} />
         </Button>
       )}

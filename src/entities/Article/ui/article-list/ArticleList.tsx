@@ -5,8 +5,8 @@ import {
   ArticleType,
   ArticleView
 } from 'entities/Article/model/types/article'
-import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
-import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListSkeleton'
+import { ArticleListItem } from '../article-list-item/ArticleListItem'
+import { ArticleListItemSkeleton } from '../article-list-item/ArticleListSkeleton'
 import s from './ArticleList.module.scss'
 import { getIsLoadingArticles } from 'pages/articles-page/model/selectors/articlesSelectors'
 import { useSelector } from 'react-redux'

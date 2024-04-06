@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Article } from './Article'
 import { StoreDecorator, ThemeDecorator, testStore } from 'shared/config'
-import { articleReducer } from 'entities/Article'
+import { Article, articleReducer } from 'entities/Article'
 import { userReducer } from 'entities/User'
 
 const meta = {
@@ -17,31 +16,85 @@ type Story = StoryObj<typeof meta>
 
 export const ArticleLight: Story = {
   args: {
-    id: '1'
+    author: {
+      id: 1,
+      username: 'Amigoo',
+      avatar: 'https://avatars.githubusercontent.com/u/114949478?v=4',
+      country: 'Ukraine',
+      age: 18,
+      bio: "Hello world, that's it!"
+    },
+    error: '',
+    isLoading: false,
+    id: '1',
+    article: {
+      id: 1,
+      title:
+        'New JavaScript Features from ECMAScript 2023 (ES14). New way to organize',
+      description: 'New features of JS of 2024',
+      img: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg',
+      views: 1024,
+      createdAt: '01.01.2024',
+      topics: ['JavaScript', 'Features'],
+      minsToRead: '2',
+      profileId: 1,
+      blocks: [
+        {
+          id: 0,
+          type: 'image',
+          title:
+            'Complete Guide of New JavaScript Features from ECMAScript 2023',
+          alt: 'Photo by Joan Gamell on Unsplash',
+          label: 'Photo by Joan Gamell on Unsplash',
+          url: 'https://www.tutorialrepublic.com/lib/images/javascript-illustration.png'
+        },
+        {
+          id: 1,
+          type: 'text',
+          title: 'Immutable Array Methods',
+          text: [
+            'With the ES14 version, Array.prototype added 4 new methods that change by copy: toReversed, toSorted, toSpliced, and with. These are immutable array methods, which make a copy of the array with the applied modifications without affecting the original array that they were called on.',
+            'Any array method that creates a copy, always does so shallowly. If there is an object in the array, the object reference is copied into the new array. In this case, both the original and new array refer to the same object. So when the object changes, all properties referring to the object reflect the change. Keep this in mind when using these methods if you have nested data in your array. Primitive types such as strings, numbers and booleans, are copied by value into the new array, so there is no reference to the original array.'
+          ]
+        },
+        {
+          id: 2,
+          type: 'code',
+          title: 'toReversed',
+          code: [
+            'const items = [1, 2, 3];',
+            'console.log(items); // [1, 2, 3]',
+            '',
+            'const reversedItems = items.toReversed();',
+            'console.log(reversedItems); // [3, 2, 1]'
+          ]
+        }
+      ]
+    }
   },
   decorators: [buildStore(false, undefined)]
 }
 
-export const ArticleDark: Story = {
-  args: {
-    id: '1'
-  },
-  decorators: [buildStore(false, undefined), ThemeDecorator('dark')]
-}
+// export const ArticleDark: Story = {
+//   args: {
+//     id: '1'
+//   },
+//   decorators: [buildStore(false, undefined), ThemeDecorator('dark')]
+// }
 
-export const ArticleLoading: Story = {
-  args: {
-    id: '1'
-  },
-  decorators: [buildStore(true, undefined)]
-}
+// export const ArticleLoading: Story = {
+//   args: {
+//     id: '1'
+//   },
+//   decorators: [buildStore(true, undefined)]
+// }
 
-export const ArticleWithError: Story = {
-  args: {
-    id: '1'
-  },
-  decorators: [buildStore(false, 'Error')]
-}
+// export const ArticleWithError: Story = {
+//   args: {
+//     id: '1'
+//   },
+//   decorators: [buildStore(false, 'Error')]
+// }
 
 function buildStore(isLoading: boolean, error: undefined | string) {
   return StoreDecorator(

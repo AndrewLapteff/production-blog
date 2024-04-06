@@ -1,33 +1,30 @@
 import s from './Article.module.scss'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { memo, useCallback, useMemo } from 'react'
-import { useSelector } from 'react-redux'
-import { getArticle } from '../../model/selectors/getArticle/getArticle'
-import { getError } from '../../model/selectors/getError/getError'
-import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading'
 import { AppLink, Title } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import { getAuthor } from '../../../Article/model/selectors/getAuthor/getAuthor'
-import { ArticleBlock } from '../../../Article/model/types/article'
-import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock'
-import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock'
-import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock'
-import { Controls } from '../Controls/Controls'
+import { ArticleBlock, ArticleType } from '../../model/types/article'
+import { ArticleCodeBlock } from '../article-code-block/ArticleCodeBlock'
+import { ArticleImageBlock } from '../article-image-block/ArticleImageBlock'
+import { ArticleTextBlock } from '../article-text-block/ArticleTextBlock'
+import { Controls } from '../controls/Controls'
 import { Author } from 'widgets/author'
-import { ArticleSkeleton } from '../ArticleSkeleton/ArticleSkeleton'
+import { ArticleSkeleton } from '../article-skeleton/ArticleSkeleton'
+import { Profile } from 'entities/Profile'
 
 interface ArticleProps {
   id: string
+  article: ArticleType | undefined
+  isLoading: boolean | undefined
+  author: Profile | undefined
+  error: string
 }
 
-export const Article = memo(({ id }: ArticleProps) => {
-  const { t } = useTranslation('article')
+export const Article = memo((props: ArticleProps) => {
+  const { article, isLoading, author, error } = props
 
-  const isLoading = useSelector(getIsLoading)
-  const article = useSelector(getArticle)
-  const author = useSelector(getAuthor)
-  const error = useSelector(getError)
+  const { t } = useTranslation('article')
 
   const renderBlock = useCallback((block: ArticleBlock, i: number) => {
     switch (block.type) {

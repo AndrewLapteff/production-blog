@@ -1,4 +1,4 @@
-import s from '../ArticleListItem/ArticleListItem.module.scss'
+import s from '../article-list-item/ArticleListItem.module.scss'
 import { Skeleton } from 'shared/ui/skeleton/Skeleton'
 import { classNames } from 'shared/lib'
 import { ArticleView } from 'entities/Article'

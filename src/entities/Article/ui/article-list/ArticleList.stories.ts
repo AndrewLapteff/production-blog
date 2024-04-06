@@ -1,13 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ArticleList } from './ArticleList'
-import { ArticleType } from 'entities/Article'
-import { ThemeDecorator } from 'shared/config'
+import { articleReducer, ArticleType } from 'entities/Article'
+import { StoreDecorator, ThemeDecorator } from 'shared/config'
+import { userReducer } from 'entities/User'
 const meta = {
   title: 'entities/ArticleList',
   component: ArticleList,
   parameters: {
     layout: 'centered'
-  }
+  },
+  // @ts-expect-error
+  decorators: [StoreDecorator({ articleReducer, userReducer })]
 } satisfies Meta<typeof ArticleList>
 
 export default meta

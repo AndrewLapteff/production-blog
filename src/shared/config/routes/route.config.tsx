@@ -1,4 +1,5 @@
 import { AboutPage } from 'pages/about-page'
+import { ArticleEditPage } from 'pages/article-edit-page'
 import { ArticlePage } from 'pages/article-page'
 import { ArticlesPage } from 'pages/articles-page'
 import { MainPage } from 'pages/main-page'
@@ -13,7 +14,9 @@ export enum Routes {
   PROFILES = 'profiles',
   NOT_FOUND = 'not_found',
   ARTICLE = 'article',
-  ARTICLES = 'articles'
+  ARTICLES = 'articles',
+  ARTICLE_EDIT = 'article_edit',
+  ARTICLE_NEW = 'article_new'
 }
 
 export const routes: Record<Routes, string> = {
@@ -23,6 +26,8 @@ export const routes: Record<Routes, string> = {
   profiles: '/profiles/',
   article: '/article/',
   articles: '/articles',
+  article_edit: '/article/:id/edit/',
+  article_new: '/article/new',
   not_found: '*'
 }
 
@@ -58,6 +63,16 @@ export const routerConfig: Record<Routes, ExtendedRouteProps> = {
   articles: {
     path: routes.articles,
     element: <ArticlesPage />
+  },
+  article_edit: {
+    path: routes.article_edit,
+    element: <ArticleEditPage />,
+    hide: true
+  },
+  article_new: {
+    path: routes.article_new,
+    element: <ArticleEditPage />,
+    hide: true
   },
   not_found: {
     path: routes.not_found,

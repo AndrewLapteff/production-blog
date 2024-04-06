@@ -1,4 +1,4 @@
-import { ArticleTextBlock as ArticleTextBlockProps } from '../../../Article/model/types/article'
+import { ArticleTextBlock as ArticleTextBlockProps } from '../../model/types/article'
 import s from './ArticleTextBlock.module.scss'
 import { memo } from 'react'
 import { Text, Title } from 'shared/ui'
