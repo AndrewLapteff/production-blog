@@ -8,10 +8,10 @@ import { ArticleBlock, ArticleType } from '../../model/types/article'
 import { ArticleCodeBlock } from '../article-code-block/ArticleCodeBlock'
 import { ArticleImageBlock } from '../article-image-block/ArticleImageBlock'
 import { ArticleTextBlock } from '../article-text-block/ArticleTextBlock'
-import { Controls } from '../controls/Controls'
 import { Author } from 'widgets/author'
 import { ArticleSkeleton } from '../article-skeleton/ArticleSkeleton'
 import { Profile } from 'entities/Profile'
+import { Controls } from '../controls-component/Controls'
 
 interface ArticleProps {
   id: string
