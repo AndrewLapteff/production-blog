@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { stackoverflowDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { stackoverflowDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 interface CodeProps {
   code: string

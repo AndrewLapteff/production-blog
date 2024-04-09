@@ -5,11 +5,13 @@ export const $api = axios.create({
   baseURL: API_URL
 })
 
-$api.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${getLocalStorage(
-    'userInfo',
-    'accessToken'
-  )}`
+if ($api) {
+  $api.interceptors.request.use((config) => {
+    config.headers.Authorization = `Bearer ${getLocalStorage(
+      'userInfo',
+      'accessToken'
+    )}`
 
-  return config
-})
+    return config
+  })
+}
