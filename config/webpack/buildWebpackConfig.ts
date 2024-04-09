@@ -10,7 +10,7 @@ export const buildWebpackConfig = (
   props: BuildOptions
 ): webpack.Configuration => {
   const { paths, mode, analyze, apiUrl } = props
-  const { build, entry, html, src } = paths
+  const { build, entry, src } = paths
 
   const isDev = mode === 'development'
   return {
@@ -22,7 +22,12 @@ export const buildWebpackConfig = (
       clean: true,
       publicPath: '/'
     },
-    plugins: buildPlugins({ html, isDev, analyze, apiUrl }),
+    plugins: buildPlugins({
+      isDev,
+      analyze,
+      apiUrl,
+      paths
+    }),
     module: {
       rules: buildLoaders(mode)
     },

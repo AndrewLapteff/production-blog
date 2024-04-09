@@ -1,24 +1,25 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import webpack, { DefinePlugin, ProgressPlugin } from 'webpack'
+import CopyPlugin from 'copy-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import { BuildEnv } from './types'
+import { BuildEnv, Paths } from './types'
 
 interface BuildPluginsProps extends Pick<BuildEnv, 'analyze' | 'apiUrl'> {
-  html: string
   isDev: boolean
   apiUrl: string
+  paths: Paths
 }
 
 export const buildPlugins = ({
-  html,
   isDev,
   analyze,
-  apiUrl
+  apiUrl,
+  paths
 }: BuildPluginsProps): webpack.WebpackPluginInstance[] => {
   const plugins = [
     new HtmlWebpackPlugin({
-      template: html
+      template: paths.html
     }),
     new ProgressPlugin(),
     new MiniCssExtractPlugin({
@@ -29,6 +30,9 @@ export const buildPlugins = ({
       IS_DEV: JSON.stringify(isDev),
       API_URL: JSON.stringify(apiUrl),
       PROJECT_ENV: JSON.stringify('frontend')
+    }),
+    new CopyPlugin({
+      patterns: [{ from: paths.locales, to: paths.buildLocales }]
     })
   ]
 

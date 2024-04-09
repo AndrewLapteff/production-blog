@@ -1,10 +1,12 @@
 export type Mode = 'production' | 'development'
 
-interface Paths {
+export interface Paths {
   src: string
   entry: string
   build: string
   html: string
+  locales: string
+  buildLocales: string
 }
 
 export interface BuildEnv {
