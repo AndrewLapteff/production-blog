@@ -1,10 +1,10 @@
 import s from './ArticleListItem.module.scss'
 import { classNames } from 'shared/lib'
 import { useTranslation } from 'react-i18next'
-import { memo } from 'react'
+import { CSSProperties } from 'react'
 import { ArticleType, ArticleView } from '../../model/types/article'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import { AppLink, Button, MetaInfoItem, Text, Title } from 'shared/ui'
+import { AppLink, Button, HStack, MetaInfoItem, Text, Title } from 'shared/ui'
 import Eye from 'shared/assets/icons/eye.svg'
 import Time from 'shared/assets/icons/time.svg'
 import Calendar from 'shared/assets/icons/calendar.svg'
@@ -12,17 +12,19 @@ import { Author } from 'widgets/author'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 
 interface ArticleListItemProps {
+  style?: CSSProperties
+  index?: number
   article: ArticleType
   view: ArticleView
 }
 
-export const ArticleListItem = memo((props: ArticleListItemProps) => {
-  const { article, view } = props
+export const ArticleListItem = (props: ArticleListItemProps) => {
+  const { article, view, style } = props
   const { t } = useTranslation('article')
 
   if (view === 'classic') {
     return (
-      <div className={classNames(s.article, {}, [s[view]])}>
+      <div style={style} className={classNames(s.article, {}, [s[view]])}>
         <LazyLoadImage
           effect="blur"
           width={700}
@@ -35,7 +37,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         <AppLink to={`/article/${article.id}`}>
           <Title h="h2">{article.title}</Title>
         </AppLink>
-        <div className={s['meta-info']}>
+        <HStack>
           <Author
             avatar={article.profile?.avatar}
             username={article.profile?.username}
@@ -45,7 +47,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           <MetaInfoItem Svg={Eye} value={article.views} />
           <MetaInfoItem Svg={Time} value={article.minsToRead} text={t('min')} />
           <MetaInfoItem Svg={Calendar} value={article.createdAt} />
-        </div>
+        </HStack>
         <Text size="s">{article.description}</Text>
         <div>
           {article.topics.map((topic) => {
@@ -67,7 +69,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
   if (view === 'compact') {
     return (
-      <div className={classNames(s.article, {}, [s[view]])}>
+      <div style={style} className={classNames(s.article, {}, [s[view]])}>
         <LazyLoadImage
           effect="blur"
           width={700}
@@ -81,7 +83,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             {article.title}
           </Title>
         </AppLink>
-        <div className={s['meta-info']}>
+        <HStack>
           <MetaInfoItem size={16} Svg={Eye} value={article.views} />
           <MetaInfoItem
             size={16}
@@ -90,8 +92,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             text={t('min')}
           />
           <MetaInfoItem size={16} Svg={Calendar} value={article.createdAt} />
-        </div>
+        </HStack>
       </div>
     )
   }
-})
+}

@@ -3,7 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { loginReducer, AuthModal } from 'features/auth-by-username'
 import { DynamicSliceLoader, classNames } from 'shared/lib'
-import { AppLink, ThemeSwitcher, TranslateButton, Button } from 'shared/ui'
+import {
+  AppLink,
+  ThemeSwitcher,
+  TranslateButton,
+  Button,
+  HStack
+} from 'shared/ui'
 import { getUser, logout } from 'entities/User'
 import s from './Navbar.module.scss'
 import { routerConfig } from 'shared/config'
@@ -48,7 +54,12 @@ export const Navbar = ({ isSigned }: NavbarProps) => {
 
   return (
     <nav className={classNames(s.navbar)}>
-      <div className={classNames(s.links)}>
+      <HStack
+        align="center"
+        gap="medium"
+        justify="end"
+        className={classNames(s.links)}
+      >
         {links}
         <ThemeSwitcher />
         <TranslateButton />
@@ -72,7 +83,7 @@ export const Navbar = ({ isSigned }: NavbarProps) => {
             </DynamicSliceLoader>
           )}
         </Suspense>
-      </div>
+      </HStack>
     </nav>
   )
 }

@@ -1,9 +1,7 @@
-import s from './Recommendations.module.scss'
-import { classNames } from 'shared/lib'
 import { useTranslation } from 'react-i18next'
 import { memo, ReactNode, useMemo } from 'react'
 import { ArticleType } from 'entities/Article'
-import { Title } from 'shared/ui'
+import { HStack, Title, VStack } from 'shared/ui'
 import { ArticleCard } from 'widgets/article-card/ui/ArticleCard'
 
 interface RecommendationsProps {
@@ -23,9 +21,9 @@ export const Recommendations = memo((props: RecommendationsProps) => {
   }, [recommendations])
 
   return (
-    <div className={classNames(s['recommendations-wrapper'])}>
+    <VStack>
       <Title>{t('recommendations')}</Title>
-      <div className={s.recommendations}>{articles}</div>
-    </div>
+      <HStack>{articles}</HStack>
+    </VStack>
   )
 })

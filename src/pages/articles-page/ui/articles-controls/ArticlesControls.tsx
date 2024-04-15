@@ -1,12 +1,7 @@
 import s from './ArticlesControls.module.scss'
-import {
-  classNames,
-  useDebounce,
-  useDispatchCallback,
-  useThunkDispatch
-} from 'shared/lib'
+import { classNames, useDebounce, useThunkDispatch } from 'shared/lib'
 import { ChangeEvent, memo, ReactNode, useCallback, useMemo } from 'react'
-import { Button, Input } from 'shared/ui'
+import { Button, HStack, Input } from 'shared/ui'
 import Burger2 from 'shared/assets/icons/burger2.svg'
 import Burger3 from 'shared/assets/icons/burger3.svg'
 import {
@@ -14,12 +9,11 @@ import {
   setSearch,
   setSort,
   setSortOrder
-} from 'pages/articles-page/model/slice/articlesSlice'
+} from '../../../articles-page/model/slice/articlesSlice'
 import { ArticleSort, ArticleSortOrder, ArticleView } from 'entities/Article'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { SortSelect } from '../sort-select/SortSelect'
-import { getSearchArticles } from 'pages/articles-page/model/selectors/articlesSelectors'
-import { fetchArticles } from 'pages/articles-page/model/services/fetchArticles/fetchArticles'
+import { fetchArticles } from '../../../articles-page/model/services/fetchArticles/fetchArticles'
 
 interface ArticlesControlsProps {
   children?: ReactNode
@@ -97,7 +91,12 @@ export const ArticlesControls = memo((props: ArticlesControlsProps) => {
   )
 
   return (
-    <div className={classNames(s.articlescontrols)}>
+    <HStack
+      align="end"
+      justify="space-between"
+      gap="small"
+      className={classNames(s.articlescontrols)}
+    >
       <Input onChange={onSelectSearch} value={search} />
       <SortSelect
         onSelectSort={onSelectSort}
@@ -105,7 +104,9 @@ export const ArticlesControls = memo((props: ArticlesControlsProps) => {
         sortOrder={sortOrder}
         sort={sort}
       />
-      <div className={s.views}>{viewButtons}</div>
-    </div>
+      <HStack align="center" justify="end" gap="none">
+        {viewButtons}
+      </HStack>
+    </HStack>
   )
 })

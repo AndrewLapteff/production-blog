@@ -1,7 +1,7 @@
 import s from './Article.module.scss'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { memo, useCallback, useMemo } from 'react'
-import { AppLink, Title } from 'shared/ui'
+import { AppLink, HStack, Title, VStack } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { ArticleBlock, ArticleType } from '../../model/types/article'
@@ -62,8 +62,8 @@ export const Article = memo((props: ArticleProps) => {
   }
 
   return (
-    <div className={s.article}>
-      <h1 className={s.title}>{article.title}</h1>
+    <VStack gap="large" className={s.article}>
+      <Title className={s.title}>{article.title}</Title>
       <Author
         id={author.id}
         avatar={author.avatar}
@@ -80,7 +80,9 @@ export const Article = memo((props: ArticleProps) => {
         alt={article.description}
       />
       {article.blocks.map(renderBlock)}
-      <div className={s.topics}>{renderTopics}</div>
-    </div>
+      <HStack gap="large" justify="start" max className={s.topics}>
+        {renderTopics}
+      </HStack>
+    </VStack>
   )
 })

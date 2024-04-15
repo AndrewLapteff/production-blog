@@ -1,6 +1,6 @@
-import { Button } from '../button/Button'
+import { Button } from '../../shared/ui/button/Button'
 import { useTranslation } from 'react-i18next'
-import LanguageIcon from '../../assets/icons/language.svg'
+import LanguageIcon from 'shared/assets/icons/language.svg'
 import { memo } from 'react'
 
 export const TranslateButton = memo(() => {

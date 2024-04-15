@@ -1,7 +1,6 @@
 import s from './Controls.module.scss'
-import { classNames } from 'shared/lib'
 import { memo } from 'react'
-import { Button } from 'shared/ui'
+import { Button, HStack } from 'shared/ui'
 import Eye from 'shared/assets/icons/eye.svg'
 import Share from 'shared/assets/icons/share.svg'
 import Save from 'shared/assets/icons/save.svg'
@@ -15,8 +14,8 @@ interface ControlsProps extends Pick<ArticleType, 'views' | 'createdAt'> {}
 export const Controls = memo((props: ControlsProps) => {
   const { createdAt, views } = props
   return (
-    <div className={classNames(s['article-info'])}>
-      <div className={s['meta-info']}>
+    <HStack justify="space-between" max>
+      <HStack justify="start" max>
         <span className={s.item}>
           <Eye width={20} height={20} />
           {views}
@@ -37,15 +36,15 @@ export const Controls = memo((props: ControlsProps) => {
           </Button>
           2
         </span>
-      </div>
-      <div className={s.controls}>
+      </HStack>
+      <HStack>
         <Button variant="icon">
           <Share width={19} height={19} />
         </Button>
         <Button variant="icon">
           <Save width={20} height={20} />
         </Button>
-      </div>
-    </div>
+      </HStack>
+    </HStack>
   )
 })

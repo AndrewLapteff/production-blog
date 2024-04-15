@@ -5,8 +5,6 @@ import {
   articlesSelector
 } from '../../model/slice/articlesSlice'
 import { useSelector } from 'react-redux'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
-import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles'
 import {
   getSearchArticles,
   getSortArticles,
@@ -18,8 +16,8 @@ import { Layout } from 'shared/ui'
 import { memo, useCallback } from 'react'
 import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchNextArticles'
 import { useSearchParams } from 'react-router-dom'
-import { initArticles } from 'pages/articles-page/model/services/initArticles/initArticles'
 import { getInited } from 'entities/User/model/selectors/getInited/getInited'
+import { ArticlePage } from 'pages/article-page/index'
 
 const ArticlesPage = memo(() => {
   const thunkDispatch = useThunkDispatch()
@@ -31,7 +29,6 @@ const ArticlesPage = memo(() => {
   const sortOrder = useSelector(getSortOrderArticles)
   const search = useSelector(getSearchArticles)
   const inited = useSelector(getInited)
-
   // useInitialEffect(() => {
   //   if (!inited) {
   //     thunkDispatch(

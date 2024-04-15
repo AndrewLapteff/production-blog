@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ArticleList } from './ArticleList'
-import { articleReducer, ArticleType } from 'entities/Article'
+import { articleReducer, ArticleType } from '../../../Article'
 import { StoreDecorator, ThemeDecorator } from 'shared/config'
 import { userReducer } from 'entities/User'
 const meta = {

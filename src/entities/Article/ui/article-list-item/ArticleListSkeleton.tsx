@@ -1,7 +1,8 @@
 import s from '../article-list-item/ArticleListItem.module.scss'
 import { Skeleton } from 'shared/ui/skeleton/Skeleton'
 import { classNames } from 'shared/lib'
-import { ArticleView } from 'entities/Article'
+import { ArticleView } from '../../../Article'
+import { HStack } from 'shared/ui'
 
 interface ArticleListItemSkeletonProps {
   view: ArticleView
@@ -16,7 +17,7 @@ export const ArticleListItemSkeleton = ({
         <Skeleton width={700} height={213} />
         <Skeleton width={700} height={53} />
 
-        <div className={s['meta-info']}>
+        <HStack className={s['meta-info']}>
           <Skeleton borderRadius={50} width={50} height={40} />
           <div style={{ width: 500 }}>
             <Skeleton width={60} height={17} />
@@ -24,7 +25,7 @@ export const ArticleListItemSkeleton = ({
           <Skeleton width={70} height={17} />
           <Skeleton width={70} height={17} />
           <Skeleton width={140} height={17} />
-        </div>
+        </HStack>
         <Skeleton width={700} height={100} />
       </div>
     )
@@ -33,11 +34,11 @@ export const ArticleListItemSkeleton = ({
       <div className={classNames(s.article, {}, [s[view]])}>
         <Skeleton width={700} height={213} />
         <Skeleton width={700} height={20} />
-        <div className={s['meta-info']}>
+        <HStack className={s['meta-info']}>
           <Skeleton width={50} height={16} />
           <Skeleton width={50} height={16} />
           <Skeleton width={100} height={16} />
-        </div>
+        </HStack>
       </div>
     )
   }
