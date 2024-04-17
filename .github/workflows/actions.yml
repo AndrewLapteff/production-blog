@@ -1,9 +1,9 @@
 name: React App CI
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   deploy:
@@ -21,7 +21,7 @@ jobs:
         run: npm ci
       - name: Cache dependencies
         uses: actions/cache@v3
-        with: 
+        with:
           path: ~/.npm
           key: node_modules_${{ hashFiles('**/package-lock.json') }}
       - name: Build project

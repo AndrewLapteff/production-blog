@@ -1,0 +1,23 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  background-color: var(--bg-color);
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  padding: 5px;
+  border-radius: 0.5rem;
+  z-index: 3;
+  display: none;
+}
+
+.item {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.active {
+  display: block;
+}

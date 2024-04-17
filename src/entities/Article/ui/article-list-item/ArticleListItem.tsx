@@ -83,7 +83,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
             {article.title}
           </Title>
         </AppLink>
-        <HStack>
+        <HStack justify="end" max>
           <MetaInfoItem size={16} Svg={Eye} value={article.views} />
           <MetaInfoItem
             size={16}

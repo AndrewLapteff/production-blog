@@ -2,7 +2,7 @@ import { ReactNode, Suspense, useCallback, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { loginReducer, AuthModal } from 'features/auth-by-username'
-import { DynamicSliceLoader, classNames } from 'shared/lib'
+import { DynamicSliceLoader, classNames, useAppSelector } from 'shared/lib'
 import {
   AppLink,
   ThemeSwitcher,
@@ -12,7 +12,9 @@ import {
 } from 'shared/ui'
 import { getUser, logout } from 'entities/User'
 import s from './Navbar.module.scss'
-import { routerConfig } from 'shared/config'
+import { routerConfig, routes } from 'shared/config'
+import { Dropdown } from 'shared/ui/dropdown/Dropdown'
+import { Avatar } from 'shared/ui/avatar/Avatar'
 
 interface NavbarProps {
   isSigned: boolean
@@ -23,6 +25,10 @@ export const Navbar = ({ isSigned }: NavbarProps) => {
   const [isOpen, setOpen] = useState(false)
   const userInfo = useSelector(getUser)
   const dispatch = useDispatch()
+  // const profilePicture = useAppSelector(
+  //   (store) => store.profileReducer?.profile?.avatar
+  // )
+  const profilePicture = 'https://avatars.githubusercontent.com/u/114949478?v=4'
 
   const logoutHandler = useCallback(() => {
     dispatch(logout())
@@ -58,6 +64,7 @@ export const Navbar = ({ isSigned }: NavbarProps) => {
         align="center"
         gap="medium"
         justify="end"
+        role="navigation"
         className={classNames(s.links)}
       >
         {links}

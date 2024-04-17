@@ -5,7 +5,15 @@ import { Mode } from './types'
 export const buildLoaders = (mode: Mode): webpack.RuleSetRule[] => {
   const typescriptLoader = {
     test: /\.tsx?$/,
-    use: 'ts-loader',
+    use: [
+      {
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+          experimentalWatchApi: true
+        }
+      }
+    ],
     exclude: /node_modules/
   }
 

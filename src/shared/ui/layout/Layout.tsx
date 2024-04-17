@@ -44,13 +44,13 @@ export const Layout = ({ children, infiniteScrollCallback }: LayoutProps) => {
   }, 200)
 
   return (
-    <section
+    <main
       ref={wrapperRef}
       onScroll={onScrollHandler}
       className={classNames(s.layout)}
     >
       {children}
       <div className={s['div-helper']} ref={innerRef}></div>
-    </section>
+    </main>
   )
 }

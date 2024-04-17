@@ -28,6 +28,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
       />
     )
   }
+
   // const renderArticle = (article: ArticleType) => {
   //   return <ArticleListItem key={article.id} article={article} view={view} />
   // }
@@ -41,7 +42,6 @@ export const ArticleList = memo((props: ArticleListProps) => {
             <div ref={registerChild} className={s['article-list']}>
               <List
                 autoHeight
-                style={{ overflow: 'hidden' }}
                 height={height}
                 isScrolling={isScrolling}
                 onScroll={onChildScroll}

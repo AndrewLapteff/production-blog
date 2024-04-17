@@ -8,7 +8,6 @@ export const fetchRecommendations = createAsyncThunk<
   void,
   ThunkConfig<string>
 >('articles/fetchRecommendations', async (_, { rejectWithValue, extra }) => {
-  console.log('fetch')
   try {
     const { data } = await extra.api.get<ArticleType[]>(`articles`, {
       params: {

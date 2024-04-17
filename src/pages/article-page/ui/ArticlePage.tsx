@@ -19,7 +19,6 @@ import { ArticleHeaderBar } from './article-header-bar/ArticleHeaderBar'
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById'
 import { getArticle } from 'entities/Article/model/selectors/getArticle/getArticle'
 import { getIsLoading } from 'entities/Article/model/selectors/getIsLoading/getIsLoading'
-import { ArticleSkeleton } from 'entities/Article/ui/article-skeleton/ArticleSkeleton'
 import { getAuthor } from 'entities/Article/model/selectors/getAuthor/getAuthor'
 import { getError } from 'entities/Article/model/selectors/getError/getError'
 

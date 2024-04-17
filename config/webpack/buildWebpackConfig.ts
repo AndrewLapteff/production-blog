@@ -4,6 +4,7 @@ import { buildPlugins } from './buildPlugins'
 import { buildResolvers } from './buildResolvers'
 import { BuildOptions } from './types'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import TerserPlugin from 'terser-webpack-plugin'
 import * as webpackDevServer from 'webpack-dev-server'
 
 export const buildWebpackConfig = (
@@ -20,7 +21,8 @@ export const buildWebpackConfig = (
       filename: '[name].[contenthash].js',
       path: build,
       clean: true,
-      publicPath: '/'
+      publicPath: '/',
+      pathinfo: false
     },
     plugins: buildPlugins({
       isDev,
@@ -32,13 +34,17 @@ export const buildWebpackConfig = (
       rules: buildLoaders(mode)
     },
     resolve: buildResolvers(src),
-    devtool: mode === 'development' ? 'inline-source-map' : undefined,
+    devtool: mode === 'development' ? 'eval' : undefined,
     devServer: {
-      historyApiFallback: true
+      historyApiFallback: true,
+      compress: true
       // open: true,
+    },
+    optimization: {
+      runtimeChunk: true,
+      removeAvailableModules: false,
+      removeEmptyChunks: false,
+      splitChunks: false
     }
-    // optimization: {
-    //   runtimeChunk: 'single',
-    // },
   }
 }

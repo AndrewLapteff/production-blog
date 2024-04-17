@@ -1,6 +1,6 @@
 import s from './Flex.module.scss'
 import { classNames } from 'shared/lib'
-import { ReactNode } from 'react'
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
 
 type JustifyContentProps =
   | 'start'
@@ -12,7 +12,12 @@ type AlignContentProps = 'start' | 'end' | 'center' | 'stretch'
 type DirectionProps = 'row' | 'column'
 type GapProps = 'small' | 'medium' | 'large' | 'none'
 
-export interface FlexProps {
+type DivProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>
+
+export interface FlexProps extends DivProps {
   children: ReactNode
   direction: DirectionProps
   justify?: JustifyContentProps
