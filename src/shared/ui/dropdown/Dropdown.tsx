@@ -1,23 +1,34 @@
 import s from './Dropdown.module.scss'
 import { classNames, useClickOutside } from 'shared/lib'
-import { memo, ReactNode, useRef, useState } from 'react'
+import {
+  FunctionComponent,
+  memo,
+  ReactNode,
+  SVGAttributes,
+  useRef,
+  useState
+} from 'react'
 import { Button } from '../button/Button'
 import { AppLink } from '../app-link/AppLink'
+import { HStack } from '../hstack/HStack'
+import { Title } from '../title/Title'
 
-interface DropDownItems {
+export interface DropDownItem {
   content: string
-  href: string
-  onClick: () => void
+  href?: string
+  icon?: React.FunctionComponent<React.SVGAttributes<SVGElement>>
+  onClick?: () => void
   disabled?: boolean
 }
 
 interface DropdownProps {
   label: string | ReactNode
-  items: DropDownItems[]
+  title: string
+  items: DropDownItem[]
 }
 
 export const Dropdown = memo((props: DropdownProps) => {
-  const { label, items } = props
+  const { label, items, title } = props
   const [isOpen, setOpen] = useState(false)
   const dropdownRef = useRef(null)
 
@@ -36,10 +47,23 @@ export const Dropdown = memo((props: DropdownProps) => {
         {label}
       </Button>
       <ul className={classNames(s['dropdown-menu'], { [s.active]: isOpen })}>
+        <li className={s.item}>
+          <Title size="s" h="h4" align="center">
+            {title}
+          </Title>
+        </li>
         {items.map((item) => {
+          const Icon = item.icon
           return (
-            <li key={item.content}>
-              <AppLink to={item.href}>{item.content}</AppLink>
+            <li className={s.item} key={item.content}>
+              <AppLink
+                onClick={item.onClick}
+                className={s['item-link']}
+                to={item.href ?? '#'}
+              >
+                {Icon && <Icon className={s.svg} width={18} height={18} />}
+                {item.content}
+              </AppLink>
             </li>
           )
         })}

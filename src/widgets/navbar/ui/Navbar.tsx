@@ -1,8 +1,8 @@
-import { ReactNode, Suspense, useCallback, useMemo, useState } from 'react'
+import { ReactNode, Suspense, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { loginReducer, AuthModal } from 'features/auth-by-username'
-import { DynamicSliceLoader, classNames, useAppSelector } from 'shared/lib'
+import { DynamicSliceLoader, classNames } from 'shared/lib'
 import {
   AppLink,
   ThemeSwitcher,
@@ -13,30 +13,37 @@ import {
 import { getUser, logout } from 'entities/User'
 import s from './Navbar.module.scss'
 import { routerConfig, routes } from 'shared/config'
-import { Dropdown } from 'shared/ui/dropdown/Dropdown'
-import { Avatar } from 'shared/ui/avatar/Avatar'
+import { Dropdown, DropDownItem } from 'shared/ui/dropdown/Dropdown'
+import SettingsIcon from 'shared/assets/icons/settings.svg'
+import LogoutIcon from 'shared/assets/icons/logout.svg'
 
 interface NavbarProps {
   isSigned: boolean
+  username: string
 }
 
-export const Navbar = ({ isSigned }: NavbarProps) => {
+export const Navbar = ({ isSigned, username }: NavbarProps) => {
   const { t } = useTranslation('translation')
   const [isOpen, setOpen] = useState(false)
   const userInfo = useSelector(getUser)
   const dispatch = useDispatch()
-  // const profilePicture = useAppSelector(
-  //   (store) => store.profileReducer?.profile?.avatar
-  // )
-  const profilePicture = 'https://avatars.githubusercontent.com/u/114949478?v=4'
-
-  const logoutHandler = useCallback(() => {
-    dispatch(logout())
-  }, [dispatch])
 
   const openHandler = () => {
     setOpen(true)
   }
+
+  const dropdownItems = useMemo((): DropDownItem[] => {
+    return [
+      { content: 'Profile', href: routes.profile, icon: SettingsIcon },
+      {
+        content: 'Quit',
+        onClick: () => {
+          dispatch(logout())
+        },
+        icon: LogoutIcon
+      }
+    ]
+  }, [dispatch])
 
   const links: ReactNode[] = useMemo(() => {
     const result: ReactNode[] = []
@@ -75,9 +82,11 @@ export const Navbar = ({ isSigned }: NavbarProps) => {
             {t('login')}
           </Button>
         ) : (
-          <Button size="m" variant="background" onClick={logoutHandler}>
-            {t('logout')}
-          </Button>
+          <Dropdown
+            title={username}
+            items={dropdownItems}
+            label={<SettingsIcon width={23} height={23} />}
+          />
         )}
         <Suspense>
           {isOpen && (

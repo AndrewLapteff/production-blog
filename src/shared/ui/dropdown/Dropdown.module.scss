@@ -3,21 +3,37 @@
 }
 
 .dropdown-menu {
-  background-color: var(--bg-color);
+  background-color: var(--dropdown-background-color);
   position: absolute;
   top: calc(100% + 5px);
   right: 0;
-  padding: 5px;
+  padding: 5px 10px 5px 5px;
   border-radius: 0.5rem;
   z-index: 3;
   display: none;
+  border: 1px solid var(--low-emphasis);
 }
 
 .item {
+  width: 100%;
+}
+
+.item-link {
+  display: flex;
+  gap: 3px;
+  color: var(--high-emphasis);
+}
+
+.item-text {
   font-size: 1.2rem;
-  color: var(--primary-color);
 }
 
 .active {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.svg {
+  stroke: var(--high-emphasis);
 }

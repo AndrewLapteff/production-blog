@@ -9,7 +9,7 @@ import {
 } from 'react'
 import { Align, Mods, Size, ThemeProps } from '../../types/types'
 
-type TitleSemanticSize = 'h1' | 'h2' | 'h3'
+type TitleSemanticSize = 'h1' | 'h2' | 'h3' | 'h4'
 
 interface TitleProps
   extends HtmlHTMLAttributes<HTMLParagraphElement>,
@@ -62,6 +62,12 @@ export const Title = memo((props: TitleProps) => {
             <h3 className={classNames(s.title, mods, [className])}>
               {children}
             </h3>
+          )
+        case 'h4':
+          return (
+            <h4 className={classNames(s.title, mods, [className])}>
+              {children}
+            </h4>
           )
       }
     },

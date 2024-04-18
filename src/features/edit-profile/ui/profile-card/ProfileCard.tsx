@@ -74,8 +74,7 @@ export const ProfileCard = memo(() => {
       }),
     []
   )
-
-  if (error || !profile) {
+  if (error) {
     return (
       <div className={classNames(s.wrapper)}>
         <Text title="Smth went wrong" align="center">
@@ -85,7 +84,7 @@ export const ProfileCard = memo(() => {
     )
   }
 
-  if (isLoading) {
+  if (isLoading || !profile) {
     return (
       <div className={classNames(s.wrapper)}>
         <Loader />

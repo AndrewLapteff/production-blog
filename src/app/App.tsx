@@ -13,7 +13,7 @@ import { getInited } from 'entities/User/model/selectors/getInited/getInited'
 export const App = () => {
   const { theme } = useTheme()
   const dispatch = useDispatch()
-  const email = useAppSelector((store) => store.userReducer.user.email)
+  const username = useAppSelector((store) => store.userReducer.user.username)
   const isInited = useSelector(getInited)
 
   useEffect(() => {
@@ -22,11 +22,11 @@ export const App = () => {
 
   return (
     <div className={classNames('.app', {}, [theme])}>
-      {isInited && <Navbar isSigned={!!email} />}
+      {isInited && <Navbar username={username} isSigned={!!username} />}
       <div className="main-area">
         <Sidebar />
         <ErrorBoundary>
-          {isInited && <AppRouter isSigned={!!email} />}
+          {isInited && <AppRouter isSigned={!!username} />}
         </ErrorBoundary>
       </div>
     </div>
