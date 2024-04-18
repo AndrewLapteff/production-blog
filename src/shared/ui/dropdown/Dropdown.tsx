@@ -1,16 +1,8 @@
 import s from './Dropdown.module.scss'
 import { classNames, useClickOutside } from 'shared/lib'
-import {
-  FunctionComponent,
-  memo,
-  ReactNode,
-  SVGAttributes,
-  useRef,
-  useState
-} from 'react'
+import { memo, ReactNode, useRef, useState } from 'react'
 import { Button } from '../button/Button'
 import { AppLink } from '../app-link/AppLink'
-import { HStack } from '../hstack/HStack'
 import { Title } from '../title/Title'
 
 export interface DropDownItem {
@@ -57,7 +49,10 @@ export const Dropdown = memo((props: DropdownProps) => {
           return (
             <li className={s.item} key={item.content}>
               <AppLink
-                onClick={item.onClick}
+                onClick={() => {
+                  setOpen(false)
+                  item.onClick && item.onClick()
+                }}
                 className={s['item-link']}
                 to={item.href ?? '#'}
               >
@@ -67,13 +62,6 @@ export const Dropdown = memo((props: DropdownProps) => {
             </li>
           )
         })}
-        {/* <li className={s.item}></li>
-        <li className={s.item}>
-          <AppLink to="/">{'Settings'}</AppLink>
-        </li>
-        <li className={s.item}>
-          <AppLink to="/">{'Exit'}</AppLink>
-        </li> */}
       </ul>
     </div>
   )

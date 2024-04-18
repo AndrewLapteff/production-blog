@@ -22,10 +22,7 @@ export const profileSlice = createSlice({
       state.readonly = true
     },
     setReadonly: (state, action: PayloadAction<boolean>) => {
-      if (action.payload) {
-        state.readonly = action.payload
-        state.profile = state.backupProfile
-      }
+      state.profile = state.backupProfile
       state.readonly = action.payload
     },
     setUsername: (state, action: PayloadAction<string>) => {

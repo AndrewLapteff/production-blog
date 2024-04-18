@@ -29,10 +29,6 @@ export const ArticleList = memo((props: ArticleListProps) => {
     )
   }
 
-  // const renderArticle = (article: ArticleType) => {
-  //   return <ArticleListItem key={article.id} article={article} view={view} />
-  // }
-
   return (
     <>
       <WindowScroller>

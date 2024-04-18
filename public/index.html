@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet Project</title>
   </head>
-  <body>
+  <body class="body">
     <div id="root"></div>
   </body>
+  <script>
+    const theme = localStorage.getItem('theme') || 'light'
+    document.querySelector('body').style.cssText = `background-color: ${
+      theme === 'dark' ? '#111' : 'white'
+    };`
+  </script>
 </html>

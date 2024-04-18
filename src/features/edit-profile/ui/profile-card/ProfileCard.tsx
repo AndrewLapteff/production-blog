@@ -6,7 +6,7 @@ import {
   useDispatchCallbackWithArgs,
   useThunkDispatch
 } from 'shared/lib'
-import { Loader, Option, Select, Text } from 'shared/ui'
+import { HStack, Loader, Option, Select, Text, VStack } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import { postProfile } from '../../../../entities/Profile/model/service/postProfile/updateProfile'
 import { Avatar } from 'shared/ui/avatar/Avatar'
@@ -49,10 +49,10 @@ export const ProfileCard = memo(() => {
   const onCancel = useDispatchCallbackWithArgs(setReadonly(true))
 
   const onConfirm = useCallback(() => {
-    // here
     dispatch(postProfile(profile?.id || 0)).catch((err) => {
       console.log(err)
     })
+    dispatch(setReadonly(true))
   }, [dispatch, profile])
 
   const validationMapper = {
@@ -76,24 +76,24 @@ export const ProfileCard = memo(() => {
   )
   if (error) {
     return (
-      <div className={classNames(s.wrapper)}>
+      <VStack className={classNames(s.wrapper)}>
         <Text title="Smth went wrong" align="center">
           {t('try-again-later')}
         </Text>
-      </div>
+      </VStack>
     )
   }
 
   if (isLoading || !profile) {
     return (
-      <div className={classNames(s.wrapper)}>
+      <VStack className={classNames(s.wrapper)}>
         <Loader />
-      </div>
+      </VStack>
     )
   }
 
   return (
-    <div className={classNames(s.wrapper)}>
+    <VStack className={classNames(s.wrapper)}>
       <Text title={t('profile')} />
       <Avatar alt="Avatar" src={profile?.avatar} />
       <div className={classNames(s.card)}>
@@ -116,8 +116,9 @@ export const ProfileCard = memo(() => {
           value={profile?.bio}
           isReadonly={isReadonly}
         />
-        <div
-          style={{ marginTop: '5px' }}
+        <HStack
+          justify="space-between"
+          align="center"
           className={classNames(s['field-wrapper'])}
         >
           <Text size="s">{t('country')}</Text>
@@ -127,7 +128,7 @@ export const ProfileCard = memo(() => {
             options={options}
             value={profile.country}
           />
-        </div>
+        </HStack>
         {errors?.map((errorText) => {
           return (
             <Text key={errorText} theme="error">
@@ -145,6 +146,6 @@ export const ProfileCard = memo(() => {
           />
         )}
       </div>
-    </div>
+    </VStack>
   )
 })

@@ -17,7 +17,7 @@ export const ArticleListItemSkeleton = ({
         <Skeleton width={700} height={213} />
         <Skeleton width={700} height={53} />
 
-        <HStack className={s['meta-info']}>
+        <HStack>
           <Skeleton borderRadius={50} width={50} height={40} />
           <div style={{ width: 500 }}>
             <Skeleton width={60} height={17} />
@@ -34,7 +34,7 @@ export const ArticleListItemSkeleton = ({
       <div className={classNames(s.article, {}, [s[view]])}>
         <Skeleton width={700} height={213} />
         <Skeleton width={700} height={20} />
-        <HStack className={s['meta-info']}>
+        <HStack>
           <Skeleton width={50} height={16} />
           <Skeleton width={50} height={16} />
           <Skeleton width={100} height={16} />
