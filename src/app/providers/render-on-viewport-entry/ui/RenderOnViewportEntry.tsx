@@ -33,6 +33,7 @@ const RenderOnViewportEntryInner = memo(
     return (
       <div className={classNames(s.wrapper)} ref={ref}>
         {entered && <Suspense fallback={<Loader />}>{children}</Suspense>}
+        <div style={{ height: '100px' }}></div>
       </div>
     )
   }

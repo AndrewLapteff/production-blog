@@ -15,4 +15,6 @@ export { useDebounce } from './hooks/useDebounce'
 export { useKeyPress } from './hooks/useKeyPress'
 export { useEventListener } from './hooks/useEventListener'
 export { useClickOutside } from './hooks/useClickOutside'
+export { useInitialEffect } from './hooks/useInitialEffect'
+
 export type { ObserverProps } from './hooks/useFirstViewportEntry'

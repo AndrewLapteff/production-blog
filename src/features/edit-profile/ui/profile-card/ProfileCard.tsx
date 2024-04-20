@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import s from './ProfileCard.module.scss'
 import {
   classNames,
@@ -7,8 +8,7 @@ import {
   useThunkDispatch
 } from 'shared/lib'
 import { HStack, Loader, Option, Select, Text, VStack } from 'shared/ui'
-import { useTranslation } from 'react-i18next'
-import { postProfile } from '../../../../entities/Profile/model/service/postProfile/updateProfile'
+import { postProfile } from '../../model/service/postProfile/updateProfile'
 import { Avatar } from 'shared/ui/avatar/Avatar'
 import { memo, useCallback, useMemo } from 'react'
 import { countries } from 'shared/consts/countries/countries'
@@ -19,14 +19,16 @@ import {
   getProfile,
   getIsLoading,
   getIsReadonly,
+  getValidationErrors
+} from '../../model/selectors'
+import {
   setAge,
   setBio,
   setCountry,
   setReadonly,
-  setUsername,
-  getValidationErrors
-} from 'entities/Profile'
-import { PROFILE_VALIDATION } from 'entities/Profile/model/types/validation'
+  setUsername
+} from '../../model/slice/profileSlice'
+import { PROFILE_VALIDATION } from 'entities/Profile'
 import { getUser } from 'entities/User'
 
 export const ProfileCard = memo(() => {

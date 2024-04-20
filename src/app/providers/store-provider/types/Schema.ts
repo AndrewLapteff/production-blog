@@ -16,6 +16,7 @@ import type { ArticlesSchema } from 'pages/articles-page'
 import type { NavigateFunction } from 'react-router-dom'
 import { ScrollRestorationSchema } from 'features/scroll-restoration'
 import { RecommendationsSchema } from 'pages/article-page/model/types/recommendations'
+import { rtkApi } from 'shared/api/rtkQuery'
 
 export interface StoreProps {
   userReducer: UserSchema

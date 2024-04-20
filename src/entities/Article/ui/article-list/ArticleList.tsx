@@ -2,21 +2,18 @@ import { memo } from 'react'
 import { ArticleType, ArticleView } from '../../../Article/model/types/article'
 import { ArticleListItemSkeleton } from '../article-list-item/ArticleListSkeleton'
 import s from './ArticleList.module.scss'
-import { getIsLoadingArticles } from 'pages/articles-page/model/selectors/articlesSelectors'
-import { useSelector } from 'react-redux'
 import { List, ListRowProps, WindowScroller } from 'react-virtualized'
 import { ArticleListItem } from '../article-list-item/ArticleListItem'
 import { PAGE_WIDTH } from 'shared/consts/common'
 
 interface ArticleListProps {
-  isLoading?: boolean
+  isLoading: boolean
   articles: ArticleType[]
   view: ArticleView
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
-  const { view, articles } = props
-  const isLoading = useSelector(getIsLoadingArticles)
+  const { view, articles, isLoading } = props
   const articleHeight = view === 'classic' ? 450 : 270
   const renderListItem = ({ index, key, style }: ListRowProps) => {
     return (

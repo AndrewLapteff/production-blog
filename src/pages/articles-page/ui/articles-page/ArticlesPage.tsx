@@ -6,6 +6,7 @@ import {
 } from '../../model/slice/articlesSlice'
 import { useSelector } from 'react-redux'
 import {
+  getIsLoadingArticles,
   getSearchArticles,
   getSortArticles,
   getSortOrderArticles,
@@ -15,7 +16,6 @@ import { ArticlesControls } from '../articles-controls/ArticlesControls'
 import { Layout } from 'shared/ui'
 import { memo, useCallback } from 'react'
 import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchNextArticles'
-import { getInited } from 'entities/User/model/selectors/getInited/getInited'
 
 const ArticlesPage = memo(() => {
   const thunkDispatch = useThunkDispatch()
@@ -25,7 +25,8 @@ const ArticlesPage = memo(() => {
   const sort = useSelector(getSortArticles)
   const sortOrder = useSelector(getSortOrderArticles)
   const search = useSelector(getSearchArticles)
-  const inited = useSelector(getInited)
+  const isLoading = useSelector(getIsLoadingArticles)
+
   // useInitialEffect(() => {
   //   if (!inited) {
   //     thunkDispatch(
@@ -56,7 +57,7 @@ const ArticlesPage = memo(() => {
           sort={sort}
           sortOrder={sortOrder}
         />
-        <ArticleList view={view} articles={articles} />
+        <ArticleList isLoading={isLoading} view={view} articles={articles} />
       </DynamicSliceLoader>
     </Layout>
   )

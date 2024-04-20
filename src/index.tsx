@@ -8,6 +8,7 @@ import { StoreProvider } from 'app/providers/store-provider'
 import { userReducer } from 'entities/User'
 import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { scrollRestorationSliceReducer } from 'features/scroll-restoration'
+import { rtkApi } from 'shared/api/rtkQuery'
 
 const container = document.getElementById('root')
 const initialStore: StoreProps = {
@@ -23,6 +24,7 @@ const initialStore: StoreProps = {
 }
 
 const asyncReducers = {
+  [rtkApi.reducerPath]: rtkApi.reducer,
   userReducer,
   scrollRestorationSliceReducer
 }

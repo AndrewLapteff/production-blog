@@ -1,7 +1,7 @@
-import { ProfileSchema } from '../../types/profile'
-import { PROFILE_VALIDATION } from '../../types/validation'
+import { ProfileSchema } from 'entities/Profile'
 import { getValidationErrors } from './getValidationErrors'
 import { getTestStore } from 'shared/lib'
+import { PROFILE_VALIDATION } from 'entities/Profile/model/types/validation'
 
 describe('getValidationErrors.test.ts', () => {
   it('should return array with two errors', () => {

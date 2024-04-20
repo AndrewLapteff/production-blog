@@ -1,14 +1,17 @@
-import { profileReducer, fetchProfile } from 'entities/Profile'
 import {
   DynamicSliceLoader,
   useThunkDispatch,
-  useAppSelector
+  useAppSelector,
+  useInitialEffect
 } from 'shared/lib'
-import { ProfileCard } from 'features/edit-profile/ui/profile-card/ProfileCard'
 import { getUser } from 'entities/User'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect'
 import { useParams } from 'react-router-dom'
 import { Layout } from 'shared/ui'
+import {
+  fetchProfile,
+  ProfileCard,
+  profileReducer
+} from 'features/edit-profile'
 
 const ProfilePage = () => {
   const dispatch = useThunkDispatch()

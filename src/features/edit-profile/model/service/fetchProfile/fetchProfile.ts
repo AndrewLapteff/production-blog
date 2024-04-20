@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/store-provider/types/Schema'
-import { Profile } from '../../types/profile'
+import { Profile } from '../../../../../entities/Profile/model/types/profile'
 
 function isInstanceOfProfile(obj: any): obj is Profile {
   return 'username' in obj && 'bio' in obj

@@ -2,6 +2,7 @@ import { ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { StoreProps } from '../types/Schema'
 import { createReducerManager } from '../reducer-manager/reducerManager'
 import { $api } from 'shared/api/api'
+import { rtkApi } from 'shared/api/rtkQuery'
 
 export const createStore = (
   props: StoreProps,
@@ -23,7 +24,7 @@ export const createStore = (
             navigate
           }
         }
-      })
+      }).concat(rtkApi.middleware)
   })
 
   // @ts-expect-error

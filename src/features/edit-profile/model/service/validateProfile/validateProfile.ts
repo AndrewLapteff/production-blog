@@ -1,5 +1,5 @@
-import { Profile } from '../../types/profile'
-import { PROFILE_VALIDATION } from '../../types/validation'
+import { Profile } from '../../../../../entities/Profile/model/types/profile'
+import { PROFILE_VALIDATION } from '../../../../../entities/Profile/model/types/validation'
 
 export const validateProfile = (profile?: Profile): PROFILE_VALIDATION[] => {
   if (!profile) return [PROFILE_VALIDATION.NO_DATA]

@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/store-provider/types/Schema'
-import { Profile } from '../../types/profile'
-import { getProfile } from '../../selectors/get-profile/getProfile'
+import { Profile } from 'entities/Profile'
+import { PROFILE_VALIDATION } from 'entities/Profile/model/types/validation'
+import { getProfile } from '../../selectors'
 import { validateProfile } from '../validateProfile/validateProfile'
-import { PROFILE_VALIDATION } from '../../types/validation'
 
 function isInstanceOfProfile(obj: any): obj is Profile {
   return 'username' in obj && 'bio' in obj
