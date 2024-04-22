@@ -12,6 +12,7 @@ interface InputProps extends HtmlHTMLAttributes<HTMLInputElement> {
   onChange: (value: ChangeEvent<HTMLInputElement>) => void
   readonly?: boolean
   type?: HTMLInputTypeAttribute
+  'data-testid'?: string
 }
 
 export const Input = memo(
@@ -21,11 +22,13 @@ export const Input = memo(
     onChange,
     readonly,
     type = 'text',
+    'data-testid': dataTestId,
     ...rest
   }: InputProps) => {
     return (
       <label className="custom-field two">
         <input
+          data-testid={`${dataTestId}.input`}
           onChange={onChange}
           value={value}
           type={type}

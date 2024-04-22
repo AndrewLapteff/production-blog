@@ -44,7 +44,7 @@ const config: Config = {
       {
         publicPath: '<rootDir>/reports',
         filename: 'report.html',
-        openReport: true,
+        openReport: false,
         expand: true,
         pageTitle: 'My Test Report'
       }

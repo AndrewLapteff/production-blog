@@ -31,6 +31,8 @@ import {
 import { PROFILE_VALIDATION } from 'entities/Profile'
 import { getUser } from 'entities/User'
 
+const testid = 'ProfileCard'
+
 export const ProfileCard = memo(() => {
   const { t } = useTranslation('profile')
   const dispatch = useThunkDispatch()
@@ -101,12 +103,14 @@ export const ProfileCard = memo(() => {
       <div className={classNames(s.card)}>
         <ProfileInput
           name="username"
+          data-testid={`${testid}.username`}
           onChange={onChangeUsername}
           value={profile?.username}
           isReadonly={isReadonly}
         />
         <ProfileInput
           name="age"
+          data-testid={`${testid}.age`}
           onChange={onChangeAge}
           value={profile?.age}
           isReadonly={isReadonly}
@@ -114,6 +118,7 @@ export const ProfileCard = memo(() => {
         />
         <ProfileInput
           name="bio"
+          data-testid={`${testid}.bio`}
           onChange={onChangeBio}
           value={profile?.bio}
           isReadonly={isReadonly}
@@ -141,6 +146,7 @@ export const ProfileCard = memo(() => {
 
         {user.id === profile?.userId && (
           <Controls
+            data-testid={testid}
             isReadonly={isReadonly}
             onCancel={onCancel}
             onConfirm={onConfirm}

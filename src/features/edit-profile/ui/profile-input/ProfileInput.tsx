@@ -15,10 +15,18 @@ interface Props {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
   isReadonly: boolean | undefined
   type?: HTMLInputTypeAttribute
+  'data-testid'?: string
 }
 
 export const ProfileInput = memo((props: Props) => {
-  const { value, onChange, isReadonly, type, name } = props
+  const {
+    value,
+    onChange,
+    isReadonly,
+    type,
+    name,
+    'data-testid': dataTestId
+  } = props
 
   const { t } = useTranslation('profile')
 
@@ -26,6 +34,7 @@ export const ProfileInput = memo((props: Props) => {
     <div className={classNames(s['field-wrapper'])}>
       <Text size="s">{t(`${name}`)}</Text>
       <Input
+        data-testid={dataTestId}
         type={type || 'text'}
         value={value || ''}
         onChange={onChange}

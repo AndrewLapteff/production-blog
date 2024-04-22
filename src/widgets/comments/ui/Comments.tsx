@@ -23,6 +23,8 @@ export const Comments = memo(({ articleId }: CommentsProps) => {
     'storybook'
   )
 
+  if (!comments) return null
+
   return (
     <>
       <CommentList comments={comments} isLoading={isLoading} />

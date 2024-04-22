@@ -17,6 +17,7 @@ interface ButtonProps extends HtmlHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariants
   size?: ButtonSize
   disabled?: boolean
+  'data-testid'?: string
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -26,6 +27,7 @@ export const Button = memo((props: ButtonProps) => {
     size = 'm',
     disabled = false,
     className,
+    'data-testid': dataTestId,
     ...rest
   } = props
 
@@ -37,6 +39,7 @@ export const Button = memo((props: ButtonProps) => {
 
   return (
     <button
+      data-testid={`${dataTestId}.button`}
       disabled={disabled}
       type="button"
       className={classNames(s.button, modes, [className])}

@@ -8,25 +8,44 @@ interface ProfileControlsProps {
   onEdit: () => void
   onCancel: () => void
   onConfirm: () => void
+  'data-testid'?: string
 }
 
 export const Controls = memo((props: ProfileControlsProps) => {
-  const { isReadonly, onCancel, onConfirm, onEdit } = props
+  const {
+    isReadonly,
+    onCancel,
+    onConfirm,
+    onEdit,
+    'data-testid': dataTestId
+  } = props
   const { t } = useTranslation('profile')
 
   return (
     <div className={s.controls}>
       {isReadonly ? (
-        <Button variant="outline" onClick={onEdit}>
+        <Button
+          data-testid={`${dataTestId}.edit`}
+          variant="outline"
+          onClick={onEdit}
+        >
           {t('edit')}
         </Button>
       ) : (
-        <Button variant="red" onClick={onCancel}>
+        <Button
+          data-testid={`${dataTestId}.cancel`}
+          variant="red"
+          onClick={onCancel}
+        >
           {t('cancel')}
         </Button>
       )}
       {!isReadonly && (
-        <Button disabled={isReadonly} onClick={onConfirm}>
+        <Button
+          data-testid={`${dataTestId}.confirm`}
+          disabled={isReadonly}
+          onClick={onConfirm}
+        >
           {t('confirm')}
         </Button>
       )}

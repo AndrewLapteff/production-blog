@@ -3,8 +3,8 @@ import { ThemeDecorator, StoreDecorator } from 'shared/config'
 import { ProfileCard } from './ProfileCard'
 import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { userReducer } from 'entities/User'
-import { profileReducer } from 'entities/Profile'
 import Avatar from 'shared/assets/test/avatar.png'
+import { profileReducer } from 'features/edit-profile'
 
 const initialStore: StoreProps = {
   loginReducer: {
