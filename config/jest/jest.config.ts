@@ -36,7 +36,20 @@ const config: Config = {
     'info',
     'public'
   ],
-  rootDir: '../../'
+  rootDir: '../../',
+  reporters: [
+    'default',
+    [
+      'jest-html-reporters',
+      {
+        publicPath: '<rootDir>/reports',
+        filename: 'report.html',
+        openReport: true,
+        expand: true,
+        pageTitle: 'My Test Report'
+      }
+    ]
+  ]
 }
 
 export default config
