@@ -4,16 +4,9 @@ import { ProfileCard } from './ProfileCard'
 import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { userReducer } from 'entities/User'
 import Avatar from 'shared/assets/test/avatar.png'
-import { profileReducer } from 'features/edit-profile'
+import { profileReducer } from '../../../edit-profile'
 
 const initialStore: StoreProps = {
-  loginReducer: {
-    username: '',
-    password: '',
-    email: '',
-    isLoading: false,
-    error: undefined
-  },
   userReducer: {
     user: {
       id: 1,

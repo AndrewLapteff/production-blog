@@ -1,5 +1,6 @@
 .dropdown {
   position: relative;
+
 }
 
 .dropdown-menu {
@@ -19,16 +20,18 @@
 
 .item {
   width: 100%;
+  font-size: 1.05rem;
 }
 
 .item-link {
   display: flex;
   gap: 3px;
   color: var(--high-emphasis);
+  align-items: center;
 }
 
 .item-text {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .active {

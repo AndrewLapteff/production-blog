@@ -5,12 +5,10 @@ import { renderWithTranslation } from 'shared/lib'
 import { StoreProps, StoreProvider } from 'app/providers/store-provider'
 import { userReducer } from 'entities/User'
 import { scrollRestorationSliceReducer } from 'features/scroll-restoration'
-import { profileReducer } from 'features/edit-profile/model/slice/profileSlice'
 import { Profile, ProfileSchema } from 'entities/Profile'
 import { Reducer, UnknownAction } from '@reduxjs/toolkit'
 import userEvent from '@testing-library/user-event'
-import { rtkApi } from 'shared/api/rtkQuery'
-import { $api } from 'shared/api/api'
+import { profileReducer } from '../../model/slice/profileSlice'
 
 // jest.mock('../../../../shared/api/rtkQuery', () => ({
 //   rtkApi: jest.fn()
