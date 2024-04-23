@@ -1,4 +1,6 @@
+import { Roles } from 'entities/User/model/types/user'
 import { AboutPage } from 'pages/about-page'
+import { AdminPanel } from 'pages/admin-panel'
 import { ArticleEditPage } from 'pages/article-edit-page'
 import { ArticlePage } from 'pages/article-page'
 import { ArticlesPage } from 'pages/articles-page'
@@ -16,7 +18,8 @@ export enum Routes {
   ARTICLE = 'article',
   ARTICLES = 'articles',
   ARTICLE_EDIT = 'article_edit',
-  ARTICLE_NEW = 'article_new'
+  ARTICLE_NEW = 'article_new',
+  ADMIN = 'admin'
 }
 
 export const routes: Record<Routes, string> = {
@@ -28,12 +31,14 @@ export const routes: Record<Routes, string> = {
   articles: '/articles',
   article_edit: '/article/:id/edit/',
   article_new: '/article/new',
+  admin: '/admin',
   not_found: '*'
 }
 
 type ExtendedRouteProps = RouteProps & {
   authOnly?: boolean
   hide?: boolean
+  roles?: Roles[]
 }
 
 export const routerConfig: Record<Routes, ExtendedRouteProps> = {
@@ -73,6 +78,13 @@ export const routerConfig: Record<Routes, ExtendedRouteProps> = {
     path: routes.article_new,
     element: <ArticleEditPage />,
     hide: true
+  },
+  admin: {
+    path: routes.admin,
+    element: <AdminPanel />,
+    hide: true,
+    authOnly: true,
+    roles: ['ADMIN', 'MANAGER']
   },
   not_found: {
     path: routes.not_found,

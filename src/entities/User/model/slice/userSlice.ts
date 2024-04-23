@@ -6,6 +6,7 @@ import { LOCAL_STORAGE_USER_KEY } from 'shared/config'
 const initialState: UserSchema = {
   accessToken: '',
   user: { email: '', id: 0, username: '' },
+
   _inited: false
 }
 

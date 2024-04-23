@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import { AxiosError } from 'axios'
 import { useSelector } from 'react-redux'
 import { Modal, ModalProps } from 'widgets/modal'
@@ -23,7 +23,7 @@ import { useDispatchCallback, useThunkDispatch } from 'shared/lib'
 
 type AuthModalProps = Pick<ModalProps, 'setOpen' | 'isOpen' | 'width'>
 
-const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
+const AuthModal = memo(({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
   const { t } = useTranslation('modal')
 
   const username = useSelector(getUsername)
@@ -105,6 +105,5 @@ const AuthModal = ({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
       />
     </>
   )
-}
-
+})
 export default AuthModal

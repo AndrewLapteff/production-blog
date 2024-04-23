@@ -96,7 +96,8 @@
       "id": 1,
       "email": "this.is.amigogo@gmail.com",
       "password": "$2a$10$bblrHXsaHEzGcRoIZKdYh.7cYs7W18LKgUKMbC0iWFGkzYbuy.ZxW",
-      "username": "Amigo"
+      "username": "Amigo",
+      "roles": "MANAGER"
     }
   ],
   "articles": [

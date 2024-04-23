@@ -5,7 +5,7 @@ import { BuildEnv } from './config/webpack/types'
 export default (env: BuildEnv) => {
   const { mode, analyze } = env
 
-  const apiUrl = env.apiUrl || 'https://json-server-api-d66j.onrender.com/'
+  const apiUrl = env.apiUrl || 'http://localhost:4000'
 
   return buildWebpackConfig({
     mode,

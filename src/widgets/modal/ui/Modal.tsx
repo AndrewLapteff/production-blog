@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Dispatch, ReactNode, SetStateAction, useCallback } from 'react'
+import { Dispatch, memo, ReactNode, SetStateAction, useCallback } from 'react'
 import s from './Modal.module.scss'
 import { classNames, useKeyPress } from 'shared/lib'
 
@@ -13,7 +13,7 @@ export interface ModalProps {
   width?: number
 }
 
-export const Modal = (props: ModalProps) => {
+export const Modal = memo((props: ModalProps) => {
   const { header, main, footer, isOpen, setOpen, width = 45 } = props
 
   const mode: Record<string, boolean> = {
@@ -44,4 +44,4 @@ export const Modal = (props: ModalProps) => {
       </div>
     </div>
   )
-}
+})

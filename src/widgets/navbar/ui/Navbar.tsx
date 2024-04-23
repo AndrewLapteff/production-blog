@@ -10,7 +10,13 @@ import {
   Button,
   HStack
 } from 'shared/ui'
-import { getUser, logout } from 'entities/User'
+import {
+  getUser,
+  getUserRoles,
+  isUserAdmin,
+  isUserManager,
+  logout
+} from 'entities/User'
 import s from './Navbar.module.scss'
 import { routerConfig, routes } from 'shared/config'
 import { Dropdown, DropDownItem } from 'shared/ui/dropdown/Dropdown'
@@ -25,9 +31,11 @@ interface NavbarProps {
 export const Navbar = ({ isSigned, username }: NavbarProps) => {
   const { t } = useTranslation('translation')
   const [isOpen, setOpen] = useState(false)
+
   const userInfo = useSelector(getUser)
   const dispatch = useDispatch()
-
+  const isAdmin = useSelector(isUserAdmin)
+  const isManager = useSelector(isUserManager)
   const openHandler = () => {
     setOpen(true)
   }
@@ -50,8 +58,9 @@ export const Navbar = ({ isSigned, username }: NavbarProps) => {
 
     ;(() => {
       Object.entries(routerConfig).forEach(
-        ([name, { path, hide = false, authOnly }]) => {
+        ([name, { path, hide = false, authOnly, roles }]) => {
           if (!isSigned && authOnly) return
+
           if (hide) return
           result.push(
             <AppLink key={path} theme="primary" to={path || ''}>
@@ -63,7 +72,7 @@ export const Navbar = ({ isSigned, username }: NavbarProps) => {
     })()
 
     return result
-  }, [t, isSigned])
+  }, [t, isSigned, isAdmin, isManager])
 
   return (
     <nav className={classNames(s.navbar)}>

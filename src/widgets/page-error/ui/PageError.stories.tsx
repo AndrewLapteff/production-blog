@@ -3,7 +3,6 @@ import { StoreDecorator, ThemeDecorator } from 'shared/config'
 import { PageError } from './PageError'
 import { Sidebar } from 'widgets/sidebar/ui/Sidebar'
 import { Navbar } from 'widgets/navbar'
-import { userReducer } from 'entities/User'
 import { getTestStore } from 'shared/lib'
 
 const loginReducer = {
@@ -32,7 +31,7 @@ export const PageErrorLight: Story = {
   render: (arg) => {
     return (
       <div>
-        <Navbar isSigned />
+        <Navbar username="Amigo" isSigned />
         <div style={{ display: 'flex' }}>
           <Sidebar />
           <PageError />
@@ -47,7 +46,7 @@ export const PageErrorDark: Story = {
   render: (arg) => {
     return (
       <div>
-        <Navbar isSigned />
+        <Navbar username="Amigo" isSigned />
         <div style={{ display: 'flex' }}>
           <Sidebar />
           <PageError />
