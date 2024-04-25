@@ -14,7 +14,8 @@
     "paths": {
       "*": ["./src/*"]
     },
-    "strict": true
+    "strict": true,
+    "isolatedModules": true
   },
   "ts-node": {
     "include": ["./config/jest/setupTests.ts"],

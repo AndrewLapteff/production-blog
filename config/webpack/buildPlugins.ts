@@ -1,8 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import webpack, { DefinePlugin, ProgressPlugin, DllPlugin } from 'webpack'
-import CopyPlugin from 'copy-webpack-plugin'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import webpack, { DefinePlugin } from 'webpack'
+import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { BuildEnv, Paths } from './types'
 
 interface BuildPluginsProps extends Pick<BuildEnv, 'analyze' | 'apiUrl'> {
@@ -29,6 +28,10 @@ export const buildPlugins = ({
       IS_DEV: JSON.stringify(isDev),
       API_URL: JSON.stringify(apiUrl),
       PROJECT_ENV: JSON.stringify('frontend')
+    }),
+    new CircularDependencyPlugin({
+      exclude: /node_modules/,
+      failOnError: true
     })
     // new CopyPlugin({
     //   patterns: [{ from: paths.locales, to: paths.buildLocales }]

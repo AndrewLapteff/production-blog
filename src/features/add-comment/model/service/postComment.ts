@@ -5,7 +5,7 @@ import { addComment } from 'pages/article-page'
 import { prepareDate } from '../lib/prepareDate'
 import { Profile } from 'entities/Profile'
 import { getUser } from 'entities/User'
-import { removeText } from '../slice/commentFormSlice'
+// import { removeText } from '../slice/commentFormSlice'
 
 export const postComment = createAsyncThunk<
   Comment,
@@ -47,7 +47,7 @@ export const postComment = createAsyncThunk<
 
       newComment.profile = profile
       dispatch(addComment(newComment))
-      dispatch(removeText())
+      // dispatch(removeText())
 
       return newComment
     } catch (error) {

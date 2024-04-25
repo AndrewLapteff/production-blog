@@ -8,7 +8,7 @@ import type { AsyncThunkConfig } from '@reduxjs/toolkit/dist/createAsyncThunk'
 import type { AxiosInstance } from 'axios'
 import type { ArticleSchema } from 'entities/Article'
 import type { ProfileSchema } from 'entities/Profile'
-import type { UserSchema } from 'entities/User'
+import type { UserSchema } from 'entities/User/model/types/user'
 import type { LoginSchema } from 'features/auth-by-username'
 import type { AddCommnetForm } from 'features/add-comment'
 import type { CommentsSchema } from 'pages/article-page'
@@ -16,7 +16,6 @@ import type { ArticlesSchema } from 'pages/articles-page'
 import type { NavigateFunction } from 'react-router-dom'
 import { ScrollRestorationSchema } from 'features/scroll-restoration'
 import { RecommendationsSchema } from 'pages/article-page/model/types/recommendations'
-import { rtkApi } from 'shared/api/rtkQuery'
 
 export interface StoreProps {
   userReducer: UserSchema

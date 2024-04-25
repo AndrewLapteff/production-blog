@@ -1,21 +1,31 @@
 import webpack from 'webpack'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { Mode } from './types'
+import { buildBabelLoader } from './loaders/buildBabelLoader'
 
 export const buildLoaders = (mode: Mode): webpack.RuleSetRule[] => {
-  const typescriptLoader = {
-    test: /\.tsx?$/,
-    use: [
-      {
-        loader: 'ts-loader',
-        options: {
-          transpileOnly: true,
-          experimentalWatchApi: true
-        }
-      }
-    ],
-    exclude: /node_modules/
-  }
+  const babelLoaderTsx = buildBabelLoader({
+    isDev: mode === 'development',
+    isTsx: true
+  })
+  const babelLoader = buildBabelLoader({
+    isDev: mode === 'development',
+    isTsx: false
+  })
+
+  // const typescriptLoader = {
+  //   test: /\.tsx?$/,
+  //   use: [
+  //     {
+  //       loader: 'ts-loader',
+  //       options: {
+  //         transpileOnly: true,
+  //         experimentalWatchApi: true
+  //       }
+  //     }
+  //   ],
+  //   exclude: /node_modules/
+  // }
 
   const pngLoader = {
     test: /\.(png|jpg|gif)$/i,
@@ -47,5 +57,5 @@ export const buildLoaders = (mode: Mode): webpack.RuleSetRule[] => {
     ]
   }
 
-  return [typescriptLoader, scssLoader, svgLoader, pngLoader]
+  return [babelLoaderTsx, babelLoader, scssLoader, svgLoader, pngLoader]
 }
