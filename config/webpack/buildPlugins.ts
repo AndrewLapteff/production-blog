@@ -28,11 +28,11 @@ export const buildPlugins = ({
       IS_DEV: JSON.stringify(isDev),
       API_URL: JSON.stringify(apiUrl),
       PROJECT_ENV: JSON.stringify('frontend')
-    }),
-    new CircularDependencyPlugin({
-      exclude: /node_modules/,
-      failOnError: true
     })
+    // new CircularDependencyPlugin({
+    //   exclude: /node_modules/,
+    //   failOnError: true
+    // })
     // new CopyPlugin({
     //   patterns: [{ from: paths.locales, to: paths.buildLocales }]
     // })

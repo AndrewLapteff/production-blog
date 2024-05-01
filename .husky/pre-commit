@@ -1,1 +1,1 @@
-npm run lint:ts:fix && npm run lint:scss:fix && git add -A .
+npm run lint:ts:fix && npm run lint:scss:fix

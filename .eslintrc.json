@@ -35,13 +35,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "jsx-a11y",
-    "i18next",
-    "react-hooks",
-    "absolute-path-checker"
-  ],
+  "plugins": ["react", "jsx-a11y", "i18next", "react-hooks"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "off",
@@ -67,7 +61,6 @@
     "react-hooks/rules-of-hooks": "warn",
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/no-invalid-void-type": "off",
-    "@typescript-eslint/promise-function-async": "warn",
-    "absolute-path-checker/check-absolute-path": 2
+    "@typescript-eslint/promise-function-async": "warn"
   }
 }

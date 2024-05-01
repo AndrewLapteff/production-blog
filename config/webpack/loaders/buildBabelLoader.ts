@@ -1,3 +1,5 @@
+import removeJSXAttributes from '../plugins/removeJSXAttributes'
+
 interface BuildBabelLoaderProps {
   isDev: boolean
   isTsx: boolean
@@ -26,7 +28,13 @@ export function buildBabelLoader({ isDev, isTsx }: BuildBabelLoaderProps) {
             }
           ],
           '@babel/plugin-transform-runtime',
-          isDev && require.resolve('react-refresh/babel')
+          isTsx && [
+            removeJSXAttributes(),
+            {
+              props: ['data-testid']
+            }
+          ]
+          // isDev && require.resolve('react-refresh/babel')
         ].filter(Boolean)
       }
     }
