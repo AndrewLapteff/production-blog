@@ -6,11 +6,13 @@ interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   width?: number | string
   height?: number
   borderRadius?: number
+  max?: boolean
 }
 
 export const Skeleton = ({
   height,
   width,
+  max,
   borderRadius = 10,
   ...rest
 }: SkeletonProps) => {
@@ -20,5 +22,15 @@ export const Skeleton = ({
     borderRadius
   }
 
-  return <div style={styles} {...rest} className={classNames(s.skeleton)}></div>
+  const modes = {
+    [s.max]: max
+  }
+
+  return (
+    <div
+      style={styles}
+      {...rest}
+      className={classNames(s.skeleton, modes)}
+    ></div>
+  )
 }

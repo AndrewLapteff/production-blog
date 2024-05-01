@@ -7,13 +7,13 @@ import { Sidebar } from 'widgets/sidebar/ui/Sidebar'
 import { ErrorBoundary } from './providers/error-boundary'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { init } from 'entities/User'
+import { getUser, init } from 'entities/User'
 import { getInited } from 'entities/User/model/selectors/getInited/getInited'
 
 export const App = () => {
   const { theme } = useTheme()
   const dispatch = useDispatch()
-  const username = useAppSelector((store) => store.userReducer.user.username)
+  const user = useAppSelector(getUser)
   const isInited = useSelector(getInited)
 
   useEffect(() => {
@@ -22,11 +22,11 @@ export const App = () => {
 
   return (
     <div className={classNames('.app', {}, [theme])}>
-      {isInited && <Navbar username={username} isSigned={!!username} />}
+      {isInited && <Navbar user={user} />}
       <div className="main-area">
         <Sidebar />
         <ErrorBoundary>
-          {isInited && <AppRouter isSigned={!!username} />}
+          {isInited && <AppRouter isSigned={!!user.username} />}
         </ErrorBoundary>
       </div>
     </div>

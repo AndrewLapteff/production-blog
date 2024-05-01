@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib'
 import { memo } from 'react'
 import { Loader, Text, Title } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
-import { CommentCard } from '../CommentCard/CommentCard'
+import { CommentCard } from '../comment-card/CommentCard'
 import { Comment } from '../../model/types/comment'
 
 interface CommentListProps {

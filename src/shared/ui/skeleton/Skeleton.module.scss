@@ -6,6 +6,10 @@
   animation: skeleton-loading .5s linear infinite;
 }
 
+.max {
+  width: 100%;
+}
+
 @keyframes skeleton-loading {
   to {
     background-position: left;
