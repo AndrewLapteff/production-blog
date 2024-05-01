@@ -25,17 +25,6 @@
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint:fix && git add -A ."
-    }
-  },
-  "lint-staged": {
-    "*": [
-      "npm run lint:fix",
-      "git add"
-    ]
-  },
   "loki": {
     "configurations": {
       "chrome.laptop": {

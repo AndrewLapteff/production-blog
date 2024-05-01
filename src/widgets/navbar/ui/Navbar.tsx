@@ -1,57 +1,21 @@
-import { ReactNode, Suspense, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useTranslation } from 'react-i18next'
-import { loginReducer, AuthModal } from 'features/auth-by-username'
-import { DynamicSliceLoader, classNames } from 'shared/lib'
-import {
-  AppLink,
-  ThemeSwitcher,
-  TranslateButton,
-  Button,
-  HStack
-} from 'shared/ui'
-import {
-  getUser,
-  getUserRoles,
-  isUserAdmin,
-  isUserManager,
-  logout
-} from 'entities/User'
 import s from './Navbar.module.scss'
-import { routerConfig, routes } from 'shared/config'
-import { Dropdown, DropDownItem } from 'shared/ui/dropdown/Dropdown'
-import SettingsIcon from 'shared/assets/icons/settings.svg'
-import LogoutIcon from 'shared/assets/icons/logout.svg'
+import { ReactNode, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+import { classNames } from 'shared/lib'
+import { AppLink, ThemeSwitcher, TranslateButton, HStack } from 'shared/ui'
+import { User } from 'entities/User'
+import { routerConfig } from 'shared/config'
+import { NotificationsButton } from 'features/notifications-button'
+import { SettingsButton } from 'features/settings-button'
 
 interface NavbarProps {
-  isSigned: boolean
-  username: string
+  user: User
 }
 
-export const Navbar = ({ isSigned, username }: NavbarProps) => {
+export const Navbar = ({ user }: NavbarProps) => {
+  const { username, id } = user
+  const isSigned = !!user
   const { t } = useTranslation('translation')
-  const [isOpen, setOpen] = useState(false)
-
-  const userInfo = useSelector(getUser)
-  const dispatch = useDispatch()
-  const isAdmin = useSelector(isUserAdmin)
-  const isManager = useSelector(isUserManager)
-  const openHandler = () => {
-    setOpen(true)
-  }
-
-  const dropdownItems = useMemo((): DropDownItem[] => {
-    return [
-      { content: 'Profile', href: routes.profile, icon: SettingsIcon },
-      {
-        content: 'Quit',
-        onClick: () => {
-          dispatch(logout())
-        },
-        icon: LogoutIcon
-      }
-    ]
-  }, [dispatch])
 
   const links: ReactNode[] = useMemo(() => {
     const result: ReactNode[] = []
@@ -72,7 +36,7 @@ export const Navbar = ({ isSigned, username }: NavbarProps) => {
     })()
 
     return result
-  }, [t, isSigned, isAdmin, isManager])
+  }, [t, isSigned])
 
   return (
     <nav className={classNames(s.navbar)}>
@@ -84,30 +48,10 @@ export const Navbar = ({ isSigned, username }: NavbarProps) => {
         className={classNames(s.links)}
       >
         {links}
+        <NotificationsButton profileId={id} />
         <ThemeSwitcher />
         <TranslateButton />
-        {userInfo.email === '' ? (
-          <Button size="m" variant="background" onClick={openHandler}>
-            {t('login')}
-          </Button>
-        ) : (
-          <Dropdown
-            title={username}
-            items={dropdownItems}
-            label={<SettingsIcon width={23} height={23} />}
-          />
-        )}
-        <Suspense>
-          {isOpen && (
-            <DynamicSliceLoader
-              name="loginReducer"
-              reducer={loginReducer}
-              removeAfterUnmount
-            >
-              <AuthModal width={25} isOpen={isOpen} setOpen={setOpen} />
-            </DynamicSliceLoader>
-          )}
-        </Suspense>
+        <SettingsButton username={username} />
       </HStack>
     </nav>
   )
