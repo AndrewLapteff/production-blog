@@ -1,15 +1,13 @@
-.app-modal {
+.app-drawer {
   background-color: rgba(0, 0, 0, .5);
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
   pointer-events: none;
   z-index: 0;
-  transition: 0.3s opacity;
+  transition: 0.3s;
   animation: modal-fade .5s;
+  transform: translateY(-100%);
+  visibility: hidden;
 }
 
 .content {
@@ -21,6 +19,7 @@
   border-radius: 10px;
   animation: modal-slide .5s;
   transition: 0.3s transform;
+  width: 100vw;
 
   // transform: scale(0.3)
 }
@@ -60,28 +59,6 @@
   opacity: 1;
   pointer-events: auto;
   z-index: 10;
-
-  .content {
-    transform: scale(1);
-  }
-}
-
-@keyframes modal-slide {
-  from {
-    transform: translateY(-100%);
-  }
-
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes modal-fade {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  transform: translateY(0);
+  visibility: visible;
 }

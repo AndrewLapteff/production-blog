@@ -1,22 +1,22 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Dispatch, memo, ReactNode, SetStateAction, useCallback } from 'react'
-import s from './Modal.module.scss'
+import s from './Drawer.module.scss'
 import { classNames, useKeyPress } from 'shared/lib'
 import { Portal } from 'widgets/portal'
 import { useTheme } from 'app/providers/theme-provider'
 
-export interface ModalProps {
+export interface DrawerProps {
   isOpen: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
-  header: string | ReactNode
-  main: string | ReactNode
-  footer: string | ReactNode
   width?: number
+  children?: ReactNode
 }
 
-export const Modal = memo((props: ModalProps) => {
-  const { header, main, footer, isOpen, setOpen, width = 45 } = props
+const width = 100
+
+export const Drawer = memo((props: DrawerProps) => {
+  const { children, isOpen, setOpen } = props
   const { theme } = useTheme()
 
   const mode: Record<string, boolean> = {
@@ -37,17 +37,15 @@ export const Modal = memo((props: ModalProps) => {
     <Portal>
       <div
         onClick={onClose}
-        className={classNames(s['app-modal'], mode, [theme, 'app-modal'])}
+        className={classNames(s['app-drawer'], mode, [theme, 'app-drawer'])}
       >
         <div onClick={stopPropagation} className={classNames(s.content)}>
-          <h1 className={classNames(s.header)}>{header}</h1>
           <div
             style={{ width: window.innerWidth * (width / 100) }}
             className={classNames(s.main)}
           >
-            {main}
+            {children}
           </div>
-          <div className={classNames(s.footer)}>{footer}</div>
         </div>
       </div>
     </Portal>
