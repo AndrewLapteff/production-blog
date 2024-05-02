@@ -1,11 +1,11 @@
 .sidebar {
-  height: 100vh;
+  height: calc(100vh - var(--navbar-height));
   background-color: var(--secondary-color);
   width: var(--sidebar-width-unfolded);
   transition: width 0.2s;
   position: fixed;
   display: flex;
-  top: 0;
+  bottom: 0;
   flex-direction: column;
   justify-content: space-between;
   z-index: 2;
@@ -14,10 +14,6 @@
 .folded {
   width: var(--sidebar-width-folded);
 }
-
-// .link-bar {}
-
-// .action-bar {}
 
 .button {
   width: 100%;

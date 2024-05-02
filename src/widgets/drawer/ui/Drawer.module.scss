@@ -62,3 +62,35 @@
   transform: translateY(0);
   visibility: visible;
 }
+
+.bg {
+  width: 100%;
+}
+
+.bg>img {
+  width: 100%;
+  margin: 0;
+  display: block;
+}
+
+.sheet {
+  border: black 1px solid;
+  z-index: 100;
+  position: fixed;
+  left: 2vw;
+  height: calc(100vh + 100px);
+  width: 96vw;
+  border-radius: 12px 12px 0;
+  background: var(--bg-color);
+  touch-action: none;
+}
+
+.sheet>div {
+  height: calc(100vh - 100px);
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  padding: 0 20px;
+  text-transform: capitalize;
+}

@@ -3,6 +3,7 @@ import s from './Sidebar.module.scss'
 import { classNames } from 'shared/lib'
 import ArrowIcon from 'shared/assets/icons/arrow.svg'
 import { useTranslation } from 'react-i18next'
+import { Button } from 'shared/ui'
 
 export const Sidebar = memo(() => {
   const [isFolded, setIsFolded] = useState(true)
@@ -17,10 +18,10 @@ export const Sidebar = memo(() => {
       data-testid="sidebar"
       className={classNames(s.sidebar, { [s.folded]: isFolded })}
     >
-      <section className={classNames(s['link-bar'])}>{t('sidebar')}</section>
+      <section className={classNames(s['link-bar'])}></section>
       <section className={classNames(s['action-bar'])}>
-        <button
-          type="button"
+        <Button
+          variant="icon"
           data-testid="button"
           onClick={foldHandler}
           className={classNames(s.button)}
@@ -30,7 +31,7 @@ export const Sidebar = memo(() => {
             width={26}
             height={26}
           />
-        </button>
+        </Button>
       </section>
     </aside>
   )

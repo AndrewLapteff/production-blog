@@ -1,53 +1,72 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Dispatch, memo, ReactNode, SetStateAction, useCallback } from 'react'
+import { forwardRef, ReactNode, useImperativeHandle } from 'react'
+import { useDrag } from '@use-gesture/react'
+import { a, useSpring, config } from '@react-spring/web'
 import s from './Drawer.module.scss'
-import { classNames, useKeyPress } from 'shared/lib'
-import { Portal } from 'widgets/portal'
-import { useTheme } from 'app/providers/theme-provider'
 
-export interface DrawerProps {
-  isOpen: boolean
-  setOpen: Dispatch<SetStateAction<boolean>>
-  width?: number
-  children?: ReactNode
-}
+const height = window.innerHeight - 100
 
-const width = 100
+export const Drawer = forwardRef(
+  ({ children }: { children: ReactNode }, ref) => {
+    const [{ y }, api] = useSpring(() => ({ y: height }))
 
-export const Drawer = memo((props: DrawerProps) => {
-  const { children, isOpen, setOpen } = props
-  const { theme } = useTheme()
+    const open = ({ canceled }: { canceled: boolean }) => {
+      api.start({
+        y: 0,
+        immediate: false,
+        config: canceled ? config.wobbly : config.stiff
+      })
+    }
+    const close = (velocity = 0) => {
+      api.start({
+        y: height,
+        immediate: false,
+        config: { ...config.stiff, velocity }
+      })
+    }
 
-  const mode: Record<string, boolean> = {
-    [s.open]: isOpen
-  }
+    useImperativeHandle(ref, () => ({
+      open
+    }))
 
-  const onClose = useCallback(() => {
-    setOpen(false)
-  }, [setOpen])
+    const bind = useDrag(
+      ({
+        last,
+        velocity: [, vy],
+        direction: [, dy],
+        offset: [, oy],
+        cancel,
+        canceled
+      }) => {
+        if (oy < -70) cancel()
 
-  useKeyPress({ onKeyDown: { callback: onClose, key: 'Escape', once: true } })
+        if (last) {
+          oy > height * 1 || (vy > 1 && dy > 0) ? close(vy) : open({ canceled })
+        } else api.start({ y: oy, immediate: true })
+      },
+      {
+        from: () => [0, y.get()],
+        filterTaps: true,
+        bounds: { top: 0 },
+        rubberband: true
+      }
+    )
 
-  const stopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.stopPropagation()
-  }
+    const display = y.to((py) => (py < height ? 'block' : 'none'))
 
-  return (
-    <Portal>
-      <div
-        onClick={onClose}
-        className={classNames(s['app-drawer'], mode, [theme, 'app-drawer'])}
-      >
-        <div onClick={stopPropagation} className={classNames(s.content)}>
-          <div
-            style={{ width: window.innerWidth * (width / 100) }}
-            className={classNames(s.main)}
-          >
-            {children}
-          </div>
-        </div>
+    return (
+      <div className="flex" style={{ overflow: 'hidden' }}>
+        <a.div
+          className={s.sheet}
+          {...bind()}
+          style={{
+            display,
+            bottom: `calc(-100vh + ${height - 100}px)`,
+            y
+          }}
+        >
+          {children}
+        </a.div>
       </div>
-    </Portal>
-  )
-})
+    )
+  }
+)

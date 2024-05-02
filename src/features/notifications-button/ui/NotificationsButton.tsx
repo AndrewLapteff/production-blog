@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react'
+import { memo, useCallback, useRef, useState } from 'react'
 import { Button, Popover } from 'shared/ui'
 import Bell from 'shared/assets/icons/bell.svg'
 import Cross from 'shared/assets/icons/cross.svg'
@@ -10,14 +10,22 @@ interface NotificationsButtonProps {
   profileId: number
 }
 
+interface DrawerHandle {
+  open: (args: { canceled: boolean }) => void
+}
+
 export const NotificationsButton = memo(
   ({ profileId }: NotificationsButtonProps) => {
     const [isOpen, setOpen] = useState(false)
     const [hasDrawerOpened, setHasDrawerOpened] = useState(false)
 
+    const drawerRef = useRef<DrawerHandle | null>(null)
+
     const openDrawer = useCallback(() => {
+      if (drawerRef.current === null) return
       setOpen(true)
       setHasDrawerOpened(true)
+      drawerRef.current.open({ canceled: false })
     }, [])
 
     const triggerButton = (
@@ -43,7 +51,7 @@ export const NotificationsButton = memo(
         </BrowserView>
         <MobileView>
           {triggerButton}
-          <Drawer isOpen={isOpen} setOpen={setOpen}>
+          <Drawer ref={drawerRef}>
             {(isOpen || hasDrawerOpened) && (
               <NotificationsList profileId={profileId} />
             )}
