@@ -5,6 +5,7 @@ import Cross from 'shared/assets/icons/cross.svg'
 import { NotificationsList } from 'entities/notification'
 import { Drawer } from 'widgets/drawer/ui/Drawer'
 import { BrowserView, MobileView } from 'react-device-detect'
+import { AnimationProvider } from 'shared/lib/components/animation-provider/AnimationProvicer'
 
 interface NotificationsButtonProps {
   profileId: number
@@ -51,11 +52,13 @@ export const NotificationsButton = memo(
         </BrowserView>
         <MobileView>
           {triggerButton}
-          <Drawer ref={drawerRef}>
-            {(isOpen || hasDrawerOpened) && (
-              <NotificationsList profileId={profileId} />
-            )}
-          </Drawer>
+          <AnimationProvider>
+            <Drawer ref={drawerRef}>
+              {(isOpen || hasDrawerOpened) && (
+                <NotificationsList profileId={profileId} />
+              )}
+            </Drawer>
+          </AnimationProvider>
         </MobileView>
       </>
     )

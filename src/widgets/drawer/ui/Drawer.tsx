@@ -1,26 +1,27 @@
 import { forwardRef, ReactNode, useImperativeHandle } from 'react'
-import { useDrag } from '@use-gesture/react'
-import { a, useSpring, config } from '@react-spring/web'
 import s from './Drawer.module.scss'
+import { useAnimation } from 'shared/lib/components/animation-provider/AnimationProvicer'
 
 const height = window.innerHeight - 100
 
-export const Drawer = forwardRef(
+export const DrawerContent = forwardRef(
   ({ children }: { children: ReactNode }, ref) => {
-    const [{ y }, api] = useSpring(() => ({ y: height }))
+    const { Spring, Gesture } = useAnimation()
+
+    const [{ y }, api] = Spring.useSpring(() => ({ y: height }))
 
     const open = ({ canceled }: { canceled: boolean }) => {
       api.start({
         y: 0,
         immediate: false,
-        config: canceled ? config.wobbly : config.stiff
+        config: canceled ? Spring.config.wobbly : Spring.config.stiff
       })
     }
     const close = (velocity = 0) => {
       api.start({
         y: height,
         immediate: false,
-        config: { ...config.stiff, velocity }
+        config: { ...Spring.config.stiff, velocity }
       })
     }
 
@@ -28,7 +29,7 @@ export const Drawer = forwardRef(
       open
     }))
 
-    const bind = useDrag(
+    const bind = Gesture.useDrag(
       ({
         last,
         velocity: [, vy],
@@ -55,7 +56,7 @@ export const Drawer = forwardRef(
 
     return (
       <div className="flex" style={{ overflow: 'hidden' }}>
-        <a.div
+        <Spring.a.div
           className={s.sheet}
           {...bind()}
           style={{
@@ -65,8 +66,16 @@ export const Drawer = forwardRef(
           }}
         >
           {children}
-        </a.div>
+        </Spring.a.div>
       </div>
     )
   }
 )
+
+export const Drawer = forwardRef((props: { children: ReactNode }, ref) => {
+  const { isLoaded } = useAnimation()
+
+  if (!isLoaded) return null
+
+  return <DrawerContent {...props} ref={ref} />
+})

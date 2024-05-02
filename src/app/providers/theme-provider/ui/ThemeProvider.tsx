@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useState } from 'react'
+import { FC, PropsWithChildren, useMemo, useState } from 'react'
 import { THEME, ThemeContext } from '../lib/ThemeContext'
 
 interface ThemeProviderProps extends PropsWithChildren {}
@@ -11,13 +11,11 @@ const defaultTheme =
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<THEME>(defaultTheme)
 
-  // const value = useMemo(() => {
-  //   return { theme, setTheme }
-  // }, [theme])
+  const values = useMemo(() => {
+    return { theme, setTheme }
+  }, [theme])
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>
   )
 }
