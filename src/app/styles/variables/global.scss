@@ -19,4 +19,10 @@
   --height-of-main-section: calc(100vh - var(--navbar-height));
 
   --article-width: 700px;
+
+  --popover-z-index: 1000;
+  --modal-z-index: 1000;
+  --navbar-z-index: 1000;
+  --sidebar-z-index: 100;
+  --dropdown-z-index: 1000;
 }

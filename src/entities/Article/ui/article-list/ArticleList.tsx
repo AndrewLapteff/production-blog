@@ -2,9 +2,7 @@ import { memo } from 'react'
 import { ArticleType, ArticleView } from '../../../Article/model/types/article'
 import { ArticleListItemSkeleton } from '../article-list-item/ArticleListSkeleton'
 import s from './ArticleList.module.scss'
-import { List, ListRowProps, WindowScroller } from 'react-virtualized'
 import { ArticleListItem } from '../article-list-item/ArticleListItem'
-import { PAGE_WIDTH } from 'shared/consts/common'
 
 interface ArticleListProps {
   isLoading: boolean
@@ -14,41 +12,15 @@ interface ArticleListProps {
 
 export const ArticleList = memo((props: ArticleListProps) => {
   const { view, articles, isLoading } = props
-  const articleHeight = view === 'classic' ? 450 : 270
-  const renderListItem = ({ index, key, style }: ListRowProps) => {
-    return (
-      <ArticleListItem
-        key={key}
-        article={articles[index]}
-        style={style}
-        view={view}
-      />
-    )
-  }
 
   return (
     <>
-      <WindowScroller>
-        {({ height, isScrolling, onChildScroll, scrollTop, registerChild }) => {
-          return (
-            // @ts-expect-error
-            <div ref={registerChild} className={s['article-list']}>
-              <List
-                autoHeight
-                height={height}
-                isScrolling={isScrolling}
-                onScroll={onChildScroll}
-                rowCount={articles.length}
-                rowHeight={articleHeight}
-                rowRenderer={renderListItem}
-                scrollTop={scrollTop}
-                width={PAGE_WIDTH}
-              />
-            </div>
-          )
-        }}
-      </WindowScroller>
-
+      <div className={s['article-list']}>
+        {articles.length > 0 &&
+          articles.map((article) => (
+            <ArticleListItem key={article.id} article={article} view={view} />
+          ))}
+      </div>
       {isLoading && (
         <>
           <ArticleListItemSkeleton view={view} />

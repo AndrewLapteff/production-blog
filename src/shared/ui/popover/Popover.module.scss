@@ -5,7 +5,7 @@
 .content {
   width: 300px;
   height: 600px;
-  z-index: 1000;
+  z-index: var(--popover-z-index);
   background-color: var(--dropdown-background-color);
   position: absolute;
   top: 30px;

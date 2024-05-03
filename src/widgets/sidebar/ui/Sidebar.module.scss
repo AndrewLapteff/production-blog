@@ -8,7 +8,7 @@
   bottom: 0;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 2;
+  z-index: var(--sidebar-z-index);
 }
 
 .folded {

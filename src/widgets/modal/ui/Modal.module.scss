@@ -59,7 +59,7 @@
 .open {
   opacity: 1;
   pointer-events: auto;
-  z-index: 10;
+  z-index: var(--navbar-z-index);
 
   .content {
     transform: scale(1);

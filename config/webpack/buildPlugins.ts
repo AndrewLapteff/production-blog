@@ -1,7 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import webpack, { DefinePlugin } from 'webpack'
-import CircularDependencyPlugin from 'circular-dependency-plugin'
 import { BuildEnv, Paths } from './types'
 
 interface BuildPluginsProps extends Pick<BuildEnv, 'analyze' | 'apiUrl'> {

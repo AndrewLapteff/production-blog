@@ -7,7 +7,7 @@ describe('Sidebar.tsx', () => {
   it('should be open', () => {
     const SideBar = withTranslation('translation')(Sidebar)
     renderWithTranslation(<SideBar />)
-    const element = screen.getByTestId('button')
+    const element = screen.getByTestId('sidebar.button')
     expect(screen.getByTestId('sidebar')).toHaveClass('folded')
     fireEvent.click(element)
     expect(screen.getByTestId('sidebar')).not.toHaveClass('folded')

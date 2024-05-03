@@ -9,7 +9,7 @@
   right: 0;
   padding: 5px 10px 5px 5px;
   border-radius: 0.5rem;
-  z-index: 3;
+  z-index: var(--dropdown-z-index);
   border: 1px solid var(--low-emphasis);
   opacity: 0;
   transform: translateY(-10px);

@@ -1,4 +1,4 @@
-import { memo, useState } from 'react'
+import { memo, useState, ReactComponentElement } from 'react'
 import s from './Sidebar.module.scss'
 import { classNames } from 'shared/lib'
 import ArrowIcon from 'shared/assets/icons/arrow.svg'
@@ -22,7 +22,7 @@ export const Sidebar = memo(() => {
       <section className={classNames(s['action-bar'])}>
         <Button
           variant="icon"
-          data-testid="button"
+          data-testid="sidebar"
           onClick={foldHandler}
           className={classNames(s.button)}
         >
