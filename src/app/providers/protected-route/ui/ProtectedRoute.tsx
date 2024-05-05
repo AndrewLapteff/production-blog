@@ -18,8 +18,7 @@ export const ProtectedRoute = ({
   availableRoles
 }: ProtectedRouteProps) => {
   const userRoles = useSelector(getUserRoles)
-  console.log(userRoles)
-  console.log(availableRoles)
+
   const hasProperRoles = useMemo(() => {
     if (!availableRoles) return true
 

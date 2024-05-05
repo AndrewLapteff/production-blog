@@ -1,0 +1,12 @@
+.rating {
+  display: flex;
+  cursor: pointer;
+}
+
+.hovered-star {
+  fill: #f1c40f;
+}
+
+.is-selected {
+  cursor: default
+}

@@ -16,6 +16,7 @@ I aim to align this project's structure and development processes as closely as 
 - [React](https://react.dev/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Webpack (setup from scratch)](https://webpack.js.org/)
+- [Vite (for dev server)](https://webpack.js.org/)
 - [Storybook (setup from scratch)](https://storybook.js.org/)
 - [SCSS](https://sass-lang.com/)
 - [i18n](https://www.i18next.com/)

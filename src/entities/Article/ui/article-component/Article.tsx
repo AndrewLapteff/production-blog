@@ -12,6 +12,7 @@ import { Author } from 'widgets/author'
 import { ArticleSkeleton } from '../article-skeleton/ArticleSkeleton'
 import { Profile } from 'entities/Profile'
 import { Controls } from '../controls-component/Controls'
+import { Rating } from 'shared/ui/rating/Rating'
 
 interface ArticleProps {
   id: string
@@ -80,6 +81,7 @@ export const Article = memo((props: ArticleProps) => {
         alt={article.description}
       />
       {article.blocks.map(renderBlock)}
+      <Rating stars={5} size={30} />
       <HStack gap="large" justify="start" max className={s.topics}>
         {renderTopics}
       </HStack>

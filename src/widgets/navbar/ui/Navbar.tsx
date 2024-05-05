@@ -40,13 +40,7 @@ export const Navbar = ({ user }: NavbarProps) => {
 
   return (
     <nav className={classNames(s.navbar)}>
-      <HStack
-        align="center"
-        gap="medium"
-        justify="end"
-        role="navigation"
-        className={classNames(s.links)}
-      >
+      <HStack role="navigation" className={classNames(s.links)}>
         {links}
         <NotificationsButton profileId={id} />
         <ThemeSwitcher />

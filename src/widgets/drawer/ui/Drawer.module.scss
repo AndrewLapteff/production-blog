@@ -75,7 +75,7 @@
 
 .sheet {
   border: black 1px solid;
-  z-index: 100;
+  z-index: var(--drawer-z-index);
   position: fixed;
   left: 2vw;
   height: calc(100vh + 100px);
