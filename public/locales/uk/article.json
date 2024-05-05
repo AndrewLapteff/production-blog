@@ -11,5 +11,9 @@
   "date": "дата",
   "title": "назва",
   "sort": "Сортувати",
-  "sort-order": "Порядок"
+  "sort-order": "Порядок",
+  "submit": "Надіслати",
+  "accept": "прийняти",
+  "decline": "відхилити",
+  "recommendations": "Рекомендації"
 }

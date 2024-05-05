@@ -16,5 +16,6 @@ export { useKeyPress } from './hooks/useKeyPress'
 export { useEventListener } from './hooks/useEventListener'
 export { useClickOutside } from './hooks/useClickOutside'
 export { useInitialEffect } from './hooks/useInitialEffect'
+export { useDrawer } from './hooks/useDrawer'
 
 export type { ObserverProps } from './hooks/useFirstViewportEntry'

@@ -1,4 +1,4 @@
-import s from './Rating.module.scss'
+import s from './RatingStars.module.scss'
 import { classNames } from 'shared/lib'
 import { memo, useState } from 'react'
 import Star from '../../assets/icons/star.svg'
@@ -9,7 +9,7 @@ interface RatingProps {
   onSelect?: (star: number) => void
 }
 
-export const Rating = memo(({ stars, size, onSelect }: RatingProps) => {
+export const RatingStars = memo(({ stars, size, onSelect }: RatingProps) => {
   const [hoveredStar, setHoveredStar] = useState(0)
   const [selectedStar, setSelectedStar] = useState(0)
 

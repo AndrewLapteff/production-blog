@@ -1,2 +1,1 @@
-export { Modal } from './ui/Drawer'
-export type { ModalProps } from './ui/Drawer'
+export { Drawer } from './ui/Drawer'

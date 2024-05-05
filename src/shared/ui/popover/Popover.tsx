@@ -19,7 +19,7 @@ interface TriggerProps {
   children: ReactElement
 }
 
-const popoverContext = createContext({
+const PopoverContext = createContext({
   isOpen: false,
   setOpen: (isOpen: boolean) => {}
 })
@@ -34,17 +34,17 @@ export const Popover = (props: PopoverProps) => {
   })
 
   return (
-    <popoverContext.Provider value={{ isOpen, setOpen }}>
+    <PopoverContext.Provider value={{ isOpen, setOpen }}>
       <div ref={popoverRef} className={classNames(s.popover)}>
         {children}
       </div>
-    </popoverContext.Provider>
+    </PopoverContext.Provider>
   )
 }
 
 const Trigger = (props: TriggerProps) => {
   const { children } = props
-  const { isOpen, setOpen } = useContext(popoverContext)
+  const { isOpen, setOpen } = useContext(PopoverContext)
 
   const onClick = () => {
     setOpen(!isOpen)
@@ -60,7 +60,7 @@ const Trigger = (props: TriggerProps) => {
 const Content = (props: PopoverProps) => {
   const { children } = props
   const [isContentMounted, setIsContentMounted] = useState(false)
-  const { isOpen } = useContext(popoverContext)
+  const { isOpen } = useContext(PopoverContext)
 
   useEffect(() => {
     if (isOpen && !isContentMounted) {
@@ -79,7 +79,7 @@ const Content = (props: PopoverProps) => {
 
 const Close = (props: TriggerProps) => {
   const { children } = props
-  const { setOpen } = useContext(popoverContext)
+  const { setOpen } = useContext(PopoverContext)
 
   const onClick = () => {
     setOpen(false)

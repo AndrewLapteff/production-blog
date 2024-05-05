@@ -7,16 +7,16 @@ import { Portal } from 'widgets/portal'
 import { useTheme } from 'app/providers/theme-provider'
 
 export interface ModalProps {
+  children: ReactNode
   isOpen: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
   header: string | ReactNode
-  main: string | ReactNode
-  footer: string | ReactNode
+  controls: string | ReactNode
   width?: number
 }
 
 export const Modal = memo((props: ModalProps) => {
-  const { header, main, footer, isOpen, setOpen, width = 45 } = props
+  const { header, children, controls, isOpen, setOpen, width = 45 } = props
   const { theme } = useTheme()
 
   const mode: Record<string, boolean> = {
@@ -45,9 +45,9 @@ export const Modal = memo((props: ModalProps) => {
             style={{ width: window.innerWidth * (width / 100) }}
             className={classNames(s.main)}
           >
-            {main}
+            {children}
           </div>
-          <div className={classNames(s.footer)}>{footer}</div>
+          <div className={classNames(s.footer)}>{controls}</div>
         </div>
       </div>
     </Portal>

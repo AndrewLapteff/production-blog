@@ -2,10 +2,13 @@ import { forwardRef, ReactNode, useImperativeHandle } from 'react'
 import s from './Drawer.module.scss'
 import { useAnimation } from 'shared/lib/components/animation-provider/AnimationProvicer'
 
-const height = window.innerHeight - 100
+interface DrawerProps {
+  children: ReactNode
+  height?: number
+}
 
 export const DrawerContent = forwardRef(
-  ({ children }: { children: ReactNode }, ref) => {
+  ({ children, height = window.innerHeight - 100 }: DrawerProps, ref) => {
     const { Spring, Gesture } = useAnimation()
 
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }))
@@ -72,7 +75,7 @@ export const DrawerContent = forwardRef(
   }
 )
 
-export const Drawer = forwardRef((props: { children: ReactNode }, ref) => {
+export const Drawer = forwardRef((props: DrawerProps, ref) => {
   const { isLoaded } = useAnimation()
 
   if (!isLoaded) return null

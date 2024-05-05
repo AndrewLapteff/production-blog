@@ -19,6 +19,7 @@ interface TitleProps
   size?: Size
   align?: Align
   h?: TitleSemanticSize
+  max?: boolean
 }
 
 export const Title = memo((props: TitleProps) => {
@@ -28,13 +29,15 @@ export const Title = memo((props: TitleProps) => {
     className = '',
     size = 'm',
     align = 'left',
-    h = 'h2'
+    h = 'h2',
+    max = false
   } = props
 
   const mods: Mods = {
     [s[theme]]: true,
     [s[size]]: true,
-    [s[align]]: true
+    [s[align]]: true,
+    [s['max-width']]: max
   }
 
   const renderTitle = useCallback(

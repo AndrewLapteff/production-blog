@@ -63,36 +63,7 @@ const AuthModal = memo(({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
             {t('registration')}
           </Text>
         }
-        main={
-          <div className={s['main-section']}>
-            <section className={s.credentials}>
-              <Input
-                data-testid="email"
-                type="email"
-                onChange={setEmailCallback}
-                value={email}
-              >
-                {t('email')}
-              </Input>
-              <Input
-                onChange={setUserNameCallback}
-                type="text"
-                value={username}
-              >
-                {t('username')}
-              </Input>
-              <Input
-                type="password"
-                onChange={setPasswordCallback}
-                value={password}
-              >
-                {t('password')}
-              </Input>
-            </section>
-            {isErrorCorrect && <Text theme="error">{text}</Text>}
-          </div>
-        }
-        footer={
+        controls={
           <Button
             onClick={postUserDataHandler}
             disabled={isLoading}
@@ -102,7 +73,31 @@ const AuthModal = memo(({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
             {t('register')}
           </Button>
         }
-      />
+      >
+        <div className={s['main-section']}>
+          <section className={s.credentials}>
+            <Input
+              data-testid="email"
+              type="email"
+              onChange={setEmailCallback}
+              value={email}
+            >
+              {t('email')}
+            </Input>
+            <Input onChange={setUserNameCallback} type="text" value={username}>
+              {t('username')}
+            </Input>
+            <Input
+              type="password"
+              onChange={setPasswordCallback}
+              value={password}
+            >
+              {t('password')}
+            </Input>
+          </section>
+          {isErrorCorrect && <Text theme="error">{text}</Text>}
+        </div>
+      </Modal>
     </>
   )
 })

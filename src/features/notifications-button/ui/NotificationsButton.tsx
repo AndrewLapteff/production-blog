@@ -3,31 +3,18 @@ import { Button, Popover } from 'shared/ui'
 import Bell from 'shared/assets/icons/bell.svg'
 import Cross from 'shared/assets/icons/cross.svg'
 import { NotificationsList } from 'entities/notification'
-import { Drawer } from 'widgets/drawer/ui/Drawer'
+import { Drawer } from 'widgets/drawer'
 import { BrowserView, MobileView } from 'react-device-detect'
 import { AnimationProvider } from 'shared/lib/components/animation-provider/AnimationProvicer'
+import { useDrawer } from 'shared/lib'
 
 interface NotificationsButtonProps {
   profileId: number
 }
 
-interface DrawerHandle {
-  open: (args: { canceled: boolean }) => void
-}
-
 export const NotificationsButton = memo(
   ({ profileId }: NotificationsButtonProps) => {
-    const [isOpen, setOpen] = useState(false)
-    const [hasDrawerOpened, setHasDrawerOpened] = useState(false)
-
-    const drawerRef = useRef<DrawerHandle | null>(null)
-
-    const openDrawer = useCallback(() => {
-      if (drawerRef.current === null) return
-      setOpen(true)
-      setHasDrawerOpened(true)
-      drawerRef.current.open({ canceled: false })
-    }, [])
+    const { drawerRef, isDrawerOpen, openDrawer } = useDrawer()
 
     const triggerButton = (
       <Button onClick={openDrawer} variant="icon">
@@ -54,9 +41,7 @@ export const NotificationsButton = memo(
           {triggerButton}
           <AnimationProvider>
             <Drawer ref={drawerRef}>
-              {(isOpen || hasDrawerOpened) && (
-                <NotificationsList profileId={profileId} />
-              )}
+              {isDrawerOpen && <NotificationsList profileId={profileId} />}
             </Drawer>
           </AnimationProvider>
         </MobileView>

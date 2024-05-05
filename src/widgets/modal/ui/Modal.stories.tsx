@@ -25,7 +25,7 @@ export const ModalLight: Story = {
         main={
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
         }
-        footer={
+        controls={
           <>
             <Button size="m" variant="primary">
               Yes
@@ -50,7 +50,7 @@ export const ModalDark: Story = {
         main={
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
         }
-        footer={
+        controls={
           <>
             <Button size="m" variant="primary">
               Yes

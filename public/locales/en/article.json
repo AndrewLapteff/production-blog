@@ -12,5 +12,8 @@
   "title": "title",
   "sort": "Sort",
   "sort-order": "Sort order",
-  "recommendations": "Recommendations"
+  "recommendations": "Recommendations",
+  "submit": "Submit",
+  "decline": "Decline",
+  "accept": "Accept"
 }
