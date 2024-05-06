@@ -7,12 +7,12 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { ArticleBlock, ArticleType } from '../../model/types/article'
 import { ArticleCodeBlock } from '../article-code-block/ArticleCodeBlock'
 import { ArticleImageBlock } from '../article-image-block/ArticleImageBlock'
-import { ArticleTextBlock } from 'entities/Article/ui/article-text-block/ArticleTextBlock'
 import { Author } from 'widgets/author'
 import { ArticleSkeleton } from '../article-skeleton/ArticleSkeleton'
 import { Profile } from 'entities/Profile'
 import { Controls } from '../controls-component/Controls'
 import { ArticleRating } from 'features/article-rating'
+import { ArticleTextBlock } from '../article-text-block/ArticleTextBlock'
 
 interface ArticleProps {
   id: number

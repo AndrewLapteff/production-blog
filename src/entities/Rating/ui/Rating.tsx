@@ -43,11 +43,11 @@ export const Rating = memo((props: RatingProps) => {
     } else {
       onAccept?.(star)
     }
-    console.log(star)
   }
 
   const onAcceptHandler = () => {
     setIsOpen(false)
+    onAccept?.(rate)
   }
 
   const onCancelHandler = () => {
