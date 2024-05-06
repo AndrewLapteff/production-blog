@@ -3,5 +3,6 @@
   "/articles*": "/664/articles$1",
   "/profiles*": "/664/profiles$1",
   "/comments*": "/664/comments$1",
+  "/article-rating": "/664/article-rating",
   "/notifications*": "/664/notifications$1"
 }

@@ -12,10 +12,10 @@ import { Author } from 'widgets/author'
 import { ArticleSkeleton } from '../article-skeleton/ArticleSkeleton'
 import { Profile } from 'entities/Profile'
 import { Controls } from '../controls-component/Controls'
-import { Rating } from 'entities/Rating'
+import { ArticleRating } from 'features/article-rating'
 
 interface ArticleProps {
-  id: string
+  id: number
   article: ArticleType | undefined
   isLoading: boolean | undefined
   author: Profile | undefined
@@ -23,7 +23,7 @@ interface ArticleProps {
 }
 
 export const Article = memo((props: ArticleProps) => {
-  const { article, isLoading, author, error } = props
+  const { article, isLoading, author, error, id } = props
 
   const { t } = useTranslation('article')
 
@@ -81,16 +81,7 @@ export const Article = memo((props: ArticleProps) => {
         alt={article.description}
       />
       {article.blocks.map(renderBlock)}
-      <Rating
-        title="Rating"
-        stars={5}
-        size={30}
-        hasFeedback
-        feedbachTitle="Feetback title"
-        onAccept={() => {
-          console.log('accept')
-        }}
-      />
+      <ArticleRating id={id} />
       <HStack gap="large" justify="start" max className={s.topics}>
         {renderTopics}
       </HStack>

@@ -5,13 +5,15 @@ import Star from '../../assets/icons/star.svg'
 
 interface RatingProps {
   stars: number
+  rate: number
   size: number
   onSelect?: (star: number) => void
 }
 
-export const RatingStars = memo(({ stars, size, onSelect }: RatingProps) => {
+export const RatingStars = memo((props: RatingProps) => {
+  const { stars, size, rate, onSelect } = props
   const [hoveredStar, setHoveredStar] = useState(0)
-  const [selectedStar, setSelectedStar] = useState(0)
+  const [selectedStar, setSelectedStar] = useState(rate ?? 0)
 
   const onHover = (star: number) => () => {
     setHoveredStar(star)

@@ -28,6 +28,7 @@ const ArticlePage = memo(() => {
   const author = useSelector(getAuthor)
   const error = useSelector(getError)
 
+  const articleId = Number(id)
   const thunkDispatch = useThunkDispatch()
 
   useInitialEffect(() => {
@@ -60,10 +61,10 @@ const ArticlePage = memo(() => {
             isLoading={isLoading}
             article={article}
             author={author}
-            id={id}
+            id={articleId}
           />
           <Recommendations recommendations={recommendations} />
-          <CommentsAsync articleId={Number(id)} />
+          <CommentsAsync articleId={articleId} />
         </DynamicSliceLoader>
       </div>
     </Layout>

@@ -8,17 +8,26 @@ import { MobileView } from 'react-device-detect'
 
 interface RatingProps {
   stars: number
+  rate: number | undefined
   size: number
   title?: string
   feedbachTitle?: string
   hasFeedback?: boolean
   onCancel?: () => void
-  onAccept?: () => void
+  onAccept?: (start: number) => void
 }
 
 export const Rating = memo((props: RatingProps) => {
-  const { size, stars, title, feedbachTitle, hasFeedback, onAccept, onCancel } =
-    props
+  const {
+    size,
+    rate = 0,
+    stars,
+    title,
+    feedbachTitle,
+    hasFeedback,
+    onAccept,
+    onCancel
+  } = props
   const [text, setText] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const { drawerRef, isDrawerOpen, openDrawer } = useDrawer()
@@ -32,14 +41,13 @@ export const Rating = memo((props: RatingProps) => {
       console.log('f')
       setIsOpen(true)
     } else {
-      onAccept?.()
+      onAccept?.(star)
     }
     console.log(star)
   }
 
   const onAcceptHandler = () => {
     setIsOpen(false)
-    onAccept?.()
   }
 
   const onCancelHandler = () => {
@@ -77,7 +85,7 @@ export const Rating = memo((props: RatingProps) => {
           />
         </>
       )}
-      <RatingStars size={size} stars={stars} onSelect={onSelect} />
+      <RatingStars size={size} rate={rate} stars={stars} onSelect={onSelect} />
       <MobileView>
         <Button size="l" onClick={openDrawer}>
           {t('submit')}
