@@ -1,6 +1,3 @@
-import { render } from '@testing-library/react'
-import AuthModal from './AuthModal'
-import { useSelector } from 'react-redux'
 jest.mock('react-redux')
 
 // jest.mock('../../../../../app/providers/store-provider/confg/store.ts', () => {

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator, StoreDecorator } from 'shared/config'
 import { Navbar } from './Navbar'
-import { userReducer } from 'entities/User'
 import { getTestStore } from 'shared/lib'
 
 const loginReducer = {

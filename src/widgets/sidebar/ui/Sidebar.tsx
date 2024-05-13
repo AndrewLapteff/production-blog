@@ -1,4 +1,4 @@
-import { memo, useState, ReactComponentElement } from 'react'
+import { memo, useState } from 'react'
 import s from './Sidebar.module.scss'
 import { classNames } from 'shared/lib'
 import ArrowIcon from 'shared/assets/icons/arrow.svg'

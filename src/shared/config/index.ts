@@ -1,4 +1,4 @@
-export { Routes, routerConfig, routes } from './routes/route.config'
+export { Routes, routerConfig, routes } from '../../app/providers/router/config/route.config'
 export { NavbarDecorator } from './storybook/decorators/NavbarDecorator'
 export { RouterDecorator } from './storybook/decorators/RouterDecorator'
 export { StyleDecorator } from './storybook/decorators/StyleDecorator'

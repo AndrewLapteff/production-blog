@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator, ThemeDecorator, testStore } from 'shared/config'
+import { StoreDecorator, testStore } from 'shared/config'
 import { Article, articleReducer } from '../../../Article'
 import { userReducer } from 'entities/User'
 

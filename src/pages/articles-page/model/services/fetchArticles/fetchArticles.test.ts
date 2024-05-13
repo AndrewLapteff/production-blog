@@ -15,7 +15,7 @@
 
 import axios from 'axios'
 import { fetchArticles } from './fetchArticles'
-import { Dispatch, PayloadAction } from '@reduxjs/toolkit'
+import { Dispatch } from '@reduxjs/toolkit'
 import { StoreProps } from '../../../../../app/providers/store-provider/types/Schema'
 import { NavigateFunction } from 'react-router-dom'
 

@@ -1,4 +1,4 @@
-import { memo, useCallback, useRef, useState } from 'react'
+import { memo } from 'react'
 import { Button, Popover } from 'shared/ui'
 import Bell from 'shared/assets/icons/bell.svg'
 import Cross from 'shared/assets/icons/cross.svg'

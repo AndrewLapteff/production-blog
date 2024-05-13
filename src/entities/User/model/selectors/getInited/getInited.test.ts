@@ -1,4 +1,3 @@
-import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { getInited } from './getInited'
 import { getTestStore } from 'shared/lib'
 
