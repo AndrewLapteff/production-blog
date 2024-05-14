@@ -13,6 +13,12 @@ const loginReducer = {
   error: undefined
 }
 
+const user = {
+  username: 'test',
+  email: '',
+  id: 1
+}
+
 const store = getTestStore({ loginReducer })
 
 const meta: Meta<typeof PageError> = {
@@ -31,7 +37,7 @@ export const PageErrorLight: Story = {
   render: (arg) => {
     return (
       <div>
-        <Navbar username="Amigo" isSigned />
+        <Navbar user={user} />
         <div style={{ display: 'flex' }}>
           <Sidebar />
           <PageError />
@@ -46,7 +52,7 @@ export const PageErrorDark: Story = {
   render: (arg) => {
     return (
       <div>
-        <Navbar username="Amigo" isSigned />
+        <Navbar user={user} />
         <div style={{ display: 'flex' }}>
           <Sidebar />
           <PageError />

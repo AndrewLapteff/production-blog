@@ -1,6 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import webpack, { DefinePlugin } from 'webpack'
+import webpack, { DefinePlugin, WebpackPluginInstance } from 'webpack'
 import { BuildEnv, Paths } from './types'
 
 interface BuildPluginsProps extends Pick<BuildEnv, 'analyze' | 'apiUrl'> {
@@ -15,13 +15,9 @@ export const buildPlugins = ({
   apiUrl,
   paths
 }: BuildPluginsProps): webpack.WebpackPluginInstance[] => {
-  const plugins = [
+  const plugins: WebpackPluginInstance[] = [
     new HtmlWebpackPlugin({
       template: paths.html
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css'
     }),
     new DefinePlugin({
       IS_DEV: JSON.stringify(isDev),
@@ -37,10 +33,15 @@ export const buildPlugins = ({
     // })
   ]
 
-  // if (isDev) {
-  //   // plugins.push(new webpack.HotModuleReplacementPlugin({}))
-  //   plugins.push(new BundleAnalyzerPlugin({ analyzerMode: analyze }))
-  // }
+  if (!isDev) {
+    // plugins.push(new webpack.HotModuleReplacementPlugin({}))
+    plugins.push(
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[name].[contenthash:8].css'
+      })
+    )
+  }
 
   return plugins
 }

@@ -3,6 +3,13 @@ import { RouterDecorator, StyleDecorator, ThemeDecorator } from 'shared/config'
 
 const preview: Preview = {
   parameters: {
+    themes: {
+      default: 'light',
+      list: [
+        { name: 'light', class: 'light', color: '#ffffff' },
+        { name: 'dark', class: 'dark', color: '#000000' }
+      ]
+    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {

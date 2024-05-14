@@ -11,6 +11,12 @@ const loginReducer = {
   error: undefined
 }
 
+const user = {
+  username: 'test',
+  email: '',
+  id: 1
+}
+
 const store = getTestStore({ loginReducer })
 
 const meta: Meta<typeof Navbar> = {
@@ -25,9 +31,16 @@ const meta: Meta<typeof Navbar> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const NavbarLight: Story = {}
+export const NavbarLight: Story = {
+  args: {
+    user
+  }
+}
 export const NavbarDark: Story = {
-  decorators: ThemeDecorator('dark')
+  decorators: ThemeDecorator('dark'),
+  args: {
+    user
+  }
 }
 // export const NavbarNotAuthed: Story = {
 //   decorators: StoreDecorator(

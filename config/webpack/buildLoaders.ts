@@ -28,12 +28,14 @@ export const buildLoaders = (mode: Mode): webpack.RuleSetRule[] => {
   // }
 
   const pngLoader = {
+    exclude: /node_modules/,
     test: /\.(png|jpg|gif)$/i,
     type: 'asset/resource'
   }
 
   const svgLoader = {
     test: /\.svg$/i,
+    exclude: /node_modules/,
     issuer: /\.[jt]sx?$/,
     use: ['@svgr/webpack']
   }

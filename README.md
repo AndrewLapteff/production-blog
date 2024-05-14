@@ -6,6 +6,7 @@ I aim to align this project's structure and development processes as closely as 
 
 - [Technologies Used](#technologies-used)
 - [Features](#features)
+- [Scripts](#scripts)
 - [Testing](#testing)
 - [Storybook](#storybook)
 - [Contributing](#contributing)
@@ -33,7 +34,7 @@ I aim to align this project's structure and development processes as closely as 
 
 - **Configuration**: Setup project infrastructure from scratch, including Webpack configuration with support for React, TypeScript, Babel, SCSS, CSS modules, Vite, Prettier, and more.
 - **UI Development**: Created a library of over 20 UI components, incorporating advanced features like portals, dropdowns, modals, lazy loading, and semantic markup.
-- **Architecture**: Used [Feature-Sliced Design](https://feature-sliced.design/), decomposition, reusability, and real-world examples of architectural patterns.
+- **Architecture**: Used **[Feature-Sliced Design](https://feature-sliced.design/)**, decomposition, reusability, and real-world examples of architectural patterns.
 - **Optimization**: Techniques for optimizing performance, handling re-renders, analyzing bundle size, asynchronous module loading, and isolation.
 - **Real-world Tasks**: Solving a variety of real-world development challenges, including filters, search, sorting, infinite scrolls, multi-block pages, and comments.
 - **Themes and Styles**: Implementation of CSS modules, theming, and structured styling with support for multiple color themes.
@@ -50,6 +51,30 @@ I aim to align this project's structure and development processes as closely as 
 - **Infrastructure Setup**: Configuration of the development environment, testing environment, and Storybook to seamlessly integrate all features and functionalities.
 - **TypeScript Generic Components**: Flexible components that can adapt to different data structures and enforce type safety throughout your codebase.
 
+## Scripts
+
+- `dev`: Start the development environment.
+- `dev:vite`: Start the Vite development server.
+- `dev:client`: Start the Webpack development server.
+- `dev:server`: Start the JSON server.
+- `build:prod`: Build the project for production.
+- `build:start`: Start the production build.
+- `build:analyze`: Analyze the production build.
+- `build:dev`: Build the project for development.
+- `lint:ts`: Lint TypeScript files.
+- `lint:ts:fix`: Fix TypeScript linting issues.
+- `lint:scss`: Lint SCSS files.
+- `lint:scss:fix`: Fix SCSS linting issues.
+- `prepare`: Prepare Husky.
+- `test:ts`: Run unit tests.
+- `test:ui`: Run screenshot tests.
+- `test:ui:ok`: Approve screenshot tests.
+- `test:ui:json`: Generate JSON report.
+- `test:ui:html`: Generate HTML report.
+- `test:ui:report`: Generate and open HTML report.
+- `storybook`: Start Storybook.
+- `storybook:build`: Build Storybook.
+
 ## Testing
 
 ![alt text](public/images//tests.png 'Title')
@@ -65,6 +90,45 @@ The project currently has 21 stories
 
 1. Run storybook environment: `npm run storybook`.
 2. Build storybook: `npm run storybook:build`.
+
+## Architecture
+
+The project is structured using the **[Feature-Sliced Design](https://feature-sliced.design/)** methodology.
+
+## Internationalization
+
+The project currently supports two languages: **English** and **Ukrainian**.
+The feature is implemented using the **[i18next library](https://react.i18next.com/)**.
+
+## Bundling
+
+The project uses **Webpack** for bundling and **Vite** for the development server.
+Webpack configuration is set up from scratch and includes support for React, TypeScript, Babel, SCSS, CSS modules, Prettier, and more.
+The configuration files for webpack is located in the **`config/webpack`** directory and in **`webpack.config.ts`**.
+The configuration files for Vite is located in **`vite.config.ts`**.
+
+## CI Pipeline
+
+The project uses **Github Actions** for the CI pipeline.
+The configuration file is located in the **`.github/workflows`** directory.
+Pre-commit hooks are located in **`.husky`**.
+
+## Fetching Data
+
+[RTK Query](https://redux-toolkit.js.org/rtk-query/overview) and [Redux async thunks](https://redux-toolkit.js.org/api/createAsyncThunk) are used for fetching and posting data.
+The project uses [DynamicSliceLoader](/src/shared/lib/components/dymanic-loader/DynamicSliceLoader.tsx) to load slices asynchronously.
+The project uses [JSON Server](https://www.npmjs.com/package/json-server) as a backend.
+
+## Entities
+
+The project uses the following entities:
+
+- [Article](/src/entities/Article/model/types/article.ts)
+- [Comment](/src/entities/Comment/model/types/comment.ts)
+- [User](/src/entities/User/model/types/user.ts)
+- [Notification](/src/entities/notification/model/types/notification.ts)
+- [Profile](/src/entities/profile/model/types/profile.ts)
+- [Rating](/src/entities/rating/model/types/rating.ts)
 
 ## Contributing
 
