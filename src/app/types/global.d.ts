@@ -22,3 +22,9 @@ type PartialRecord<K extends keyof any, T> = {
 type List = PartialRecord<'a' | 'b' | 'c', string>
 
 type Dictionary = Record<string, string>
+
+declare namespace Cypress {
+  interface Chainable {
+    login: (nickname: string, password: string) => Chainable<any>
+  }
+}

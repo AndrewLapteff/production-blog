@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -35,3 +36,16 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('login', (email, password) => {
+  cy.session(email, () => {
+    cy.visit('http://localhost:3000')
+    cy.request({
+      method: 'POST',
+      url: 'http://localhost:4000/login',
+      body: { email, password }
+    }).then(({ body }) => {
+      window.localStorage.setItem('userInfo', JSON.stringify(body))
+    })
+  })
+})

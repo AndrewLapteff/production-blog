@@ -67,6 +67,7 @@ const AuthModal = memo(({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
           <Button
             onClick={postUserDataHandler}
             disabled={isLoading}
+            data-testid="register"
             size="m"
             variant="primary"
           >
@@ -84,11 +85,17 @@ const AuthModal = memo(({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
             >
               {t('email')}
             </Input>
-            <Input onChange={setUserNameCallback} type="text" value={username}>
+            <Input
+              onChange={setUserNameCallback}
+              type="text"
+              data-testid="username"
+              value={username}
+            >
               {t('username')}
             </Input>
             <Input
               type="password"
+              data-testid="password"
               onChange={setPasswordCallback}
               value={password}
             >

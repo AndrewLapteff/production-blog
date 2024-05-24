@@ -35,7 +35,12 @@ export const SettingsButton = memo(({ username }: { username: string }) => {
   return (
     <>
       {userInfo.email === '' ? (
-        <Button size="m" variant="background" onClick={openHandler}>
+        <Button
+          size="m"
+          variant="background"
+          data-testid="login"
+          onClick={openHandler}
+        >
           {t('login')}
         </Button>
       ) : (

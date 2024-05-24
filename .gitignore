@@ -7,3 +7,4 @@ storybook-static
 .loki/report.html
 .loki/report.json
 extractedTranslations
+cypress.env.json

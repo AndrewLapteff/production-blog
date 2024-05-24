@@ -7,7 +7,7 @@
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:vite": "vite",
     "dev:client": "npx webpack serve --config ./webpack.config.ts --port=3000 --env mode=development",
-    "dev:server": "npx json-server-auth ./json-server/db.json -r ./json-server/routes.json -p=4000 -d=300 -w",
+    "dev:server": "npx json-server-auth ./json-server/db.json -r ./json-server/routes.json -p=4000 -d=300 -w --host 0.0.0.0",
     "build:prod": "npx webpack --env mode=production analyze=disabled",
     "build:start": "npx webpack serve",
     "build:analyze": "npx webpack --env mode=production analyze=server",
