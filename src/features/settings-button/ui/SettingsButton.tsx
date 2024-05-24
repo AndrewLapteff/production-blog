@@ -38,7 +38,7 @@ export const SettingsButton = memo(({ username }: { username: string }) => {
         <Button
           size="m"
           variant="background"
-          data-testid="login"
+          data-testid="login-modal"
           onClick={openHandler}
         >
           {t('login')}

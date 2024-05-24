@@ -37,6 +37,7 @@ export const Modal = memo((props: ModalProps) => {
     <Portal>
       <div
         onClick={onClose}
+        data-testid="modal-background"
         className={classNames(s['app-modal'], mode, [theme, 'app-modal'])}
       >
         <div onClick={stopPropagation} className={classNames(s.content)}>

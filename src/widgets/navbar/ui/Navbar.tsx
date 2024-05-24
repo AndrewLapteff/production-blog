@@ -27,7 +27,12 @@ export const Navbar = ({ user }: NavbarProps) => {
 
           if (hide) return
           result.push(
-            <AppLink key={path} theme="primary" to={path || ''}>
+            <AppLink
+              key={path}
+              data-testid={name}
+              theme="primary"
+              to={path || ''}
+            >
               {t(name)}
             </AppLink>
           )

@@ -3,5 +3,6 @@
   "registration": "Registration",
   "email": "Email",
   "username": "Username",
-  "password": "Password"
+  "password": "Password",
+  "login": "Login"
 }

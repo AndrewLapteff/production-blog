@@ -8,6 +8,7 @@ interface TextProps
     PropsWithChildren {
   theme?: ThemeProps
   className?: string
+  'data-testid'?: string
   size?: Size
   align?: Align
 }
@@ -15,6 +16,7 @@ interface TextProps
 export const Text = memo(
   ({
     className,
+    'data-testid': dataTestId,
     theme = 'normal',
     size = 'm',
     align = 'left',
@@ -26,6 +28,13 @@ export const Text = memo(
       [s[align]]: true
     }
 
-    return <p className={classNames(s.text, mods, [className])}>{children}</p>
+    return (
+      <p
+        data-testid={dataTestId + '.text'}
+        className={classNames(s.text, mods, [className])}
+      >
+        {children}
+      </p>
+    )
   }
 )

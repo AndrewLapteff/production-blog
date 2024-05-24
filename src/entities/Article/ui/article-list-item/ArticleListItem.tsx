@@ -24,7 +24,11 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
 
   if (view === 'classic') {
     return (
-      <div style={style} className={classNames(s.article, {}, [s[view]])}>
+      <div
+        data-testid="article-item"
+        style={style}
+        className={classNames(s.article, {}, [s[view]])}
+      >
         <LazyLoadImage
           effect="blur"
           width={700}

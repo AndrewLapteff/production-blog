@@ -3,5 +3,6 @@
   "registration": "Реєстрація",
   "email": "Пошта",
   "username": "Нік",
-  "password": "Пароль"
+  "password": "Пароль",
+  "login": "Вхід"
 }

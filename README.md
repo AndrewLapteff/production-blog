@@ -9,6 +9,7 @@ I aim to align this project's structure and development processes as closely as 
 - [Scripts](#scripts)
 - [Testing](#testing)
 - [Storybook](#storybook)
+- [Cypress](#cypress)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -22,6 +23,7 @@ I aim to align this project's structure and development processes as closely as 
 - [SCSS](https://sass-lang.com/)
 - [i18n](https://www.i18next.com/)
 - [Jest](https://jestjs.io/)
+- [Cypress](https://www.cypress.io/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Loki](https://loki.js.org/)
 - [Husky](https://typicode.github.io/husky/)
@@ -90,6 +92,14 @@ The project currently has 21 stories
 
 1. Run storybook environment: `npm run storybook`.
 2. Build storybook: `npm run storybook:build`.
+
+## Cypress
+
+I used [aliases](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Aliases), [fixtures](https://docs.cypress.io/api/commands/fixture), [sessions](https://docs.cypress.io/api/commands/session). Also I've wrote [custom commands](cypress/support/commands.ts) for the project.
+
+The project currently has [three e2e tests](cypress/e2e/)
+
+To run cypress environment: `npm run cy:open`
 
 ## Architecture
 

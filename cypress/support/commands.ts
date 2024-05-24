@@ -39,7 +39,6 @@
 
 Cypress.Commands.add('login', (email, password) => {
   cy.session(email, () => {
-    cy.visit('http://localhost:3000')
     cy.request({
       method: 'POST',
       url: 'http://localhost:4000/login',
@@ -48,4 +47,8 @@ Cypress.Commands.add('login', (email, password) => {
       window.localStorage.setItem('userInfo', JSON.stringify(body))
     })
   })
+})
+
+Cypress.Commands.add('getByTestId', (id) => {
+  cy.get(`[data-testid="${id}"]`)
 })

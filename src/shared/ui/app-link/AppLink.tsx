@@ -8,13 +8,25 @@ type AppLinkThemes = 'primary' | 'secondary'
 interface AppLinkProps extends LinkProps {
   className?: string
   theme?: AppLinkThemes
+  'data-testid'?: string
 }
 
 export const AppLink = memo((props: AppLinkProps) => {
-  const { children, to, theme = 'primary', ...rest } = props
+  const {
+    children,
+    to,
+    theme = 'primary',
+    'data-testid': dataTestId,
+    ...rest
+  } = props
 
   return (
-    <Link className={classNames(s.applink, {}, [s[theme]])} to={to} {...rest}>
+    <Link
+      data-testid={dataTestId + '.link'}
+      className={classNames(s.applink, {}, [s[theme]])}
+      to={to}
+      {...rest}
+    >
       {children}
     </Link>
   )

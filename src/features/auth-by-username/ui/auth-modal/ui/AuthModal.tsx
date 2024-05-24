@@ -6,13 +6,8 @@ import { useTranslation } from 'react-i18next'
 
 import { Button, Text, Input } from 'shared/ui/'
 import s from './AuthModal.module.scss'
+import { setPassword, setEmail } from '../../../model/slice/loginSlice'
 import {
-  setPassword,
-  setUsername,
-  setEmail
-} from '../../../model/slice/loginSlice'
-import {
-  getUsername,
   getPassword,
   getEmail,
   getError,
@@ -26,7 +21,6 @@ type AuthModalProps = Pick<ModalProps, 'setOpen' | 'isOpen' | 'width'>
 const AuthModal = memo(({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
   const { t } = useTranslation('modal')
 
-  const username = useSelector(getUsername)
   const password = useSelector(getPassword)
   const email = useSelector(getEmail)
   const error = useSelector(getError)
@@ -35,7 +29,6 @@ const AuthModal = memo(({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
   const text = error?.response?.data
   const isErrorCorrect = error !== undefined && typeof text === 'string'
 
-  const setUserNameCallback = useDispatchCallback(setUsername)
   const setPasswordCallback = useDispatchCallback(setPassword)
   const setEmailCallback = useDispatchCallback(setEmail)
   const thunkDispatch = useThunkDispatch()
@@ -60,18 +53,18 @@ const AuthModal = memo(({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
         setOpen={setOpen}
         header={
           <Text className={s.header} theme="normal">
-            {t('registration')}
+            {t('login')}
           </Text>
         }
         controls={
           <Button
             onClick={postUserDataHandler}
             disabled={isLoading}
-            data-testid="register"
+            data-testid="login"
             size="m"
             variant="primary"
           >
-            {t('register')}
+            {t('login')}
           </Button>
         }
       >
@@ -85,14 +78,14 @@ const AuthModal = memo(({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
             >
               {t('email')}
             </Input>
-            <Input
+            {/* <Input
               onChange={setUserNameCallback}
               type="text"
               data-testid="username"
               value={username}
             >
               {t('username')}
-            </Input>
+            </Input> */}
             <Input
               type="password"
               data-testid="password"
@@ -102,7 +95,11 @@ const AuthModal = memo(({ isOpen, setOpen, width = 30 }: AuthModalProps) => {
               {t('password')}
             </Input>
           </section>
-          {isErrorCorrect && <Text theme="error">{text}</Text>}
+          {isErrorCorrect && (
+            <Text data-testid="login-modal-error" theme="error">
+              {text}
+            </Text>
+          )}
         </div>
       </Modal>
     </>
