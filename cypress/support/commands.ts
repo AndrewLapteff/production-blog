@@ -38,14 +38,12 @@
 // }
 
 Cypress.Commands.add('login', (email, password) => {
-  cy.session(email, () => {
-    cy.request({
-      method: 'POST',
-      url: 'http://localhost:4000/login',
-      body: { email, password }
-    }).then(({ body }) => {
-      window.localStorage.setItem('userInfo', JSON.stringify(body))
-    })
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:4000/login',
+    body: { email, password }
+  }).then(({ body }) => {
+    window.localStorage.setItem('userInfo', JSON.stringify(body))
   })
 })
 

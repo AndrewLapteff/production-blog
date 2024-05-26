@@ -3,9 +3,11 @@ import { buildWebpackConfig } from './config/webpack/buildWebpackConfig'
 import { BuildEnv } from './config/webpack/types'
 
 export default (env: BuildEnv) => {
-  const { mode, analyze } = env
-
-  const apiUrl = env.apiUrl || 'http://localhost:4000'
+  const { mode, analyze, apiUrl } = env || {
+    mode: 'development',
+    analyze: 'disabled',
+    apiUrl: 'http://localhost:4000'
+  }
 
   return buildWebpackConfig({
     mode,

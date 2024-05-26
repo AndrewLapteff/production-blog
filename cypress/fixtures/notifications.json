@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "profileId": 1,
+    "createdAt": "11.02.2024",
+    "title": "Notification one",
+    "description": "Please confirm your email. An email was sent to your email andress. It might've gone into spam",
+    "href": "google.com"
+  },
+  {
+    "id": 2,
+    "profileId": 1,
+    "createdAt": "11.02.2024",
+    "title": "Notification one",
+    "description": "Please confirm your email. An email was sent to your email andress. It might've gone into spam",
+    "href": "google.com"
+  },
+  {
+    "id": 3,
+    "profileId": 1,
+    "createdAt": "11.02.2024",
+    "title": "Notification one",
+    "description": "Please confirm your email. An email was sent to your email andress. It might've gone into spam"
+  },
+  {
+    "id": 4,
+    "profileId": 1,
+    "createdAt": "11.02.2024",
+    "title": "Notification one",
+    "description": "Please confirm your email. An email was sent to your email andress. It might've gone into spam"
+  },
+  {
+    "id": 5,
+    "profileId": 1,
+    "createdAt": "11.02.2024",
+    "title": "Notification one",
+    "description": "Please confirm your email. An email was sent to your email andress. It might've gone into spam"
+  },
+  {
+    "id": 6,
+    "profileId": 1,
+    "createdAt": "11.02.2024",
+    "title": "Notification one",
+    "description": "Please confirm your email. An email was sent to your email andress. It might've gone into spam"
+  }
+]
