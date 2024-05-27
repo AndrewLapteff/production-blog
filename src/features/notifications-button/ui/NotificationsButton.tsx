@@ -17,7 +17,7 @@ export const NotificationsButton = memo(
     const { drawerRef, isDrawerOpen, openDrawer } = useDrawer()
 
     const triggerButton = (
-      <Button onClick={openDrawer} variant="icon">
+      <Button data-testid="notification" onClick={openDrawer} variant="icon">
         <Bell height={22} width={22} />
       </Button>
     )
@@ -30,7 +30,7 @@ export const NotificationsButton = memo(
             <Popover.Content>
               <NotificationsList profileId={profileId} />
               <Popover.Close>
-                <Button variant="icon">
+                <Button data-testid="notification-close" variant="icon">
                   <Cross height={22} width={22} />
                 </Button>
               </Popover.Close>

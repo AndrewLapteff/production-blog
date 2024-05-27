@@ -30,7 +30,7 @@ describe('auth modal', () => {
     cy.get('@passwordInput').type(Cypress.env('password') as string, {
       force: true
     })
-    cy.get('@loginButton').click()
+    cy.get('@loginButton').click().wait(1000)
     cy.visit('http://localhost:3000/profile')
     cy.getByTestId('ProfileCard.username.input').should('exist')
   })

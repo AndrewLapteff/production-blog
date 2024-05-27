@@ -8,7 +8,8 @@ export const VStack = (props: VStackProps) => {
     justify = 'center',
     children,
     gap = 'medium',
-    className
+    className,
+    'data-testid': dataTestId
   } = props
   return (
     <Flex
@@ -16,6 +17,7 @@ export const VStack = (props: VStackProps) => {
       className={className}
       align={align}
       justify={justify}
+      data-testid={dataTestId}
       direction="column"
     >
       {children}

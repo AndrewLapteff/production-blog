@@ -9,6 +9,7 @@ export const HStack = (props: HStackProps) => {
     children,
     gap = 'medium',
     max,
+    'data-testid': dataTestId,
     className
   } = props
   return (
@@ -18,6 +19,7 @@ export const HStack = (props: HStackProps) => {
       align={align}
       justify={justify}
       max={max}
+      data-testid={dataTestId}
       direction="row"
     >
       {children}

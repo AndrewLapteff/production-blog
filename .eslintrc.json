@@ -8,7 +8,8 @@
     "plugin:react/recommended",
     "standard-with-typescript",
     "plugin:jsx-a11y/recommended",
-    "plugin:i18next/recommended"
+    "plugin:i18next/recommended",
+    "prettier"
   ],
   "overrides": [
     {
@@ -35,14 +36,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "jsx-a11y",
-    "i18next",
-    "react-hooks",
-    "absolute-path-checker",
-    "unused-imports"
-  ],
+  "plugins": ["react", "jsx-a11y", "i18next", "react-hooks", "unused-imports"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "off",

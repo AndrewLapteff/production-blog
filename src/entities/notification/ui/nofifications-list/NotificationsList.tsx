@@ -30,6 +30,7 @@ export const NotificationsList = memo(
         {notifications.map((notification) => {
           return (
             <NotificationCard
+              data-testid="notification-item"
               key={notification.id}
               notification={notification}
             />

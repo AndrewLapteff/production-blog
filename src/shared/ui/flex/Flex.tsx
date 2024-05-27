@@ -25,6 +25,7 @@ export interface FlexProps extends DivProps {
   gap?: GapProps
   className?: string
   max?: boolean
+  'data-testid'?: string
 }
 
 const JustifyMapper: Record<JustifyContentProps, string> = {
@@ -62,6 +63,7 @@ export const Flex = (props: FlexProps) => {
     justify = 'start',
     className,
     max,
+    'data-testid': dataTestId,
     children
   } = props
 
@@ -77,5 +79,12 @@ export const Flex = (props: FlexProps) => {
     [s['max-width']]: max
   }
 
-  return <div className={classNames(s.flex, modes, mappers)}>{children}</div>
+  return (
+    <div
+      data-testid={dataTestId}
+      className={classNames(s.flex, modes, mappers)}
+    >
+      {children}
+    </div>
+  )
 }

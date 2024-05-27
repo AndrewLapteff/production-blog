@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:vite": "vite",
-    "dev:client": "npx webpack serve --config ./webpack.config.ts --port=3000 --env mode=development",
+    "dev:client": "npx webpack serve --config ./webpack.config.ts --port=3000 --env mode=development apiUrl=http://localhost:4000",
     "dev:server": "npx json-server-auth ./json-server/db.json -r ./json-server/routes.json -p=4000 -d=300 -w --host 0.0.0.0",
     "build:prod": "npx webpack --env mode=production analyze=disabled",
     "build:start": "npx webpack serve",
@@ -25,7 +25,11 @@
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
+    "cy:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667",
+    "prettier": "prettier --write **/*.{ts,tsx,json}"
   },
   "loki": {
     "configurations": {
@@ -90,6 +94,7 @@
     "css-loader": "^6.10.0",
     "cypress": "^13.9.0",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-absolute-path-checker": "^0.0.4",
     "eslint-plugin-i18next": "^6.0.3",
@@ -115,6 +120,7 @@
     "mini-css-extract-plugin": "^2.8.0",
     "oxlint": "^0.2.11",
     "postcss-loader": "^8.1.0",
+    "prettier": "3.2.5",
     "react-i18next": "^14.0.1",
     "react-lazy-load-image-component": "^1.6.0",
     "react-refresh": "^0.14.1",

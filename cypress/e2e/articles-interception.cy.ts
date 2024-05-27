@@ -1,12 +1,8 @@
 describe('Articles', () => {
   beforeEach(() => {
-    cy.intercept(
-      'GET',
-      'http://localhost:4000/articles?_expand=profile&_page=1&_limit=5&_sort=views&_order=asc&q=',
-      {
-        fixture: 'articles.json'
-      }
-    ).as('getArticles')
+    cy.intercept('GET', '**/articles?*', {
+      fixture: 'articles.json'
+    }).as('getArticles')
   })
 
   it('should intercept and return only two articles', () => {

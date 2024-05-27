@@ -1,4 +1,3 @@
-/* eslint-disable absolute-path-checker/check-absolute-path */
 import 'shared/config/i18next/i18next.config'
 import { useTheme } from './providers/theme-provider'
 import { classNames, useAppSelector } from 'shared/lib'
