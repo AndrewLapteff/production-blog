@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { UserSchema } from '../types/user'
 import { LOCAL_STORAGE_USER_KEY } from 'shared/consts/localStorage/index'
+import { setFeatureFlags } from 'shared/lib/features/featureFlags'
 
 const initialState: UserSchema = {
   accessToken: '',
@@ -17,6 +18,7 @@ export const userSlice = createSlice({
     setUser: (state, payload: PayloadAction<UserSchema>) => {
       state.user = payload.payload.user
       state.accessToken = payload.payload.accessToken
+      setFeatureFlags(payload.payload.user.features)
     },
     init: (state) => {
       state._inited = true
@@ -25,6 +27,8 @@ export const userSlice = createSlice({
         return
       }
       const parsedData = JSON.parse(data) as UserSchema
+      setFeatureFlags(parsedData.user.features)
+      console.log('parsedData', parsedData)
       state.user = parsedData.user
     },
     logout: (state) => {

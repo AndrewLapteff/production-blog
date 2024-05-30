@@ -13,6 +13,7 @@ import { Profile } from 'entities/Profile'
 import { Controls } from '../controls-component/Controls'
 import { ArticleRating } from 'features/article-rating'
 import { ArticleTextBlock } from '../article-text-block/ArticleTextBlock'
+import { getFeatureFlags } from 'shared/lib/features/featureFlags'
 
 interface ArticleProps {
   id: number
@@ -26,6 +27,8 @@ export const Article = memo((props: ArticleProps) => {
   const { article, isLoading, author, error, id } = props
 
   const { t } = useTranslation('article')
+
+  const isArticleRatingEnabled = getFeatureFlags('isArticleRatingEnabled')
 
   const renderBlock = useCallback((block: ArticleBlock, i: number) => {
     switch (block.type) {
@@ -81,7 +84,7 @@ export const Article = memo((props: ArticleProps) => {
         alt={article.description}
       />
       {article.blocks.map(renderBlock)}
-      <ArticleRating id={id} />
+      {isArticleRatingEnabled && <ArticleRating id={id} />}
       <HStack gap="large" justify="start" max className={s.topics}>
         {renderTopics}
       </HStack>

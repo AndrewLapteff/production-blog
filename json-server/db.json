@@ -159,7 +159,10 @@
       "email": "this.is.amigogo@gmail.com",
       "password": "$2a$10$bblrHXsaHEzGcRoIZKdYh.7cYs7W18LKgUKMbC0iWFGkzYbuy.ZxW",
       "username": "Amigo",
-      "roles": "MANAGER"
+      "roles": "MANAGER",
+      "features": {
+        "isArticleRatingEnabled": true
+      }
     }
   ],
   "articles": [
@@ -170,10 +173,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "1024",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": [
@@ -250,10 +250,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "1024",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": [
@@ -330,10 +327,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "1024",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -345,10 +339,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "1024",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -360,10 +351,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "1024",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -375,10 +363,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "1024",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -390,10 +375,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "1024",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -405,10 +387,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "1024",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -420,10 +399,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "2024",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -435,10 +411,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "4344",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -450,10 +423,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "4344",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -465,10 +435,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "4344",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -480,10 +447,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "4344",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -495,10 +459,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "4344",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -510,10 +471,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "4344",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -525,10 +483,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "4344",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -540,10 +495,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "4344",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -555,10 +507,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "4344",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []
@@ -570,10 +519,7 @@
       "img": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2RMPMcSvZBIVyPiiw3kUPw.jpeg",
       "views": "4344",
       "createdAt": "01.01.2024",
-      "topics": [
-        "JavaScript",
-        "Features"
-      ],
+      "topics": ["JavaScript", "Features"],
       "minsToRead": "2",
       "profileId": 1,
       "blocks": []

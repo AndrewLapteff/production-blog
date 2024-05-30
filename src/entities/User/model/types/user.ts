@@ -1,3 +1,5 @@
+import { FeatureFlags } from 'shared/types/features'
+
 export type Roles = 'USER' | 'ADMIN' | 'MANAGER'
 
 export interface User {
@@ -5,6 +7,7 @@ export interface User {
   email: string
   username: string
   roles?: Roles
+  features?: FeatureFlags
 }
 
 export interface UserSchema {
