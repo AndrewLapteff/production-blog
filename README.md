@@ -123,6 +123,11 @@ The project uses **Github Actions** for the CI pipeline.
 The configuration file is located in the **`.github/workflows`** directory.
 Pre-commit hooks are located in **`.husky`**.
 
+## Feature flags
+
+The use of feature flags is only possible with **[toggleFeature](/src/shared/lib/features/toggleFeature.ts)** helper.
+To automatically enable or disable features throughout the project, you can use **[script](/scripts/ts-morph.js)** built with [ts-morph](https://ts-morph.com/).
+
 ## Fetching Data
 
 [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) and [Redux async thunks](https://redux-toolkit.js.org/api/createAsyncThunk) are used for fetching and posting data.

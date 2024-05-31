@@ -13,7 +13,7 @@ import { Profile } from 'entities/Profile'
 import { Controls } from '../controls-component/Controls'
 import { ArticleRating } from 'features/article-rating'
 import { ArticleTextBlock } from '../article-text-block/ArticleTextBlock'
-import { getFeatureFlags } from 'shared/lib/features/featureFlags'
+import { toggleFeature } from 'shared/lib/features/toggleFeature'
 
 interface ArticleProps {
   id: number
@@ -28,7 +28,11 @@ export const Article = memo((props: ArticleProps) => {
 
   const { t } = useTranslation('article')
 
-  const isArticleRatingEnabled = getFeatureFlags('isArticleRatingEnabled')
+  const isArticleRatingEnabled = toggleFeature({
+    name: 'isArticleRatingEnabled',
+    on: () => true,
+    off: () => false
+  })
 
   const renderBlock = useCallback((block: ArticleBlock, i: number) => {
     switch (block.type) {
