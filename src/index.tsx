@@ -9,6 +9,7 @@ import { userReducer } from 'entities/User'
 import { StoreProps } from 'app/providers/store-provider/types/Schema'
 import { scrollRestorationSliceReducer } from 'features/scroll-restoration'
 import { rtkApi } from 'shared/api/rtkQuery'
+import { AnimatePresence } from 'framer-motion'
 
 const container = document.getElementById('root')
 const initialStore: StoreProps = {
@@ -40,7 +41,9 @@ if (container) {
             initialState={initialStore}
             asyncReducers={asyncReducers}
           >
-            <App />
+            <AnimatePresence mode="wait">
+              <App />
+            </AnimatePresence>
           </StoreProvider>
         </Suspense>
       </ThemeProvider>

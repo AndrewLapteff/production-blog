@@ -13,3 +13,23 @@
 .div-helper {
   margin-bottom: 20px
 }
+
+.slice-in {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(30, 30, 30);
+  transform-origin: top;
+}
+
+.slice-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(38, 38, 38);
+  transform-origin: bottom;
+}

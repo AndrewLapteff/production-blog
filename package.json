@@ -151,6 +151,7 @@
     "@reduxjs/toolkit": "^2.1.0",
     "@use-gesture/react": "^10.3.1",
     "axios": "^1.6.7",
+    "framer-motion": "^11.2.10",
     "json-server": "^0.17.4",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",

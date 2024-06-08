@@ -17,5 +17,9 @@ export { useEventListener } from './hooks/useEventListener'
 export { useClickOutside } from './hooks/useClickOutside'
 export { useInitialEffect } from './hooks/useInitialEffect'
 export { useDrawer } from './hooks/useDrawer'
+export {
+  useTransition,
+  TransitionProvider
+} from './components/transition-provider/TransitionProvicer'
 
 export type { ObserverProps } from './hooks/useFirstViewportEntry'
